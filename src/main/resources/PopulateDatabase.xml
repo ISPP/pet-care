@@ -228,20 +228,6 @@
 	</bean>
 	
 	
-	<bean id="userAccount9.5" class="security.UserAccount">
-		<property name="username" value="petSitter5" />
-		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PETSITTER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-	
-	
-	
 	
 	<bean id="userAccount10.1" class="security.UserAccount">
 		<property name="username" value="petShipper1" />
@@ -382,7 +368,20 @@
 		</list>
 	</property>
 	
+	</bean>
 	
+	
+	<bean id="folderAdmin1Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin1"></property>	
+	</bean>
+	<bean id="folderAdmin1Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin1"></property>	
+	</bean>
+	<bean id="folderAdmin1Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin1"></property>	
 	</bean>
 	
 	<bean id="admin2" class="domain.Administrator">
@@ -397,9 +396,23 @@
 				<ref bean="folderAdmin2Trashbox"></ref>						
 		</list>
 	</property>
-	
-	
 	</bean>
+	
+	<bean id="folderAdmin2Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin2"></property>	
+	</bean>
+	<bean id="folderAdmin2Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin2"></property>	
+	</bean>
+	<bean id="folderAdmin2Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin2"></property>	
+	</bean>
+	
+	
+	
 	
 	<bean id="admin3" class="domain.Administrator">
 	<property name="name" value="Cristina"></property>
@@ -417,6 +430,20 @@
 	
 	</bean>
 	
+	<bean id="folderAdmin3Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin3"></property>	
+	</bean>
+	<bean id="folderAdmin3Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin3"></property>	
+	</bean>
+	<bean id="folderAdmin3Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin3"></property>	
+	</bean>
+	
+	
 	<bean id="admin4" class="domain.Administrator">
 	<property name="name" value="Daniel"></property>
 	<property name="surname" value="Navarro"></property>
@@ -433,6 +460,21 @@
 	
 	</bean>
 	
+	
+	<bean id="folderAdmin4Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin4"></property>	
+	</bean>
+	<bean id="folderAdmin4Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin4"></property>	
+	</bean>
+	<bean id="folderAdmin4Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin4"></property>	
+	</bean>
+	
+	
 	<bean id="admin5" class="domain.Administrator">
 	<property name="name" value="Pedro"></property>
 	<property name="surname" value="Llamas"></property>
@@ -447,6 +489,21 @@
 	</property>
 	
 	
+	</bean>
+	
+	
+	
+	<bean id="folderAdmin5Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin5"></property>	
+	</bean>
+	<bean id="folderAdmin5Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin5"></property>	
+	</bean>
+	<bean id="folderAdmin5Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin5"></property>	
 	</bean>
 	
 	<bean id="admin6" class="domain.Administrator">
@@ -465,6 +522,21 @@
 	
 	</bean>
 	
+	
+	<bean id="folderAdmin6Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin6"></property>	
+	</bean>
+	<bean id="folderAdmin6Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin6"></property>	
+	</bean>
+	<bean id="folderAdmin6Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin6"></property>	
+	</bean>
+	
+	
 	<bean id="admin7" class="domain.Administrator">
 	<property name="name" value="Victor"></property>
 	<property name="surname" value="CanJu"></property>
@@ -479,7 +551,18 @@
 	</property>	
 	</bean>
 	
-	
+	<bean id="folderAdmin7Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="admin7"></property>	
+	</bean>
+	<bean id="folderAdmin7Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="admin7"></property>	
+	</bean>
+	<bean id="folderAdmin7Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="admin7"></property>	
+	</bean>
 	
 	
 	
@@ -491,6 +574,22 @@
 	<property name="name" value="Javier Ignacio"></property>
 	<property name="surname" value="Molina Cano"></property>
 	<property name="email" value="javier@gmail.com"></property>
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="Mi perro es como si fuera de mi familia"></property>
+	<property name="homePage" value="http://www.facebook.com"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	
+	
 	<property name="user" ref="userAccount8.1"></property>
 	<property name="messageFolders">
 			<list>
@@ -500,10 +599,40 @@
 		</list>
 	</property>	
 	</bean>
+	
+	<bean id="folderPetOwner8.1Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petOwner8.1"></property>	
+	</bean>
+	<bean id="folderPetOwner8.1Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petOwner8.1"></property>	
+	</bean>
+	<bean id="folderPetOwner8.1Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petOwner8.1"></property>	
+	</bean>
+	
+	
 	<bean id="petOwner8.2" class="domain.PetOwner">
 	<property name="name" value="Alberto"></property>
 	<property name="surname" value="Molina Cano"></property>
 	<property name="email" value="jalbert@gmail.com"></property>
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="Amo a las mascotas. necesito que me las cuiden a diario"></property>
+	<property name="homePage" value="http://www.facebook.com"></property>
+	<property name="contactPhone" value="954213645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	
 	<property name="user" ref="userAccount8.2"></property>
 	<property name="messageFolders">
 			<list>
@@ -513,10 +642,40 @@
 		</list>
 	</property>	
 	</bean>
+	
+	<bean id="folderPetOwner8.2Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petOwner8.2"></property>	
+	</bean>
+	<bean id="folderPetOwner8.2Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petOwner8.2"></property>	
+	</bean>
+	<bean id="folderPetOwner8.2Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petOwner8.2"></property>	
+	</bean>
+	
+	
 	<bean id="petOwner8.3" class="domain.PetOwner">
 	<property name="name" value="Emilio"></property>
 	<property name="surname" value="Duque Gutiérrez"></property>
 	<property name="email" value="emi@gmail.com"></property>
+	<property name="address" value="Malaga"></property>
+	<property name="description" value="Mi perro mola"></property>
+	<property name="homePage" value="http://www.facebook.com"></property>
+	<property name="contactPhone" value="954013642"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	
 	<property name="user" ref="userAccount8.3"></property>
 	<property name="messageFolders">
 			<list>
@@ -526,10 +685,41 @@
 		</list>
 	</property>	
 	</bean>
+	
+	<bean id="folderPetOwner8.3Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petOwner8.3"></property>	
+	</bean>
+	<bean id="folderPetOwner8.3Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petOwner8.3"></property>	
+	</bean>
+	<bean id="folderPetOwner8.3Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petOwner8.3"></property>	
+	</bean>
+	
+	
+	
 	<bean id="petOwner8.4" class="domain.PetOwner">
 	<property name="name" value="Sixto "></property>
 	<property name="surname" value="Naranjo Marín"></property>
 	<property name="email" value="sixt@gmail.com"></property>
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="Mi perro es mi hermano"></property>
+	<property name="homePage" value="http://www.facebook.com"></property>
+	<property name="contactPhone" value="954613645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	
 	<property name="user" ref="userAccount8.4"></property>
 	<property name="messageFolders">
 			<list>
@@ -539,10 +729,39 @@
 		</list>
 	</property>	
 	</bean>
+	
+	<bean id="folderPetOwner8.4Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petOwner8.4"></property>	
+	</bean>
+	<bean id="folderPetOwner8.4Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petOwner8.4"></property>	
+	</bean>
+	<bean id="folderPetOwner8.4Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petOwner8.4"></property>	
+	</bean>
+	
+	
 	<bean id="petOwner8.5" class="domain.PetOwner">
 	<property name="name" value="Lillian "></property>
 	<property name="surname" value=" Gómez Álvarez"></property>
 	<property name="email" value="lili@gmail.com"></property>
+	<property name="address" value="Huelva"></property>
+	<property name="description" value="Tengo un gato que es toda lo que tengo"></property>
+	<property name="contactPhone" value="958013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	
 	<property name="user" ref="userAccount8.5"></property>
 	<property name="messageFolders">
 			<list>
@@ -552,6 +771,711 @@
 		</list>
 	</property>	
 	</bean>
+	<bean id="folderPetOwner8.5Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petOwner8.5"></property>	
+	</bean>
+	<bean id="folderPetOwner8.5Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petOwner8.5"></property>	
+	</bean>
+	<bean id="folderPetOwner8.5Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petOwner8.5"></property>	
+	</bean>
+	
+	
+	<bean id="petSitter9.1" class="domain.PetSitter">
+	<property name="name" value="Lillian"></property>
+	<property name="surname" value=" Gómez"></property>
+	<property name="email" value="lil@gmail.com"></property>
+	<property name="priceNight" value="5"></property>
+	<property name="priceHour" value="1"></property>
+	<property name="rating" value="3.2"></property>
+	<property name="blocked" value="false"></property>	
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="MNe encanta los animales"></property>
+	<property name="homePage" value="http://www.facebook.com"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	
+	<property name="user" ref="userAccount9.1"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetSitter9.1Inbox"></ref>
+				<ref bean="folderPetSitter9.1Outbox"></ref>
+				<ref bean="folderPetSitter9.1Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderPetSitter9.1Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petSitter9.1"></property>	
+	</bean>
+	<bean id="folderPetSitter9.1Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petSitter9.1"></property>	
+	</bean>
+	<bean id="folderPetSitter9.1Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petSitter9.1"></property>	
+	</bean>
+	
+	
+	<bean id="petSitter9.2" class="domain.PetSitter">
+	<property name="name" value="Arturo"></property>
+	<property name="surname" value=" Tabares Mora"></property>
+	<property name="email" value="art@gmail.com"></property>
+	<property name="priceNight" value="5.5"></property>
+	<property name="priceHour" value="4"></property>
+	<property name="rating" value="4"></property>
+	<property name="blocked" value="false"></property>	
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="cerca de jardines"></property>
+	<property name="contactPhone" value="954013675"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount9.2"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetSitter9.2Inbox"></ref>
+				<ref bean="folderPetSitter9.2Outbox"></ref>
+				<ref bean="folderPetSitter9.2Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderPetSitter9.2Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petSitter9.2"></property>	
+	</bean>
+	<bean id="folderPetSitter9.2Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petSitter9.2"></property>	
+	</bean>
+	<bean id="folderPetSitter9.2Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petSitter9.2"></property>	
+	</bean>
+	
+	
+	<bean id="petSitter9.3" class="domain.PetSitter">
+	<property name="name" value="Manuel Antonio"></property>
+		<property name="surname" value="Fernández Ortubey"></property>
+		<property name="email" value="manuelAntonio@gmail.com"></property>
+		<property name="priceNight" value="8"></property>
+	<property name="priceHour" value="5"></property>	
+	<property name="rating" value="4.6"></property>
+	<property name="blocked" value="false"></property>
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="Granm casa para su mascota"></property>
+	<property name="homePage" value="http://www.facebook.com"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount9.3"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetSitter9.3Inbox"></ref>
+				<ref bean="folderPetSitter9.3Outbox"></ref>
+				<ref bean="folderPetSitter9.3Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	<bean id="folderPetSitter9.3Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petSitter9.3"></property>	
+	</bean>
+	<bean id="folderPetSitter9.3Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petSitter9.3"></property>	
+	</bean>
+	<bean id="folderPetSitter9.3Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petSitter9.3"></property>	
+	</bean>
+	
+	
+	<bean id="petSitter9.4" class="domain.PetSitter">
+	<property name="name" value="Eloísa Beatriz"></property>
+		<property name="surname" value="Giménez Gómez"></property>
+		<property name="email" value="eloisaBeatriz@gmail.com"></property>
+		<property name="priceNight" value="5"></property>
+		<property name="rating" value="1.2"></property>
+	<property name="blocked" value="false"></property>
+	<property name="priceHour" value="1"></property>	
+	<property name="address" value="Malaga"></property>
+	<property name="description" value="Cerca de la playa"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount9.4"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetSitter9.4Inbox"></ref>
+				<ref bean="folderPetSitter9.4Outbox"></ref>
+				<ref bean="folderPetSitter9.4Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	
+	
+		<bean id="folderPetSitter9.4Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petSitter9.4"></property>	
+	</bean>
+	<bean id="folderPetSitter9.4Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petSitter9.4"></property>	
+	</bean>
+	<bean id="folderPetSitter9.4Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petSitter9.4"></property>	
+	</bean>
+	
+	
+	<bean id="petSitter9.5" class="domain.PetSitter">
+		<property name="name" value="María Rosa"></property>
+		<property name="surname" value="Pi Frías"></property>
+		<property name="email" value="mRosa@gmail.com"></property>
+		<property name="priceNight" value="8.5"></property>
+	<property name="priceHour" value="2.5"></property>	
+	<property name="rating" value="3"></property>
+	<property name="blocked" value="false"></property>
+	<property name="address" value="Huelva"></property>
+	<property name="description" value="Piso espasioso y cerca de parques"></property>
+	<property name="contactPhone" value="954083645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount9.5"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetSitter9.5Inbox"></ref>
+				<ref bean="folderPetSitter9.5Outbox"></ref>
+				<ref bean="folderPetSitter9.5Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	<bean id="folderPetSitter9.5Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petSitter9.5"></property>	
+	</bean>
+	<bean id="folderPetSitter9.5Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petSitter9.5"></property>	
+	</bean>
+	<bean id="folderPetSitter9.5Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petSitter9.5"></property>	
+	</bean>
+	
+	
+	<bean id="petShipper10.1" class="domain.PetShipper">
+		<property name="name" value="María"></property>
+		<property name="surname" value="Pi Frías"></property>
+		<property name="email" value="mRasdfa@gmail.com"></property>
+		<property name="rating" value="0.5"></property>
+	<property name="blocked" value="false"></property>
+	<property name="address" value="Sevilla"></property>
+	<property name="description" value="Viajo diariamente a malaga"></property>
+	<property name="homePage" value="http://www.google.com"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount10.1"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetShipper10.1Inbox"></ref>
+				<ref bean="folderPetShipper10.1Outbox"></ref>
+				<ref bean="folderPetShipper10.1Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderPetShipper10.1Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petShipper10.1"></property>	
+	</bean>
+	<bean id="folderPetShipper10.1Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petShipper10.1"></property>	
+	</bean>
+	<bean id="folderPetShipper10.1Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petShipper10.1"></property>	
+	</bean>
+	
+	
+	
+	<bean id="petShipper10.2" class="domain.PetShipper">
+		<property name="name" value="William "></property>
+		<property name="surname" value="Ramírez Vásquez"></property>
+		<property name="email" value="wiklly@gmail.com"></property>
+		<property name="rating" value="3.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Malaga"></property>
+	<property name="description" value="Viajo diariamente a sevilla"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount10.2"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetShipper10.2Inbox"></ref>
+				<ref bean="folderPetShipper10.2Outbox"></ref>
+				<ref bean="folderPetShipper10.2Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	<bean id="folderPetShipper10.2Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petShipper10.2"></property>	
+	</bean>
+	<bean id="folderPetShipper10.2Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petShipper10.2"></property>	
+	</bean>
+	<bean id="folderPetShipper10.2Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petShipper10.2"></property>	
+	</bean>
+	
+	
+	
+	
+	<bean id="petShipper10.3" class="domain.PetShipper">
+		<property name="name" value="Jaime"></property>
+		<property name="surname" value="Vazquez"></property>
+		<property name="email" value="va@gmail.com"></property>
+		<property name="rating" value="1.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Sevilla"></property>
+	<property name="description" value="Viajo diariamente a desde sevilla hasta huelva por temas laborales"></property>
+	<property name="homePage" value="http://www.google.com"></property>
+	<property name="contactPhone" value="954013645"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount10.3"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetShipper10.3Inbox"></ref>
+				<ref bean="folderPetShipper10.3Outbox"></ref>
+				<ref bean="folderPetShipper10.3Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderPetShipper10.3Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petShipper10.3"></property>	
+	</bean>
+	<bean id="folderPetShipper10.3Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petShipper10.3"></property>	
+	</bean>
+	<bean id="folderPetShipper10.3Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petShipper10.3"></property>	
+	</bean>
+	
+	
+	<bean id="petShipper10.4" class="domain.PetShipper">
+		<property name="name" value="Moises"></property>
+		<property name="surname" value="Samus"></property>
+		<property name="email" value="sa@gmail.com"></property>
+		<property name="rating" value="2.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Sevilla"></property>
+	<property name="description" value="Viajo diariamente a malaga"></property>
+	
+	<property name="contactPhone" value="954017845"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount10.4"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetShipper10.4Inbox"></ref>
+				<ref bean="folderPetShipper10.4Outbox"></ref>
+				<ref bean="folderPetShipper10.4Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	<bean id="folderPetShipper10.4Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petShipper10.4"></property>	
+	</bean>
+	<bean id="folderPetShipper10.4Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petShipper10.4"></property>	
+	</bean>
+	<bean id="folderPetShipper10.4Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petShipper10.4"></property>	
+	</bean>
+	
+	
+	<bean id="petShipper10.5" class="domain.PetShipper">
+		<property name="name" value="Andrea"></property>
+		<property name="surname" value="Pi "></property>
+		<property name="email" value="pica@gmail.com"></property>
+		<property name="rating" value="3.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Huelva"></property>
+	<property name="description" value="Viajo diariamente a malaga"></property>
+	<property name="homePage" value="http://www.google.com"></property>
+	<property name="contactPhone" value="954013635"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount10.5"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetShipper10.5Inbox"></ref>
+				<ref bean="folderPetShipper10.5Outbox"></ref>
+				<ref bean="folderPetShipper10.5Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	<bean id="folderPetShipper10.5Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="petShipper10.5"></property>	
+	</bean>
+	<bean id="folderPetShipper10.5Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="petShipper10.5"></property>	
+	</bean>
+	<bean id="folderPetShipper10.5Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="petShipper10.5"></property>	
+	</bean>
+	
+	
+	
+	
+	<bean id="company7.1" class="domain.Company">
+		<property name="name" value="Regiona"></property>
+		<property name="surname" value="Jurado"></property>
+		<property name="email" value="regy@gmail.com"></property>
+		<property name="tic" value="123456aSD"></property>
+		<property name="rating" value="3.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Huelva"></property>
+	<property name="description" value="Viajo diariamente a malaga"></property>
+	<property name="homePage" value="http://www.google.com"></property>
+	<property name="contactPhone" value="954013635"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount7.1"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderCompany7.1Inbox"></ref>
+				<ref bean="folderCompany7.1Outbox"></ref>
+				<ref bean="folderCompany7.1Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderCompany7.1Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="company7.1"></property>	
+	</bean>
+	<bean id="folderCompany7.1Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="company7.1"></property>	
+	</bean>
+	<bean id="folderCompany7.1Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="company7.1"></property>	
+	</bean>
+	
+	
+	
+	<bean id="company7.2" class="domain.Company">
+		<property name="name" value="Carmenm"></property>
+		<property name="surname" value="Santos"></property>
+		<property name="email" value="santca@gmail.com"></property>
+		<property name="tic" value="18520"></property>
+		<property name="rating" value="4.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Huelva"></property>
+	<property name="description" value="Hotel en el que se admiten todo tipo de mascotas"></property>
+	<property name="homePage" value="http://www.hotelx.com"></property>
+	<property name="contactPhone" value="954078635"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount7.2"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderCompany7.2Inbox"></ref>
+				<ref bean="folderCompany7.2Outbox"></ref>
+				<ref bean="folderCompany7.2Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderCompany7.2Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="company7.2"></property>	
+	</bean>
+	<bean id="folderCompany7.2Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="company7.2"></property>	
+	</bean>
+	<bean id="folderCompany7.2Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="company7.2"></property>	
+	</bean>
+	
+	
+	<bean id="company7.3" class="domain.Company">
+		<property name="name" value="Francisco"></property>
+		<property name="surname" value="Lopez"></property>
+		<property name="email" value="lopez@gmail.com"></property>
+		<property name="tic" value="123456aSD"></property>
+		<property name="rating" value="4.8"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Huelva"></property>
+	<property name="description" value="Hotel 5 estrellas para perros"></property>
+	<property name="contactPhone" value="954013635"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount7.3"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderCompany7.3Inbox"></ref>
+				<ref bean="folderCompany7.3Outbox"></ref>
+				<ref bean="folderCompany7.3Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	<bean id="folderCompany7.3Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="company7.3"></property>	
+	</bean>
+	<bean id="folderCompany7.3Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="company7.3"></property>	
+	</bean>
+	<bean id="folderCompany7.3Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="company7.3"></property>	
+	</bean>
+	
+	
+	
+	<bean id="company7.4" class="domain.Company">
+		<property name="name" value="Pedro"></property>
+		<property name="surname" value="Carillo"></property>
+		<property name="email" value="pca@gmail.com"></property>
+		<property name="tic" value="123456aSD"></property>
+		<property name="rating" value="1.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Sevilla"></property>
+	<property name="description" value="Residencia canina poara todo tipo de animales"></property>
+	<property name="homePage" value="http://www.google.com"></property>
+	<property name="contactPhone" value="954013635"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount7.4"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderCompany7.4Inbox"></ref>
+				<ref bean="folderCompany7.4Outbox"></ref>
+				<ref bean="folderCompany7.4Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	<bean id="folderCompany7.4Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="company7.4"></property>	
+	</bean>
+	<bean id="folderCompany7.4Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="company7.4"></property>	
+	</bean>
+	<bean id="folderCompany7.4Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="company7.4"></property>	
+	</bean>
+	
+	
+	
+	<bean id="company7.5" class="domain.Company">
+		<property name="name" value="Anotnio"></property>
+		<property name="surname" value="Fernandez"></property>
+		<property name="email" value="ant@gmail.com"></property>
+		<property name="tic" value="1234fads"></property>
+		<property name="rating" value="4.2"></property>
+	<property name="blocked" value="false"></property>
+		<property name="address" value="Malaga"></property>
+	<property name="description" value="Venga con su mascota, estamos apie de playa"></property>
+	<property name="homePage" value="http://www.google.com"></property>
+	<property name="contactPhone" value="954013612"></property>
+	<property name="creditCard">	
+            <bean class="domain.CreditCard">	
+                 <property name="holderName" value="angel" />	
+                 <property name="brandName" value="VISA" />	
+                 <property name="number" value="5307687064211132" />	
+                 <property name="expirationMonth" value="05" />	
+                 <property name="expirationYear" value="2016" />	
+                  <property name="CVV" value="187" />	
+            </bean>	
+     </property>
+	<property name="user" ref="userAccount7.5"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderCompany7.5Inbox"></ref>
+				<ref bean="folderCompany7.5Outbox"></ref>
+				<ref bean="folderCompany7.5Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	<bean id="folderCompany7.5Inbox" class="domain.MessageFolder">
+	<property name="name" value="Inbox"></property>
+	<property name="owner" ref="company7.5"></property>	
+	</bean>
+	<bean id="folderCompany7.5Outbox" class="domain.MessageFolder">
+	<property name="name" value="Outbox"></property>
+	<property name="owner" ref="company7.5"></property>	
+	</bean>
+	<bean id="folderCompany7.5Trashbox" class="domain.MessageFolder">
+	<property name="name" value="Trashbox"></property>
+	<property name="owner" ref="company7.5"></property>	
+	</bean>
+	
+	
+	
+	
+	
 	
 		
 	
