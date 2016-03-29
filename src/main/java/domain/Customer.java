@@ -1,8 +1,11 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -22,7 +25,7 @@ public class Customer extends Actor{
 	
 	private String address, description, homePage, contactPhone;
 	private CreditCard creditCard;
-	
+	private Collection<Complaint> complaints;
 	
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
@@ -69,6 +72,16 @@ public class Customer extends Actor{
 		this.creditCard = creditCard;
 	}
 	
+	
+
+	@OneToMany(mappedBy="customer")
+	public Collection<Complaint> getComplaints() {
+		return complaints;
+	}
+	public void setComplaints(Collection<Complaint> complaints) {
+		this.complaints = complaints;
+	}
+
 	
 
 }
