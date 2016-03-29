@@ -2,16 +2,23 @@ package domain;
 
 import java.util.Collection;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+
+@Entity
+@Access(AccessType.PROPERTY)
 public class PetOwner extends Customer {
 
 	public PetOwner() {
 		super();
 	}
-
+//Relationships
 	private Collection<Booking> bookings;
 	private Collection<Pet> pets;
+	private Collection<Review> reviews;
 
 	@OneToMany(mappedBy = "petOwner")
 	public Collection<Pet> getPets() {
@@ -31,4 +38,12 @@ public class PetOwner extends Customer {
 		this.bookings = bookings;
 	}
 
+	@OneToMany(mappedBy = "reviewer")
+	public Collection<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Collection<Review> reviews) {
+		this.reviews = reviews;
+	}
 }

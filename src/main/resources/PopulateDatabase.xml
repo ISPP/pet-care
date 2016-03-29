@@ -16,10 +16,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
-	<!-- User accounts -->
+	<!-- User accounts ADMIN-->
 
 	<bean id="userAccount1" class="security.UserAccount">
-		<property name="username" value="admin" />
+		<property name="username" value="admin1" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
@@ -29,34 +29,530 @@
 			</list>
 		</property>
 	</bean>
-
+	
 	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+		<property name="username" value="admin2" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
 					<property name="authority" value="ADMIN" />
 				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="admin3" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="ADMIN" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<!-- Other domain beans come here -->	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="admin4" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="admin5" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="admin6" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="admin7" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+		<bean id="userAccount8.1" class="security.UserAccount">
+		<property name="username" value="petOwner1" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETOWNER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		<bean id="userAccount8.2" class="security.UserAccount">
+		<property name="username" value="petOwner2" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETOWNER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		<bean id="userAccount8.3" class="security.UserAccount">
+		<property name="username" value="petOwner3" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETOWNER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		<bean id="userAccount8.4" class="security.UserAccount">
+		<property name="username" value="petOwner4" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETOWNER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		<bean id="userAccount8.5" class="security.UserAccount">
+		<property name="username" value="petOwner5" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETOWNER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+		<bean id="userAccount9.1" class="security.UserAccount">
+		<property name="username" value="petSitter1" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSITTER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount9.2" class="security.UserAccount">
+		<property name="username" value="petSitter2" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSITTER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount9.3" class="security.UserAccount">
+		<property name="username" value="petSitter3" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSITTER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount9.4" class="security.UserAccount">
+		<property name="username" value="petSitter4" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSITTER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount9.5" class="security.UserAccount">
+		<property name="username" value="petSitter5" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSITTER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="userAccount9.5" class="security.UserAccount">
+		<property name="username" value="petSitter5" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSITTER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	<bean id="userAccount10.1" class="security.UserAccount">
+		<property name="username" value="petShipper1" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSHIPPER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount10.2" class="security.UserAccount">
+		<property name="username" value="petShipper2" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSHIPPER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount10.3" class="security.UserAccount">
+		<property name="username" value="petShipper3" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSHIPPER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount10.4" class="security.UserAccount">
+		<property name="username" value="petShipper4" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSHIPPER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount10.5" class="security.UserAccount">
+		<property name="username" value="petShipper5" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PETSHIPPER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="userAccount7.1" class="security.UserAccount">
+		<property name="username" value="company1" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7.2" class="security.UserAccount">
+		<property name="username" value="company2" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7.3" class="security.UserAccount">
+		<property name="username" value="company3" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7.4" class="security.UserAccount">
+		<property name="username" value="company4" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7.5" class="security.UserAccount">
+		<property name="username" value="company5" />
+		<property name="password" value="032d20bdb0be69c8b16b48d11fbe6df7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- Administrator -->	
+	
+	<bean id="admin1" class="domain.Administrator">
+	<property name="name" value="Moises"></property>
+	<property name="surname" value="Llamas Garcia"></property>
+	<property name="email" value="moises@gmail.com"></property>
+	<property name="user" ref="userAccount1"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin1Inbox"></ref>
+				<ref bean="folderAdmin1Outbox"></ref>
+				<ref bean="folderAdmin1Trashbox"></ref>						
+		</list>
+	</property>
+	
+	
+	</bean>
+	
+	<bean id="admin2" class="domain.Administrator">
+	<property name="name" value="Daniel"></property>
+	<property name="surname" value="Martin"></property>
+	<property name="email" value="danmar@gmail.com"></property>
+	<property name="user" ref="userAccount2"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin2Inbox"></ref>
+				<ref bean="folderAdmin2Outbox"></ref>
+				<ref bean="folderAdmin2Trashbox"></ref>						
+		</list>
+	</property>
+	
+	
+	</bean>
+	
+	<bean id="admin3" class="domain.Administrator">
+	<property name="name" value="Cristina"></property>
+	<property name="surname" value="Padilla"></property>
+	<property name="email" value="cris@gmail.com"></property>
+	<property name="user" ref="userAccount3"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin3Inbox"></ref>
+				<ref bean="folderAdmin3Outbox"></ref>
+				<ref bean="folderAdmin3Trashbox"></ref>						
+		</list>
+	</property>
+	
+	
+	</bean>
+	
+	<bean id="admin4" class="domain.Administrator">
+	<property name="name" value="Daniel"></property>
+	<property name="surname" value="Navarro"></property>
+	<property name="email" value="navarro@gmail.com"></property>
+	<property name="user" ref="userAccount4"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin4Inbox"></ref>
+				<ref bean="folderAdmin4Outbox"></ref>
+				<ref bean="folderAdmin4Trashbox"></ref>						
+		</list>
+	</property>
+	
+	
+	</bean>
+	
+	<bean id="admin5" class="domain.Administrator">
+	<property name="name" value="Pedro"></property>
+	<property name="surname" value="Llamas"></property>
+	<property name="email" value="pedro@gmail.com"></property>
+	<property name="user" ref="userAccount5"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin5Inbox"></ref>
+				<ref bean="folderAdmin5Outbox"></ref>
+				<ref bean="folderAdmin5Trashbox"></ref>						
+		</list>
+	</property>
+	
+	
+	</bean>
+	
+	<bean id="admin6" class="domain.Administrator">
+	<property name="name" value="Valentin"></property>
+	<property name="surname" value="Barquero sauci"></property>
+	<property name="email" value="valen@gmail.com"></property>
+	<property name="user" ref="userAccount6"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin6Inbox"></ref>
+				<ref bean="folderAdmin6Outbox"></ref>
+				<ref bean="folderAdmin6Trashbox"></ref>						
+		</list>
+	</property>
+	
+	
+	</bean>
+	
+	<bean id="admin7" class="domain.Administrator">
+	<property name="name" value="Victor"></property>
+	<property name="surname" value="CanJu"></property>
+	<property name="email" value="canJu@gmail.com"></property>
+	<property name="user" ref="userAccount7"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderAdmin7Inbox"></ref>
+				<ref bean="folderAdmin7Outbox"></ref>
+				<ref bean="folderAdmin7Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+	
+	
+	
+	
+	
+	<!-- petowner -->
+	
+	
+	<bean id="petOwner8.1" class="domain.PetOwner">
+	<property name="name" value="Javier Ignacio"></property>
+	<property name="surname" value="Molina Cano"></property>
+	<property name="email" value="javier@gmail.com"></property>
+	<property name="user" ref="userAccount8.1"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetOwner8.1Inbox"></ref>
+				<ref bean="folderPetOwner8.1Outbox"></ref>
+				<ref bean="folderPetOwner8.1Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	<bean id="petOwner8.2" class="domain.PetOwner">
+	<property name="name" value="Alberto"></property>
+	<property name="surname" value="Molina Cano"></property>
+	<property name="email" value="jalbert@gmail.com"></property>
+	<property name="user" ref="userAccount8.2"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetOwner8.2Inbox"></ref>
+				<ref bean="folderPetOwner8.2Outbox"></ref>
+				<ref bean="folderPetOwner8.2Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	<bean id="petOwner8.3" class="domain.PetOwner">
+	<property name="name" value="Emilio"></property>
+	<property name="surname" value="Duque Gutiérrez"></property>
+	<property name="email" value="emi@gmail.com"></property>
+	<property name="user" ref="userAccount8.3"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetOwner8.3Inbox"></ref>
+				<ref bean="folderPetOwner8.3Outbox"></ref>
+				<ref bean="folderPetOwner8.3Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	<bean id="petOwner8.4" class="domain.PetOwner">
+	<property name="name" value="Sixto "></property>
+	<property name="surname" value="Naranjo Marín"></property>
+	<property name="email" value="sixt@gmail.com"></property>
+	<property name="user" ref="userAccount8.4"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetOwner8.4Inbox"></ref>
+				<ref bean="folderPetOwner8.4Outbox"></ref>
+				<ref bean="folderPetOwner8.4Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	<bean id="petOwner8.5" class="domain.PetOwner">
+	<property name="name" value="Lillian "></property>
+	<property name="surname" value=" Gómez Álvarez"></property>
+	<property name="email" value="lili@gmail.com"></property>
+	<property name="user" ref="userAccount8.5"></property>
+	<property name="messageFolders">
+			<list>
+				<ref bean="folderPetOwner8.5Inbox"></ref>
+				<ref bean="folderPetOwner8.5Outbox"></ref>
+				<ref bean="folderPetOwner8.5Trashbox"></ref>						
+		</list>
+	</property>	
+	</bean>
+	
+		
 	
 </beans>
