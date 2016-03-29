@@ -30,7 +30,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(indexes={@Index(columnList = "creationMoment,pilgrim_id,lodge_id")})
+//@Table(indexes={@Index(columnList = "creationMoment")})
 public class Booking extends DomainEntity {
 
 	// constructor-----------------------------

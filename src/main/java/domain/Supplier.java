@@ -40,6 +40,7 @@ public class Supplier extends Customer {
 
 	// Relationships
 	private Collection<Booking> bookings;
+	private Collection<Review> reviews;
 
 	@OneToMany(mappedBy = "supplier")
 	public Collection<Booking> getBookings() {
@@ -49,4 +50,15 @@ public class Supplier extends Customer {
 	public void setBookings(Collection<Booking> bookings) {
 		this.bookings = bookings;
 	}
+	
+	
+	@OneToMany(mappedBy = "reviewed")
+	public Collection<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Collection<Review> reviews) {
+		this.reviews = reviews;
+	}
+	
 }
