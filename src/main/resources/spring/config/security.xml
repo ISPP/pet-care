@@ -52,6 +52,13 @@
 		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
 	
+	
+		<!-- Complaint -->
+		<security:intercept-url pattern="/complaint/customer/*" access="hasRole('PETOWNER')" /> 
+	
+	
+	
+	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

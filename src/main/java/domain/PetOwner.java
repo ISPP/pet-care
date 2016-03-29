@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class PetOwner extends Customer {
@@ -44,4 +45,6 @@ public class PetOwner extends Customer {
 	public void setReviews(Collection<Review> reviews) {
 		this.reviews = reviews;
 	}
+
+
 }

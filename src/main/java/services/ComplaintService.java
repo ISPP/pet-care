@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import repositories.ComplaintRepository;
 import domain.Complaint;
+import forms.ComplaintForm;
 
 
 @Service
@@ -48,6 +49,15 @@ public class ComplaintService {
 		Complaint result;
 		result = complaintRepository.findOne(id);
 		return result;
+	}
+	
+	
+	public ComplaintForm createComplaintForm() {
+
+		ComplaintForm result;
+		result = new ComplaintForm();
+		return result;
+
 	}
 
 }
