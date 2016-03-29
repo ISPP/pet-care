@@ -30,7 +30,7 @@ public class Trip extends DomainEntity{
 	
 	private String descriptionText,startCity,endCity,distnace;
 	private Date moment;
-	private Double cost;
+	private double cost;
 	
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -78,10 +78,10 @@ public class Trip extends DomainEntity{
 	
 	@Min(0)
 	@Max(100)
-	public Double getCost() {
+	public double getCost() {
 		return cost;
 	}
-	public void setCost(Double cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 	

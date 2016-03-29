@@ -1,36 +1,52 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-
 @Entity
 @Access(AccessType.PROPERTY)
-public class Supplier extends Customer{
+public class Supplier extends Customer {
 
-	
-	public Supplier(){
+	public Supplier() {
 		super();
 	}
-	
-	private Double rating;
-	private Boolean blocked;
-	
+
+	private double rating;
+	private boolean blocked;
+
 	@Min(0)
 	@Max(5)
-	public Double getRating() {
+	public double getRating() {
 		return rating;
 	}
-	public void setRating(Double rating) {
+
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public Boolean getBlocked() {
+
+	public boolean getBlocked() {
 		return blocked;
 	}
-	public void setBlocked(Boolean blocked) {
+
+	public void setBlocked(boolean blocked) {
 		this.blocked = blocked;
+	}
+
+	// Relationships
+	private Collection<Booking> bookings;
+
+	@OneToMany(mappedBy = "supplier")
+	public Collection<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(Collection<Booking> bookings) {
+		this.bookings = bookings;
 	}
 }
