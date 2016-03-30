@@ -22,6 +22,7 @@
 		<value>/views/customer/tiles.xml</value>
 		<value>/views/profile/tiles.xml</value>
 		<value>/views/petOwner/tiles.xml</value>
+		<value>/views/petSitter/tiles.xml</value>
 	</util:list>
 
 </beans>

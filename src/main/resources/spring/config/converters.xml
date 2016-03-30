@@ -26,11 +26,13 @@
 		<bean class="converters.PetOwnerToStringConverter"/>
 		<bean class="converters.ActorToStringConverter"/>
 		<bean class="converters.AuthorityToStringConverter"/>
+		<bean class="converters.PetSitterToStringConverter"/>
 		
 		<!-- StringToEntity -->
 		<bean class="converters.StringToPetOwnerConverter"/>
 		<bean class="converters.StringToActorConverter"/>
 		<bean class="converters.StringToAuthorityConverter"/>
+		<bean class="converters.StringToPetSitterConverter"/>
 		
 	</util:list>
 	

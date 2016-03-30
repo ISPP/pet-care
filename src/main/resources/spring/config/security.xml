@@ -59,6 +59,9 @@
 	
 		<!-- PetOwner -->
 		<security:intercept-url pattern="/petOwner/create.do" access="isAnonymous()"/>
+		
+		<!-- PetSitter -->
+		<security:intercept-url pattern="/petSitter/create.do" access="isAnonymous()"/>
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
