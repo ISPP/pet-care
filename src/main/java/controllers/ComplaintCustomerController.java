@@ -10,11 +10,15 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import domain.Complaint;
 
 import forms.ComplaintForm;
 
@@ -40,5 +44,38 @@ public class ComplaintCustomerController extends AbstractController {
 
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/listComplaintCustomerId", method = RequestMethod.GET)
+	public ModelAndView listComplaintByPetSitterId() {
+		ModelAndView result;
+		
+
+		Collection<Complaint> complaints = complaintService.findComplaintByCustommerIdAndResolution();
+
+		result = new ModelAndView("complaint/listComplaintCustomerId");
+		result.addObject("complaints", complaints);
+		result.addObject("requestURI", "complaint/customer/listComplaintCustomerId.do");
+
+		return result;
+	}
+	
+	
+	
+	@RequestMapping(value = "/listComplaintCustomerIdNotSolved", method = RequestMethod.GET)
+	public ModelAndView listComplaintByPetSitterIdNotSolved() {
+		ModelAndView result;
+		
+
+		Collection<Complaint> complaints = complaintService.findComplaintByCustommerIdAndNotResolution();
+
+		result = new ModelAndView("complaint/listComplaintCustomerIdNotSolved");
+		result.addObject("complaints", complaints);
+		result.addObject("requestURI", "complaint/customer/listComplaintCustomerIdNotSolved.do");
+
+		return result;
+	}
+	
+	
 	
 }

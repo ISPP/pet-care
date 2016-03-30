@@ -2,12 +2,16 @@ package services;
 
 import java.util.Collection;
 
+
+import org.springframework.util.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import repositories.ComplaintRepository;
+import domain.Administrator;
 import domain.Complaint;
+import domain.Customer;
 import forms.ComplaintForm;
 
 
@@ -21,6 +25,12 @@ public class ComplaintService {
 	
 	@Autowired
 	private ComplaintRepository complaintRepository;
+	
+	@Autowired
+	private CustomerService  customerService;
+	
+	@Autowired
+	private AdministratorService administratorService;
 	
 	
 	public Complaint create() {
@@ -59,5 +69,64 @@ public class ComplaintService {
 		return result;
 
 	}
+	
+	
+	
+
+    //List the complaints he/she has made that haven’t been solved yet.
+    public Collection<Complaint> findComplaintByCustommerIdAndResolution(){
+    	Collection<Complaint> result;
+        Customer customer;
+       customer = customerService.getLoggedCustomer();
+        result = complaintRepository.findComplaintByCustommerIdAndResolution(customer.getId());
+       // Assert.notNull(customer,"no hay logueado un customer");
+        //Assert.isTrue(customer.getComplaints().contains(result),"el customer no tiene asosiadas las complaint");
+
+        return result;
+    }
+    //List his/her complaints that have been solved by an administrator
+    public Collection<Complaint> findComplaintByCustommerIdAndNotResolution(){
+    	Collection<Complaint> result;
+        Customer customer;
+        customer = customerService.getLoggedCustomer();
+        result = complaintRepository.findComplaintByCustommerIdAndNotResolution(customer.getId());
+
+       // Assert.isTrue(customer.getComplaints().contains(result),"el customer no tiene asosiadas las complaint");
+        return result;
+    }
+
+    //Lista las complaint que no tiene ningun administrador (el paso previo para asignarselo)
+    public Collection<Complaint> findComplaintNotAdministrator(){
+    	Collection<Complaint> result;
+        Administrator administrator;
+        administrator = administratorService.getLoggedAdmin();
+        Assert.notNull(administrator,"no hay un administrador logueado");
+        result = complaintRepository.findComplaintNotAdministrator();
+        return result;
+    }
+
+   public Collection<Complaint> findComplaintByAdministratorIdAndNotResolution(){
+	   Collection<Complaint> result;
+       Administrator administrator;
+       administrator = administratorService.getLoggedAdmin();
+       Assert.notNull(administrator, "Tiene que haber un administrador logueado");
+        result = complaintRepository.findComplaintByAdministratorIdAndNotResolution(administrator.getId());
+
+
+       return result;
+   }
+
+
+    //metodo que asigna una complaint sin administrador al administrador que está logueado
+    public void assignedComplaintAndAdministrator(Complaint complaint){
+
+        Administrator administrator;
+        administrator = administratorService.getLoggedAdmin();
+        Assert.notNull(administrator,"no hay un administrador logueado");
+        complaint.setAdministrator(administrator);
+
+        complaintRepository.save(complaint);
+    }
+
 
 }

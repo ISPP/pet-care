@@ -54,7 +54,8 @@
 	
 	
 		<!-- Complaint -->
-		<security:intercept-url pattern="/complaint/customer/*" access="hasRole('PETOWNER')" /> 
+		<security:intercept-url pattern="/complaint/customer/**" access="hasAnyRole('PETOWNER','PETSITTER','COMPANY', 'PETSHIPPER')" /> 
+		<security:intercept-url pattern="/complaint/administrator/**" access="hasRole('ADMIN')" /> 
 	
 	
 	

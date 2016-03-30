@@ -21,5 +21,20 @@
 		<put-attribute name="body" value="/views/complaint/edit.jsp" />
 	</definition>
 	
+	<definition name="complaint/listComplaintAdminNotSolved" extends="master.page">	
+		<put-attribute name="title" value="Complaint not solved" />
+		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
+	</definition>
+	
+	<definition name="complaint/listComplaintCustomerId" extends="master.page">	
+		<put-attribute name="title" value="Your complaint list" />
+		<put-attribute name="body" value="/views/complaint/listComplaintCustomerId.jsp" />
+	</definition>
+	
+	<definition name="complaint/listComplaintCustomerIdNotSolved" extends="master.page">	
+		<put-attribute name="title" value="Your not solved complaint list" />
+		<put-attribute name="body" value="/views/complaint/listComplaintCustomerIdNotSolved.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>
