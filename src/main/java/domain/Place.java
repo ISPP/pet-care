@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -22,7 +23,15 @@ public class Place extends DomainEntity{
 	
 	private String name, description, address,city, building;
 	private Boolean hasGarden, hasPatio;
+	private Gps location;
 	
+	@Valid
+	public Gps getLocation() {
+		return location;
+	}
+	public void setLocation(Gps location) {
+		this.location = location;
+	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getName() {
@@ -62,7 +71,7 @@ public class Place extends DomainEntity{
 	
 	
 	@NotBlank
-	@Pattern(regexp = "^FLAT|HOUSE|PET|LODGE|OTHERS$")
+	@Pattern(regexp = "^FLAT|HOUSE|PETLODGE|OTHERS$")
 	public String getBuilding() {
 		return building;
 	}

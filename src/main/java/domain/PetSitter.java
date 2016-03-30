@@ -25,7 +25,7 @@ public class PetSitter extends Supplier{
 
 	
 	@Min(0)
-	@Max(5)
+	@Max(10)
 	public Double getPriceNight() {
 		return priceNight;
 	}
@@ -36,7 +36,7 @@ public class PetSitter extends Supplier{
 
 	
 	@Min(0)
-	@Max(10)
+	@Max(5)
 	public Double getPriceHour() {
 		return priceHour;
 	}
@@ -47,7 +47,16 @@ public class PetSitter extends Supplier{
 	
 	//--------------------------------
 	private Collection<Place>places;
+	private Collection<Pet> pets;
 
+	@OneToMany(mappedBy="petSitter")
+	public Collection<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(Collection<Pet> pets) {
+		this.pets = pets;
+	}
 
 	@OneToMany(mappedBy="petSitter")
 	public Collection<Place> getPlaces() {
