@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.Administrator;
 import domain.Review;
+import domain.Supplier;
 
+import repositories.CustomerRepository;
 import repositories.ReviewRepository;
 
 
@@ -22,6 +24,9 @@ public class ReviewService {
 	
 	@Autowired
 	private ReviewRepository reviewRepository;
+	
+	@Autowired
+	private SupplierService supplierService;
 	
 	public Review create() {
 		Review result;
@@ -50,5 +55,21 @@ public class ReviewService {
 		result = reviewRepository.findOne(id);
 		return result;
 	}
+	
+	
+	
+	
+	//List the reviews where they are the reviewed ones(customer)
+	public Collection<Review> frindReviewByCustomerId(){
+		Collection<Review> result;
+		Supplier supplier;
+		supplier = supplierService.getLoggedSupplier();
+		
+		result = reviewRepository.frindReviewByCustomerId(supplier.getId());
+		
+		
+		return result;
+	}
+
 
 }

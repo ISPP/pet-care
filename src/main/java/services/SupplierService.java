@@ -6,11 +6,15 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
+import domain.Administrator;
 import domain.Place;
 import domain.Supplier;
 
 import repositories.SupplierRepository;
+import security.LoginService;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -49,6 +53,15 @@ public class SupplierService {
 	public Supplier findOne(Integer id) {
 		Supplier result;
 		result = supplierRepository.findOne(id);
+		return result;
+	}
+	
+	public Supplier getLoggedSupplier() {
+		Supplier result;
+		UserAccount user;
+		user = LoginService.getPrincipal();
+		Assert.notNull(user, "El usuario no puede ser nulo");
+		result = supplierRepository.findSupplierByUsername(user.getUsername());
 		return result;
 	}
 
