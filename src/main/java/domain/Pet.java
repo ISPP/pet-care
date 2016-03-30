@@ -60,8 +60,18 @@ public class Pet extends DomainEntity{
 	
 	//--------------------------
 	private PetOwner petOwner;
+	private PetSitter petSitter;
 
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=true)
+	public PetSitter getPetSitter() {
+		return petSitter;
+	}
+
+	public void setPetSitter(PetSitter petSitter) {
+		this.petSitter = petSitter;
+	}
+
+	@ManyToOne(optional=true)
 	public PetOwner getPetOwner() {
 		return petOwner;
 	}

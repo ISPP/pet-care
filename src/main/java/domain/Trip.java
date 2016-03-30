@@ -28,7 +28,7 @@ public class Trip extends DomainEntity{
 		super();
 	}
 	
-	private String descriptionText,startCity,endCity,distnace;
+	private String descriptionText,startCity,endCity,distance;
 	private Date moment;
 	private double cost;
 	
@@ -59,16 +59,15 @@ public class Trip extends DomainEntity{
 	
 	@NotBlank
 	@Pattern(regexp = "^SHORT|MEDIUM|LARGE$")
-	public String getDistnace() {
-		return distnace;
+	public String getDistance() {
+		return distance;
 	}
-	public void setDistnace(String distnace) {
-		this.distnace = distnace;
+	public void setDistance(String distance) {
+		this.distance = distance;
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Past	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")	
 	public Date getMoment() {
 		return moment;
 	}

@@ -19,6 +19,16 @@ public class Supplier extends Customer {
 
 	private double rating;
 	private boolean blocked;
+	private Integer daysBeforeCancel;
+
+	@Min(1)
+	public Integer getDaysBeforeCancel() {
+		return daysBeforeCancel;
+	}
+
+	public void setDaysBeforeCancel(Integer daysBeforeCancel) {
+		this.daysBeforeCancel = daysBeforeCancel;
+	}
 
 	@Min(0)
 	@Max(5)
