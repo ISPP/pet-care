@@ -20,9 +20,24 @@
 		<put-attribute name="title" value="Crear una queja" />
 		<put-attribute name="body" value="/views/complaint/edit.jsp" />
 	</definition>
+	<definition name="complaint/solve" extends="master.page">	
+		<put-attribute name="title" value="Reolver queja" />
+		<put-attribute name="body" value="/views/complaint/editAdmin.jsp" />
+	</definition>
 	
 	<definition name="complaint/listComplaintAdminNotSolved" extends="master.page">	
 		<put-attribute name="title" value="Quejas no resueltas" />
+		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
+	</definition>
+	
+	
+	<definition name="complaint/listComplaintToAssign" extends="master.page">	
+		<put-attribute name="title" value="Quejas por asignar" />
+		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
+	</definition>
+	
+	<definition name="complaint/listComplaintAssigned" extends="master.page">	
+		<put-attribute name="title" value="Quejas asignadas a usted" />
 		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
 	</definition>
 	

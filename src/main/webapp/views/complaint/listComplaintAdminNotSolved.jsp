@@ -35,4 +35,31 @@
 	<spring:message code="cpmlaint_*creationMoment" var="creationMomentColumn"></spring:message>
 	<display:column property="creationMoment" title="${creationMomentColumn}" />
 
+<jstl:if test="${toAssign==true}">
+	<spring:message code="complaint.assign"
+		var="assignColumn"></spring:message>
+		<display:column title = "${assignColumn}">
+			
+				<a href="complaint/administrator/assign.do?id=${row.id}"> <spring:message
+						code="complaint.assign" />
+				</a>
+		
+		</display:column>
+	</jstl:if>
+
+
+
+	<jstl:if test="${toSolve==true}">
+	<spring:message code="complaint.solve"
+		var="solveColumn"></spring:message>
+		<display:column title = "${assignColumn}">
+			
+				<a href="complaint/administrator/solve.do?id=${row.id}"> <spring:message
+						code="complaint.solve" />
+				</a>
+		
+		</display:column>
+	</jstl:if> --%>
+
+
 </display:table>

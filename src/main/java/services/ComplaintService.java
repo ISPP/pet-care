@@ -73,6 +73,17 @@ public class ComplaintService {
 		return result;
 
 	}
+	public ComplaintForm solveComplaintForm(Complaint complaint){
+		ComplaintForm result;
+		result=new ComplaintForm();
+		result.setDescription(complaint.getDescription());
+		result.setId(complaint.getId());
+		result.setTitle(complaint.getTitle());
+		return result;
+		
+	}
+	
+	
 	
 	
 	public Complaint reconstruct(ComplaintForm complaintForm) {
@@ -92,9 +103,27 @@ public class ComplaintService {
 
 	}
 	
+	public Complaint reconstructToSolve(ComplaintForm complaintForm) {
+		Complaint result;
+		result = findOne(complaintForm.getId());
+		result.setResolution(complaintForm.getResolution());
+		return result;
+
+	}
+	
+	public void solveComplaint(Complaint complaint){
+		Administrator admin;
+		admin=administratorService.getLoggedAdmin();
+		//check the administrator that is solving the complaint is the assigned one
+		Assert.isTrue(complaint.getAdministrator().getId()==admin.getId());
+		
+		save(complaint);
+		
+	}
+	
 	
 
-    //List the complaints he/she has made that haven’t been solved yet.
+    //List the complaints he/she has made that havent been solved yet.
     public Collection<Complaint> findComplaintByCustommerIdAndResolution(){
     	Collection<Complaint> result;
         Customer customer;
@@ -138,8 +167,8 @@ public class ComplaintService {
    }
 
 
-    //metodo que asigna una complaint sin administrador al administrador que está logueado
-    public void assignedComplaintAndAdministrator(Complaint complaint){
+    //metodo que asigna una complaint sin administrador al administrador que esta logueado
+    public void assignAdminToComplaint(Complaint complaint){
 
         Administrator administrator;
         administrator = administratorService.getLoggedAdmin();
@@ -148,6 +177,5 @@ public class ComplaintService {
 
         complaintRepository.save(complaint);
     }
-
-
+    
 }
