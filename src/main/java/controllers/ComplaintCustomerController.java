@@ -12,8 +12,11 @@ package controllers;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,6 +45,31 @@ public class ComplaintCustomerController extends AbstractController {
 		result.addObject("complaintForm", complaintForm);
 		result.addObject("requestURI", "complaint/customer/create.do");
 
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid ComplaintForm complaintForm,
+			BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors()) {
+			result = createEditModelAndView(complaintForm);
+			System.out.println(binding.getAllErrors());
+		} else {
+			try {
+				Complaint complaint;
+				complaint = complaintService.reconstruct(complaintForm);
+				complaintService.save(complaint);
+				result = new ModelAndView("redirect:listComplaintCustomerIdNotSolved.do");
+			} catch (Throwable oops) {
+
+				result = createEditModelAndView(complaintForm,
+						"complaint.error.operation");
+				oops.printStackTrace();
+			}
+		}
 		return result;
 	}
 	
@@ -76,6 +104,24 @@ public class ComplaintCustomerController extends AbstractController {
 		return result;
 	}
 	
+	protected ModelAndView createEditModelAndView(ComplaintForm complaintForm) {
+		ModelAndView result;
+
+		result = createEditModelAndView(complaintForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(ComplaintForm complaintForm,
+			String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("complaint/edit");
+		result.addObject("complaintForm", complaintForm);
+		result.addObject("message", message);
+		return result;
+	}
+
 	
 	
 }

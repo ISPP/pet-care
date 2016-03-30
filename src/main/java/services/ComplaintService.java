@@ -1,6 +1,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 
 import org.springframework.util.Assert;
@@ -39,9 +40,12 @@ public class ComplaintService {
 		return result;
 	}
 
+	
+	
+	
 	public Complaint save(Complaint complaint) {
 		Complaint result;
-		result = complaintRepository.saveAndFlush(complaint);
+		result = complaintRepository.save(complaint);
 		return result;
 	}
 
@@ -70,6 +74,23 @@ public class ComplaintService {
 
 	}
 	
+	
+	public Complaint reconstruct(ComplaintForm complaintForm) {
+		Complaint result;
+		result = create();
+		result.setDescription(complaintForm.getDescription());
+		result.setTitle(complaintForm.getTitle());
+		result.setCreationMoment(new Date(System.currentTimeMillis() - 1000));
+		Customer customer;
+
+		customer = customerService.getLoggedCustomer();
+		result.setCustomer(customer);
+
+		result.setStatus("OPEN");
+		
+		return result;
+
+	}
 	
 	
 
