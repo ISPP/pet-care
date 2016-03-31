@@ -21,14 +21,14 @@
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		<security:authorize access="hasRole('ADMIN')">
-			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
+			<li><a class="fNiv"><spring:message	code="master.page.complaint" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li>
-						<a href="#"><spring:message code="master.page.complaint" /></a>
-						<ul>
+						
+						
 						<li><a href="complaint/administrator/listComplaintAdminNotSolved.do"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
-						</ul>					
+											
 				</ul>
 			</li>
 		</security:authorize>
