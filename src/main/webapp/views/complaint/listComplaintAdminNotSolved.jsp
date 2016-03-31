@@ -59,7 +59,27 @@
 				</a>
 		
 		</display:column>
-	</jstl:if> --%>
+	</jstl:if> 
+	
+	<spring:message code="cpmlaint_*comment"
+		var="commentColumn"></spring:message>
+		
+		<display:column title="${commentColumn}">
+		
+			<jstl:if test="${row.comments.size()==0}">
+				<a href="comment/actor/create.do?id=${row.id}"> <spring:message
+						code="cpmlaint_*commentCreate" />
+				</a>
+			</jstl:if>
+			<jstl:if test="${row.comments.size()>0}">
+				<a href="comment/actor/list.do?id=${row.id}"> <spring:message
+						code="cpmlaint_*commentList" />
+				</a>
+			</jstl:if>
+			
+			
+			
+		</display:column>
 
 
 </display:table>

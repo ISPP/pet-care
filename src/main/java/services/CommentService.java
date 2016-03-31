@@ -1,10 +1,12 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import domain.*;
 
@@ -22,9 +24,23 @@ public class CommentService {
 	@Autowired
 	private CommentRepository commentRepository;
 	
-	public Comment create() {
+	@Autowired
+	private ComplaintService complaintService;
+	
+	@Autowired
+	private ActorService actorService;
+	
+	public Comment create(Complaint complaint) {
 		Comment result;
+		Actor actor;
+		actor = actorService.findActorByUserId();
+		Assert.notNull(actor);
 		result = new Comment();
+		result.setCreationMoment(new Date(System.currentTimeMillis()-1000));
+		result.setActor(actor);
+		result.setComplaint(complaint);
+		
+		
 		return result;
 	}
 
@@ -48,6 +64,36 @@ public class CommentService {
 		Comment result;
 		result = commentRepository.findOne(id);
 		return result;
+	}
+	
+	/*
+	public Collection<Comment> findCommentByActorId(){
+		Collection<Comment> result;
+		Actor actor;
+		actor = actorService.findActorByUserId();
+		
+		result = commentRepository.findCommentByActorId(actor.getId());
+		
+		return result;
+		
+	}*/
+	
+	
+	public Collection<Comment> findCommentByActorId(Integer id){
+		Collection<Comment> result;
+		Actor actor;
+		actor = actorService.findActorByUserId();
+		Complaint complaint;
+		complaint = complaintService.findOne(id);
+		
+		
+		result = commentRepository.findCommentByComplaintId(id);
+		
+		
+		
+		
+		return result;
+		
 	}
 
 

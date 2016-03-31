@@ -35,4 +35,25 @@
 	<spring:message code="cpmlaint_*creationMoment" var="creationMomentColumn"></spring:message>
 	<display:column property="creationMoment" title="${creationMomentColumn}" />
 
+<spring:message code="cpmlaint_*comment"
+		var="commentColumn"></spring:message>
+		
+		<display:column title="${commentColumn}">
+		
+			<jstl:if test="${row.comments.size()==0}">
+				<a href="comment/actor/create.do?id=${row.id}"> <spring:message
+						code="cpmlaint_*commentCreate" />
+				</a>
+			</jstl:if>
+			<jstl:if test="${row.comments.size()>0}">
+				<a href="comment/actor/list.do?id=${row.id}"> <spring:message
+						code="cpmlaint_*commentList" />
+				</a>
+			</jstl:if>
+			
+			
+			
+		</display:column>
+
+
 </display:table>
