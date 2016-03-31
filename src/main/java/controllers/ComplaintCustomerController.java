@@ -121,7 +121,4 @@ public class ComplaintCustomerController extends AbstractController {
 		result.addObject("message", message);
 		return result;
 	}
-
-	
-	
 }

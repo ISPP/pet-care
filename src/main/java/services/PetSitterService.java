@@ -1,17 +1,19 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Booking;
 import domain.PetShipper;
 import domain.PetSitter;
 
 import repositories.PetSitterRepository;
-
-
 
 @Service
 @Transactional
@@ -21,8 +23,17 @@ public class PetSitterService {
 		super();
 	}
 	
+	//Managed repository ----------------------------------------------
+	
 	@Autowired
 	private PetSitterRepository petSitterRepository;
+	
+	//Supporting services ----------------------------------------------
+	
+	@Autowired
+	private BookingService bookingService;
+	
+	// CRUD methods
 	
 	public PetSitter create() {
 		PetSitter result;
@@ -52,5 +63,23 @@ public class PetSitterService {
 		return result;
 	}
 
+	//Other business methods
+	public List<PetSitter> searchSitters(Date startDate, Date endDate, String address){
+		List<PetSitter> result;
+		List<PetSitter> sitters;
+		List<Booking> bookings;
+		
+		result = new ArrayList<PetSitter>();
+		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
+		
+		for(PetSitter i: sitters){
+			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
+			if(bookings.isEmpty()){
+				result.add(i);
+			}
+		}
+		
+		return result;
+	}
 
 }
