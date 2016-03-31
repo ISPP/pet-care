@@ -24,21 +24,84 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
+					<li>
+						<a href="#"><spring:message code="master.page.complaint" /></a>
+						<ul>
+						<li><a href="complaint/administrator/listComplaintAdminNotSolved.do"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
+						</ul>					
 				</ul>
 			</li>
 		</security:authorize>
 		
-		<security:authorize access="hasRole('CUSTOMER')">
-			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
+		<security:authorize access="hasRole('PETOWNER')">
+			<li><a class="fNiv"><spring:message	code="master.page.complaint" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="customer/action-1.do"><spring:message code="master.page.customer.action.1" /></a></li>
-					<li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li>					
+					<li>
+						
+						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
+						
+						
+											
 				</ul>
-			</li>
+			</li>					
+				
+		
 		</security:authorize>
+		
+		<security:authorize access="hasRole('PETSHIPPER')">
+			<li><a class="fNiv"><spring:message	code="master.page.complaint" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li>
+						
+						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
+						
+						
+											
+				</ul>
+			</li>					
+			
+		</security:authorize>
+		
+		<security:authorize access="hasRole('PETSITTER')">
+			<li><a class="fNiv"><spring:message	code="master.page.complaint" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li>
+						
+						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
+						
+						
+											
+				</ul>
+			</li>					
+			
+		</security:authorize>
+		
+		
+		<security:authorize access="hasRole('COMPANY')">
+			<li><a class="fNiv"><spring:message	code="master.page.complaint" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li>
+						
+						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
+						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
+											
+				</ul>
+			</li>					
+			
+		</security:authorize>
+		
+		
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
@@ -52,9 +115,7 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="profile/action-1.do"><spring:message code="master.page.profile.action.1" /></a></li>
-					<li><a href="profile/action-2.do"><spring:message code="master.page.profile.action.2" /></a></li>
-					<li><a href="profile/action-3.do"><spring:message code="master.page.profile.action.3" /></a></li>					
+										
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
