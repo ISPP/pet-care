@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Administrator;
+import repositories.ReviewRepository;
 import domain.Review;
 import domain.Supplier;
-
-import repositories.CustomerRepository;
-import repositories.ReviewRepository;
 
 
 
