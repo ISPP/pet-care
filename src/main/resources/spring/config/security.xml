@@ -61,15 +61,15 @@
 	<!-- Comment -->
 	<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />
 
-		<security:intercept-url pattern="/complaint/customer/*" access="hasRole('PETOWNER')" /> 
+		<security:intercept-url pattern="/complaint/customer/**" access="hasRole('PETOWNER')" /> 
 	
 	
 		<!-- PetOwner -->
 		<security:intercept-url pattern="/petOwner/create.do" access="isAnonymous()"/>
-		
+		<security:intercept-url pattern="/petSitter/invite.do" access="hasRole('PETSITTER')"/>
 		<!-- PetSitter -->
 		<security:intercept-url pattern="/petSitter/create.do" access="isAnonymous()"/>
-
+		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

@@ -152,7 +152,7 @@ PetSitter result;
 
 		
 		// authority and authorities
-		authority.setAuthority(Authority.PETOWNER);
+		authority.setAuthority(Authority.PETSITTER);
 		authorities.add(authority);
 
 		// CreditCard

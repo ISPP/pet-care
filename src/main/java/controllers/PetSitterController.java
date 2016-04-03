@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CustomerService;
 import services.PetSitterService;
 
+import domain.Customer;
 import domain.PetSitter;
 
+import forms.InvitationForm;
 import forms.PetSitterForm;
 
 
@@ -24,6 +27,8 @@ public class PetSitterController extends AbstractController {
 	
 	@Autowired
 	private PetSitterService petSitterService;
+	@Autowired
+	private CustomerService customerService;
 
 	// Constructors -----------------------------------------------------------
 	
@@ -103,4 +108,36 @@ public class PetSitterController extends AbstractController {
 		return result;
 	}
 	
+	
+	@RequestMapping(value = "/invite", method = RequestMethod.GET)
+	public ModelAndView invite() {
+		ModelAndView result;
+
+		//Customer customer;
+		//customer=customerService.getLoggedCustomer();
+		InvitationForm iForm;
+		iForm=new InvitationForm();
+		result = createInvitationModelAndView(iForm);
+		//result.addObject("singleCode", customer.getInvitationCode());
+		
+		return result;
+	}
+
+	protected ModelAndView createInvitationModelAndView(InvitationForm invitationForm) {
+		ModelAndView result;
+
+		result = createInvitationModelAndView(invitationForm, null);
+
+		return result;
+	}
+	
+	protected ModelAndView createInvitationModelAndView(InvitationForm invitationForm, String message){
+		ModelAndView result;
+		
+		result = new ModelAndView("petSitter/invite");
+		result.addObject("invitationForm", invitationForm);
+		result.addObject("message", message);
+		result.addObject("requestURI", "petCare/invite.do");
+		return result;
+	}
 }

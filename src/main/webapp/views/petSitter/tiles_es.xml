@@ -16,19 +16,26 @@
       
 <tiles-definitions>
 
-	<definition name="petOwner/list" extends="master.page">	
-		<put-attribute name="title" value="Listar propietarios" />
-		<put-attribute name="body" value="/views/petOwner/list.jsp" />
-	</definition>
-	
-	<definition name="petOwner/edit" extends="master.page">	
-		<put-attribute name="title" value="Registrar propietario" />
-		<put-attribute name="body" value="/views/organiser/edit.jsp" />
-	</definition>
+
 	
 	<definition name="petOwner/display" extends="master.page">	
 		<put-attribute name="title" value="Mostrar propietario" />
 		<put-attribute name="body" value="/views/organiser/edit.jsp" />
 	</definition>
 	
+		<definition name="petSitter/list" extends="master.page">	
+		<put-attribute name="title" value="Listar cuidadores de mascotas" />
+		<put-attribute name="body" value="/views/petSitter/list.jsp" />
+	</definition>
+	
+	<definition name="petSitter/edit" extends="master.page">	
+		<put-attribute name="title" value="Registrar como cuidador de mascotas" />
+		<put-attribute name="body" value="/views/petSitter/edit.jsp" />
+	</definition>
+	
+		<definition name="petSitter/invite" extends="master.page">	
+		<put-attribute name="title" value="Invitar para registrar como cuidador" />
+		<put-attribute name="body" value="/views/petSitter/invite.jsp" />
+	</definition>
+		
 </tiles-definitions>

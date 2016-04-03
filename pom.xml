@@ -276,6 +276,14 @@
 			<version>1.2</version>
 		</dependency>
 		
+		
+		<!-- EMAIL -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
 		<!-- Display Tag -->
 
 		<dependency>
