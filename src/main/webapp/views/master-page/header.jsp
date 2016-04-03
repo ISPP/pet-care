@@ -45,7 +45,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a></li>
-					<li><a href="#"><spring:message code="master.page.register.petSitter" /></a></li>					
+					<li><a href="petSitter/create.do"><spring:message code="master.page.register.petSitter" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>

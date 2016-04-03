@@ -42,7 +42,7 @@ public class PetSitterService {
 	private PetSitterRepository petSitterRepository;
 	
 	@Autowired
-	private MessageFolderService folderService;
+	private MessageFolderService messageFolderService;
 	
 	public PetSitter create() {
 PetSitter result;
