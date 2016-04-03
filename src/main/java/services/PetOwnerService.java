@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 
 import repositories.PetOwnerRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 import domain.Booking;
 import domain.Comment;
@@ -126,7 +127,7 @@ public class PetOwnerService {
 		return result;
 	}
 
-	public PetOwner reconstruct(PetOwnerForm petOwnerForm) {
+public PetOwner reconstruct(PetOwnerForm petOwnerForm) {
 		Assert.isTrue(petOwnerForm.getPassword().equals(
 				petOwnerForm.getPasswordConfirm()));
 
@@ -177,6 +178,15 @@ public class PetOwnerService {
 		result.setDescription(petOwnerForm.getDescription());
 		result.setUser(userAccount);
 
+		return result;
+	}
+
+
+	public PetOwner findOneByPrincipal() {
+		PetOwner result;
+		
+		result = petOwnerRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
+		
 		return result;
 	}
 

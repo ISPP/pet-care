@@ -2,8 +2,11 @@ package forms;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class SearchSittersForm {
 
@@ -22,7 +25,8 @@ public class SearchSittersForm {
 		this.address = address;
 	}
 	
-	@NotBlank
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -31,7 +35,8 @@ public class SearchSittersForm {
 		this.startDate = startDate;
 	}
 	
-	@NotBlank
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getEndDate() {
 		return endDate;
 	}

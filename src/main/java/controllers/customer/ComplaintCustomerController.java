@@ -120,6 +120,4 @@ public class ComplaintCustomerController extends AbstractController {
 		return result;
 	}
 
-	
-	
 }

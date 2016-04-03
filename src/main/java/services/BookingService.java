@@ -9,15 +9,9 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
-
-import domain.Administrator;
 import domain.Booking;
 import domain.PetOwner;
-import domain.PetShipper;
 import domain.PetSitter;
-import domain.Supplier;
-import domain.Trip;
 import repositories.BookingRepository;
 
 @Service
@@ -36,15 +30,13 @@ public class BookingService {
 	// Supporting services -----------------------------------------------------
 
 	@Autowired
-    private SupplierService supplierService;
-	@Autowired
     private PetSitterService petSitterService;
-	@Autowired
+	/*@Autowired
     private PetShipperService petShipperService;
 	@Autowired
     private CompanyService companyService;
 	@Autowired
-    private TripService tripService;
+    private TripService tripService;*/
 	@Autowired
     private PetOwnerService petOwnerService;
 
@@ -57,9 +49,9 @@ public class BookingService {
         Double price;
         String code;
         UUID uuidCode;
-        Supplier supplier;
         PetSitter petSitter;
 
+        petOwner = petOwnerService.findOneByPrincipal();
         petSitter = petSitterService.findOne(sitterId);
         //supplier = supplierService.findOne(petSitter.getSupplier().getId());
         result = new Booking();
@@ -71,17 +63,16 @@ public class BookingService {
         }
         uuidCode = UUID.randomUUID();
         code = uuidCode.toString().replaceAll("-", ""); //Eliminar guiones del code
-        //petOwner = petOwnerService.findOneByPrincipal();
 
-        //result.setCreationMoment(creationMoment);
+        result.setCreationMoment(creationMoment);
         result.setCode(code);
-        //result.setStartMoment(startMoment);
-        //result.setEndMoment(endMoment);
+        result.setArrivalMoment(startMoment);
+        result.setDepartureMoment(endMoment);
         result.setPrice(price);
         result.setStatus("PENDING");
         result.setNight(night);
-        //result.setPetOwner(petOwner);
-        //result.setSupplier(supplier);
+        result.setPetOwner(petOwner);
+        result.setSupplier(petSitter);
 
         return result;
     }
@@ -101,7 +92,6 @@ public class BookingService {
         Supplier supplier;
         PetShipper petShipper;
         Trip trip;
-
         trip = tripService.findOne(tripId);
         petShipper = petShipperService.findOne(shipperId);
         //supplier = supplierService.findOne(petShipper.getSupplier().getId());
@@ -112,7 +102,6 @@ public class BookingService {
         uuidCode = UUID.randomUUID();
         code = uuidCode.toString().replaceAll("-", ""); //Para eliminar guiones del code
         //petOwner = petOwnerService.findOneByPrincipal();
-
         //result.setCreationMoment(creationMoment);
         result.setCode(code);
         //result.setStartMoment(startMoment);
@@ -122,7 +111,6 @@ public class BookingService {
         result.setNight(night);
         //result.setPetOwner(petOwner);
         result.setSupplier(supplier);
-
         return result;
     }*/
 
@@ -136,7 +124,6 @@ public class BookingService {
         UUID uuidCode;
         Supplier supplier;
         Company company;
-
         company = companyService.findOne(companyId);
         supplier = supplierService.findOne(company.getSupplier().getId());
         result = new Booking();
@@ -149,7 +136,6 @@ public class BookingService {
         uuidCode = UUID.randomUUID();
         code = uuidCode.toString().replaceAll("-", ""); //Eliminar guiones del code
         petOwner = petOwnerService.findOneByPrincipal();
-
         result.setCreationMoment(creationMoment);
         result.setCode(code);
         result.setStartMoment(startMoment);
@@ -159,7 +145,6 @@ public class BookingService {
         result.setNight(night);
         result.setPetOwner(petOwner);
         result.setSupplier(supplier);
-
         return result;
     }*/
 
@@ -171,7 +156,6 @@ public class BookingService {
         int nights;
         Date date;
         int beds;
-
         date = new Date(System.currentTimeMillis() - 1);
         nights = booking.getNights();
         arrival = booking.getArrival();
@@ -179,9 +163,7 @@ public class BookingService {
         departure = new Date(arrival.getYear(), arrival.getMonth(), arrival.getDate() + nights - 1);
         booking.setCreationMoment(new Date(System.currentTimeMillis() -1));
         booking.setDeparture(departure);
-
         beds = findBedsByLodgeDay(arrival, nights, booking);
-
         checkBookingIsCorrect(booking, beds);
         result = bookingRepository.save(booking);
         return result;
@@ -206,7 +188,7 @@ public class BookingService {
     }
 
     //Other business methods ------------------------------------------------
-//    
+    
 //    public List<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId) {
 //    	List<Booking> result;
 //    	
@@ -220,13 +202,11 @@ public class BookingService {
         Booking result;
         checkIsOwner(booking);
         Date date;
-
         date = new Date(System.currentTimeMillis() - 1);
         date.setDate(date.getDate()+1);
         booking.setCancelled(true);
         Assert.isTrue(booking.getArrival().after(date));
         result = bookingRepository.save(booking);
-
         return result;
     }*/
 
@@ -234,32 +214,24 @@ public class BookingService {
     /*public List<Booking> findAllByOwner(){
         List<Booking> result;
         int id;
-
         id = LoginService.getPrincipal().getId();
         checkIsPilgrim();
-
         result  = bookingRepository.findAllByPilgrim(id);
-
         return result;
     }
-
     public Collection<Booking> findAllByInnkeeper(){
         Collection<Booking> result;
         int id;
-
         id = LoginService.getPrincipal().getId();
         result  = bookingRepository.findAllByInnkeeper(id);
-
         return result;
     }
-
     public Integer findBedsByLodgeDay(Date arrival, int nights, Booking booking){
         Integer result, aux;
         int lodgeId = booking.getLodge().getId();
         aux = 0;
         result = lodgeService.findOne(lodgeId).getBeds();
         Date auxDate;
-
         auxDate = arrival;
         for(int i = 1; i <= nights; i++){
             try{
@@ -270,59 +242,43 @@ public class BookingService {
             }catch(NullPointerException oops){}
             auxDate = new Date(arrival.getYear(), arrival.getMonth(), arrival.getDate() + i);
         }
-
         result = result - aux;
-
         return result;
     }
-
     public void checkBookingIsCorrect(Booking booking, int beds){
         Assert.notNull(booking);
         Assert.isTrue(booking.getBeds() <= beds);
     }
-
     public void checkIsOwner(Booking booking){
         UserAccount principal;
         UserAccount owner;
-
         principal = LoginService.getPrincipal();
         owner = booking.getPilgrim().getUserAccount();
-
         Assert.isTrue(principal.equals(owner));
     }
-
     public void checkIsPilgrim(){
         Authority pilgrim;
-
         pilgrim = new Authority();
         pilgrim.setAuthority(Authority.PILGRIM);
         Assert.isTrue(LoginService.getPrincipal().getAuthorities().contains(pilgrim));
     }
-
-
     public Collection<Booking> bookingsHistory(){
         Collection<Booking> result;
         int id;
-
         id = LoginService.getPrincipal().getId();
         result = bookingRepository.bookingsHistory(id);
         return result;
     }
-
     public Collection<Booking> findWithoutInvoiceByInnkeeper() {
         Collection<Booking> result;
         int id;
-
         id = LoginService.getPrincipal().getId();
         result  = bookingRepository.findWithoutInvoiceByInnkeeper(id);
-
         return result;
     }
-
     public Integer findBedsByInnkeeperDay(int innkeeperId, Date date){
         Assert.notNull(date);
         Integer result;
-
         result = bookingRepository.findBedsByInnkeeperDay(innkeeperId, date);
         if(result == null){
             result = 0;

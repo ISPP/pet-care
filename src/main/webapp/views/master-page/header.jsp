@@ -25,12 +25,10 @@
 				<ul>
 					<li class="arrow"></li>
 					<li>
-						
-						
 						<li><a href="complaint/administrator/listComplaintAdminNotSolved.do"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
-											
 				</ul>
 			</li>
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PETOWNER')">
@@ -42,10 +40,8 @@
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
-						
-						
-											
 				</ul>
+
 			</li>	
 			<li>
 				<a class="fNiv">
@@ -60,6 +56,10 @@
 			<li>				
 				
 		
+
+			</li>					
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PETSHIPPER')">
@@ -71,12 +71,9 @@
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
-						
-						
-											
 				</ul>
 			</li>					
-			
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PETSITTER')">
@@ -88,12 +85,9 @@
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
-						
-						
-											
 				</ul>
 			</li>					
-			
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 		</security:authorize>
 		
 		
@@ -106,15 +100,15 @@
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
-											
 				</ul>
 			</li>					
-			
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 		</security:authorize>
 		
 		
 		
 		<security:authorize access="isAnonymous()">
+
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -122,6 +116,10 @@
 					<li><a href="petSitter/create.do"><spring:message code="master.page.register.petSitter" /></a></li>					
 				</ul>
 			</li>
+
+			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

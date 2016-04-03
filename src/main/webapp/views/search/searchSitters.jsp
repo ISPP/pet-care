@@ -6,41 +6,28 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- SEARCHER -->
-<form:form action="search/listSitters.do" modelAttribute="searchSittersForm">
+<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
 	<form:hidden path="id"/>
 	
-	<spring:message code="sitter.search"/>:
-	
+	<spring:message code="sitter.startDate"/>:
 	<form:input path="startDate"/>
 	<form:errors path="startDate" cssClass="error" />
+	<br/>
 	
+	<spring:message code="sitter.endDate"/>:
 	<form:input path="endDate"/>
 	<form:errors path="endDate" cssClass="error" />
+	<br/>
 	
+	<spring:message code="sitter.address"/>:
 	<form:input path="address"/>
 	<form:errors path="address" cssClass="error" />
+	<br/>
 	
 	<acme:submit code="sitter.search.go" name="search" />	
 </form:form>
 <br/>
 <br/>
-<!-- LIST -->
-<display:table name="sitters" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
-
-	<display:column titleKey="sitter.fullName">
-		<jstl:out value="row.name" /> <jstl:out value="row.surname" />
-	</display:column>
-	
-	<display:column property="address" titleKey="sitter.address"/> 
-	
-	<display:column property="priceNight" titleKey="sitter.priceNight"/> 
-	
-	<display:column property="priceHour" titleKey="sitter.priceHour"/> 
-	
-	<display:column titleKey="sitter.display">
-		<a href="sitter/sitter/display.do?sitterId=${row.id}"> <spring:message code="sitter.display"/> </a>
-	</display:column>
-	
-</display:table>
