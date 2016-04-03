@@ -21,7 +21,7 @@
 
 <jstl:set var="action" value="petSitter/create.do"/>
 <form:form action="${action}" modelAttribute="petSitterForm">
-
+<form:hidden path="invitationCode"/> 
 	<!-- Actor -->
 	<acme:textbox code="petSitter.name" path="name"/>
 	<acme:textbox code="petSitter.surname" path="surname"/>

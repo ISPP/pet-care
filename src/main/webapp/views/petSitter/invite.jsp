@@ -28,7 +28,7 @@
 
 	
 	
-	<acme:submit name="create" code="petSitter.button.create"/>
+	<acme:submit name="create" code="petSitter.send"/>
 	<acme:cancel url="welcome/index.do" code="petSitter.button.cancel"/>
 	
 </form:form>

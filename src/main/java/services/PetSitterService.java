@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,9 @@ public class PetSitterService {
 	@Autowired
 	private MessageFolderService messageFolderService;
 	
+	@Autowired
+	private CustomerService customerService;
+	
 	public PetSitter create() {
 PetSitter result;
 		
@@ -73,13 +77,25 @@ PetSitter result;
 		
 		return result;
 	}
+	public PetSitter register(PetSitter petSitter,String codeToRegister) {
+		PetSitter result;
+		String invitationCode;
+		invitationCode=RandomStringUtils.randomAlphanumeric(10);
 
+		Assert.notNull(customerService.findCustomerByInvitationCode(codeToRegister));
+		petSitter.setInvitationCode(invitationCode);
+		result=save(petSitter);
+		return result;
+	}
+	
+	
 	public PetSitter save(PetSitter petSitter) {
 		Assert.notNull(petSitter);
 		PetSitter result;
 		MessageFolder inbox;
 		MessageFolder outbox;
 		MessageFolder trash;
+		
 		
 		inbox = messageFolderService.create();
 		outbox = messageFolderService.create();

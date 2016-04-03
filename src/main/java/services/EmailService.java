@@ -33,12 +33,12 @@ public class EmailService {
 					new Authenticator() {
 						protected PasswordAuthentication getPasswordAuthentication() {
 							return new PasswordAuthentication(
-									"grouppetcare@gmail.com", "petcareispp");
+									"petcaresepp@gmail.com", "sepp1pet");
 						}
 
 					});
 			MimeMessage email = new MimeMessage(session);
-			email.setFrom(new InternetAddress("grouppetcare@gmail.com"));
+			email.setFrom(new InternetAddress("petcaresepp@gmail.com"));
 			email.addRecipient(Message.RecipientType.TO, new InternetAddress(
 					emailRecipient));
 			email.setSubject(subject);
@@ -58,7 +58,7 @@ public class EmailService {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();
-		url = "http://localhost:8080/Petcare/petSitter/register.do?invitationCode="
+		url = "http://localhost:8080/Petcare/petSitter/create.do?invitationCode="
 				+ sender.getInvitationCode();
 
 		String content;

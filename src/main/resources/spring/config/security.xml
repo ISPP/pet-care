@@ -61,7 +61,7 @@
 	<!-- Comment -->
 	<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />
 
-		<security:intercept-url pattern="/complaint/customer/**" access="hasRole('PETOWNER')" /> 
+	
 	
 	
 		<!-- PetOwner -->

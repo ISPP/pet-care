@@ -28,7 +28,8 @@
 						
 						
 						<li><a href="complaint/administrator/listComplaintAdminNotSolved.do"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
-											
+						<li><a href="complaint/administrator/listWithoutAdmin.do"><spring:message code="master.page.complaint.listComplaintWithoutAdmin" /></a></li>	
+						<li><a href="complaint/administrator/listToSolve.do"><spring:message code="master.page.complaint.listComplaintToSolve" /></a></li>				
 				</ul>
 			</li>
 		</security:authorize>
@@ -61,7 +62,6 @@
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
 						
-						
 											
 				</ul>
 			</li>					
@@ -79,10 +79,22 @@
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
 						
 						
+						
 											
 				</ul>
 			</li>					
-			
+			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li>
+						
+						
+						<li><a href="petSitter/invite.do"><spring:message code="master.page.petSitter.inviteText" /></a></li>
+						
+						
+											
+				</ul>
+			</li>		
 		</security:authorize>
 		
 		
@@ -108,7 +120,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a></li>
-					<li><a href="petSitter/create.do"><spring:message code="master.page.register.petSitter" /></a></li>					
+				
 				</ul>
 			</li>
 		</security:authorize>

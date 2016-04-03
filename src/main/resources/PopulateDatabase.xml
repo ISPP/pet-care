@@ -895,12 +895,15 @@
                  <property name="brandName" value="VISA" />	
                  <property name="number" value="5307687064211132" />	
                  <property name="expirationMonth" value="05" />	
-                 <property name="expirationYear" value="2016" />	
+                 <property name="expirationYear" value="2016" />
+                 
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+     <property name="invitationCode" value="petSitter1"></property>
 	
 	<property name="user" ref="userAccount9.1"></property>
+	
 	<property name="messageFolders">
 			<list>
 				<ref bean="folderPetSitter9.1Inbox"></ref>

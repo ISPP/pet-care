@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CustomerService;
+import services.EmailService;
 import services.PetSitterService;
 
 import domain.Customer;
@@ -29,6 +31,8 @@ public class PetSitterController extends AbstractController {
 	private PetSitterService petSitterService;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private EmailService emailService;
 
 	// Constructors -----------------------------------------------------------
 	
@@ -40,11 +44,13 @@ public class PetSitterController extends AbstractController {
 	// Edition-----------------------------------------------------------------
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public ModelAndView create(){
+	public ModelAndView create(@RequestParam String invitationCode){
 		ModelAndView result;
 		PetSitterForm petSitterForm;
 		
 		petSitterForm = new PetSitterForm();
+		petSitterForm.setInvitationCode(invitationCode);
+		
 		result = createEditModelAndView(petSitterForm);
 		
 		result.addObject("register", true);
@@ -73,7 +79,7 @@ public class PetSitterController extends AbstractController {
 					result = createEditModelAndView(petSitterForm,"petSitter.commit.password");
 				}else{
 					petSitter = petSitterService.reconstruct(petSitterForm);
-					petSitterService.save(petSitter);
+					petSitterService.register(petSitter,petSitterForm.getInvitationCode());
 					result = new ModelAndView("redirect:../security/login.do");
 				}
 			}catch(Throwable oops){
@@ -123,6 +129,32 @@ public class PetSitterController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/invite", method = RequestMethod.POST)
+	public ModelAndView sendIntation( @Valid InvitationForm invitationForm,
+			BindingResult binding) {
+		ModelAndView result;
+		result = new ModelAndView();
+		Customer customer;
+		if (binding.hasErrors()) {
+			result = createInvitationModelAndView(invitationForm);
+			
+		} else {
+			result = new ModelAndView("welcome/index");
+			try {
+				customer = customerService.getLoggedCustomer();
+				emailService.sendToAFriend(customer, invitationForm.getEmail());
+
+			} catch (Exception e) {
+
+				
+				result.addObject("message", "error.operationInvite");
+			}
+		}
+		return result;
+	}
+	
+	
+	
 	protected ModelAndView createInvitationModelAndView(InvitationForm invitationForm) {
 		ModelAndView result;
 

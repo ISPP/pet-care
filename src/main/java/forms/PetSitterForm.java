@@ -30,6 +30,7 @@ public class PetSitterForm {
 
 	// Customer
 	private String address, description, homePage, contactPhone;
+	private String invitationCode;
 
 	// UserAccount
 	private String username;
@@ -202,6 +203,14 @@ public class PetSitterForm {
 
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
+	}
+
+	public String getInvitationCode() {
+		return invitationCode;
+	}
+
+	public void setInvitationCode(String invitationCode) {
+		this.invitationCode = invitationCode;
 	}
 
 	
