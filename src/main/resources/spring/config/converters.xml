@@ -27,11 +27,13 @@
 		<bean class="converters.CommentToStringConverter" />
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
+		<bean class="converters.PetSitterToStringConverter" />
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAdministratorConverter" />
 		<bean class="converters.StringToCommentConverter" />
 		<bean class="converters.StringToComplaintConverter" />
 		<bean class="converters.StringToCustomerConverter" />
+		<bean class="converters.StringToPetSitterConverter" />
 		 
 	</util:list>
 	

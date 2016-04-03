@@ -8,9 +8,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import domain.Booking;
-import domain.PetShipper;
 import domain.PetSitter;
 
 import repositories.PetSitterRepository;
@@ -68,6 +68,11 @@ public class PetSitterService {
 		List<PetSitter> result;
 		List<PetSitter> sitters;
 		List<Booking> bookings;
+		Date current;
+		
+		current = new Date();
+		Assert.isTrue(current.before(startDate));
+		Assert.isTrue(startDate.before(endDate));
 		
 		result = new ArrayList<PetSitter>();
 		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));

@@ -1,13 +1,3 @@
-/* ProfileController.java
- *
- * Copyright (C) 2013 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- * 
- */
-
 package controllers;
 
 import java.util.Collection;
@@ -26,7 +16,6 @@ import domain.Complaint;
 import forms.ComplaintForm;
 
 import services.ComplaintService;
-import services.CustomerService;
 
 @Controller
 @RequestMapping("/complaint/customer")

@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Message;
 import domain.PetOwner;
 
 import repositories.PetOwnerRepository;
+import security.LoginService;
 
 @Service
 @Transactional
@@ -48,6 +48,14 @@ public class PetOwnerService {
 	public PetOwner findOne(Integer id) {
 		PetOwner result;
 		result = petOwnerRepository.findOne(id);
+		return result;
+	}
+
+	public PetOwner findOneByPrincipal() {
+		PetOwner result;
+		
+		result = petOwnerRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
+		
 		return result;
 	}
 

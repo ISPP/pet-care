@@ -23,16 +23,16 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     @Query("select b from Booking b where b.supplier.id=?1")
     Collection<Booking> findAllByCompany(int companyId);
 
-    @Query("select b from Booking b where b.petOwner.userAccount.id = ?1")
+    @Query("select b from Booking b where b.petOwner.user.id = ?1")
     Collection<Booking> findByOwnerIsCurrentUser();
     
-    @Query("select b from Booking b where b.supplier.userAccount.id = ?1")
+    @Query("select b from Booking b where b.supplier.user.id = ?1")
     Collection<Booking> findBySupplierIsCurrentUser();
 
-    @Query("select b from Booking b where b.supplier.id = ?1 and "
-    		+ "((b.startMoment <= startDate and b.endMoment > startDate) or "
-    		+ "(b.startMoment >= startDate and b.endMoment <= endDate) or "
-    		+ "(b.startMoment < endDate and b.endMoment >= endDate) or "
-    		+ "(b.startMoment < startDate and b.endMoment > endDate))")
+    @Query("select b from Booking b where b.supplier.id = ?3 and b.status = 'ACCEPTED' and"
+    		+ "((b.arrivalMoment <= ?1 and b.departureMoment > ?1) or "
+    		+ "(b.arrivalMoment >= ?1 and b.departureMoment <= ?2) or "
+    		+ "(b.arrivalMoment < ?2 and b.departureMoment >= ?2) or "
+    		+ "(b.arrivalMoment < ?1 and b.departureMoment > ?2))")
     Collection<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId);
 }
