@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%--
  * textbox.tag
  *
@@ -41,3 +42,4 @@
 	<form:input id="${id}" path="${path}" readonly="${readonly}" placeholder="${placeholder}"/>	
 	<form:errors path="${path}" cssClass="error" />
 </div>	
+

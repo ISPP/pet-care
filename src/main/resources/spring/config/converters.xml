@@ -28,13 +28,12 @@
 		<bean class="converters.ActorToStringConverter"/>
 		<bean class="converters.AuthorityToStringConverter"/>
 		<bean class="converters.PetSitterToStringConverter"/>
-		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.AdministratorToStringConverter" />
 		<bean class="converters.CommentToStringConverter" />
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
 		<bean class="converters.PetToStringConverter" />
-		
+	 
 		<!-- StringToEntity -->
 		<bean class="converters.StringToPetOwnerConverter"/>
 		<bean class="converters.StringToActorConverter"/>
@@ -43,7 +42,7 @@
 		<bean class="converters.PetSitterToStringConverter" />
 		<bean class="converters.PetOwnerToStringConverter" />
 		<bean class="converters.ReviewToStringConverter" />
-		
+	
 
 	</util:list>
 	

@@ -108,7 +108,7 @@
 		
 		
 		<security:authorize access="isAnonymous()">
-
+ 
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -117,8 +117,10 @@
 				</ul>
 			</li>
 
+
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+
 
 		</security:authorize>
 		

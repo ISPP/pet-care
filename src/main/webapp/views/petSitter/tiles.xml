@@ -37,8 +37,4 @@
 		<put-attribute name="body" value="/views/petSitter/invite.jsp" />
 	</definition>
 		
-		
-		
-
-	
 </tiles-definitions>
