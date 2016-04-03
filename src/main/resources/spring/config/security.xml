@@ -50,6 +50,25 @@
 	
 	<!-- Comment -->
 	<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />
+
+	<security:intercept-url pattern="/complaint/customer/**" access="hasRole('PETOWNER')" /> 
+		
+	<!-- PetOwner -->
+	<security:intercept-url pattern="/petOwner/create.do" access="isAnonymous()"/>
+	<security:intercept-url pattern="/petSitter/invite.do" access="hasRole('PETSITTER')"/>
+	
+	<!-- PetSitter -->
+	<security:intercept-url pattern="/petSitter/create.do" access="isAnonymous()"/>
+	
+	<!-- Pet -->
+	<security:intercept-url pattern="/pet/list.do" access="permitAll" />
+	<security:intercept-url pattern="/pet/see.do" access="permitAll" />	
+	<security:intercept-url pattern="/pet/apetOwner/list.do" access="hasRole('PETOWNER')" /> 
+	<security:intercept-url pattern="/pet/apetOwner/create.do" access="hasRole('PETOWNER')" /> 
+	<security:intercept-url pattern="/pet/apetOwner/edit.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/pet/apetOwner/list.do" access="hasRole('PETSITTER')" /> 
+	<security:intercept-url pattern="/pet/apetOwner/create.do" access="hasRole('PETSITTER')" /> 
+	<security:intercept-url pattern="/pet/apetOwner/edit.do" access="hasRole('PETSITTER')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

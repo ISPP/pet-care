@@ -35,4 +35,3 @@
 			<a href="comment/actor/edit.do?id=${row.complaint.id}"> <spring:message
 					code="cpmlaint_*commentCreate" />
 			</a>
-

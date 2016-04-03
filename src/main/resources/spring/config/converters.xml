@@ -22,16 +22,30 @@
 			Add your own converters using entries of the following form: 
 			<bean class="converters.Class1ToClass2" /> 
 		-->
+	
+		<!-- EntityToString -->
+		<bean class="converters.PetOwnerToStringConverter"/>
+		<bean class="converters.ActorToStringConverter"/>
+		<bean class="converters.AuthorityToStringConverter"/>
+		<bean class="converters.PetSitterToStringConverter"/>
 		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.AdministratorToStringConverter" />
 		<bean class="converters.CommentToStringConverter" />
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
+		<bean class="converters.PetToStringConverter" />
+		
+		<!-- StringToEntity -->
+		<bean class="converters.StringToPetOwnerConverter"/>
+		<bean class="converters.StringToActorConverter"/>
+		<bean class="converters.StringToAuthorityConverter"/>
+		<bean class="converters.StringToPetSitterConverter"/>
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAdministratorConverter" />
 		<bean class="converters.StringToCommentConverter" />
 		<bean class="converters.StringToComplaintConverter" />
 		<bean class="converters.StringToCustomerConverter" />
+		<bean class="converters.StringToPetConverter" />
 		 
 	</util:list>
 	

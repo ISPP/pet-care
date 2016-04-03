@@ -206,14 +206,14 @@ public class BookingService {
     }
 
     //Other business methods ------------------------------------------------
-    
-    public List<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId) {
-    	List<Booking> result;
-    	
-    	result = new ArrayList<Booking>(bookingRepository.findByDateSitter(startDate, endDate, sitterId));
-    	
-		return result;
-	}
+//    
+//    public List<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId) {
+//    	List<Booking> result;
+//    	
+//    	result = new ArrayList<Booking>(bookingRepository.findByDateSitter(startDate, endDate, sitterId));
+//    	
+//		return result;
+//	}
 
     /*public Booking cancelBooking(Booking booking){
         Assert.notNull(booking);

@@ -30,19 +30,19 @@ public class SearchController extends AbstractController{
 
 	// List sitters ---------------------------------------------------------------		
 
-	@RequestMapping(value = "/listSitters", method = RequestMethod.POST, params = "search")
-	public ModelAndView listSitters(@Valid SearchSittersForm searchSittersForm) {
-		ModelAndView result;
-		Collection<PetSitter> sitters;
-		
-		sitters = petSitterService.searchSitters(searchSittersForm.getStartDate(), 
-				searchSittersForm.getEndDate(), searchSittersForm.getAddress());
-		
-		result = new ModelAndView("search/listSitters");
-		result.addObject("sitters", sitters);
-		result.addObject("searchSittersForm", searchSittersForm);
-		result.addObject("requestURI", "search/listSitters.do");
-
-		return result;
-	}
+//	@RequestMapping(value = "/listSitters", method = RequestMethod.POST, params = "search")
+//	public ModelAndView listSitters(@Valid SearchSittersForm searchSittersForm) {
+//		ModelAndView result;
+//		Collection<PetSitter> sitters;
+//		
+//		sitters = petSitterService.searchSitters(searchSittersForm.getStartDate(), 
+//				searchSittersForm.getEndDate(), searchSittersForm.getAddress());
+//		
+//		result = new ModelAndView("search/listSitters");
+//		result.addObject("sitters", sitters);
+//		result.addObject("searchSittersForm", searchSittersForm);
+//		result.addObject("requestURI", "search/listSitters.do");
+//
+//		return result;
+//	}
 }

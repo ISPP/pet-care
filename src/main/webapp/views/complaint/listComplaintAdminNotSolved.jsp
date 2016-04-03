@@ -67,7 +67,7 @@
 		<display:column title="${commentColumn}">
 		
 			<jstl:if test="${row.comments.size()==0}">
-				<a href="comment/actor/create.do?id=${row.id}"> <spring:message
+				<a href="comment/actor/edit.do?id=${row.id}"> <spring:message
 						code="cpmlaint_*commentCreate" />
 				</a>
 			</jstl:if>

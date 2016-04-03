@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 import repositories.CustomerRepository;
 import security.LoginService;
 import security.UserAccount;
+import domain.Administrator;
 import domain.Customer;
 
 
@@ -66,5 +67,6 @@ public class CustomerService {
 			result = customerRepository.findActorByUsername(user.getUsername());
 			return result;
 		}
-
+		
+	
 }

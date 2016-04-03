@@ -13,6 +13,7 @@ import repositories.ComplaintRepository;
 import domain.Administrator;
 import domain.Complaint;
 import domain.Customer;
+import domain.Place;
 import forms.ComplaintForm;
 
 
@@ -115,8 +116,8 @@ public class ComplaintService {
 		Administrator admin;
 		admin=administratorService.getLoggedAdmin();
 		//check the administrator that is solving the complaint is the assigned one
-		Assert.isTrue(complaint.getAdministrator().getId()==admin.getId());
-		
+		Assert.isTrue(complaint.getAdministrator().getId()==admin.getId(), "Intentando acceder a un sitio sin permisos");
+		Assert.notNull(admin, "no hay un administrador logueado");
 		save(complaint);
 		
 	}
@@ -128,8 +129,10 @@ public class ComplaintService {
     	Collection<Complaint> result;
         Customer customer;
        customer = customerService.getLoggedCustomer();
+       Assert.notNull(customer,"no hay logueado un customer");
         result = complaintRepository.findComplaintByCustommerIdAndResolution(customer.getId());
-       // Assert.notNull(customer,"no hay logueado un customer");
+       
+       
         //Assert.isTrue(customer.getComplaints().contains(result),"el customer no tiene asosiadas las complaint");
 
         return result;
@@ -139,6 +142,7 @@ public class ComplaintService {
     	Collection<Complaint> result;
         Customer customer;
         customer = customerService.getLoggedCustomer();
+        Assert.notNull(customer,"no hay logueado un customer");
         result = complaintRepository.findComplaintByCustommerIdAndNotResolution(customer.getId());
 
        // Assert.isTrue(customer.getComplaints().contains(result),"el customer no tiene asosiadas las complaint");
@@ -173,9 +177,16 @@ public class ComplaintService {
         Administrator administrator;
         administrator = administratorService.getLoggedAdmin();
         Assert.notNull(administrator,"no hay un administrador logueado");
+        Assert.isTrue(complaint.getAdministrator()==null, "la complaint ya está asignada");
         complaint.setAdministrator(administrator);
 
         complaintRepository.save(complaint);
     }
+    
+    public boolean exists(Complaint complaint) {
+		boolean result;
+		result = complaintRepository.exists(complaint.getId());
+		return result;
+	}
     
 }
