@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+
+
+	
+	<definition name="petOwner/display" extends="master.page">	
+		<put-attribute name="title" value="Mostrar propietario" />
+		<put-attribute name="body" value="/views/organiser/edit.jsp" />
+	</definition>
+	
+		<definition name="petSitter/list" extends="master.page">	
+		<put-attribute name="title" value="Listar cuidadores de mascotas" />
+		<put-attribute name="body" value="/views/petSitter/list.jsp" />
+	</definition>
+	
+	<definition name="petSitter/edit" extends="master.page">	
+		<put-attribute name="title" value="Registrar como cuidador de mascotas" />
+		<put-attribute name="body" value="/views/petSitter/edit.jsp" />
+	</definition>
+	
+		<definition name="petSitter/invite" extends="master.page">	
+		<put-attribute name="title" value="Invitar para registrar como cuidador" />
+		<put-attribute name="body" value="/views/petSitter/invite.jsp" />
+	</definition>
+		
+</tiles-definitions>
