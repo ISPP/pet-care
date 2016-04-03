@@ -104,7 +104,13 @@
 		
 		
 		<security:authorize access="isAnonymous()">
-			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a></li>
+					<li><a href="petSitter/create.do"><spring:message code="master.page.register.petSitter" /></a></li>					
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
