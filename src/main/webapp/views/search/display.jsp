@@ -36,10 +36,6 @@
 	
 	<display:column property="rating" titleKey="sitter.review.rating"  sortable="True"/> 
 	
-	<display:column titleKey="sitter.review.reviewer">
-		<a href="petOwner/display.do?petOwnerId=${row.id}"> <jstl:out value="${row.reviewer.name}" /> <jstl:out value="${row.reviewer.surname}" /></a>
-	</display:column>
+	<display:column property="reviewer.name" titleKey="sitter.review.reviewer"/> 
 	
 </display:table>
-<br/>
-<acme:cancel code="sitter.back" url="${cancelURI}" />

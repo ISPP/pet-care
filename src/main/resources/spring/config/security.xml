@@ -46,6 +46,10 @@
 	<security:intercept-url pattern="/search/searchSitters.do" access="permitAll" /> 
 	<security:intercept-url pattern="/search/display.do" access="permitAll" /> 
 	
+	<!-- Profiles -->
+	<security:intercept-url pattern="/petOwner/petOwner/display.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/petOwner/petOwner/displayOwn.do" access="hasRole('PETOWNER')" />
+	
 	<!-- Complaint -->
 	<security:intercept-url pattern="/complaint/customer/**" access="hasAnyRole('PETOWNER','PETSITTER','COMPANY', 'PETSHIPPER')" /> 
 	<security:intercept-url pattern="/complaint/administrator/**" access="hasRole('ADMIN')" /> 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.PetOwner;
-
+import domain.Review;
 import repositories.PetOwnerRepository;
 import security.LoginService;
 
@@ -56,6 +56,22 @@ public class PetOwnerService {
 		
 		result = petOwnerRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
 		
+		return result;
+	}
+
+	public Collection<Review> findReviews(int petOwnerId) {
+		Collection<Review> result;
+		
+		result = petOwnerRepository.findOne(petOwnerId).getReviews();
+		
+		return result;
+	}
+
+	public boolean isPrincipal(int petOwnerId) {
+		boolean result;
+		
+		result = findOne(petOwnerId).getUser().equals(LoginService.getPrincipal());
+				
 		return result;
 	}
 
