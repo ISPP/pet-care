@@ -21,7 +21,7 @@
 	<display:column property="priceHour" titleKey="sitter.priceHour"/> 
 	
 	<display:column titleKey="sitter.display">
-		<a href="sitter/sitter/display.do?sitterId=${row.id}"> <spring:message code="sitter.display"/> </a>
+		<a href="search/display.do?petSitterId=${row.id}"> <spring:message code="sitter.display"/> </a>
 	</display:column>
 	
 </display:table>

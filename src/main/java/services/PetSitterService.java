@@ -12,7 +12,7 @@ import org.springframework.util.Assert;
 
 import domain.Booking;
 import domain.PetSitter;
-
+import domain.Review;
 import repositories.PetSitterRepository;
 
 @Service
@@ -83,6 +83,14 @@ public class PetSitterService {
 				result.add(i);
 			}
 		}
+		
+		return result;
+	}
+
+	public Collection<Review> findReviews(int petSitterId) {
+		Collection<Review> result;
+		
+		result = petSitterRepository.findOne(petSitterId).getReviews();
 		
 		return result;
 	}

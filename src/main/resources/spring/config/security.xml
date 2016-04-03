@@ -44,6 +44,7 @@
 		
 	<security:intercept-url pattern="/search/list.do" access="permitAll" /> 
 	<security:intercept-url pattern="/search/searchSitters.do" access="permitAll" /> 
+	<security:intercept-url pattern="/search/display.do" access="permitAll" /> 
 	
 	<!-- Complaint -->
 	<security:intercept-url pattern="/complaint/customer/**" access="hasAnyRole('PETOWNER','PETSITTER','COMPANY', 'PETSHIPPER')" /> 

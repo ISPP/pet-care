@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.PetSitter;
+import domain.Review;
 import forms.SearchSittersForm;
 import services.PetSitterService;
 
@@ -49,24 +51,6 @@ public class SearchController extends AbstractController{
 	}
 	
 	// Searching -----------------------------------------------------------------
-	
-	/*@RequestMapping(value = "/searchSitters", method = RequestMethod.GET)
-	public ModelAndView search(){
-		ModelAndView result;
-											
-		result = new ModelAndView("search/searchSitters");
-														
-		return result;
-	}
-		
-	@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
-	public ModelAndView searchSitters(String startDate, String endDate, String address){
-		ModelAndView result;
-					
-		result = new ModelAndView("redirect:list.do?startDate="+startDate+"&endDate="+endDate+"&address="+address);
-		
-		return result;
-	}*/
 	
 	@RequestMapping(value = "/searchSitters", method = RequestMethod.GET)
 	public ModelAndView search(){
@@ -109,6 +93,29 @@ public class SearchController extends AbstractController{
 			}
 		}
 		
+		return result;
+	}
+	
+	// Displaying ------------------------------------------------------------
+	
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam int petSitterId) {
+		ModelAndView result;
+		PetSitter petSitter;
+		String cancelURI, requestURI;
+		Collection<Review> reviews;
+
+		petSitter = petSitterService.findOne(petSitterId);
+		reviews = petSitterService.findReviews(petSitterId);
+		cancelURI = "search/list.do";
+		requestURI = "search/display.do?petSitterId="+petSitterId;
+
+		result = new ModelAndView("search/display");
+		result.addObject("petSitter", petSitter);
+		result.addObject("reviews", reviews);
+		result.addObject("cancelURI", cancelURI);
+		result.addObject("requestURI", requestURI);
+
 		return result;
 	}
 }

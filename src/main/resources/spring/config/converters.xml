@@ -28,12 +28,17 @@
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
 		<bean class="converters.PetSitterToStringConverter" />
+		<bean class="converters.PetOwnerToStringConverter" />
+		<bean class="converters.ReviewToStringConverter" />
+		
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAdministratorConverter" />
 		<bean class="converters.StringToCommentConverter" />
 		<bean class="converters.StringToComplaintConverter" />
 		<bean class="converters.StringToCustomerConverter" />
 		<bean class="converters.StringToPetSitterConverter" />
+		<bean class="converters.StringToPetOwnerConverter" />
+		<bean class="converters.StringToReviewConverter" />
 		 
 	</util:list>
 	
