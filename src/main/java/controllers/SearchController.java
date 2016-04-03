@@ -66,36 +66,36 @@ public class SearchController extends AbstractController{
 														
 		return result;
 	}
-
-	@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
-	public ModelAndView searchSitters(@Valid SearchSittersForm searchSittersForm, BindingResult binding) {
-		ModelAndView result;
-		Collection<PetSitter> sitters;
-		
-		if (binding.hasErrors()) {
-			result = new ModelAndView("search/searchSitters");
-			result.addObject("requestURI", "search/searchSitters.do");
-			result.addObject("searchSittersForm", searchSittersForm);
-			result.addObject("message", null);
-		}else{
-			try{
-				sitters = petSitterService.searchSitters(searchSittersForm.getStartDate(), 
-						searchSittersForm.getEndDate(), searchSittersForm.getAddress());
-				
-				result = new ModelAndView("search/list");
-				result.addObject("sitters", sitters);
-				result.addObject("searchSittersForm", searchSittersForm);
-				result.addObject("requestURI", "search/searchSitters.do");
-			}catch(Throwable oops){
-				result = new ModelAndView("search/searchSitters");
-				result.addObject("requestURI", "search/searchSitters.do");
-				result.addObject("searchSittersForm", searchSittersForm);
-				result.addObject("message", "search.commit.error");
-			}
-		}
-		
-		return result;
-	}
+//
+//	@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
+//	public ModelAndView searchSitters(@Valid SearchSittersForm searchSittersForm, BindingResult binding) {
+//		ModelAndView result;
+//		Collection<PetSitter> sitters;
+//		
+//		if (binding.hasErrors()) {
+//			result = new ModelAndView("search/searchSitters");
+//			result.addObject("requestURI", "search/searchSitters.do");
+//			result.addObject("searchSittersForm", searchSittersForm);
+//			result.addObject("message", null);
+//		}else{
+//			try{
+//				sitters = petSitterService.searchSitters(searchSittersForm.getStartDate(), 
+//						searchSittersForm.getEndDate(), searchSittersForm.getAddress());
+//				
+//				result = new ModelAndView("search/list");
+//				result.addObject("sitters", sitters);
+//				result.addObject("searchSittersForm", searchSittersForm);
+//				result.addObject("requestURI", "search/searchSitters.do");
+//			}catch(Throwable oops){
+//				result = new ModelAndView("search/searchSitters");
+//				result.addObject("requestURI", "search/searchSitters.do");
+//				result.addObject("searchSittersForm", searchSittersForm);
+//				result.addObject("message", "search.commit.error");
+//			}
+//		}
+//		
+//		return result;
+//	}
 	
 	// Displaying ------------------------------------------------------------
 	
