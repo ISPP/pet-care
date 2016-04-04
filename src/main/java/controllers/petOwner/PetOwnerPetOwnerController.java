@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,10 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 import controllers.AbstractController;
 import domain.PetOwner;
 import domain.Review;
+import forms.PetOwnerForm;
 import services.PetOwnerService;
 
 @Controller
-@RequestMapping("/petOwner")
+@RequestMapping("/petOwner/petOwner")
 public class PetOwnerPetOwnerController extends AbstractController{
 	
 	// Constructors -----------------------------------------------------------
@@ -31,7 +33,7 @@ public class PetOwnerPetOwnerController extends AbstractController{
 
 	// Displaying ------------------------------------------------------------
 	
-	@RequestMapping(value = "/petOwner/displayOwn", method = RequestMethod.GET)
+	@RequestMapping(value = "/displayOwn", method = RequestMethod.GET)
 	public ModelAndView displayOwn() {
 		ModelAndView result;
 		PetOwner petOwner;
@@ -51,7 +53,7 @@ public class PetOwnerPetOwnerController extends AbstractController{
 		return result;
 	}
 	
-	@RequestMapping(value = "/petOwner/display", method = RequestMethod.GET)
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam int petOwnerId) {
 		ModelAndView result;
 		PetOwner petOwner;
@@ -70,6 +72,23 @@ public class PetOwnerPetOwnerController extends AbstractController{
 		result.addObject("requestURI", requestURI);
 		result.addObject("principal", principal);
 
+		return result;
+	}
+	
+	// Editing -----------------------------------------------------------------
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam int petOwnerId){
+	ModelAndView result;
+		PetOwner petOwner;
+		PetOwnerForm petOwnerForm;
+			
+		petOwner = petOwnerService.findOne(petOwnerId);
+		petOwnerForm = petOwnerService.fragment(petOwner);
+		
+		Assert.notNull(petOwner);
+		result = createEditModelAndView(petOwnerForm);
+				
 		return result;
 	}
 }
