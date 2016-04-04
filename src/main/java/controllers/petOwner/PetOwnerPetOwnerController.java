@@ -91,4 +91,25 @@ public class PetOwnerPetOwnerController extends AbstractController{
 				
 		return result;
 	}
+	
+	// Ancillary methods-------------------------------------------------------
+	
+	protected ModelAndView createEditModelAndView(PetOwnerForm petOwnerForm){
+		ModelAndView result;
+			
+		result = createEditModelAndView(petOwnerForm, null);
+		
+		return result;
+	}
+		
+		
+	protected ModelAndView createEditModelAndView(PetOwnerForm petOwnerForm, String message){
+		ModelAndView result;
+			
+		result = new ModelAndView("petOwner/edit");
+		result.addObject("petOwnerForm", petOwnerForm);
+		result.addObject("message", message);
+			
+		return result;
+	}
 }
