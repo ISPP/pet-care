@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 import domain.CreditCard;
 import domain.PetOwner;
 import domain.Review;
+import forms.PetOwnerForm;
 import repositories.PetOwnerRepository;
 import security.Authority;
 import security.LoginService;
@@ -95,6 +96,38 @@ public class PetOwnerService {
 
 		return result;
 	}
+	
+
+	public PetOwnerForm fragment(PetOwner petOwner) {
+		Assert.notNull(petOwner);
+		
+		PetOwnerForm result;
+
+		result = new PetOwnerForm();
+		
+		// CreditCard
+		result.setBrandName(petOwner.getCreditCard().getBrandName());
+		result.setCvvCode(petOwner.getCreditCard().getCVV());
+		result.setExpirationMonth(petOwner.getCreditCard().getExpirationMonth());
+		result.setExpirationYear(petOwner.getCreditCard().getExpirationYear());
+		result.setHolderName(petOwner.getCreditCard().getHolderName());
+		result.setNumber(petOwner.getCreditCard().getNumber());
+
+		// UserAccount
+		result.setUsername(petOwner.getUser().getUsername());
+		result.setPassword(petOwner.getUser().getPassword());
+		result.setPasswordConfirm(petOwner.getUser().getPassword());
+
+		result.setEmail(petOwner.getEmail());
+		result.setName(petOwner.getName());
+		result.setHomePage(petOwner.getHomePage());
+		result.setContactPhone(petOwner.getContactPhone());
+		result.setSurname(petOwner.getSurname());
+		result.setAddress(petOwner.getAddress());
+		result.setDescription(petOwner.getDescription());
+
+		return result;
+	}
 
 	public void delete(PetOwner petOwner) {
 		petOwnerRepository.delete(petOwner);
@@ -135,7 +168,4 @@ public class PetOwnerService {
 				
 		return result;
 	}
-
-
-
 }
