@@ -77,24 +77,21 @@
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
-						
-						
-						
-											
 				</ul>
 			</li>					
 			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li>
-						
-						
 						<li><a href="petSitter/invite.do"><spring:message code="master.page.petSitter.inviteText" /></a></li>
-						
-						
-											
 				</ul>
 			</li>		
+			<li><a class="fNiv"><spring:message code="master.page.petSitter.review"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="review/petSitter/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		

@@ -33,7 +33,7 @@
 
 		<value>/views/petOwner/messages</value>
 		<value>/views/petSitter/messages</value>
-
+		<value>/views/review/messages</value>
 	</util:list>
 
 </beans>
