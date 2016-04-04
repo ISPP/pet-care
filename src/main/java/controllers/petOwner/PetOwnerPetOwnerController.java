@@ -1,10 +1,14 @@
 package controllers.petOwner;
 
+import java.util.Calendar;
 import java.util.Collection;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +34,40 @@ public class PetOwnerPetOwnerController extends AbstractController{
 	
 	@Autowired
 	private PetOwnerService petOwnerService;
+	
+	// Saving ---------------------------------------------------------------
+	
+	@RequestMapping(value="/create", method = RequestMethod.POST, params="create")
+	public ModelAndView create(@Valid PetOwnerForm petOwnerForm, BindingResult binding){
+		ModelAndView result;
+		PetOwner petOwner;
+		
+		if(binding.hasErrors()){
+			result = createEditModelAndView(petOwnerForm);
+		}else{
+			try{
+				if(petOwnerForm.getExpirationYear()< Calendar.getInstance().get(Calendar.YEAR)){
+					result = createEditModelAndView(petOwnerForm);
+					result.addObject("oldYear", true);
+				}
+//				else if(!petOwnerForm.getAcceptTermsAndConditions()){
+//					result = createEditModelAndView(petOwnerForm);
+//					result.addObject("termsNotAccepted", true);
+//				}
+				else if(!petOwnerForm.getPassword().equals(petOwnerForm.getPasswordConfirm())){
+					result = createEditModelAndView(petOwnerForm,"petOwner.commit.password");
+				}else{
+					petOwner = petOwnerService.reconstruct(petOwnerForm);
+					petOwnerService.save(petOwner);
+					result = new ModelAndView("redirect:../petOwner/petOwner/edit.do?petOwnerId="+petOwner.getId());
+				}
+			}catch(Throwable oops){
+				result = createEditModelAndView(petOwnerForm,"petOwner.commit.error");
+			}
+		}
+
+		return result;		
+	}
 
 	// Displaying ------------------------------------------------------------
 	
@@ -87,7 +125,8 @@ public class PetOwnerPetOwnerController extends AbstractController{
 		petOwnerForm = petOwnerService.fragment(petOwner);
 		
 		Assert.notNull(petOwner);
-		result = createEditModelAndView(petOwnerForm);
+		result = new ModelAndView("petOwner/profile");
+		result.addObject("petOwnerForm", petOwnerForm);
 				
 		return result;
 	}

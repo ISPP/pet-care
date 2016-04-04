@@ -7,7 +7,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 		
-<h4><spring:message code="owner.owner"/></h4>
 <acme:out code="owner.fullName" path="${petOwner.name}"/>
 <br />
 <acme:out code="owner.description" path="${petOwner.description}"/>

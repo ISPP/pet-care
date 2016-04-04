@@ -50,6 +50,7 @@
 	<security:intercept-url pattern="/petOwner/petOwner/display.do" access="hasRole('PETOWNER')" />
 	<security:intercept-url pattern="/petOwner/petOwner/displayOwn.do" access="hasRole('PETOWNER')" />
 	<security:intercept-url pattern="/petOwner/petOwner/edit.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/petOwner/petOwner/create.do" access="hasRole('PETOWNER')" />
 	
 	<!-- Complaint -->
 	<security:intercept-url pattern="/complaint/customer/**" access="hasAnyRole('PETOWNER','PETSITTER','COMPANY', 'PETSHIPPER')" /> 
