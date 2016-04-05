@@ -81,6 +81,16 @@
 		<legend>
 			<spring:message code="petSitter.personalData" />
 		</legend>
+		<security:authorize access="hasRole('ADMIN')">
+			<jstl:if test="${row.blocked==true}">
+				<spring:message code="petSitter.bloked"/>
+			</jstl:if>
+			<jstl:if test="${row.blocked!=true}">
+				<a href="supplier/administrator/block.do?supplierId<jstl:out value="${row.id}"/>">
+				<spring:message code="petSitter.block"/>
+			</a>
+			</jstl:if>
+		</security:authorize>
 		<form:form modelAttribute="petSitter" id="row">
 			<acme:textbox code="petSitter.name" path="name" readonly="true" />
 			<acme:textbox code="petSitter.surname" path="surname" readonly="true" />
