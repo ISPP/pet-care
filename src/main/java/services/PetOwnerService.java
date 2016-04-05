@@ -111,6 +111,11 @@ public class PetOwnerService {
 		return result;
 	}
 	
+	public void saveEdited(PetOwner petOwner) {
+		Assert.notNull(petOwner);
+		
+		petOwnerRepository.saveAndFlush(petOwner);
+	}
 
 	public PetOwner reconstruct(PetOwnerForm petOwnerForm) {
 		Assert.isTrue(petOwnerForm.getPassword().equals(
@@ -123,7 +128,6 @@ public class PetOwnerService {
 		Authority authority;
 		BCryptPasswordEncoder encoder;
 		
-
 		result = create();
 		creditCard = new CreditCard();
 		userAccount = new UserAccount();
@@ -159,13 +163,51 @@ public class PetOwnerService {
 		result.setUser(userAccount);
 		result.setAddress(petOwnerForm.getAddress());
 		result.setDescription(petOwnerForm.getDescription());
+
+		return result;
+	}
+	
+	public PetOwner reconstructEdited(PetOwnerForm petOwnerForm) {
+		Assert.isTrue(petOwnerForm.getPassword().equals(
+				petOwnerForm.getPasswordConfirm()));
+		Assert.isTrue(petOwnerForm.getId() > 0);
+		
+		PetOwner result;
+		CreditCard creditCard;
+		UserAccount userAccount;
+		BCryptPasswordEncoder encoder;
+		
+		result = findOne(petOwnerForm.getId()); 
+		
+		creditCard = result.getCreditCard();
+		userAccount = result.getUser();
+
+		// CreditCard
+		creditCard.setBrandName(petOwnerForm.getBrandName());
+		creditCard.setCVV(petOwnerForm.getCvvCode());
+		creditCard.setExpirationMonth(petOwnerForm.getExpirationMonth());
+		creditCard.setExpirationYear(petOwnerForm.getExpirationYear());
+		creditCard.setHolderName(petOwnerForm.getHolderName());
+		creditCard.setNumber(petOwnerForm.getNumber());
+
+		// UserAccount
+		userAccount.setUsername(petOwnerForm.getUsername());
+		encoder = new BCryptPasswordEncoder();
+		userAccount.setPassword(
+				encoder.encode(petOwnerForm.getPassword()));
+
+		result.setCreditCard(creditCard);
+		result.setEmail(petOwnerForm.getEmail());
+		result.setName(petOwnerForm.getName());
+		result.setHomePage(petOwnerForm.getHomePage());
+		result.setContactPhone(petOwnerForm.getContactPhone());
+		result.setSurname(petOwnerForm.getSurname());
 		result.setAddress(petOwnerForm.getAddress());
 		result.setDescription(petOwnerForm.getDescription());
 		result.setUser(userAccount);
 
 		return result;
 	}
-	
 
 	public PetOwnerForm fragment(PetOwner petOwner) {
 		Assert.notNull(petOwner);
@@ -194,6 +236,7 @@ public class PetOwnerService {
 		result.setSurname(petOwner.getSurname());
 		result.setAddress(petOwner.getAddress());
 		result.setDescription(petOwner.getDescription());
+		result.setId(petOwner.getId());
 
 		return result;
 	}
