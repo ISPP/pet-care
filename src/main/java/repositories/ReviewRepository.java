@@ -12,6 +12,6 @@ import domain.Review;
 public interface ReviewRepository extends JpaRepository<Review, Integer>{
 	
 	@Query("select r from Review r where r.reviewed.id=?1")
-	Collection<Review> frindReviewByCustomerId(Integer id);
+	Collection<Review> findReviewByCustomerId(Integer id);
 
 }

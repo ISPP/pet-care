@@ -78,14 +78,15 @@
 				<ul>
 					<li class="arrow"></li>
 					<li>
-						
-						
 						<li><a href="petSitter/invite.do"><spring:message code="master.page.petSitter.inviteText" /></a></li>
-						
-						
-											
 				</ul>
 			</li>		
+			<li><a class="fNiv"><spring:message code="master.page.petSitter.review"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="review/petSitter/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		
