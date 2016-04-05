@@ -63,4 +63,7 @@ public class SupplierService {
 		return result;
 	}
 
+	public void blockSupplier(Supplier supplier){
+		supplier.setBlocked(true);
+	}
 }
