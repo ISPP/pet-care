@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -17,6 +18,12 @@ import repositories.PetOwnerRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Booking;
+import domain.Comment;
+import domain.Complaint;
+import domain.Message;
+import domain.MessageFolder;
+import domain.Pet;
 
 @Service
 @Transactional
@@ -28,17 +35,79 @@ public class PetOwnerService {
 	@Autowired
 	private PetOwnerRepository petOwnerRepository;
 	
-	
+	@Autowired
+	private MessageFolderService messageFolderService;
 
+	
 	public PetOwner create() {
 		PetOwner result;
+		
+		Collection<MessageFolder> messageFolders;
+		Collection<Pet> pets;
+		Collection<Review> reviews;
+		Collection<Booking> bookings;
+		Collection<Comment> comments;
+		Collection<Complaint> complaints;
+		
 		result = new PetOwner();
+		
+		messageFolders = new ArrayList<MessageFolder>();
+		pets = new ArrayList<Pet>();
+		bookings = new ArrayList<Booking>();
+		comments= new ArrayList<Comment>();
+		complaints = new ArrayList<Complaint>();
+		reviews = new ArrayList<Review>();
+		
+		//We set all the initial values to the petOwner
+		result.setMessageFolders(messageFolders);
+		result.setPets(pets);
+		result.setComments(comments);
+		result.setComplaints(complaints);
+		result.setBookings(bookings);
+		result.setReviews(reviews);
+		
 		return result;
 	}
 
 	public PetOwner save(PetOwner petOwner) {
+		Assert.notNull(petOwner);
 		PetOwner result;
+		MessageFolder inbox;
+		MessageFolder outbox;
+		MessageFolder trash;
+		
+		inbox = messageFolderService.create();
+		outbox = messageFolderService.create();
+		trash= messageFolderService.create();
+		
+		inbox.setMessages(new ArrayList<Message>());
+		inbox.setName("Inbox");
+		inbox.setOwner(petOwner);
+		
+		outbox.setMessages(new ArrayList<Message>());
+		outbox.setName("Outbox");
+		outbox.setOwner(petOwner);
+		
+		trash.setMessages(new ArrayList<Message>());
+		trash.setName("Trashbox");
+		trash.setOwner(petOwner);
+		
+		petOwner.getMessageFolders().add(inbox);
+		petOwner.getMessageFolders().add(outbox);
+		petOwner.getMessageFolders().add(trash);
+		
 		result = petOwnerRepository.saveAndFlush(petOwner);
+		
+		//We set the new petOwner to the folders
+		inbox.setOwner(result);
+		outbox.setOwner(result);
+		trash.setOwner(result);
+		
+		//We have to save the folders after the petOwner
+		messageFolderService.save(inbox);
+		messageFolderService.save(outbox);
+		messageFolderService.save(trash);
+		
 		return result;
 	}
 	

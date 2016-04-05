@@ -34,7 +34,8 @@ public class CommentService {
 		Comment result;
 		Actor actor;
 		actor = actorService.findActorByUserId();
-		Assert.notNull(actor);
+		Assert.notNull(actor, "No hay ningun actor conectado");
+		Assert.isTrue(complaint.getAdministrator().getId()==actor.getId()||complaint.getCustomer().getId()==actor.getId(), "Intentando acceder a un sitio sin permisos");
 		result = new Comment();
 		result.setCreationMoment(new Date(System.currentTimeMillis()-1000));
 		result.setActor(actor);
@@ -83,9 +84,10 @@ public class CommentService {
 		Collection<Comment> result;
 		Actor actor;
 		actor = actorService.findActorByUserId();
+		Assert.notNull(actor, "No hay ningun actor conectado");
 		Complaint complaint;
 		complaint = complaintService.findOne(id);
-		
+		Assert.isTrue(complaint.getAdministrator().getId()==actor.getId()||complaint.getCustomer().getId()==actor.getId(), "Intentando acceder a un sitio sin permisos");
 		
 		result = commentRepository.findCommentByComplaintId(id);
 		
@@ -94,6 +96,10 @@ public class CommentService {
 		
 		return result;
 		
+	}
+	
+	public void flush(){
+		commentRepository.flush();
 	}
 
 

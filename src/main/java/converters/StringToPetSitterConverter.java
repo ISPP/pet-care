@@ -30,7 +30,6 @@ public class StringToPetSitterConverter implements Converter<String, PetSitter>{
 			throw new IllegalArgumentException(oops);
 		}
 		return result;
-		
 	}
 
 }

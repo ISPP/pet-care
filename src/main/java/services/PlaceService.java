@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import repositories.PlaceRepository;
 
-import domain.PetSitter;
 import domain.Place;
 
 

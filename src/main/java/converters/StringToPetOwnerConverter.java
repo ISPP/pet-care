@@ -30,7 +30,5 @@ public class StringToPetOwnerConverter implements Converter<String, PetOwner>{
 			throw new IllegalArgumentException(oops);
 		}
 		return result;
-		
 	}
-
 }

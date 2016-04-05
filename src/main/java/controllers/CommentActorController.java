@@ -68,6 +68,10 @@ public class CommentActorController extends AbstractController{
 				commentService.save(comment);
 				
 				result = new ModelAndView("redirect:list.do?id="+comment.getComplaint().getId());
+			}catch (IllegalStateException e) {
+				// end date before start date
+				result = createEditModelAndView(comment, "commit.comment.errorCreate");
+				
 			} catch (Throwable oops) {
 
 				result = createEditModelAndView(comment, "commit.comment.error");

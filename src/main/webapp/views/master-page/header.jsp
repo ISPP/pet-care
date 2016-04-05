@@ -26,6 +26,8 @@
 					<li class="arrow"></li>
 					<li>
 						<li><a href="complaint/administrator/listComplaintAdminNotSolved.do"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
+						<li><a href="complaint/administrator/listWithoutAdmin.do"><spring:message code="master.page.complaint.listComplaintWithoutAdmin" /></a></li>	
+						<li><a href="complaint/administrator/listToSolve.do"><spring:message code="master.page.complaint.listComplaintToSolve" /></a></li>				
 				</ul>
 			</li>
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
@@ -72,6 +74,18 @@
 				</ul>
 			</li>					
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li>
+						
+						
+						<li><a href="petSitter/invite.do"><spring:message code="master.page.petSitter.inviteText" /></a></li>
+						
+						
+											
+				</ul>
+			</li>		
 		</security:authorize>
 		
 		
@@ -94,6 +108,13 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a></li>
+				
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

@@ -48,6 +48,10 @@ public class CustomerService {
 			return customerRepository.findOne(id);
 		}
 
+		public Customer findCustomerByInvitationCode(String invitationCode) {
+			
+			return customerRepository.findCustomerByInvitationCode(invitationCode);
+		}
 		public Collection<Customer> findAll() {
 			return customerRepository.findAll();
 		}
