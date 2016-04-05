@@ -201,8 +201,8 @@ public class BookingService {
 		result = new Booking();
 		result.setCancelled(bookingForm.isCancelled());
 		result.setNight(bookingForm.isNight());
-		result.setStartMoment(bookingForm.getArrivalMoment());
-		result.setEndMoment(bookingForm.getDepartureMoment());
+		result.setStartMoment(bookingForm.getStartMoment());
+		result.setEndMoment(bookingForm.getendMoment());
 		result.setSupplier(bookingForm.getSupplier());
 
 		return result;

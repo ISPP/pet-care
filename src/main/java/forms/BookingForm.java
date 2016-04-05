@@ -24,7 +24,7 @@ import domain.Supplier;
 public class BookingForm {
 
 	// Attributes----------------------------------------------
-		private Date creationMoment, arrivalMoment, departureMoment;
+		private Date creationMoment, startMoment, endMoment;
 		private String code, status;
 		
 		private boolean night;
@@ -36,12 +36,12 @@ public class BookingForm {
 		@NotNull
 		@Temporal(TemporalType.TIMESTAMP)
 		@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-		public Date getArrivalMoment() {
-			return arrivalMoment;
+		public Date getStartMoment() {
+			return startMoment;
 		}
 
-		public void setArrivalMoment(Date arrivalMoment) {
-			this.arrivalMoment = arrivalMoment;
+		public void setStartMoment(Date startMoment) {
+			this.startMoment = startMoment;
 		}
 		
 		
@@ -52,12 +52,12 @@ public class BookingForm {
 		@NotNull
 		@Temporal(TemporalType.TIMESTAMP)
 		@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-		public Date getDepartureMoment() {
-			return departureMoment;
+		public Date getendMoment() {
+			return endMoment;
 		}
 
-		public void setDepartureMoment(Date departureMoment) {
-			this.departureMoment = departureMoment;
+		public void setendMoment(Date endMoment) {
+			this.endMoment = endMoment;
 		}
 		
 

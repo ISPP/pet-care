@@ -16,39 +16,14 @@
       
 <tiles-definitions>
 
-<definition name="complaint/edit" extends="master.page">	
-		<put-attribute name="title" value="Crear una queja" />
-		<put-attribute name="body" value="/views/complaint/edit.jsp" />
-	</definition>
-	<definition name="complaint/solve" extends="master.page">	
-		<put-attribute name="title" value="Reolver queja" />
-		<put-attribute name="body" value="/views/complaint/editAdmin.jsp" />
+<definition name="booking/edit" extends="master.page">	
+		<put-attribute name="title" value="Registrar una reserva" />
+		<put-attribute name="body" value="/views/booking/edit.jsp" />
 	</definition>
 	
-	<definition name="complaint/listComplaintAdminNotSolved" extends="master.page">	
-		<put-attribute name="title" value="Quejas no resueltas" />
-		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
-	</definition>
-	
-	
-	<definition name="complaint/listComplaintToAssign" extends="master.page">	
-		<put-attribute name="title" value="Quejas por asignar" />
-		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
-	</definition>
-	
-	<definition name="complaint/listComplaintAssigned" extends="master.page">	
-		<put-attribute name="title" value="Quejas asignadas a usted" />
-		<put-attribute name="body" value="/views/complaint/listComplaintAdminNotSolved.jsp" />
-	</definition>
-	
-	<definition name="complaint/listComplaintCustomerId" extends="master.page">	
-		<put-attribute name="title" value="Su lista de reclamaciones" />
-		<put-attribute name="body" value="/views/complaint/listComplaintCustomerId.jsp" />
-	</definition>
-	
-	<definition name="complaint/listComplaintCustomerIdNotSolved" extends="master.page">	
-		<put-attribute name="title" value="Su lista de reclamaciones no resueltas" />
-		<put-attribute name="body" value="/views/complaint/listComplaintCustomerIdNotSolved.jsp" />
+	<definition name="booking/list" extends="master.page">	
+		<put-attribute name="title" value="Listar reservas realizadas" />
+		<put-attribute name="body" value="/views/booking/listPetOwner.jsp" />
 	</definition>
 	
 	
