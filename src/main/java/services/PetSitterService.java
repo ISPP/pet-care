@@ -239,5 +239,10 @@ PetSitter result;
 		
 		return result;
 	}
+	public void block(PetSitter petSitter) {
+		Assert.notNull(petSitter);
+		petSitter.setBlocked(true);
+		save(petSitter);
+	}
 
 }
