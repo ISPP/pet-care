@@ -1895,8 +1895,8 @@
 	
 	<bean id="booking1" class="domain.Booking">
 	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="departureMoment" value="07/02/2015"></property>
-	<property name="arrivalMoment" value="08/02/2015"></property>
+	<property name="endMoment" value="07/02/2015"></property>
+	<property name="startMoment" value="08/02/2015"></property>
 	<property name="code" value="bookin-booking1"></property>
 	<property name="status" value="ACCEPTED"></property>
 	<property name="night" value="false"></property>
@@ -1909,8 +1909,8 @@
 	
 	<bean id="booking2" class="domain.Booking">
 	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="departureMoment" value="07/02/2015"></property>
-	<property name="arrivalMoment" value="08/02/2015"></property>
+	<property name="endMoment" value="07/02/2015"></property>
+	<property name="startMoment" value="08/02/2015"></property>
 	<property name="code" value="bookin-booking1"></property>
 	<property name="status" value="ACCEPTED"></property>
 	<property name="night" value="false"></property>
@@ -1922,8 +1922,8 @@
 	
 	<bean id="booking3" class="domain.Booking">
 	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="departureMoment" value="07/02/2015"></property>
-	<property name="arrivalMoment" value="08/02/2015"></property>
+	<property name="endMoment" value="07/02/2015"></property>
+	<property name="startMoment" value="08/02/2015"></property>
 	<property name="code" value="bookin-booking3"></property>
 	<property name="status" value="ACCEPTED"></property>
 	<property name="night" value="false"></property>
@@ -1935,8 +1935,8 @@
 	
 	<bean id="booking4" class="domain.Booking">
 	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="departureMoment" value="07/02/2015"></property>
-	<property name="arrivalMoment" value="20/02/2015"></property>
+	<property name="endMoment" value="07/02/2015"></property>
+	<property name="startMoment" value="20/02/2015"></property>
 	<property name="code" value="bookin-booking4"></property>
 	<property name="status" value="REJECTED"></property>
 	<property name="night" value="false"></property>
@@ -1948,8 +1948,8 @@
 	
 	<bean id="booking5" class="domain.Booking">
 	<property name="creationMoment" value="06/02/201"></property>
-	<property name="departureMoment" value="07/03/2015"></property>
-	<property name="arrivalMoment" value="07/03/2015"></property>
+	<property name="endMoment" value="07/03/2015"></property>
+	<property name="startMoment" value="07/03/2015"></property>
 	<property name="code" value="bookin-booking5"></property>
 	<property name="status" value="REJECTED"></property>
 	<property name="night" value="TRUE"></property>

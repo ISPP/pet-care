@@ -213,7 +213,6 @@ public class PetOwnerService {
 		result = petOwnerRepository.findOne(id);
 		return result;
 	}
-
 	public PetOwner findOneByPrincipal() {
 		PetOwner result;
 		

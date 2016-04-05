@@ -30,7 +30,7 @@ public class Booking extends DomainEntity {
 	}
 
 	// Attributes----------------------------------------------
-	private Date creationMoment, arrivalMoment, departureMoment;//Arrival -> Start / Departure -> End
+	private Date creationMoment, startMoment, endMoment;//Arrival -> Start / Departure -> End
 	private String code, status;
 	
 	private boolean night;
@@ -42,12 +42,12 @@ public class Booking extends DomainEntity {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	public Date getArrivalMoment() {
-		return arrivalMoment;
+	public Date getStartMoment() {
+		return startMoment;
 	}
 
-	public void setArrivalMoment(Date arrivalMoment) {
-		this.arrivalMoment = arrivalMoment;
+	public void setStartMoment(Date startMoment) {
+		this.startMoment = startMoment;
 	}
 	
 	
@@ -69,12 +69,12 @@ public class Booking extends DomainEntity {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	public Date getDepartureMoment() {
-		return departureMoment;
+	public Date getEndMoment() {
+		return endMoment;
 	}
 
-	public void setDepartureMoment(Date departureMoment) {
-		this.departureMoment = departureMoment;
+	public void setEndMoment(Date endMoment) {
+		this.endMoment = endMoment;
 	}
 	
 
