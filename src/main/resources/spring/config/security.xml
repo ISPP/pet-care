@@ -85,6 +85,9 @@
 		<!-- Supplier -->
 		<security:intercept-url pattern="/supplier/administrator/**"
 			access="hasRole('ADMIN')" />
+			
+			<!-- Administrator Dashboard-->
+			<security:intercept-url pattern="/administrator/dashboard.do" access="hasRole('ADMIN')"/>
 
 		<!-- Review -->
 		<security:intercept-url pattern="/review/petSitter/**"
