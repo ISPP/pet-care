@@ -61,15 +61,19 @@
 		</display:column>
 	</jstl:if> 
 	
+	
+
 	<spring:message code="cpmlaint_*comment"
 		var="commentColumn"></spring:message>
 		
 		<display:column title="${commentColumn}">
 		
 			<jstl:if test="${row.comments.size()==0}">
+			<jstl:if test="${not empty row.administrator}">
 				<a href="comment/actor/edit.do?id=${row.id}"> <spring:message
 						code="cpmlaint_*commentCreate" />
 				</a>
+			</jstl:if>
 			</jstl:if>
 			<jstl:if test="${row.comments.size()>0}">
 				<a href="comment/actor/list.do?id=${row.id}"> <spring:message
@@ -80,6 +84,6 @@
 			
 			
 		</display:column>
-
+		
 
 </display:table>

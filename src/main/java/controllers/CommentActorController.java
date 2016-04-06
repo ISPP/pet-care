@@ -32,8 +32,8 @@ public class CommentActorController extends AbstractController{
 	public ModelAndView listAll(@RequestParam int id) {
 		ModelAndView result;			
 		result = new ModelAndView("comment/list");	
-		result.addObject("comments", commentService.findCommentByActorId(id));		
-		result.addObject("requestURI","/comment/actor/list.do");
+		result.addObject("comments", commentService.findCommentByActorId(id));
+		result.addObject("requestURI","/comment/actor/list.do");		
 		return result;
 	}
 	
