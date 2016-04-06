@@ -15,8 +15,15 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
       
 <tiles-definitions>
-	<definition name="supplier/list" extends="master.page">	
-		<!-- <put-attribute name="title" value="Lista de " /> -->
-		<put-attribute name="body" value="/views/supplier/list.jsp" />
+
+	<definition name="administrator/display" extends="master.page">	
+		<put-attribute name="title" value="Mi perfil" />
+		<put-attribute name="body" value="/views/administrator/display.jsp" />
 	</definition>
+	
+	<definition name="administrator/profile" extends="master.page">	
+		<put-attribute name="title" value="Editar perfil" />
+		<put-attribute name="body" value="/views/administrator/profile.jsp" />
+	</definition>
+		
 </tiles-definitions>

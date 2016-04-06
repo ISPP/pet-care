@@ -1,8 +1,6 @@
 package controllers.petOwner;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -15,18 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
-import services.ComplaintService;
 import services.PetOwnerService;
 import services.PetSitterService;
-import services.ReviewService;
 import controllers.AbstractController;
 import domain.Booking;
-import domain.Complaint;
 import domain.PetOwner;
 import domain.PetSitter;
-import domain.Review;
 import forms.BookingForm;
-import forms.ComplaintForm;
 
 @Controller
 @RequestMapping("/booking/petOwner")

@@ -3,6 +3,7 @@ package services;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -11,6 +12,7 @@ import repositories.AdministratorRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Administrator;
+import forms.AdministratorForm;
 
 @Service
 @Transactional
@@ -50,6 +52,59 @@ public class AdministratorService {
 		result = administratorRepository.findOne(id);
 		return result;
 	}
+	
+	public void saveEdited(Administrator administrator) {
+		Assert.notNull(administrator);
+		
+		administratorRepository.saveAndFlush(administrator);
+	}
+	
+	public Administrator reconstructEdited(AdministratorForm administratorForm) {
+		Assert.isTrue(administratorForm.getPassword().equals(
+				administratorForm.getPasswordConfirm()));
+		Assert.isTrue(administratorForm.getId() > 0);
+		
+		Administrator result;
+		UserAccount userAccount;
+		BCryptPasswordEncoder encoder;
+		
+		result = findOne(administratorForm.getId()); 
+		
+		userAccount = result.getUser();
+
+		// UserAccount
+		userAccount.setUsername(administratorForm.getUsername());
+		encoder = new BCryptPasswordEncoder();
+		userAccount.setPassword(
+				encoder.encode(administratorForm.getPassword()));
+
+		result.setEmail(administratorForm.getEmail());
+		result.setName(administratorForm.getName());
+		result.setSurname(administratorForm.getSurname());
+		result.setUser(userAccount);
+
+		return result;
+	}
+	
+	public AdministratorForm fragment(Administrator administrator) {
+		Assert.notNull(administrator);
+		
+		AdministratorForm result;
+
+		result = new AdministratorForm();
+		
+		// UserAccount
+		result.setUsername(administrator.getUser().getUsername());
+		result.setPassword(administrator.getUser().getPassword());
+		result.setPasswordConfirm(administrator.getUser().getPassword());
+
+		result.setEmail(administrator.getEmail());
+		result.setName(administrator.getName());
+		result.setSurname(administrator.getSurname());
+		result.setId(administrator.getId());
+
+		return result;
+	}
 
 	// --------------------------
 	public Administrator findAdminByUsername(String username) {
@@ -74,5 +129,20 @@ public class AdministratorService {
 		administratorRepository.flush();
 	}
 
+	public Administrator findOneByPrincipal() {
+		Administrator result;
+		
+		result = administratorRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
+		
+		return result;
+	}
+
+	public boolean isPrincipal(int administratorId) {
+		boolean result;
+		
+		result = findOne(administratorId).getUser().equals(LoginService.getPrincipal());
+				
+		return result;
+	}
 
 }

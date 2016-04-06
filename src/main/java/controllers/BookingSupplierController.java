@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
-
 import domain.Booking;
-import domain.PetOwner;
 
 
 @Controller

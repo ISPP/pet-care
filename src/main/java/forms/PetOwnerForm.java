@@ -15,6 +15,7 @@ import org.hibernate.validator.constraints.URL;
 
 public class PetOwnerForm {
 
+	private int id;
 	// Actor
 	private String name;
 	private String surname;
@@ -47,6 +48,14 @@ public class PetOwnerForm {
 //	public void setAcceptTermsAndConditions(boolean acceptTermsAndConditions) {
 //		this.acceptTermsAndConditions = acceptTermsAndConditions;
 //	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -186,7 +195,7 @@ public class PetOwnerForm {
 		this.username = username;
 	}
 
-	@Size(min = 5)
+	@Size(min = 5, max = 32)
 	public String getPassword() {
 		return password;
 	}

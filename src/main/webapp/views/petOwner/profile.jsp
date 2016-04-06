@@ -20,6 +20,8 @@
 <jstl:set var="action" value="petOwner/petOwner/create.do"/>
 <form:form action="${action}" modelAttribute="petOwnerForm">
 
+	<form:hidden path="id" />
+
 	<!-- Actor -->
 	<acme:textbox code="petOwner.name" path="name"/>
 	<acme:textbox code="petOwner.surname" path="surname"/>
@@ -27,8 +29,8 @@
 	
 	<!-- User Account -->
 	<acme:textbox code="petOwner.username" path="username"/>
-	<acme:password code="petOwner.password" path="password"/>
-	<acme:password code="petOwner.passwordConfirm" path="passwordConfirm"/>
+	<acme:password code="petOwner.newPassword" path="password"/>
+	<acme:password code="petOwner.newPasswordConfirm" path="passwordConfirm"/>
 	
 	<!-- Customer -->
 	<acme:textbox code="petOwner.address" path="address"/>
@@ -69,37 +71,5 @@
 		<br/>
 		<spring:message code="petOwner.oldYear"/>
 	</jstl:if>
-		
+	
 </form:form>
-
-
-<jstl:if test="${display==true}">
-	<fieldset>
-		<legend>
-			<spring:message code="petOwner.personalData" />
-		</legend>
-		<form:form modelAttribute="petOwner" id="row">
-			<acme:textbox code="petOwner.name" path="name" readonly="true" />
-			<acme:textbox code="petOwner.surname" path="surname" readonly="true" />
-			<acme:textbox code="petOwner.email" path="email" readonly="true" />
-			<acme:textbox code="petOwner.contactPhone" path="contactPhone" readonly="true" />
-			<acme:textbox code="petOwner.homePage" path="homePage" readonly="true" />
-			<acme:textbox code="petOwner.username" path="userAccount.username" readonly="true" />
-			<acme:textarea code="petOwner.description" path="description"/>
-			<acme:textbox code="petOwner.creditCard.holderName"
-				path="creditCard.holderName" readonly="true" />
-			<acme:textbox code="petOwner.creditCard.brandName"
-				path="creditCard.brandName" readonly="true" />
-			<acme:textbox code="petOwner.creditCard.expirationMonth"
-				path="creditCard.expirationMonth" readonly="true" />
-			<acme:textbox code="petOwner.creditCard.expirationYear"
-				path="creditCard.expirationYear" readonly="true" />
-			<acme:textbox code="petOwner.creditCard.cvvCode"
-				path="creditCard.cvvCode" readonly="true" />
-			<acme:textbox code="petOwner.creditCard.number"
-				path="creditCard.number" readonly="true" />
-				
-			<acme:cancel url="welcome/index.do" code="petOwner.button.cancel"/>
-		</form:form>
-	</fieldset>
-</jstl:if>
