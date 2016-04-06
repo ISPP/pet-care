@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
+import services.ComplaintService;
 import services.PetOwnerService;
 import services.PetSitterService;
 import services.ReviewService;
@@ -51,6 +52,32 @@ public class BookingPetOwnerController extends AbstractController{
 		result.addObject("bookings",bookings);
 		result.addObject("requestURI", "booking/petOwner/list.do");
 		
+		return result;
+	}
+	
+	
+	
+	@RequestMapping(value="/listBookingCanCancelPetOwner",method=RequestMethod.GET)
+	public ModelAndView listBookingCanCancelPetOwner(){
+		ModelAndView result;
+		Collection<Booking> bookings;
+		
+		result = new ModelAndView("booking/listBookingCanCancelPetOwner");
+		
+		bookings=bookingService.findBookingCanCancelByPetOwnerId();
+		
+		result.addObject("bookings",bookings);
+		result.addObject("requestURI", "booking/petOwner/listBookingCanCancelPetOwner.do");
+		
+		return result;
+	}
+	
+	
+	@RequestMapping(value="/cancel",method=RequestMethod.GET)
+	public ModelAndView cancel(@RequestParam("id") int id){
+		
+		bookingService.cancelBooking(id);
+		ModelAndView result;result = new ModelAndView("welcome/index");
 		return result;
 	}
 	

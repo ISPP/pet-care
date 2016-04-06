@@ -23,17 +23,6 @@ public class BookingPetSitterController extends AbstractController{
 	@Autowired
 	private BookingService bookingService;
 	
-	@RequestMapping(value="/listBookingAccepted",method=RequestMethod.GET)
-	public ModelAndView listBookingAccepted(){
-		ModelAndView result;
-		Collection<Booking> bookings;
-		result = new ModelAndView("booking/listBookingAccepted");
-		bookings = bookingService.findBokkingAcceptedByPetSitterId();
-		
-		result.addObject("bookings",bookings);
-		result.addObject("requestURI", "booking/petSitter/listBookingAccepted.do");
-		
-		return result;
-	}
+	
 
 }

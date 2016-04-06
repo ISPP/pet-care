@@ -18,6 +18,7 @@ import org.springframework.util.Assert;
 import domain.Booking;
 import domain.PetOwner;
 import domain.PetSitter;
+import domain.Supplier;
 import forms.BookingForm;
 import repositories.BookingRepository;
 
@@ -33,6 +34,9 @@ public class BookingService {
 
 	@Autowired
 	private BookingRepository bookingRepository;
+	
+	@Autowired
+	private SupplierService supplierService;
 	
 
 	// Supporting services -----------------------------------------------------
@@ -260,13 +264,11 @@ public class BookingService {
     }
 	
 	
-	public Collection<Booking> findBokkingAcceptedByPetSitterId(){
+	public Collection<Booking> findBokkingAcceptedBySupplierId(){
 		Collection<Booking> res;
-		PetSitter petSitter;
-		
-		petSitter = petSitterService.findPetSitterByUsername();
-		Assert.notNull(petSitter,"No hay un petSitter logeado");
-		res = bookingRepository.findBokkingAcceptedByPetSitterId(petSitter.getId());
+		Supplier supplier =  supplierService.getLoggedSupplier();
+		Assert.notNull(supplier, "no hay un supplier logueado");
+		res = bookingRepository.findBokkingAcceptedBySupplierId(supplier.getId());
 			
 		return res;
 	}
@@ -274,87 +276,54 @@ public class BookingService {
 	
 	
 	
-	/*
-	 * public Booking cancelBooking(Booking booking){ Assert.notNull(booking);
-	 * Booking result; checkIsOwner(booking); Date date;
-	 * 
-	 * date = new Date(System.currentTimeMillis() - 1);
-	 * date.setDate(date.getDate()+1); booking.setCancelled(true);
-	 * Assert.isTrue(booking.getArrival().after(date)); result =
-	 * bookingRepository.save(booking);
-	 * 
-	 * return result; }
-	 */
+	public Collection<Booking> findBookingCanCancelByPetOwnerId(){
+		Collection<Booking> res;
+		PetOwner petOwner = petOwnerService.findOneByPrincipal();
+		Assert.notNull(petOwner, "No hay un usuario logueado");
+		res = bookingRepository.findBookingCanCancelByPetOwnerId(petOwner.getId());
+		
+		return res;
+	}
 
-	/*
-	 * public List<Booking> findAllByOwner(){ List<Booking> result; int id;
-	 * 
-	 * id = LoginService.getPrincipal().getId(); checkIsPilgrim();
-	 * 
-	 * result = bookingRepository.findAllByPilgrim(id);
-	 * 
-	 * return result; }
-	 * 
-	 * public Collection<Booking> findAllByInnkeeper(){ Collection<Booking>
-	 * result; int id;
-	 * 
-	 * id = LoginService.getPrincipal().getId(); result =
-	 * bookingRepository.findAllByInnkeeper(id);
-	 * 
-	 * return result; }
-	 * 
-	 * public Integer findBedsByLodgeDay(Date arrival, int nights, Booking
-	 * booking){ Integer result, aux; int lodgeId = booking.getLodge().getId();
-	 * aux = 0; result = lodgeService.findOne(lodgeId).getBeds(); Date auxDate;
-	 * 
-	 * auxDate = arrival; for(int i = 1; i <= nights; i++){ try{ int asd =
-	 * bookingRepository.findBedsByLodgeDay(lodgeId, auxDate, booking.getId());
-	 * if(aux < asd){ aux = asd; } }catch(NullPointerException oops){} auxDate =
-	 * new Date(arrival.getYear(), arrival.getMonth(), arrival.getDate() + i); }
-	 * 
-	 * result = result - aux;
-	 * 
-	 * return result; }
-	 * 
-	 * public void checkBookingIsCorrect(Booking booking, int beds){
-	 * Assert.notNull(booking); Assert.isTrue(booking.getBeds() <= beds); }
-	 * 
-	 * public void checkIsOwner(Booking booking){ UserAccount principal;
-	 * UserAccount owner;
-	 * 
-	 * principal = LoginService.getPrincipal(); owner =
-	 * booking.getPilgrim().getUserAccount();
-	 * 
-	 * Assert.isTrue(principal.equals(owner)); }
-	 * 
-	 * public void checkIsPilgrim(){ Authority pilgrim;
-	 * 
-	 * pilgrim = new Authority(); pilgrim.setAuthority(Authority.PILGRIM);
-	 * Assert
-	 * .isTrue(LoginService.getPrincipal().getAuthorities().contains(pilgrim));
-	 * }
-	 * 
-	 * 
-	 * public Collection<Booking> bookingsHistory(){ Collection<Booking> result;
-	 * int id;
-	 * 
-	 * id = LoginService.getPrincipal().getId(); result =
-	 * bookingRepository.bookingsHistory(id); return result; }
-	 * 
-	 * public Collection<Booking> findWithoutInvoiceByInnkeeper() {
-	 * Collection<Booking> result; int id;
-	 * 
-	 * id = LoginService.getPrincipal().getId(); result =
-	 * bookingRepository.findWithoutInvoiceByInnkeeper(id);
-	 * 
-	 * return result; }
-	 * 
-	 * public Integer findBedsByInnkeeperDay(int innkeeperId, Date date){
-	 * Assert.notNull(date); Integer result;
-	 * 
-	 * result = bookingRepository.findBedsByInnkeeperDay(innkeeperId, date);
-	 * if(result == null){ result = 0; } return result; }
-	 */
+	public void cancelBooking(Integer id) {
+		PetOwner petOwner = petOwnerService.findOneByPrincipal();
+		Assert.notNull(petOwner, "No hay un pet owner conectado");
+		Booking booking = bookingRepository.findOne(id);
+		Assert.isTrue(booking.getPetOwner().getId()==petOwner.getId(), "accediendo a un sitio sin permisos");
+		booking.setCancelled(true);
+		bookingRepository.save(booking);
+		
+	}
+	
+	
+	public Collection<Booking> findBookingCanAceptRejectedByCustomerId(){
+		Collection<Booking> res;
+		Supplier supplier =  supplierService.getLoggedSupplier();
+		Assert.notNull(supplier, "no hay un supplier logueado");
+		res = bookingRepository.findBookingCanAceptRejectedByCustomerId(supplier.getId());		
+		return res;
+	}
+	
+	public void aceptedBooking(Integer id){
+		Supplier supplier =  supplierService.getLoggedSupplier();
+		Assert.notNull(supplier, "no hay un supplier logueado");
+		Booking booking = bookingRepository.findOne(id);
+		Assert.isTrue(booking.getSupplier().getId()==supplier.getId(), "accediendo a un sitio sin permisos");
+		booking.setStatus("ACCEPTED");
+		bookingRepository.save(booking);
+	
+	}
+	
+	
+	public void rejectedBooking(Integer id){
+		Supplier supplier =  supplierService.getLoggedSupplier();
+		Assert.notNull(supplier, "no hay un supplier logueado");
+		Booking booking = bookingRepository.findOne(id);
+		Assert.isTrue(booking.getSupplier().getId()==supplier.getId(), "accediendo a un sitio sin permisos");
+		booking.setStatus("REJECTED");
+		bookingRepository.save(booking);
+	
+	}
 	
 	
 	

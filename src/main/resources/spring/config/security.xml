@@ -70,6 +70,9 @@
 		<!-- Review -->
 		<security:intercept-url pattern="/booking/petSitter/**"
 			access="hasRole('PETSITTER')" />
+			
+			<security:intercept-url pattern="/booking/supplier/**"
+			access="hasAnyRole('PETSITTER','PETSHIPPER', 'COMPANY')" />
 					
 
 
