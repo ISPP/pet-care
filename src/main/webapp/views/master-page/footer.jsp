@@ -12,8 +12,11 @@
 
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<jsp:useBean id="date" class="java.util.Date" />
 
-<hr />
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#petCare" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+</footer>
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Sample Co., Inc.</b>

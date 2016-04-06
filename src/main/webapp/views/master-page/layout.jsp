@@ -25,17 +25,43 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <link rel="shortcut icon" href="favicon.ico"/> 
-
-<script type="text/javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" src="scripts/jquery-ui.js"></script>
-<script type="text/javascript" src="scripts/jmenu.js"></script>
-
-<link rel="stylesheet" href="styles/common.css" type="text/css">
-<link rel="stylesheet" href="styles/jmenu.css" media="screen"
-	type="text/css" />
-<link rel="stylesheet" href="styles/displaytag.css" type="text/css">
-
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="styles/common.css" rel="stylesheet" type="text/css">
+  
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
+
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Prevent default anchor click behavior
+    event.preventDefault();
+
+    // Store hash
+    var hash = this.hash;
+
+    // Using jQuery's animate() method to add smooth page scroll
+    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 900, function(){
+   
+      // Add hash (#) to URL when done scrolling (default click behavior)
+      window.location.hash = hash;
+    });
+  });
+})
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -50,15 +76,18 @@
 
 </head>
 
-<body>
+<body id="petCare" data-spy="scroll" data-target=".navbar" data-offset="50">
 
 	<div>
 		<tiles:insertAttribute name="header" />
 	</div>
-	<div>
-		<h1>
-			<tiles:insertAttribute name="title" />
-		</h1>
+	<jstl:set  var="clase" value="container text-center" />
+	<jstl:if test="${index==true}">
+	<jstl:set  var="clase" value="" />
+	</jstl:if>
+	
+	<div class="${clase}">
+		
 		<tiles:insertAttribute name="body" />	
 		<jstl:if test="${message != null}">
 			<br />

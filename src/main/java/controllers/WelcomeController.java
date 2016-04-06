@@ -13,10 +13,17 @@ package controllers;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import security.Credentials;
 
 @Controller
 @RequestMapping("/welcome")
@@ -31,18 +38,31 @@ public class WelcomeController extends AbstractController {
 	// Index ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(required=false, defaultValue="John Doe") String name) {
-		ModelAndView result;
-		SimpleDateFormat formatter;
-		String moment;
+	public ModelAndView index(@Valid @ModelAttribute Credentials credentials,
+			BindingResult bindingResult,
+			@RequestParam(required = false) boolean showError) {
+		Assert.notNull(credentials);
+		Assert.notNull(bindingResult);
 		
-		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		moment = formatter.format(new Date());
-				
+		ModelAndView result;
+		
 		result = new ModelAndView("welcome/index");
-		result.addObject("name", name);
-		result.addObject("moment", moment);
+		result.addObject("credentials", credentials);
+		result.addObject("showError", showError);
+		result.addObject("index", true);
 
 		return result;
 	}
+	
+	// LoginFailure -----------------------------------------------------------
+
+		@RequestMapping("/loginFailure")
+		public ModelAndView failure() {
+			ModelAndView result;
+
+			result = new ModelAndView("redirect:index.do?showError=true");
+
+			return result;
+		}
+	
 }
