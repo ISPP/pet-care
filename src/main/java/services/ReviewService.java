@@ -1,15 +1,18 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import domain.Review;
-import domain.Supplier;
+import org.springframework.util.Assert;
 
 import repositories.ReviewRepository;
+import domain.Booking;
+import domain.PetOwner;
+import domain.Review;
+import domain.Supplier;
 
 @Service
 @Transactional
@@ -22,16 +25,30 @@ public class ReviewService {
 	private ReviewRepository reviewRepository;
 	
 	@Autowired
+	private PetOwnerService petOwnerService;
+	
+	@Autowired
 	private SupplierService supplierService;
 	
-	public Review create() {
+	public Review create(Booking booking) {
 		Review result;
+		PetOwner petOwner;
+		try{
+			petOwner = petOwnerService.findOneByPrincipal();
+		}catch(Throwable t){
+			petOwner = null;
+		}
 		result = new Review();
+		result.setBooking(booking);
+		result.setReviewer(petOwner);
+		result.setReviewed(booking.getSupplier());
+		result.setCreationMoment(new Date());
 		return result;
 	}
 
 	public Review save(Review review) {
 		Review result;
+		review.setCreationMoment(new Date());
 		result = reviewRepository.saveAndFlush(review);
 		return result;
 	}
@@ -52,7 +69,27 @@ public class ReviewService {
 		return result;
 	}
 	
-	
+	public boolean checkValidDate(Booking booking){
+		boolean result,reviewed,passed,canceled;
+		Date today,bookingDate;
+		
+		result = true;
+		today = new Date();
+		bookingDate = booking.getEndMoment();
+		try{
+			reviewed = (booking.getReview() != null);
+		}catch(Throwable t){
+			reviewed = false;
+		}
+		passed = today.after(bookingDate);
+		canceled = booking.isCancelled();
+		if( canceled || !passed || reviewed==true){
+			result = false;
+		}
+		Assert.isTrue(result);
+		
+		return result;
+	}
 	
 	
 	//List the reviews where they are the reviewed ones(customer)

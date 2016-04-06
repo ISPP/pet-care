@@ -39,5 +39,6 @@
 				code="organiser.display.profile" />
 		</a>
 	</display:column>
+	
 </display:table>
 

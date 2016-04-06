@@ -121,6 +121,8 @@
 		<!-- Review -->
 		<security:intercept-url pattern="/review/petSitter/**"
 			access="hasRole('PETSITTER')" />
+		<security:intercept-url pattern="/review/petOwner/**"
+			access="hasRole('PETOWNER')" />
 			
 		
 

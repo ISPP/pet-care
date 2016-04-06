@@ -33,7 +33,11 @@
 	<spring:message code="booking.endMoment" var="endMomentColumn"></spring:message>
 	<display:column property="endMoment" title="${endMomentColumn}" />
 	
-	
+	<display:column>
+		<a href="review/petOwner/create.do?bookingId=${row.id}"> <spring:message
+				code="booking.newReview" />
+		</a>
+	</display:column>
 
 		
 		

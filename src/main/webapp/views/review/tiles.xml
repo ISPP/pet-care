@@ -21,9 +21,10 @@
 		<put-attribute name="body" value="/views/review/list.jsp" />
 	</definition>
 	
-	<definition name="petOwner/display" extends="master.page">	
-		<put-attribute name="title" value="Display petOwner" />
-		<put-attribute name="body" value="/views/organiser/edit.jsp" />
+	<definition name="review/create" extends="master.page">	
+		<put-attribute name="title" value="New review" />
+		<put-attribute name="body" value="/views/review/edit.jsp" />
 	</definition>
+	
 	
 </tiles-definitions>

@@ -25,21 +25,25 @@
 
 		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.BookingToStringConverter" />
 		<bean class="converters.CommentToStringConverter" />
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
 		<bean class="converters.PetSitterToStringConverter" />
 		<bean class="converters.PetOwnerToStringConverter" />
 		<bean class="converters.ReviewToStringConverter" />
+		<bean class="converters.SupplierToStringConverter" />
 		
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAdministratorConverter" />
+		<bean class="converters.StringToBookingConverter" />
 		<bean class="converters.StringToCommentConverter" />
 		<bean class="converters.StringToComplaintConverter" />
 		<bean class="converters.StringToCustomerConverter" />
 		<bean class="converters.StringToPetSitterConverter" />
 		<bean class="converters.StringToPetOwnerConverter" />
 		<bean class="converters.StringToReviewConverter" />
+		<bean class="converters.StringToSupplierConverter" />
 		 
 
 		<!-- EntityToString -->
