@@ -238,7 +238,7 @@ public class BookingService {
 		
 		Assert.state(start.isAfterNow() && start.isBefore(end));
 		if(b.isNight()){
-			Assert.isTrue(days>0);
+		
 			
 			result=days*petSitter.getPriceNight();
 		}else{
