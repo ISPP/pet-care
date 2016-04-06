@@ -10,12 +10,16 @@
 
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AdministratorService;
+import services.SupplierService;
+import domain.Supplier;
 
 @Controller
 @RequestMapping("/administrator")
@@ -28,13 +32,20 @@ public class AdministratorController extends AbstractController {
 	}
 		
 	@Autowired
-	private AdministratorService administratorService;
+	private SupplierService supplierService;
 	
 	
 	public ModelAndView dashboard(){
 		ModelAndView result;
+		Supplier supplierWithMoreBookings = new ArrayList<Supplier>(supplierService.findSupplierWithMoreBookings()).get(0);
+		Supplier supplierWithZeroBookings = new ArrayList<Supplier>(supplierService.findSupplierWithZeroBookings()).get(0);
+		List<Supplier> suppliersWithMoreThan10ReviewsWithZeroRating = new ArrayList<Supplier>(supplierService.findSuppliersWithMoreThan10ReviewsWithZeroRating());
 		
 		result = new ModelAndView("administrator/dashboard");
+		result.addObject("supplierWithMoreBookings", supplierWithMoreBookings);
+		result.addObject("supplierWithZeroBookings", supplierWithZeroBookings);
+		result.addObject("suppliersWithMoreThan10ReviewsWithZeroRating", suppliersWithMoreThan10ReviewsWithZeroRating);
+		result.addObject("requestURI", "administrator/dashboard.do");
 		
 		return result;
 	}
