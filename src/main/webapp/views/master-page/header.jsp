@@ -30,6 +30,7 @@
 						<li><a href="complaint/administrator/listToSolve.do"><spring:message code="master.page.complaint.listComplaintToSolve" /></a></li>				
 				</ul>
 			</li>
+			<li><a class="fNiv" href="adinistrator/dashboard.do"><spring:message code="master.page.administrator.dashboard"/></a></li>
 			<li><a class="fNiv" href="supplier/administrator/list.do"><spring:message code="master.page.supplier.list"/></a>
 			<li><a class="fNiv" href="administrator/administrator/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>				
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
