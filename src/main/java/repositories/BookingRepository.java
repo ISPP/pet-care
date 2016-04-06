@@ -35,4 +35,9 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     		+ "(b.startMoment < ?2 and b.endMoment >= ?2) or "
     		+ "(b.startMoment < ?1 and b.endMoment > ?2))")
     Collection<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId);
+    
+    
+    @Query("select b from Booking b where b.status='ACCEPTED' and b.supplier.id=?1")
+	Collection<Booking> findBokkingAcceptedByPetSitterId(Integer id);
+    
 }

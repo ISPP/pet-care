@@ -13,6 +13,8 @@ import org.joda.time.Hours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
 import domain.Booking;
 import domain.PetOwner;
 import domain.PetSitter;
@@ -31,6 +33,7 @@ public class BookingService {
 
 	@Autowired
 	private BookingRepository bookingRepository;
+	
 
 	// Supporting services -----------------------------------------------------
 
@@ -255,6 +258,22 @@ public class BookingService {
     	return result;
     	
     }
+	
+	
+	public Collection<Booking> findBokkingAcceptedByPetSitterId(){
+		Collection<Booking> res;
+		PetSitter petSitter;
+		
+		petSitter = petSitterService.findPetSitterByUsername();
+		Assert.notNull(petSitter,"No hay un petSitter logeado");
+		res = bookingRepository.findBokkingAcceptedByPetSitterId(petSitter.getId());
+			
+		return res;
+	}
+	
+	
+	
+	
 	/*
 	 * public Booking cancelBooking(Booking booking){ Assert.notNull(booking);
 	 * Booking result; checkIsOwner(booking); Date date;
@@ -336,4 +355,8 @@ public class BookingService {
 	 * result = bookingRepository.findBedsByInnkeeperDay(innkeeperId, date);
 	 * if(result == null){ result = 0; } return result; }
 	 */
+	
+	
+	
+	
 }

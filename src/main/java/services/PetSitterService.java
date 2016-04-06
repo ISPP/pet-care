@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Actor;
 import domain.Booking;
 import domain.Comment;
 import domain.Complaint;
@@ -26,6 +27,7 @@ import forms.PetSitterForm;
 
 import repositories.PetSitterRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 
 @Service
@@ -244,5 +246,19 @@ PetSitter result;
 		petSitter.setBlocked(true);
 		save(petSitter);
 	}
+	
+	
+	public PetSitter findPetSitterByUsername(){
+		PetSitter result;
+		UserAccount user;
+		user=LoginService.getPrincipal();
+		Assert.notNull(user, "El usuario no puede ser nulo");
+		result = petSitterRepository.findPetSitterByUsername(user.getUsername());
+		return result;
+	}
+	
+	
+	
+	
 
 }

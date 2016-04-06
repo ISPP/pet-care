@@ -57,7 +57,9 @@ public class Actor extends DomainEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	
+	
 	// Relationships------------------------------------------
 	private Collection<MessageFolder> messageFolders;
 	private UserAccount user;

@@ -27,5 +27,11 @@
 	</definition>
 	
 	
+	<definition name="booking/listBookingAccepted" extends="master.page">	
+		<put-attribute name="title" value="Reservas Aceptadas" />
+		<put-attribute name="body" value="/views/booking/listBookingAccepted.jsp" />
+	</definition>
+	
+	
 	
 </tiles-definitions>
