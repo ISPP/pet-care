@@ -22,18 +22,31 @@
 			Add your own converters using entries of the following form: 
 			<bean class="converters.Class1ToClass2" /> 
 		-->
-
-		<bean class="converters.ActorToStringConverter" />
+	
+		<!-- EntityToString -->
+		<bean class="converters.PetOwnerToStringConverter"/>
+		<bean class="converters.ActorToStringConverter"/>
+		<bean class="converters.AuthorityToStringConverter"/>
+		<bean class="converters.PetSitterToStringConverter"/>
 		<bean class="converters.AdministratorToStringConverter" />
 		<bean class="converters.BookingToStringConverter" />
 		<bean class="converters.CommentToStringConverter" />
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
+		<bean class="converters.PetToStringConverter" />
+		<bean class="converters.PhotoToStringConverter" />
 		<bean class="converters.PetSitterToStringConverter" />
 		<bean class="converters.PetOwnerToStringConverter" />
 		<bean class="converters.ReviewToStringConverter" />
-		<bean class="converters.SupplierToStringConverter" />
-		
+		<bean class="converters.SupplierToStringConverter" />		
+			
+
+		<!-- StringToEntity -->
+		<bean class="converters.StringToPetOwnerConverter"/>
+		<bean class="converters.StringToActorConverter"/>
+		<bean class="converters.StringToAuthorityConverter"/>
+		<bean class="converters.StringToPetSitterConverter"/>
+		<bean class="converters.StringToPhotoConverter"/>		
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAdministratorConverter" />
 		<bean class="converters.StringToBookingConverter" />
@@ -44,20 +57,8 @@
 		<bean class="converters.StringToPetOwnerConverter" />
 		<bean class="converters.StringToReviewConverter" />
 		<bean class="converters.StringToSupplierConverter" />
-		 
 
-		<!-- EntityToString -->
-		<bean class="converters.PetOwnerToStringConverter"/>
-		<bean class="converters.ActorToStringConverter"/>
-		<bean class="converters.AuthorityToStringConverter"/>
-		<bean class="converters.PetSitterToStringConverter"/>
-		
-		<!-- StringToEntity -->
-		<bean class="converters.StringToPetOwnerConverter"/>
-		<bean class="converters.StringToActorConverter"/>
-		<bean class="converters.StringToAuthorityConverter"/>
-		<bean class="converters.StringToPetSitterConverter"/>
-		
+	
 
 	</util:list>
 	

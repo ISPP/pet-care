@@ -1,3 +1,4 @@
+
 /* AuthorityToStringConverter.java
  *
  * Copyright (C) 2013 Universidad de Sevilla
@@ -33,3 +34,4 @@ public class AuthorityToStringConverter implements Converter<Authority, String> 
 	}
 
 }
+

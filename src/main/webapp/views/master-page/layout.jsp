@@ -47,6 +47,7 @@
 			form.submit();
 	}
 </script>
+
 <script type="text/javascript">
 	function relativeRedir(loc) {	
 		var b = document.getElementsByTagName('base');
@@ -59,6 +60,15 @@
 	}
 </script>
 
+<script type="text/javascript" src="scripts/ownScript.js"></script>
+<!-- Carousel -->
+<script type="text/javascript" src="scripts/bootstrap-carousel.js"></script>
+
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="styles/bootstrap.css">
+
+<link rel="stylesheet" href="styles/ownStyle.css" type="text/css">
 </head>
 
 <body>

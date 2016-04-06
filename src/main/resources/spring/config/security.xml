@@ -130,6 +130,57 @@
 		<security:intercept-url pattern="/petSitter/create.do"
 			access="isAnonymous()" />
 
+	<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+	<security:intercept-url pattern="/images/**" access="permitAll" /> 
+	<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+	<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+
+	<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+
+	<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
+	<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
+
+	<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
+		
+	<security:intercept-url pattern="/search/list.do" access="permitAll" /> 
+	<security:intercept-url pattern="/search/searchSitters.do" access="permitAll" /> 
+	<security:intercept-url pattern="/search/display.do" access="permitAll" /> 
+	
+	<!-- Complaint -->
+	<security:intercept-url pattern="/complaint/customer/**" access="hasAnyRole('PETOWNER','PETSITTER','COMPANY', 'PETSHIPPER')" /> 
+	<security:intercept-url pattern="/complaint/administrator/**" access="hasRole('ADMIN')" /> 
+	<security:intercept-url pattern="/complaint/customer/**" access="hasRole('PETOWNER')" />
+
+	<!-- Comment -->
+	<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />
+		
+	<!-- PetOwner -->
+	<security:intercept-url pattern="/petOwner/create.do" access="isAnonymous()"/>
+	<security:intercept-url pattern="/petSitter/invite.do" access="hasRole('PETSITTER')"/>
+	
+	<!-- PetSitter -->
+	<security:intercept-url pattern="/petSitter/create.do" access="isAnonymous()"/>
+	
+	<!-- Pet -->
+	<security:intercept-url pattern="/pet/list.do" access="permitAll" />
+	<security:intercept-url pattern="/pet/see.do" access="permitAll" />	
+	<security:intercept-url pattern="/pet/displayPhoto.do" access="permitAll" />
+	
+	<security:intercept-url pattern="/pet/petOwner/list.do" access="hasRole('PETOWNER')" />  
+	<security:intercept-url pattern="/pet/petOwner/create.do" access="hasRole('PETOWNER')" /> 
+	<security:intercept-url pattern="/pet/petOwner/edit.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/pet/petOwner/addPhoto.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/pet/petOwner/selectAvatar.do" access="hasRole('PETOWNER')" />	
+	
+	<security:intercept-url pattern="/pet/petSitter/list.do" access="hasRole('PETSITTER')" /> 
+	<security:intercept-url pattern="/pet/petSitter/create.do" access="hasRole('PETSITTER')" /> 
+	<security:intercept-url pattern="/pet/petSitter/edit.do" access="hasRole('PETSITTER')" />	
+	<security:intercept-url pattern="/pet/petSitter/addPhoto.do" access="hasRole('PETSITTER')" />
+	<security:intercept-url pattern="/pet/petSitter/selectAvatar.do" access="hasRole('PETSITTER')" />
+
+	
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
 
 
 		<!-- Supplier -->

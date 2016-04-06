@@ -65,7 +65,25 @@
 			
 			
 			<li><a class="fNiv" href="petOwner/petOwner/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>				
+
+			<li>
+				<a class="fNiv">
+					<spring:message	code="master.page.pets" />
+				</a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="pet/petOwner/list.do"><spring:message code="master.page.list" /></a></li>				
+					<li><a href="pet/petOwner/create.do"><spring:message code="master.page.create" /></a></li>	
+				</ul>
+			</li>
+			<li>				
+				
+		
+
+			</li>					
+
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PETSHIPPER')">
@@ -113,6 +131,19 @@
 				</ul>
 			</li>
 			<li><a class="fNiv" href="petSitter/petSitter/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>			
+
+			<li>
+				<a class="fNiv">
+					<spring:message	code="master.page.pets" />
+				</a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="pet/petSitter/list.do"><spring:message code="master.page.list" /></a></li>				
+					<li><a href="pet/petSitter/create.do"><spring:message code="master.page.create" /></a></li>	
+				</ul>
+			</li>
+			<li>				
+
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
 				<ul>
@@ -158,8 +189,10 @@
 		
 		
 		<security:authorize access="isAnonymous()">
+
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -167,6 +200,11 @@
 				
 				</ul>
 			</li>
+
+
+			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
@@ -188,4 +226,3 @@
 <div>
 	<a href="?language=en">en</a> | <a href="?language=es">es</a>
 </div>
-

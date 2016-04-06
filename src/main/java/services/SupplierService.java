@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Supplier;
-
 import repositories.SupplierRepository;
 import security.LoginService;
 import security.UserAccount;
+import domain.Supplier;
 
 @Service
 @Transactional

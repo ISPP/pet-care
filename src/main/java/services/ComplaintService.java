@@ -176,7 +176,9 @@ public class ComplaintService {
         Administrator administrator;
         administrator = administratorService.getLoggedAdmin();
         Assert.notNull(administrator,"no hay un administrador logueado");
-        Assert.isTrue(complaint.getAdministrator()==null, "la complaint ya est√° asignada");
+
+        Assert.isTrue(complaint.getAdministrator()==null, "la complaint ya est· asignada");
+
         complaint.setAdministrator(administrator);
 
         complaintRepository.save(complaint);
@@ -187,5 +189,5 @@ public class ComplaintService {
 		result = complaintRepository.exists(complaint.getId());
 		return result;
 	}
-    
+
 }

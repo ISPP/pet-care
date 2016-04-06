@@ -1,10 +1,12 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -15,12 +17,16 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 @Entity
 @Access(AccessType.PROPERTY)
 public class Pet extends DomainEntity{
+	
+	private String name;
+	private String description; 
+	private String breed;
+	private String kind;
+	
 	public Pet(){
 		super();
 	}
 	
-	private String name, description,breed,kind;
-
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
 	public String getName() {
@@ -61,6 +67,7 @@ public class Pet extends DomainEntity{
 	//--------------------------
 	private PetOwner petOwner;
 	private PetSitter petSitter;
+	private Collection<Photo> photos;
 
 	@ManyToOne(optional=true)
 	public PetSitter getPetSitter() {
@@ -79,6 +86,14 @@ public class Pet extends DomainEntity{
 	public void setPetOwner(PetOwner petOwner) {
 		this.petOwner = petOwner;
 	}
-	
+
+	@OneToMany
+	public Collection<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Collection<Photo> photos) {
+		this.photos = photos;
+	}
 
 }

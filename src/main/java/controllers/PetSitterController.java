@@ -16,14 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import services.CustomerService;
 import services.EmailService;
 import services.PetSitterService;
-
 import domain.Customer;
 import domain.PetSitter;
-
 import forms.InvitationForm;
 import forms.PetSitterForm;
-
-
 @Controller
 @RequestMapping("/petSitter")
 public class PetSitterController extends AbstractController {

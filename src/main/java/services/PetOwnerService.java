@@ -17,6 +17,7 @@ import forms.PetOwnerForm;
 import repositories.PetOwnerRepository;
 import security.Authority;
 import security.LoginService;
+
 import security.UserAccount;
 import domain.Booking;
 import domain.Comment;
@@ -24,6 +25,7 @@ import domain.Complaint;
 import domain.Message;
 import domain.MessageFolder;
 import domain.Pet;
+
 
 @Service
 @Transactional
@@ -256,6 +258,7 @@ public class PetOwnerService {
 		result = petOwnerRepository.findOne(id);
 		return result;
 	}
+
 	public PetOwner findOneByPrincipal() {
 		PetOwner result;
 		
@@ -280,3 +283,4 @@ public class PetOwnerService {
 		return result;
 	}
 }
+

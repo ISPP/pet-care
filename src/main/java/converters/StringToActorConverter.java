@@ -1,4 +1,3 @@
-
 package converters;
 
 import javax.transaction.Transactional;
@@ -33,5 +32,5 @@ public class StringToActorConverter implements Converter<String, Actor> {
 		}
 		return result;
 	}
-
 }
+

@@ -26,7 +26,6 @@
 <%@ attribute name="code" required="true" %>
 <%@ attribute name="items" required="true" type="java.util.Collection" %>
 <%@ attribute name="itemLabel" required="true" %>
-
 <%@ attribute name="id" required="false" %>
 <%@ attribute name="onchange" required="false" %>
 
@@ -50,5 +49,6 @@
 	</form:select>
 	<form:errors path="${path}" cssClass="error" />
 </div>
+
 
 

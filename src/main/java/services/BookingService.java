@@ -166,6 +166,7 @@ public class BookingService {
 	 * bookingRepository.save(booking); return result; }
 	 */
 
+
 	public void delete(Booking booking) {
 		bookingRepository.delete(booking);
 	}

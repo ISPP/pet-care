@@ -24,9 +24,11 @@
 
 <%@ attribute name="name" required="true" %> 
 <%@ attribute name="code" required="true" %>
+<%@ attribute name="onclick" required="false" %>
 
 <%-- Definition --%>
 
-<button type="submit" name="${name}" class="btn btn-primary">
+<button type="submit" name="${name}" onclick="${onclick}" class="btn btn-primary">
 	<spring:message code="${code}" />
 </button>
+

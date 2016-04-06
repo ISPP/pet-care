@@ -33,6 +33,8 @@
 		<value>/views/booking/messages</value>
 		<value>/views/supplier/messages</value>
 		<value>/views/administrator/messages</value>
+		<value>/views/pet/messages</value>
+
 	</util:list>
 
 </beans>

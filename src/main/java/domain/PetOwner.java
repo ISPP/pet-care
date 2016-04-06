@@ -11,14 +11,14 @@ import javax.persistence.OneToMany;
 @Access(AccessType.PROPERTY)
 public class PetOwner extends Customer {
 
-	public PetOwner() {
-		super();
-	}
-//Relationships
 	private Collection<Booking> bookings;
 	private Collection<Pet> pets;
 	private Collection<Review> reviews;
-
+	
+	public PetOwner() {
+		super();
+	}
+	
 	@OneToMany(mappedBy = "petOwner")
 	public Collection<Pet> getPets() {
 		return pets;

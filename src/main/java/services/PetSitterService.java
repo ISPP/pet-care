@@ -2,8 +2,6 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 import java.util.HashSet;
 
 import org.apache.commons.lang.RandomStringUtils;
@@ -13,6 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import repositories.PetSitterRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
 import domain.Booking;
 import domain.Comment;
 import domain.Complaint;
@@ -24,10 +26,7 @@ import domain.PetSitter;
 import domain.Review;
 import forms.PetSitterForm;
 
-import repositories.PetSitterRepository;
-import security.Authority;
-import security.LoginService;
-import security.UserAccount;
+
 
 @Service
 @Transactional
@@ -44,19 +43,18 @@ public class PetSitterService {
 	
 	//Supporting services ----------------------------------------------
 	
-	@Autowired
-	private BookingService bookingService;
-	
 	// CRUD methods
-	
+
 	@Autowired
 	private MessageFolderService messageFolderService;
 	
 	@Autowired
 	private CustomerService customerService;
+
+
 	
 	public PetSitter create() {
-PetSitter result;
+		PetSitter result;
 		
 		Collection<MessageFolder> messageFolders;
 		Collection<Pet> pets;
@@ -292,28 +290,28 @@ PetSitter result;
 	}
 
 	//Other business methods
-	public List<PetSitter> searchSitters(Date startDate, Date endDate, String address){
-		List<PetSitter> result;
-		List<PetSitter> sitters;
-		List<Booking> bookings;
-		Date current;
-		
-		current = new Date();
-		Assert.isTrue(current.before(startDate));
-		Assert.isTrue(startDate.before(endDate));
-		
-		result = new ArrayList<PetSitter>();
-		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
-		
-		for(PetSitter i: sitters){
-			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
-			if(bookings.isEmpty()){
-				result.add(i);
-			}
-		}
-		
-		return result;
-	}
+//	public List<PetSitter> searchSitters(Date startDate, Date endDate, String address){
+//		List<PetSitter> result;
+//		List<PetSitter> sitters;
+//		List<Booking> bookings;
+//		Date current;
+//		
+//		current = new Date();
+//		Assert.isTrue(current.before(startDate));
+//		Assert.isTrue(startDate.before(endDate));
+//		
+//		result = new ArrayList<PetSitter>();
+//		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
+//		
+//		for(PetSitter i: sitters){
+//			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
+//			if(bookings.isEmpty()){
+//				result.add(i);
+//			}
+//		}
+//		
+//		return result;
+//	}
 
 	public Collection<Review> findReviews(int petSitterId) {
 		Collection<Review> result;

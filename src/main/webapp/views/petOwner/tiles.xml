@@ -35,9 +35,5 @@
 		<put-attribute name="title" value="Edit profile" />
 		<put-attribute name="body" value="/views/petOwner/profile.jsp" />
 	</definition>
-	
-	
-	
-	
-	
+
 </tiles-definitions>
