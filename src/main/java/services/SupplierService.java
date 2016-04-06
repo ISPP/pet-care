@@ -66,4 +66,16 @@ public class SupplierService {
 	public void blockSupplier(Supplier supplier){
 		supplier.setBlocked(true);
 	}
+	
+	public Collection<Supplier> findSupplierWithZeroBookings(){
+		return supplierRepository.findSupplierWithBookings(0);
+	}
+	
+	public Collection<Supplier> findSupplierWithMoreBookings(){
+		return supplierRepository.findSupplierWithMoreBookings();
+	}
+	
+	public Collection<Supplier> findSuppliersWithMoreThan10ReviewsWithZeroRating(){
+		return supplierRepository.findSuppliersWithNumberReviewWithRating(10, 0);
+	}
 }

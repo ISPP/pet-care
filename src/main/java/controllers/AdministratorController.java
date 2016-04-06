@@ -10,9 +10,16 @@
 
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import services.SupplierService;
+import domain.Supplier;
 
 @Controller
 @RequestMapping("/administrator")
@@ -24,24 +31,21 @@ public class AdministratorController extends AbstractController {
 		super();
 	}
 		
-	// Action-1 ---------------------------------------------------------------		
-
-	@RequestMapping("/action-1")
-	public ModelAndView action1() {
+	@Autowired
+	private SupplierService supplierService;
+	
+	
+	public ModelAndView dashboard(){
 		ModelAndView result;
-				
-		result = new ModelAndView("administrator/action-1");
+		Supplier supplierWithMoreBookings = new ArrayList<Supplier>(supplierService.findSupplierWithMoreBookings()).get(0);
+		Supplier supplierWithZeroBookings = new ArrayList<Supplier>(supplierService.findSupplierWithZeroBookings()).get(0);
+		List<Supplier> suppliersWithMoreThan10ReviewsWithZeroRating = new ArrayList<Supplier>(supplierService.findSuppliersWithMoreThan10ReviewsWithZeroRating());
 		
-		return result;
-	}
-	
-	// Action-2 ---------------------------------------------------------------
-	
-	@RequestMapping("/action-2")
-	public ModelAndView action2() {
-		ModelAndView result;
-				
-		result = new ModelAndView("administrator/action-2");
+		result = new ModelAndView("administrator/dashboard");
+		result.addObject("supplierWithMoreBookings", supplierWithMoreBookings);
+		result.addObject("supplierWithZeroBookings", supplierWithZeroBookings);
+		result.addObject("suppliersWithMoreThan10ReviewsWithZeroRating", suppliersWithMoreThan10ReviewsWithZeroRating);
+		result.addObject("requestURI", "administrator/dashboard.do");
 		
 		return result;
 	}
