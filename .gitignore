@@ -70,3 +70,4 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+/bin
