@@ -24,11 +24,9 @@
 		<value>/views/petOwner/tiles.xml</value>
 		<value>/views/petSitter/tiles.xml</value>
 		<value>/views/review/tiles.xml</value>
-
 		<value>/views/booking/tiles.xml</value>
-
 		<value>/views/supplier/tiles.xml</value>
-
+		<value>/views/administrator/tiles.xml</value>
 	</util:list>
 
 </beans>

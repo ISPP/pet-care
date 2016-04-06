@@ -31,6 +31,7 @@
 				</ul>
 			</li>
 			<li><a class="fNiv" href="supplier/administrator/list.do"><spring:message code="master.page.supplier.list"/></a>
+			<li><a class="fNiv" href="administrator/administrator/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>				
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 		</security:authorize>
 		
@@ -68,7 +69,6 @@
 				<ul>
 					<li class="arrow"></li>
 					<li>
-						
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
@@ -78,14 +78,10 @@
 				<ul>
 					<li class="arrow"></li>
 					<li>
-						
-						<li><a href="booking/petSitter/listBookingAccepted.do"><spring:message code="master.page.booking.listBookingAccepted" /></a></li>
-						
+					<li><a href="booking/petSitter/listBookingAccepted.do"><spring:message code="master.page.booking.listBookingAccepted" /></a></li>
 				</ul>
 			</li>
-			
-			
-								
+			<li><a class="fNiv" href="petSitter/petSitter/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>			
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
 				<ul>

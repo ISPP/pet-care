@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import domain.Actor;
 import domain.Booking;
 import domain.Comment;
 import domain.Complaint;
@@ -156,6 +155,12 @@ PetSitter result;
 		return result;
 	}
 	
+	public void saveEdited(PetSitter petSitter) {
+		Assert.notNull(petSitter);
+		
+		petSitterRepository.saveAndFlush(petSitter);
+	}
+	
 	public PetSitter reconstruct(PetSitterForm petSitterForm) {
 		Assert.isTrue(petSitterForm.getPassword().equals(
 				petSitterForm.getPasswordConfirm()));
@@ -203,9 +208,85 @@ PetSitter result;
 		result.setUser(userAccount);
 		result.setAddress(petSitterForm.getAddress());
 		result.setDescription(petSitterForm.getDescription());
+
+		return result;
+	}
+	
+	public PetSitter reconstructEdited(PetSitterForm petSitterForm) {
+		Assert.isTrue(petSitterForm.getPassword().equals(
+				petSitterForm.getPasswordConfirm()));
+		Assert.isTrue(petSitterForm.getId() > 0);
+		
+		PetSitter result;
+		CreditCard creditCard;
+		UserAccount userAccount;
+		BCryptPasswordEncoder encoder;
+		
+		result = findOne(petSitterForm.getId()); 
+		
+		creditCard = result.getCreditCard();
+		userAccount = result.getUser();
+
+		// CreditCard
+		creditCard.setBrandName(petSitterForm.getBrandName());
+		creditCard.setCVV(petSitterForm.getCvvCode());
+		creditCard.setExpirationMonth(petSitterForm.getExpirationMonth());
+		creditCard.setExpirationYear(petSitterForm.getExpirationYear());
+		creditCard.setHolderName(petSitterForm.getHolderName());
+		creditCard.setNumber(petSitterForm.getNumber());
+
+		// UserAccount
+		userAccount.setUsername(petSitterForm.getUsername());
+		encoder = new BCryptPasswordEncoder();
+		userAccount.setPassword(
+				encoder.encode(petSitterForm.getPassword()));
+
+		result.setCreditCard(creditCard);
+		result.setEmail(petSitterForm.getEmail());
+		result.setName(petSitterForm.getName());
+		result.setHomePage(petSitterForm.getHomePage());
+		result.setContactPhone(petSitterForm.getContactPhone());
+		result.setSurname(petSitterForm.getSurname());
 		result.setAddress(petSitterForm.getAddress());
 		result.setDescription(petSitterForm.getDescription());
+		result.setPriceHour(petSitterForm.getPriceHour());
+		result.setPriceNight(petSitterForm.getPriceNight());
+		result.setDaysBeforeCancel(petSitterForm.getDaysBeforeCancel());
 		result.setUser(userAccount);
+
+		return result;
+	}
+	
+	public PetSitterForm fragment(PetSitter petSitter) {
+		Assert.notNull(petSitter);
+		
+		PetSitterForm result;
+
+		result = new PetSitterForm();
+		
+		// CreditCard
+		result.setBrandName(petSitter.getCreditCard().getBrandName());
+		result.setCvvCode(petSitter.getCreditCard().getCVV());
+		result.setExpirationMonth(petSitter.getCreditCard().getExpirationMonth());
+		result.setExpirationYear(petSitter.getCreditCard().getExpirationYear());
+		result.setHolderName(petSitter.getCreditCard().getHolderName());
+		result.setNumber(petSitter.getCreditCard().getNumber());
+
+		// UserAccount
+		result.setUsername(petSitter.getUser().getUsername());
+		result.setPassword(petSitter.getUser().getPassword());
+		result.setPasswordConfirm(petSitter.getUser().getPassword());
+
+		result.setEmail(petSitter.getEmail());
+		result.setName(petSitter.getName());
+		result.setHomePage(petSitter.getHomePage());
+		result.setContactPhone(petSitter.getContactPhone());
+		result.setSurname(petSitter.getSurname());
+		result.setAddress(petSitter.getAddress());
+		result.setPriceHour(petSitter.getPriceHour());
+		result.setPriceNight(petSitter.getPriceNight());
+		result.setDaysBeforeCancel(petSitter.getDaysBeforeCancel());
+		result.setId(petSitter.getId());
 
 		return result;
 	}
@@ -241,6 +322,7 @@ PetSitter result;
 		
 		return result;
 	}
+	
 	public void block(PetSitter petSitter) {
 		Assert.notNull(petSitter);
 		petSitter.setBlocked(true);
@@ -257,8 +339,20 @@ PetSitter result;
 		return result;
 	}
 	
-	
-	
-	
+	public PetSitter findOneByPrincipal() {
+		PetSitter result;
+		
+		result = petSitterRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
+		
+		return result;
+	}
+
+	public boolean isPrincipal(int petSitterId) {
+		boolean result;
+		
+		result = findOne(petSitterId).getUser().equals(LoginService.getPrincipal());
+				
+		return result;
+	}
 
 }

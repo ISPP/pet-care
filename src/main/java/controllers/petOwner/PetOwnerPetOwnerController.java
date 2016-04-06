@@ -49,17 +49,12 @@ public class PetOwnerPetOwnerController extends AbstractController{
 				if(petOwnerForm.getExpirationYear()< Calendar.getInstance().get(Calendar.YEAR)){
 					result = createEditModelAndView(petOwnerForm);
 					result.addObject("oldYear", true);
-				}
-//				else if(!petOwnerForm.getAcceptTermsAndConditions()){
-//					result = createEditModelAndView(petOwnerForm);
-//					result.addObject("termsNotAccepted", true);
-//				}
-				else if(!petOwnerForm.getPassword().equals(petOwnerForm.getPasswordConfirm())){
+				}else if(!petOwnerForm.getPassword().equals(petOwnerForm.getPasswordConfirm())){
 					result = createEditModelAndView(petOwnerForm,"petOwner.commit.password");
 				}else{
-					petOwner = petOwnerService.reconstruct(petOwnerForm);
-					petOwnerService.save(petOwner);
-					result = new ModelAndView("redirect:../petOwner/petOwner/edit.do?petOwnerId="+petOwner.getId());
+					petOwner = petOwnerService.reconstructEdited(petOwnerForm);
+					petOwnerService.saveEdited(petOwner);
+					result = new ModelAndView("redirect:/../Petcare/petOwner/petOwner/displayOwn.do");
 				}
 			}catch(Throwable oops){
 				result = createEditModelAndView(petOwnerForm,"petOwner.commit.error");
@@ -145,7 +140,7 @@ public class PetOwnerPetOwnerController extends AbstractController{
 	protected ModelAndView createEditModelAndView(PetOwnerForm petOwnerForm, String message){
 		ModelAndView result;
 			
-		result = new ModelAndView("petOwner/edit");
+		result = new ModelAndView("petOwner/profile");
 		result.addObject("petOwnerForm", petOwnerForm);
 		result.addObject("message", message);
 			
