@@ -9,19 +9,17 @@ import domain.Supplier;
 
 @Component
 @Transactional
-public class SupplierToStringConverter implements Converter<Supplier, String>{ 
-	
+public class SupplierToStringConverter implements Converter<Supplier, String> {
+
 	@Override
-	public String convert(Supplier supplier) {
+	public String convert(Supplier s) {
 		String result;
-		
-		if(supplier == null){
+		if (s == null) {
 			result = null;
-		}else{
-			result = String.valueOf(supplier.getId());
+		} else {
+			result = String.valueOf(s.getId());
 		}
 		return result;
-		
 	}
 
 }

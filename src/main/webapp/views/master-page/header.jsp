@@ -57,6 +57,7 @@
 						
 						<li><a href="booking/petOwner/listBookingCanCancelPetOwner.do"><spring:message code="master.page.booking.cancel" /></a></li>
 						<li><a href="booking/petOwner/list.do"><spring:message code="master.page.booking.list" /></a></li>
+						<li><a href="petSitter/listToBook.do"><spring:message code="master.page.booking.bookpetSitter" /></a></li>
 					
 				</ul>
 			</li>	
@@ -102,6 +103,7 @@
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
+				
 				</ul>
 			</li>
 			<li><a class="fNiv"><spring:message	code="master.page.booking" /></a>

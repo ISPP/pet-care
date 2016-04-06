@@ -34,10 +34,9 @@ public class BookingService {
 
 	@Autowired
 	private BookingRepository bookingRepository;
-	
+
 	@Autowired
 	private SupplierService supplierService;
-	
 
 	// Supporting services -----------------------------------------------------
 
@@ -206,7 +205,7 @@ public class BookingService {
 	public Booking reconstruct(BookingForm bookingForm) {
 		Booking result;
 		result = new Booking();
-		//result.setCancelled(bookingForm.isCancelled());
+		// result.setCancelled(bookingForm.isCancelled());
 		result.setNight(bookingForm.isNight());
 		result.setStartMoment(bookingForm.getStartMoment());
 		result.setEndMoment(bookingForm.getendMoment());
@@ -229,14 +228,21 @@ public class BookingService {
 		//if it is taking into account nights, that is, days
 		startMoment = b.getStartMoment();
 		endMoment = b.getEndMoment();
+		DateTime end,start;
+		start=new DateTime(startMoment);
+		end=new DateTime(endMoment);
+		int days = Days.daysBetween(start,
+				end).getDays();
+		int hours=Hours.hoursBetween(start,
+				end).getHours();
+		
+		Assert.state(start.isAfterNow() && start.isBefore(end));
 		if(b.isNight()){
+		
 			
-			int days = Days.daysBetween(new DateTime(startMoment),
-					new DateTime(endMoment)).getDays();
 			result=days*petSitter.getPriceNight();
 		}else{
-			int hours=Hours.hoursBetween(new DateTime(startMoment),
-					new DateTime(endMoment)).getHours();
+			Assert.isTrue(days==0);
 			result=hours*petSitter.getPriceHour();
 		}
 		
@@ -245,43 +251,41 @@ public class BookingService {
 
 	}
 
-	public Booking registerPetSitterBooking(Booking booking){
-    	Booking result;
-    	booking.setCreationMoment(new Date(System.currentTimeMillis()-1000));
-    	booking.setStatus("PENDING");
-    	String code=RandomStringUtils.randomAlphanumeric(10);
-    	booking.setCode(code);
-    	booking.setCancelled(false);
-    	PetOwner petOwner;
-    	petOwner=petOwnerService.findOneByPrincipal();
-    	booking.setPetOwner(petOwner);
-    	
-    	double cost=calculateCostForPetSitterBookings(booking);
-    	booking.setPrice(cost);
-    	result=save(booking);
-    	return result;
-    	
-    }
-	
-	
-	public Collection<Booking> findBokkingAcceptedBySupplierId(){
+	public Booking registerPetSitterBooking(Booking booking) {
+		Booking result;
+		booking.setCreationMoment(new Date(System.currentTimeMillis() - 1000));
+		booking.setStatus("PENDING");
+		String code = RandomStringUtils.randomAlphanumeric(10);
+		booking.setCode(code);
+		booking.setCancelled(false);
+		PetOwner petOwner;
+		petOwner = petOwnerService.findOneByPrincipal();
+		booking.setPetOwner(petOwner);
+
+		double cost = calculateCostForPetSitterBookings(booking);
+		booking.setPrice(cost);
+		result = save(booking);
+		return result;
+
+	}
+
+	public Collection<Booking> findBokkingAcceptedBySupplierId() {
 		Collection<Booking> res;
-		Supplier supplier =  supplierService.getLoggedSupplier();
+		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
-		res = bookingRepository.findBokkingAcceptedBySupplierId(supplier.getId());
-			
+		res = bookingRepository.findBokkingAcceptedBySupplierId(supplier
+				.getId());
+
 		return res;
 	}
-	
-	
-	
-	
-	public Collection<Booking> findBookingCanCancelByPetOwnerId(){
+
+	public Collection<Booking> findBookingCanCancelByPetOwnerId() {
 		Collection<Booking> res;
 		PetOwner petOwner = petOwnerService.findOneByPrincipal();
 		Assert.notNull(petOwner, "No hay un usuario logueado");
-		res = bookingRepository.findBookingCanCancelByPetOwnerId(petOwner.getId());
-		
+		res = bookingRepository.findBookingCanCancelByPetOwnerId(petOwner
+				.getId());
+
 		return res;
 	}
 
@@ -289,43 +293,42 @@ public class BookingService {
 		PetOwner petOwner = petOwnerService.findOneByPrincipal();
 		Assert.notNull(petOwner, "No hay un pet owner conectado");
 		Booking booking = bookingRepository.findOne(id);
-		Assert.isTrue(booking.getPetOwner().getId()==petOwner.getId(), "accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getPetOwner().getId() == petOwner.getId(),
+				"accediendo a un sitio sin permisos");
 		booking.setCancelled(true);
 		bookingRepository.save(booking);
-		
+
 	}
-	
-	
-	public Collection<Booking> findBookingCanAceptRejectedByCustomerId(){
+
+	public Collection<Booking> findBookingCanAceptRejectedByCustomerId() {
 		Collection<Booking> res;
-		Supplier supplier =  supplierService.getLoggedSupplier();
+		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
-		res = bookingRepository.findBookingCanAceptRejectedByCustomerId(supplier.getId());		
+		res = bookingRepository
+				.findBookingCanAceptRejectedByCustomerId(supplier.getId());
 		return res;
 	}
-	
-	public void aceptedBooking(Integer id){
-		Supplier supplier =  supplierService.getLoggedSupplier();
+
+	public void aceptedBooking(Integer id) {
+		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
 		Booking booking = bookingRepository.findOne(id);
-		Assert.isTrue(booking.getSupplier().getId()==supplier.getId(), "accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(),
+				"accediendo a un sitio sin permisos");
 		booking.setStatus("ACCEPTED");
 		bookingRepository.save(booking);
-	
+
 	}
-	
-	
-	public void rejectedBooking(Integer id){
-		Supplier supplier =  supplierService.getLoggedSupplier();
+
+	public void rejectedBooking(Integer id) {
+		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
 		Booking booking = bookingRepository.findOne(id);
-		Assert.isTrue(booking.getSupplier().getId()==supplier.getId(), "accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(),
+				"accediendo a un sitio sin permisos");
 		booking.setStatus("REJECTED");
 		bookingRepository.save(booking);
-	
+
 	}
-	
-	
-	
-	
+
 }
