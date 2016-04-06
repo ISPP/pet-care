@@ -56,6 +56,7 @@
 					<li>
 						
 						<li><a href="booking/petOwner/listBookingCanCancelPetOwner.do"><spring:message code="master.page.booking.cancel" /></a></li>
+						<li><a href="booking/petOwner/list.do"><spring:message code="master.page.booking.list" /></a></li>
 						<li><a href="petSitter/listToBook.do"><spring:message code="master.page.booking.bookpetSitter" /></a></li>
 					
 				</ul>
@@ -203,7 +204,7 @@
 
 
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
-			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+			
 
 		</security:authorize>
 		
