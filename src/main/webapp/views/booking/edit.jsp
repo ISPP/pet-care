@@ -21,21 +21,35 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${requestURI}" modelAttribute="complaintForm">
+<form:form action="${requestURI}" modelAttribute="bookingForm">
 
-	<form:hidden path="id" />
-	<form:hidden path="resolution" />
+	<form:hidden path="supplier" />
 	
 	
-	
-
-	
-		<acme:textbox code="complaint.name" path="title" readonly="false" />
-		<acme:textarea code="complaint.description" path="description"
-			readonly="false" />
 	
 	
 
+	
+		<acme:textbox code="booking.startMoment" path="startMoment"/>
+		<acme:textbox code="booking.endMoment" path="endMoment"/>
+			
+			
+			<form:label path="night">
+				<spring:message code="booking.Type" />:
+			</form:label>
+			
+			<form:radiobutton path="night" value="0"/>
+			<form:label path="night">
+				<spring:message code="booking.perHour" />
+			</form:label>
+			<form:radiobutton path="night" value="1"/>
+			<form:label path="night">
+				<spring:message code="booking.perDay" />
+			</form:label>
+		
+			<form:errors cssClass="error" path="night" />
+			
+	
 
 	<input type="submit" name="save" class="button"
 		value="<spring:message code="complaint.save" />" />

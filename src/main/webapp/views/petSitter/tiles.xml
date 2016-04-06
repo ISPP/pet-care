@@ -17,7 +17,7 @@
 <tiles-definitions>
 
 		<definition name="petSitter/list" extends="master.page">	
-		<put-attribute name="title" value="List pet owners" />
+		<put-attribute name="title" value="List pet sitters" />
 		<put-attribute name="body" value="/views/petSitter/list.jsp" />
 	</definition>
 	

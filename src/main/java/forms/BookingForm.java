@@ -24,12 +24,12 @@ import domain.Supplier;
 public class BookingForm {
 
 	// Attributes----------------------------------------------
-		private Date creationMoment, startMoment, endMoment;
-		private String code, status;
-		
+		private Date  startMoment, endMoment;
+	
+		private boolean cancelled;
 		private boolean night;
 	//	private double price;
-		private boolean cancelled;
+		
 
 
 
@@ -72,15 +72,7 @@ public class BookingForm {
 
 	
 
-		@NotBlank
-		@Pattern(regexp="^(PENDING|ACCEPTED|REJECTED)$")
-		public String getStatus() {
-			return status;
-		}
-
-		public void setStatus(String status) {
-			this.status = status;
-		}
+	
 
 		public boolean isNight() {
 			return night;
@@ -93,13 +85,6 @@ public class BookingForm {
 		
 
 
-		public boolean isCancelled() {
-			return cancelled;
-		}
-
-		public void setCancelled(boolean cancelled) {
-			this.cancelled = cancelled;
-		}
 
 		
 
@@ -113,6 +98,14 @@ public class BookingForm {
 
 		public void setSupplier(Supplier supplier) {
 			this.supplier = supplier;
+		}
+
+		public boolean isCancelled() {
+			return cancelled;
+		}
+
+		public void setCancelled(boolean cancelled) {
+			this.cancelled = cancelled;
 		}
 
 		

@@ -65,6 +65,9 @@
 		
 		<security:intercept-url pattern="/booking/petOwner/**"
 			access="hasRole('PETOWNER')" />
+			<security:intercept-url pattern="/petSitter/listToBook.do"
+			access="hasRole('PETOWNER')" />
+			
 
 
 		<!-- Complaint -->

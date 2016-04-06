@@ -199,7 +199,7 @@ public class BookingService {
 	public Booking reconstruct(BookingForm bookingForm) {
 		Booking result;
 		result = new Booking();
-		result.setCancelled(bookingForm.isCancelled());
+		//result.setCancelled(bookingForm.isCancelled());
 		result.setNight(bookingForm.isNight());
 		result.setStartMoment(bookingForm.getStartMoment());
 		result.setEndMoment(bookingForm.getendMoment());
@@ -244,6 +244,7 @@ public class BookingService {
     	booking.setStatus("PENDING");
     	String code=RandomStringUtils.randomAlphanumeric(10);
     	booking.setCode(code);
+    	booking.setCancelled(false);
     	PetOwner petOwner;
     	petOwner=petOwnerService.findOneByPrincipal();
     	booking.setPetOwner(petOwner);

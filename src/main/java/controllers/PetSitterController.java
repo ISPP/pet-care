@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Calendar;
+import java.util.Collection;
 
 import javax.validation.Valid;
 
@@ -41,7 +42,26 @@ public class PetSitterController extends AbstractController {
 	}
 		
 	
+	//list
+	@RequestMapping(value="/listToBook", method=RequestMethod.GET)
+	public ModelAndView list(){
+		ModelAndView result;
+		
+		Collection<PetSitter> petSitters;
+		petSitters=petSitterService.findAll();
+		
+		result = new ModelAndView("petSitter/list");
+		result.addObject("petSitters",petSitters);
+		result.addObject("toBook", true);
+		
+		return result;
+	}
+	
+	
 	// Edition-----------------------------------------------------------------
+	
+
+	
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public ModelAndView create(@RequestParam String invitationCode){

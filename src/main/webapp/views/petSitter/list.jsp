@@ -23,21 +23,23 @@
 
 
 <display:table class="displaytag" pagesize="5"
-	name="organisers" id="row" requestURI="${requestURI}">
-	<display:column titleKey="organiser.username">
-		<jstl:out value="${row.userAccount.username}"/>
-	</display:column>
-	<display:column titleKey="organiser.name">
+	name="petSitters" id="row" requestURI="${requestURI}">
+<%-- 	<display:column titleKey="petSitter.username"> --%>
+<%-- 		<jstl:out value="${row.userAccount.username}"/> --%>
+<%-- 	</display:column> --%>
+	<display:column titleKey="petSitter.name">
 		<jstl:out value="${row.name}"/>
 	</display:column>
-	<display:column titleKey="organiser.surname">
+	<display:column titleKey="petSitter.surname">
 		<jstl:out value="${row.surname}"/>
 	</display:column>
-	<display:column titleKey="organiser.birthDate" property="birthDate" format="{0,date,dd/MM/yyyy}"/>
+<%-- 	<display:column titleKey="" property="birthDate" format="{0,date,dd/MM/yyyy}"/> --%>
+	<jstl:if test="${toBook==true}">
 	<display:column>
-		<a href="organiser/administrator/display.do?organiserId=${row.id}"> <spring:message
-				code="organiser.display.profile" />
+		<a href="booking/petOwner/create.do?petSitterId=${row.id}"> <spring:message
+				code="petSitter.book" />
 		</a>
 	</display:column>
+	</jstl:if>
 </display:table>
 
