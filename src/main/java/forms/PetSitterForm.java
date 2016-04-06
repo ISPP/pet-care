@@ -1,6 +1,7 @@
 package forms;
 
 import javax.persistence.Column;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -15,6 +16,7 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 public class PetSitterForm {
 
+	private int id;
 	// Actor
 	private String name;
 	private String surname;
@@ -35,6 +37,11 @@ public class PetSitterForm {
 	// UserAccount
 	private String username;
 	private String password;
+	
+	//PetSitter
+	private Double priceNight;
+	private Double priceHour;
+	private int daysBeforeCancel ;
 
 	// Extras
 	private String passwordConfirm;
@@ -48,6 +55,43 @@ public class PetSitterForm {
 //	public void setAcceptTermsAndConditions(boolean acceptTermsAndConditions) {
 //		this.acceptTermsAndConditions = acceptTermsAndConditions;
 //	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	@Min(1)
+	public Integer getDaysBeforeCancel() {
+		return daysBeforeCancel;
+	}
+
+	public void setDaysBeforeCancel(Integer daysBeforeCancel) {
+		this.daysBeforeCancel = daysBeforeCancel;
+	}
+	
+	@Min(0)
+	@Max(10)
+	public Double getPriceHour() {
+		return priceHour;
+	}
+
+	public void setPriceHour(Double priceHour) {
+		this.priceHour = priceHour;
+	}
+	
+	@Min(0)
+	@Max(10)
+	public Double getPriceNight() {
+		return priceNight;
+	}
+
+	public void setPriceNight(Double priceNight) {
+		this.priceNight = priceNight;
+	}
 	
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)

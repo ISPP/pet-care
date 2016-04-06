@@ -14,4 +14,7 @@ public interface PetSitterRepository extends JpaRepository<PetSitter, Integer>{
 	@Query("select ps from PetSitter ps where ps.address like %?1%")
 	Collection<PetSitter> searchSitters(String address);
 
+	@Query("select p from PetSitter p where p.user.id = ?1")
+	PetSitter findOneByPrincipal(int id);
+
 }

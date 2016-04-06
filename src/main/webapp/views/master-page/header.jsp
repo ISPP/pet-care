@@ -72,7 +72,8 @@
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
 				</ul>
-			</li>					
+			</li>		
+			<li><a class="fNiv" href="petSitter/petSitter/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>			
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
 				<ul>

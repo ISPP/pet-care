@@ -52,6 +52,11 @@
 	<security:intercept-url pattern="/petOwner/petOwner/edit.do" access="hasRole('PETOWNER')" />
 	<security:intercept-url pattern="/petOwner/petOwner/create.do" access="hasRole('PETOWNER')" />
 	
+	<security:intercept-url pattern="/petSitter/petSitter/display.do" access="hasRole('PETSITTER')" />
+	<security:intercept-url pattern="/petSitter/petSitter/displayOwn.do" access="hasRole('PETSITTER')" />
+	<security:intercept-url pattern="/petSitter/petSitter/edit.do" access="hasRole('PETSITTER')" />
+	<security:intercept-url pattern="/petSitter/petSitter/create.do" access="hasRole('PETSITTER')" />
+	
 	<!-- Complaint -->
 	<security:intercept-url pattern="/complaint/customer/**" access="hasAnyRole('PETOWNER','PETSITTER','COMPANY', 'PETSHIPPER')" /> 
 	<security:intercept-url pattern="/complaint/administrator/**" access="hasRole('ADMIN')" /> 
