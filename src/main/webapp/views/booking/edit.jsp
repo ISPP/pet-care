@@ -49,7 +49,7 @@
 		
 			<form:errors cssClass="error" path="night" />
 			
-	
+	<br/>
 
 	<input type="submit" name="save" class="button"
 		value="<spring:message code="complaint.save" />" />

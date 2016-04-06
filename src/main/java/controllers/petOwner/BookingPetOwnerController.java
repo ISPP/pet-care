@@ -30,76 +30,71 @@ import forms.ComplaintForm;
 
 @Controller
 @RequestMapping("/booking/petOwner")
-public class BookingPetOwnerController extends AbstractController{
-	
+public class BookingPetOwnerController extends AbstractController {
+
 	@Autowired
 	private BookingService bookingService;
 	@Autowired
 	private PetOwnerService petOwnerService;
 	@Autowired
 	private PetSitterService petSitterService;
-	
-	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public ModelAndView list(){
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Booking> bookings;
-		
+
 		result = new ModelAndView("booking/list");
 		PetOwner petOwner;
-		petOwner=petOwnerService.findOneByPrincipal();
-		bookings=petOwner.getBookings();
-		
-		result.addObject("bookings",bookings);
+		petOwner = petOwnerService.findOneByPrincipal();
+		bookings = petOwner.getBookings();
+
+		result.addObject("bookings", bookings);
 		result.addObject("requestURI", "booking/petOwner/list.do");
-		
+
 		return result;
 	}
-	
-	
-	
-	@RequestMapping(value="/listBookingCanCancelPetOwner",method=RequestMethod.GET)
-	public ModelAndView listBookingCanCancelPetOwner(){
+
+	@RequestMapping(value = "/listBookingCanCancelPetOwner", method = RequestMethod.GET)
+	public ModelAndView listBookingCanCancelPetOwner() {
 		ModelAndView result;
 		Collection<Booking> bookings;
-		
+
 		result = new ModelAndView("booking/listBookingCanCancelPetOwner");
-		
-		bookings=bookingService.findBookingCanCancelByPetOwnerId();
-		
-		result.addObject("bookings",bookings);
-		result.addObject("requestURI", "booking/petOwner/listBookingCanCancelPetOwner.do");
-		
+
+		bookings = bookingService.findBookingCanCancelByPetOwnerId();
+
+		result.addObject("bookings", bookings);
+		result.addObject("requestURI",
+				"booking/petOwner/listBookingCanCancelPetOwner.do");
+
 		return result;
 	}
-	
-	
-	@RequestMapping(value="/cancel",method=RequestMethod.GET)
-	public ModelAndView cancel(@RequestParam("id") int id){
-		
+
+	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
+	public ModelAndView cancel(@RequestParam("id") int id) {
+
 		bookingService.cancelBooking(id);
-		ModelAndView result;result = new ModelAndView("welcome/index");
+		ModelAndView result;
+		result = new ModelAndView("welcome/index");
 		return result;
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView solve(@RequestParam("petSitterId") int petSitterId) {
 		ModelAndView result;
 		BookingForm bookingForm;
-		bookingForm=bookingService.create();
+		bookingForm = bookingService.create();
 		PetSitter petSitter = petSitterService.findOne(petSitterId);
 		bookingForm.setSupplier(petSitter);
-		
+
 		result = new ModelAndView("booking/edit");
-		result.addObject("bookingForm",bookingForm);
+		result.addObject("bookingForm", bookingForm);
 		result.addObject("requestURI", "booking/petOwner/create.do");
 
 		return result;
 
 	}
-	
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid BookingForm bookingForm,
@@ -115,16 +110,25 @@ public class BookingPetOwnerController extends AbstractController{
 				booking = bookingService.reconstruct(bookingForm);
 				bookingService.registerPetSitterBooking(booking);
 				result = new ModelAndView("redirect:list.do");
+			} catch (IllegalArgumentException oops) {
+
+				result = createEditModelAndView(bookingForm,
+						"booking.typebookingError");
+			} catch (IllegalStateException oops) {
+
+			
+				result = createEditModelAndView(bookingForm,
+						"booking.dateError");
+
 			} catch (Throwable oops) {
 
 				result = createEditModelAndView(bookingForm,
 						"booking.error.operation");
-				
+
 			}
 		}
 		return result;
 	}
-	
 
 	protected ModelAndView createEditModelAndView(BookingForm bForm) {
 		ModelAndView result;
