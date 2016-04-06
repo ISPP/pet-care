@@ -23,6 +23,7 @@
 		<value>/views/search/tiles.xml</value>
 		<value>/views/petOwner/tiles.xml</value>
 		<value>/views/petSitter/tiles.xml</value>
+		<value>/views/administrator/tiles.xml</value>
 	</util:list>
 
 </beans>
