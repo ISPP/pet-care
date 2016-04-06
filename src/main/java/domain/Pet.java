@@ -87,13 +87,13 @@ public class Pet extends DomainEntity{
 		this.petOwner = petOwner;
 	}
 
-//	@OneToMany(mappedBy="pet")
-//	public Collection<Photo> getPhotos() {
-//		return photos;
-//	}
-//
-//	public void setPhotos(Collection<Photo> photos) {
-//		this.photos = photos;
-//	}
+	@OneToMany
+	public Collection<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Collection<Photo> photos) {
+		this.photos = photos;
+	}
 
 }

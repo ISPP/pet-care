@@ -33,15 +33,18 @@
 		<bean class="converters.ComplaintToStringConverter" />
 		<bean class="converters.CustomerToStringConverter" />
 		<bean class="converters.PetToStringConverter" />
+		<bean class="converters.PhotoToStringConverter" />
+		<bean class="converters.PetSitterToStringConverter" />
+		<bean class="converters.PetOwnerToStringConverter" />
+		<bean class="converters.ReviewToStringConverter" />
 	 
 		<!-- StringToEntity -->
 		<bean class="converters.StringToPetOwnerConverter"/>
 		<bean class="converters.StringToActorConverter"/>
 		<bean class="converters.StringToAuthorityConverter"/>
 		<bean class="converters.StringToPetSitterConverter"/>
-		<bean class="converters.PetSitterToStringConverter" />
-		<bean class="converters.PetOwnerToStringConverter" />
-		<bean class="converters.ReviewToStringConverter" />
+		<bean class="converters.StringToPhotoConverter"/>
+
 	
 
 	</util:list>

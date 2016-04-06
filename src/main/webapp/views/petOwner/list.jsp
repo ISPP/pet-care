@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%--
  * action-1.jsp
  *

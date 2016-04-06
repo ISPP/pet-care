@@ -164,4 +164,6 @@
 	    <property name="caches" ref="cacheSet" />	        
 	</bean>
 
+	<!-- Add photo -->
+	<bean id="multipartResolver"       class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
 </beans>

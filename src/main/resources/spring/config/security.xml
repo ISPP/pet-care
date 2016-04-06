@@ -64,12 +64,19 @@
 	<!-- Pet -->
 	<security:intercept-url pattern="/pet/list.do" access="permitAll" />
 	<security:intercept-url pattern="/pet/see.do" access="permitAll" />	
-	<security:intercept-url pattern="/pet/apetOwner/list.do" access="hasRole('PETOWNER')" /> 
-	<security:intercept-url pattern="/pet/apetOwner/create.do" access="hasRole('PETOWNER')" /> 
-	<security:intercept-url pattern="/pet/apetOwner/edit.do" access="hasRole('PETOWNER')" />
-	<security:intercept-url pattern="/pet/apetOwner/list.do" access="hasRole('PETSITTER')" /> 
-	<security:intercept-url pattern="/pet/apetOwner/create.do" access="hasRole('PETSITTER')" /> 
-	<security:intercept-url pattern="/pet/apetOwner/edit.do" access="hasRole('PETSITTER')" />
+	<security:intercept-url pattern="/pet/displayPhoto.do" access="permitAll" />
+	
+	<security:intercept-url pattern="/pet/petOwner/list.do" access="hasRole('PETOWNER')" />  
+	<security:intercept-url pattern="/pet/petOwner/create.do" access="hasRole('PETOWNER')" /> 
+	<security:intercept-url pattern="/pet/petOwner/edit.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/pet/petOwner/addPhoto.do" access="hasRole('PETOWNER')" />
+	<security:intercept-url pattern="/pet/petOwner/selectAvatar.do" access="hasRole('PETOWNER')" />	
+	
+	<security:intercept-url pattern="/pet/petSitter/list.do" access="hasRole('PETSITTER')" /> 
+	<security:intercept-url pattern="/pet/petSitter/create.do" access="hasRole('PETSITTER')" /> 
+	<security:intercept-url pattern="/pet/petSitter/edit.do" access="hasRole('PETSITTER')" />	
+	<security:intercept-url pattern="/pet/petSitter/addPhoto.do" access="hasRole('PETSITTER')" />
+	<security:intercept-url pattern="/pet/petSitter/selectAvatar.do" access="hasRole('PETSITTER')" />
 
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

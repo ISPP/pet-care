@@ -35,5 +35,10 @@
 		<put-attribute name="title" value="Mostrar mascota" />
 		<put-attribute name="body" value="/views/pet/see.jsp" />
 	</definition>
+	
+	<definition name="pet/addPhoto" extends="master.page">	
+		<put-attribute name="title" value="Añadir foto" />
+		<put-attribute name="body" value="/views/pet/addPhoto.jsp" />
+	</definition>
 		
 </tiles-definitions>
