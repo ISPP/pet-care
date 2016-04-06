@@ -6,12 +6,13 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 		
 <h3><spring:message code="administrator.dashboard.supplierWithMoreBookings"/></h3>
-<jstl:out value="${supplierWithMoreBookings.user.username}"/> - <jstl:out value="${length(supplierWithMoreBookings.bookings)}"/>
+<jstl:out value="${supplierWithMoreBookings.user.username}"/> - <jstl:out value="${fn:length(supplierWithMoreBookings.bookings)}"/>
 <br/>
 <h3><spring:message code="administrator.dashboard.supplierWithZeroBookings"/></h3>
-<jstl:out value="${supplierWithZeroBookings}"/><!-- TODO:Change to table in sprint 3 -->
+<jstl:out value="${supplierWithZeroBookings.user.username}"/><!-- TODO:Change to table in sprint 3 -->
 <br/>
 <h3><spring:message code="administrator.dashboard.suppliersWithMoreThan10ReviewsWithZeroRating"/></h3>
 <display:table name="suppliersWithMoreThan10ReviewsWithZeroRating" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
@@ -20,7 +21,7 @@
 		<jstl:out value="${row.user.username}"/>
 	</display:column>
 	<display:column titleKey="administrator.dashboard.reviewsNumber">
-		<jstl:out value="${length(row.reviews)}"/>
+		<jstl:out value="${fn:length(row.reviews)}"/>
 	</display:column>
 	
 </display:table>
