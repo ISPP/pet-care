@@ -1894,9 +1894,9 @@
 	
 	
 	<bean id="booking1" class="domain.Booking">
-	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="endMoment" value="07/02/2015"></property>
-	<property name="startMoment" value="08/02/2015"></property>
+	<property name="creationMoment" value="02/05/2016"></property>
+	<property name="endMoment" value="07/07/2016"></property>
+	<property name="startMoment" value="08/07/2016"></property>
 	<property name="code" value="bookin-booking1"></property>
 	<property name="status" value="ACCEPTED"></property>
 	<property name="night" value="false"></property>

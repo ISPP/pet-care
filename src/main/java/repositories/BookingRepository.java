@@ -38,6 +38,12 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     
     
     @Query("select b from Booking b where b.status='ACCEPTED' and b.supplier.id=?1")
-	Collection<Booking> findBokkingAcceptedByPetSitterId(Integer id);
+	Collection<Booking> findBokkingAcceptedBySupplierId(Integer id);
+    
+    @Query("select b from Booking b where b.petOwner.id=?1 and b.status='PENDING' or b.status='ACCEPTED' and b.cancelled is false and CURRENT_TIMESTAMP<b.startMoment-b.supplier.daysBeforeCancel*3600*1000")
+    Collection<Booking> findBookingCanCancelByPetOwnerId(Integer id);
+    
+    @Query("select b from Booking b where b.supplier.id=?1 and b.status='PENDING'")
+    Collection<Booking> findBookingCanAceptRejectedByCustomerId(Integer id);
     
 }

@@ -50,6 +50,32 @@ public class BookingPetOwnerController extends AbstractController{
 	
 	
 	
+	@RequestMapping(value="/listBookingCanCancelPetOwner",method=RequestMethod.GET)
+	public ModelAndView listBookingCanCancelPetOwner(){
+		ModelAndView result;
+		Collection<Booking> bookings;
+		
+		result = new ModelAndView("booking/listBookingCanCancelPetOwner");
+		
+		bookings=bookingService.findBookingCanCancelByPetOwnerId();
+		
+		result.addObject("bookings",bookings);
+		result.addObject("requestURI", "booking/petOwner/listBookingCanCancelPetOwner.do");
+		
+		return result;
+	}
+	
+	
+	@RequestMapping(value="/cancel",method=RequestMethod.GET)
+	public ModelAndView cancel(@RequestParam("id") int id){
+		
+		bookingService.cancelBooking(id);
+		ModelAndView result;result = new ModelAndView("welcome/index");
+		return result;
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView solve(@RequestParam("petSitterId") int petSitterId) {

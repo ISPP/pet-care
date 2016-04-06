@@ -26,5 +26,4 @@
 		<put-attribute name="body" value="/views/review/edit.jsp" />
 	</definition>
 	
-	
 </tiles-definitions>
