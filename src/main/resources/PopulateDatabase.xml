@@ -962,6 +962,7 @@
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+      <property name="invitationCode" value="petSitter92"></property>
 	<property name="user" ref="userAccount9.2"></property>
 	<property name="messageFolders">
 			<list>
@@ -1016,6 +1017,7 @@
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+      <property name="invitationCode" value="petSitter93"></property>
 	<property name="user" ref="userAccount9.3"></property>
 	<property name="messageFolders">
 			<list>
@@ -1067,6 +1069,7 @@
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+      <property name="invitationCode" value="petSitter94"></property>
 	<property name="user" ref="userAccount9.4"></property>
 	<property name="messageFolders">
 			<list>
@@ -1121,7 +1124,9 @@
                  <property name="expirationYear" value="2016" />	
                   <property name="CVV" value="187" />	
             </bean>	
+             
      </property>
+     <property name="invitationCode" value="petSitter95"></property>
 	<property name="user" ref="userAccount9.5"></property>
 	<property name="messageFolders">
 			<list>
