@@ -99,7 +99,12 @@
 				</ul>
 			</li>
 		
-					
+				<li><a class="fNiv"><spring:message code="master.page.petSitter.review"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="review/supplier/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
+				</ul>
+			</li>	
 					
 			<li><a class="fNiv"><spring:message	code="master.page.booking" /></a>
 				<ul>
@@ -118,6 +123,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li>
+						
 						<li><a href="complaint/customer/create.do"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
@@ -144,7 +150,12 @@
 				</ul>
 			</li>
 			<li>				
-
+			<li><a class="fNiv"><spring:message code="master.page.petSitter.review"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="review/supplier/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
+				</ul>
+			</li>
 			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.petSitter.invite"  /></a>
 				<ul>
@@ -156,7 +167,7 @@
 			<li><a class="fNiv"><spring:message code="master.page.petSitter.review"/></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="review/petSitter/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
+					<li><a href="review/supplier/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -172,7 +183,7 @@
 						<li><a href="complaint/customer/listComplaintCustomerId.do"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
 						<li><a href="complaint/customer/listComplaintCustomerIdNotSolved.do"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
 				</ul>
-			</li>	
+			</li>
 			<li><a class="fNiv"><spring:message	code="master.page.booking" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -180,6 +191,12 @@
 						<li><a href="booking/supplier/listBookingAccepted.do"><spring:message code="master.page.booking.listBookingAccepted" /></a></li>
 					<li><a href="booking/supplier/listPendingSupplier.do"><spring:message code="master.page.booking.listPendingSupplier" /></a></li>
 						
+				</ul>
+			</li>
+			<li><a class="fNiv"><spring:message code="master.page.petSitter.review"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="review/supplier/list.do"><spring:message code="master.page.petsitter.review.list"/></a></li>
 				</ul>
 			</li>
 			
