@@ -177,11 +177,15 @@
 	<security:intercept-url pattern="/pet/petSitter/edit.do" access="hasRole('PETSITTER')" />	
 	<security:intercept-url pattern="/pet/petSitter/addPhoto.do" access="hasRole('PETSITTER')" />
 	<security:intercept-url pattern="/pet/petSitter/selectAvatar.do" access="hasRole('PETSITTER')" />
-
+	<!-- Review -->
+		<security:intercept-url pattern="/review/supplier/**" access="hasAnyRole('PETSITTER','COMPANY', 'PETSHIPPER')" /> 
+		<security:intercept-url pattern="/review/petOwner/**"
+			access="hasRole('PETOWNER')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
-
+		
+			
 
 		<!-- Supplier -->
 		<security:intercept-url pattern="/supplier/administrator/**"
@@ -202,12 +206,7 @@
 		<security:logout logout-success-url="/"
 			invalidate-session="true" />
 			
-				<!-- Review -->
-		<security:intercept-url pattern="/review/supplier/list.do"
-			access="hasAnyRole('PETSITTER','PETSHIPPER', 'COMPANY')" />
-		<security:intercept-url pattern="/review/petOwner/**"
-			access="hasRole('PETOWNER')" />
-			
+				
 	</security:http>
 
 </beans>
