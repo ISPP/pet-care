@@ -19,11 +19,13 @@ import services.RegistrationService;
 import services.TripService;
 import controllers.AbstractController;
 import domain.Booking;
+import domain.Pet;
 import domain.PetOwner;
 import domain.PetSitter;
 import domain.Review;
 import domain.Trip;
 import forms.BookingForm;
+import forms.RegistrationForm;
 
 @Controller
 @RequestMapping("/trip/petOwner")
@@ -34,49 +36,88 @@ public class TripPetOwnerController extends AbstractController {
 	@Autowired
 	private RegistrationService registrationService;
 
+	@RequestMapping(value = "/findTrips", method = RequestMethod.GET)
+	public ModelAndView findTrips() {
+		ModelAndView result;
+		RegistrationForm registrationF = new RegistrationForm();
+
+		result = new ModelAndView("trip/findToRegister");
+
+		result.addObject("registrationF", registrationF);
+		result.addObject("requestURI", "trip/petOwner/findToRegister.do");
+
+		return result;
+	}
+
+	@RequestMapping(value = "/findToRegister", method = RequestMethod.POST)
+	public ModelAndView findToRegister(@Valid RegistrationForm registrationF,
+			BindingResult binding) {
+		ModelAndView result;
+		if (binding.hasErrors()) {
+			result = new ModelAndView("trip/findToRegister");
+			result.addObject("registrationF", registrationF);
+			result.addObject("requestURI", "trip/petOwner/findToRegister.do");
+
+		} else {
+			Collection<Trip> trips;
+
+			result = new ModelAndView("trip/listToRegister");
+
+			trips = tripService.findTripsStartAndEndCities(
+					registrationF.getStartCity(), registrationF.getEndCity());
+
+			result.addObject("trips", trips);
+			result.addObject("requestURI", "trip/petOwner/listToRegister.do?"
+					+ "startCity=" + registrationF.getStartCity() + "&endCity="
+					+ registrationF.getEndCity());
+		}
+		return result;
+	}
 
 	@RequestMapping(value = "/listToRegister", method = RequestMethod.GET)
-	public ModelAndView listToRegister() {
+	public ModelAndView listToRegister(@RequestParam() String startCity,
+			@RequestParam() String endCity) {
 		ModelAndView result;
+
 		Collection<Trip> trips;
 
 		result = new ModelAndView("trip/listToRegister");
-		
-		trips = tripService.findAll();
+
+		trips = tripService.findTripsStartAndEndCities(startCity, endCity);
 
 		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/petOwner/listToRegister.do");
+		result.addObject("requestURI", "trip/petOwner/register.do");
 
 		return result;
 	}
-	
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam int tripId) {
 		ModelAndView result;
-		try{
-			
+		try {
+
 			Trip trip;
-			trip=tripService.findOne(tripId);
+			trip = tripService.findOne(tripId);
 			registrationService.registerToTrip(trip);
-			result=new ModelAndView("welcome/index");
-			
-		}catch(IllegalArgumentException exc){
-			
-			result=new ModelAndView("redirect:listToRegistration.do");
+			result = new ModelAndView("welcome/index");
+
+		} catch (IllegalArgumentException exc) {
+
+			result = new ModelAndView("trip/findToRegister");
+			RegistrationForm registrationF=new RegistrationForm();
+			result.addObject("registrationF", registrationF);
+			result.addObject("requestURI", "trip/petOwner/findToRegister.do");
 			result.addObject("message", "trip.error.timeAfter");
-			
-		}catch(Throwable exc){
-			result=new ModelAndView("redirect:listToRegistration.do");
+
+		} catch (Throwable exc) {
+			result = new ModelAndView("trip/findToRegister");
+			RegistrationForm registrationF=new RegistrationForm();
+			result.addObject("registrationF", registrationF);
+			result.addObject("requestURI", "trip/petOwner/findToRegister.do");
 			result.addObject("message", "trip.error.operation");
 		}
-		
-				
 
 		return result;
 	}
-
-
-	
 
 }

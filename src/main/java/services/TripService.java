@@ -50,5 +50,11 @@ public class TripService {
 		return result;
 	}
 
+	public Collection<Trip> findTripsStartAndEndCities(String startCity, String endCity) {
+		Collection<Trip> result;
+		result = tripRepository.findTripsByStartAndEndCities(startCity,endCity);
+		return result;
+	}
+
 
 }
