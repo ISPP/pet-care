@@ -25,6 +25,7 @@ import domain.Complaint;
 import domain.Message;
 import domain.MessageFolder;
 import domain.Pet;
+import domain.Supplier;
 
 
 @Service
@@ -280,6 +281,15 @@ public class PetOwnerService {
 		
 		result = findOne(petOwnerId).getUser().equals(LoginService.getPrincipal());
 				
+		return result;
+	}
+
+	public PetOwner getLogged() {
+		PetOwner result;
+		UserAccount user;
+		user = LoginService.getPrincipal();
+		Assert.notNull(user, "El usuario no puede ser nulo");
+		result = petOwnerRepository.findPetOwnerByUsername(user.getUsername());
 		return result;
 	}
 }

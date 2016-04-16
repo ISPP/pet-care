@@ -12,4 +12,7 @@ public interface PetOwnerRepository extends JpaRepository<PetOwner, Integer>{
 	@Query("select p from PetOwner p where p.user.id = ?1")
 	PetOwner findOneByPrincipal(int id);
 
+	@Query("select a from PetOwner a where a.user.username=?1")
+	PetOwner findPetOwnerByUsername(String username);
+
 }

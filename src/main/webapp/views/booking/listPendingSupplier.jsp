@@ -48,7 +48,7 @@
 						code="booking.acept" />
 	</a>
 	<br>
-	<a href="booking/petOwner/rejected.do?id=${row.id}"> <spring:message
+	<a href="booking/supplier/rejected.do?id=${row.id}"> <spring:message
 						code="booking.rejected" />
 	</a>
 	
