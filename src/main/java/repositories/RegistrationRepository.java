@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 import domain.*;
 
 @Repository
-public interface RegistrationRepository extends
-		JpaRepository<Registration, Integer> {
-	
+public interface RegistrationRepository extends JpaRepository<Registration, Integer> {
+	@Query("select r from Registration r where r.trip.id=?1")
+	Collection<Registration> findRegistrationsByTrip(Integer id);
+
 }

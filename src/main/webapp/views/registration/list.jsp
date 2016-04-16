@@ -22,17 +22,17 @@
 
 
 <display:table class="displaytag" pagesize="5"
-	name="reviews" id="row" requestURI="${requestURI}">
+	name="registrations" id="row" requestURI="${requestURI}">
 	
-	<display:column titleKey="review.booking.code" property="booking.code"/>
-	<display:column titleKey="review.rating" property="rating" format="{0,number,0.00}"/>
-	<display:column titleKey="review.creationMoment" property="creationMoment" format="{0,date,dd-MM-yyyy}"/>
-	<display:column titleKey="review.reviewer" property="reviewer.user.username"/>
+	<display:column titleKey="registration.moment" property="moment" format="{0,date,dd-MM-yyyy HH:mm}"/>
+	<display:column titleKey="registration.petowner.name" property="petOwner.name" />
 	<display:column>
-		<a href="review/petSitter/display.do?reviewId=<jstl:out value="${row.id}"/>">	
-			<spring:message code="review.display.details"/>
+		<a href="petOwner/petOwner/display.do?petOwnerId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="registration.petowner.profile"/>
 		</a>
 	</display:column>
+	
+	
 	
 </display:table>
 

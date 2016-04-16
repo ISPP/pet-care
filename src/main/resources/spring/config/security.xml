@@ -53,7 +53,7 @@
 
 		<!-- Profiles -->
 		<security:intercept-url pattern="/petOwner/petOwner/display.do"
-			access="hasAnyRole('PETOWNER','PETSITTER')" />
+			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER')" />
 		<security:intercept-url pattern="/petOwner/petOwner/displayOwn.do"
 			access="hasRole('PETOWNER')" />
 		<security:intercept-url pattern="/petOwner/petOwner/edit.do"
@@ -187,8 +187,9 @@
 		
 			<!-- Trip -->
 		<security:intercept-url pattern="/trip/petOwner/**" access="hasRole('PETOWNER')" /> 
-		
-	
+		<security:intercept-url pattern="/trip/petShipper/**" access="hasRole('PETSHIPPER')" /> 
+		<!-- Regstraton -->
+	<security:intercept-url pattern="/registration/petShipper/**" access="hasRole('PETSHIPPER')" /> 
 		
 			
 

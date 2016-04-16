@@ -28,11 +28,23 @@
 	<display:column titleKey="trip.cost" property="cost"/>
 	<display:column titleKey="trip.startCity" property="startCity" />
 	<display:column titleKey="trip.endCity" property="endCity"/>
+	
+	<security:authorize access="hasRole('PETOWNER')">
 	<display:column>
 		<a href="trip/petOwner/register.do?tripId=<jstl:out value="${row.id}"/>">	
 			<spring:message code="trip.register"/>
 		</a>
 	</display:column>
+	</security:authorize>
+	<security:authorize access="hasRole('PETSHIPPER')">
+	<display:column>
+		<a href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="trip.registrations"/>
+		</a>
+	</display:column>
+	</security:authorize>
+	
+	
 	
 </display:table>
 

@@ -2,11 +2,14 @@ package services;
 
 import java.util.Collection;
 
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import domain.PetShipper;
+import domain.PetSitter;
 import domain.Trip;
 
 import repositories.TripRepository;
@@ -21,6 +24,8 @@ public class TripService {
 	
 	@Autowired
 	private TripRepository tripRepository;
+	@Autowired
+	private PetShipperService petShipperService;
 	
 	public Trip create() {
 		Trip result;
@@ -53,6 +58,14 @@ public class TripService {
 	public Collection<Trip> findTripsStartAndEndCities(String startCity, String endCity) {
 		Collection<Trip> result;
 		result = tripRepository.findTripsByStartAndEndCities(startCity,endCity);
+		return result;
+	}
+	
+	public Collection<Trip> findTripsWithRegistrations() {
+		Collection<Trip> result;
+		int id;
+		id=petShipperService.findOneByPrincipal().getId();
+		result = tripRepository.findTripsWithRegistrations(id);;
 		return result;
 	}
 

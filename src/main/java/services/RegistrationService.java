@@ -57,6 +57,11 @@ public class RegistrationService {
 		result = registrationRepository.findAll();
 		return result;
 	}
+	public Collection<Registration> findRegistrationByTrip(Trip trip) {
+		Collection<Registration> result;
+		result = registrationRepository.findRegistrationsByTrip(trip.getId());
+		return result;
+	}
 
 	public Registration findOne(Integer id) {
 		Registration result;

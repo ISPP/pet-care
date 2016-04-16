@@ -1781,14 +1781,7 @@
 	<property name="description" value="Coche particular con el cual viajo dfiariamente"></property>
 	<property name="size" value= "L"></property>
 	<property name="petShipper" ref="petShipper10.1"></property>
-	<property name="trips">
 	
-                        <list>	
-                                <ref bean="trip1" />	
-                               
-                        </list>	
-                </property>
-		
 	</bean>
 	
 	<bean id="vehicle2" class="domain.Vehicle">

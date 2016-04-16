@@ -16,14 +16,11 @@
        
 <tiles-definitions>
 
-	<definition name="review/list" extends="master.page">	
-		<put-attribute name="title" value="Review list" />
-		<put-attribute name="body" value="/views/review/list.jsp" />
+	<definition name="registration/list" extends="master.page">	
+		<put-attribute name="title" value="Registrations list" />
+		<put-attribute name="body" value="/views/registration/list.jsp" />
 	</definition>
 	
-	<definition name="review/create" extends="master.page">	
-		<put-attribute name="title" value="New review" />
-		<put-attribute name="body" value="/views/review/edit.jsp" />
-	</definition>
+
 	
 </tiles-definitions>
