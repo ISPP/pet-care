@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
+import services.CompanyService;
 import services.PetOwnerService;
 import services.PetSitterService;
 import controllers.AbstractController;
 import domain.Booking;
+import domain.Company;
 import domain.PetOwner;
 import domain.PetSitter;
 import forms.BookingForm;
@@ -31,6 +33,8 @@ public class BookingPetOwnerController extends AbstractController {
 	private PetOwnerService petOwnerService;
 	@Autowired
 	private PetSitterService petSitterService;
+	@Autowired
+	private CompanyService companyService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
@@ -72,7 +76,7 @@ public class BookingPetOwnerController extends AbstractController {
 		result = new ModelAndView("welcome/index");
 		return result;
 	}
-
+//----PetSitters booking 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView solve(@RequestParam("petSitterId") int petSitterId) {
 		ModelAndView result;
@@ -84,6 +88,8 @@ public class BookingPetOwnerController extends AbstractController {
 		result = new ModelAndView("booking/edit");
 		result.addObject("bookingForm", bookingForm);
 		result.addObject("requestURI", "booking/petOwner/create.do");
+		result.addObject("forCompany", false);
+	
 
 		return result;
 
@@ -95,7 +101,7 @@ public class BookingPetOwnerController extends AbstractController {
 		ModelAndView result;
 
 		if (binding.hasErrors()) {
-			result = createEditModelAndView(bookingForm);
+			result = createEditModelAndView(bookingForm,"PetSitter");
 			System.out.println(binding.getAllErrors());
 		} else {
 			try {
@@ -106,40 +112,111 @@ public class BookingPetOwnerController extends AbstractController {
 			} catch (IllegalArgumentException oops) {
 
 				result = createEditModelAndView(bookingForm,
-						"booking.typebookingError");
+						"booking.typebookingError","PetSitter");
 			} catch (IllegalStateException oops) {
 
 			
 				result = createEditModelAndView(bookingForm,
-						"booking.dateError");
+						"booking.dateError","PetSitter");
 
 			} catch (Throwable oops) {
 
 				result = createEditModelAndView(bookingForm,
-						"booking.error.operation");
+						"booking.error.operation","PetSitter");
 
 			}
 		}
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(BookingForm bForm) {
+	
+	
+//company-----------
+	
+	
+	
+	
+	@RequestMapping(value = "/createForCompany", method = RequestMethod.GET)
+	public ModelAndView createForCompany(@RequestParam("companyId") int companyId) {
+		ModelAndView result;
+		BookingForm bookingForm;
+		bookingForm = bookingService.create();
+		Company company = companyService.findOne(companyId);
+		bookingForm.setSupplier(company);
+		bookingForm.setNight(true);
+
+		result = new ModelAndView("booking/edit");
+		result.addObject("bookingForm", bookingForm);
+		result.addObject("requestURI", "booking/petOwner/createForCompany.do");
+		result.addObject("forCompany", true);
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/createForCompany", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveForCompany(@Valid BookingForm bookingForm,
+			BindingResult binding) {
 		ModelAndView result;
 
-		result = createEditModelAndView(bForm, null);
+		if (binding.hasErrors()) {
+			result = createEditModelAndView(bookingForm,"Company");
+			System.out.println(binding.getAllErrors());
+		} else {
+			try {
+				Booking booking;
+				booking = bookingService.reconstruct(bookingForm);
+				booking.setNight(true);
+				bookingService.registerCompanyBooking(booking);
+				result = new ModelAndView("redirect:list.do");
+			} catch (IllegalArgumentException oops) {
+
+				result = createEditModelAndView(bookingForm,
+						"booking.errorForcompany","Company");
+			} catch (IllegalStateException oops) {
+
+			
+				result = createEditModelAndView(bookingForm,
+						"booking.dateError" ,"Company");
+
+			} catch (Throwable oops) {
+
+				result = createEditModelAndView(bookingForm,
+						"booking.error.operation","Company");
+
+			}
+		}
+		return result;
+	}
+//-----------ancillary
+	
+	protected ModelAndView createEditModelAndView(BookingForm bForm,String token) {
+		ModelAndView result;
+
+		result = createEditModelAndView(bForm, null,token);
 
 		return result;
 	}
 
 	protected ModelAndView createEditModelAndView(BookingForm bForm,
-			String message) {
+			String message,String token) {
 		ModelAndView result;
 
 		result = new ModelAndView("booking/edit");
 		result.addObject("bookingForm", bForm);
 		result.addObject("message", message);
+		if(token.equals("PetSitter")){
 		result.addObject("requestURI", "booking/petOwner/create.do");
+		result.addObject("forCompany", false);
+		}else{
+			result.addObject("requestURI", "booking/petOwner/createForCompany.do");
+			result.addObject("forCompany", true);
+		}
 		return result;
 	}
+	
+	//for company
+	
+	
 
 }

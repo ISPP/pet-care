@@ -39,9 +39,9 @@
 
 		<display:column property="address" titleKey="sitter.address" />
 
-		<display:column property="priceNight" titleKey="sitter.priceNight" />
+<%-- 		<display:column property="priceNight" titleKey="sitter.priceNight" /> --%>
 
-		<display:column property="priceHour" titleKey="sitter.priceHour" />
+<%-- 		<display:column property="priceHour" titleKey="sitter.priceHour" /> --%>
 		<display:column>
 			<jstl:if test="${row.blocked==true}">
 				<spring:message code="petSitter.blocked" />

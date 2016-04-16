@@ -117,7 +117,6 @@
 		
 		<security:intercept-url pattern="/petSitter/invite.do"
 			access="hasRole('PETSITTER')" />
-		<!-- PetSitter -->
 	
 
 	
@@ -180,7 +179,9 @@
 		<!-- Supplier -->
 		<security:intercept-url pattern="/supplier/administrator/**"
 			access="hasRole('ADMIN')" />
-			
+			<!-- Company -->
+			<security:intercept-url pattern="/company/listToBook.do"
+			access="hasRole('PETOWNER')" />
 		
 		
 		<security:form-login login-page="/security/login.do"

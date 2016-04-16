@@ -36,6 +36,7 @@
 		<value>/views/pet/messages</value>
 		<value>/views/trip/messages</value>
 		<value>/views/registration/messages</value>
+		<value>/views/company/messages</value>
 
 	</util:list>
 

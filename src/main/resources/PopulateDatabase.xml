@@ -1451,6 +1451,7 @@
 		<property name="email" value="regy@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Huelva"></property>
@@ -1499,6 +1500,7 @@
 		<property name="email" value="santca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="18520"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Huelva"></property>
@@ -1546,6 +1548,7 @@
 		<property name="email" value="lopez@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.8"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Huelva"></property>
@@ -1592,6 +1595,7 @@
 		<property name="email" value="pca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
+		<property name="pricePerDay" value="4.2"></property>
 		<property name="rating" value="1.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Sevilla"></property>
@@ -1639,6 +1643,7 @@
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Malaga"></property>

@@ -12,6 +12,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -32,8 +33,10 @@
 	
 		<acme:textbox code="booking.startMoment" path="startMoment"/>
 		<acme:textbox code="booking.endMoment" path="endMoment"/>
-			
-			
+		
+	<c:choose>
+    <c:when test="${!forBooking}">
+      		
 			<form:label path="night">
 				<spring:message code="booking.Type" />:
 			</form:label>
@@ -48,8 +51,20 @@
 			</form:label>
 		
 			<form:errors cssClass="error" path="night" />
+			<br/>
 			
-	<br/>
+		
+    </c:when>    
+    <c:otherwise>
+        <form:hidden path="night" />
+       
+    </c:otherwise>
+</c:choose>
+		
+		
+			
+			
+	
 
 	<input type="submit" name="save" class="button"
 		value="<spring:message code="complaint.save" />" />
