@@ -182,8 +182,13 @@
 		<security:intercept-url pattern="/review/petOwner/**"
 			access="hasRole('PETOWNER')" />
 	
-		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+	
 
+		
+			<!-- Trip -->
+		<security:intercept-url pattern="/trip/petOwner/**" access="hasRole('PETOWNER')" /> 
+		
+	
 		
 			
 
