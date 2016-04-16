@@ -646,6 +646,14 @@
 									
 		</list>
 	</property>
+	<property name="registrations">
+	
+                        <list>	
+                                <ref bean="registration1" />	
+                               
+                               
+                        </list>	
+                </property>
 	
 	</bean>
 	
@@ -660,6 +668,7 @@
 	<bean id="folderPetOwner8.1Trashbox" class="domain.MessageFolder">
 	<property name="name" value="Trashbox"></property>
 	<property name="owner" ref="petOwner8.1"></property>	
+	
 	</bean>
 	
 	
@@ -1830,6 +1839,15 @@
 	<property name="moment" value="2016/04/20"></property>
 	<property name="cost" value="20"></property>
 	<property name="vehicle" ref="vehicle1"></property>	
+	<property name="registrations">
+	
+                        <list>	
+                                <ref bean="registration1" />	
+                               
+                               
+                        </list>	
+                </property>
+	
 	</bean>
 	
 	
@@ -2054,6 +2072,13 @@
 	
 	</bean>
 	
-		   
+	<!-- Registration -->
+	<bean id="registration1" class="domain.Registration">
+	
+	<property name="moment" value="07/03/2015 00:00"></property>
+	<property name="Trip" ref="trip1"></property>
+	<property name="petOwner" ref="petOwner8.1"></property>
+	
+	</bean>
 	
 </beans>

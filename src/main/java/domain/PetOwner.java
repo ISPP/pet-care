@@ -14,6 +14,7 @@ public class PetOwner extends Customer {
 	private Collection<Booking> bookings;
 	private Collection<Pet> pets;
 	private Collection<Review> reviews;
+	private Collection<Registration> registrations;
 	
 	public PetOwner() {
 		super();
@@ -44,6 +45,14 @@ public class PetOwner extends Customer {
 
 	public void setReviews(Collection<Review> reviews) {
 		this.reviews = reviews;
+	}
+	@OneToMany(mappedBy="petOwner")
+	public Collection<Registration> getRegistrations() {
+		return registrations;
+	}
+
+	public void setRegistrations(Collection<Registration> registrations) {
+		this.registrations = registrations;
 	}
 
 

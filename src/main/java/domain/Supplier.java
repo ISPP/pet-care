@@ -20,6 +20,7 @@ public class Supplier extends Customer {
 	private double rating;
 	private boolean blocked;
 	private Integer daysBeforeCancel;
+	private String invitationCode;
 
 	@Min(1)
 	public Integer getDaysBeforeCancel() {
@@ -48,6 +49,13 @@ public class Supplier extends Customer {
 		this.blocked = blocked;
 	}
 
+	public String getInvitationCode() {
+		return invitationCode;
+	}
+	public void setInvitationCode(String invitationCode) {
+		this.invitationCode = invitationCode;
+	}
+	
 	// Relationships
 	private Collection<Booking> bookings;
 	private Collection<Review> reviews;

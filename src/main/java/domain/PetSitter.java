@@ -47,6 +47,7 @@ public class PetSitter extends Supplier{
 	//--------------------------------
 	private Collection<Place>places;
 	private Collection<Pet> pets;
+	
 
 	@OneToMany(mappedBy="petSitter")
 	public Collection<Pet> getPets() {
@@ -65,7 +66,7 @@ public class PetSitter extends Supplier{
 	public void setPlaces(Collection<Place> places) {
 		this.places = places;
 	}
-	
+		
 	
 	
 

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.Customer;
+import domain.Supplier;
 @Service
 @Transactional
 public class EmailService {
@@ -55,7 +56,7 @@ public class EmailService {
 
 	}
 
-	public void sendToAFriend(Customer sender, String recipient) {
+	public void sendToAFriend(Supplier sender, String recipient) {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();

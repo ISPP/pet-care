@@ -93,12 +93,12 @@ public class ReviewService {
 	
 	
 	//List the reviews where they are the reviewed ones(customer)
-	public Collection<Review> findReviewByCustomerId(){
+	public Collection<Review> findReviewBySupplierId(){
 		Collection<Review> result;
 		Supplier supplier;
 		supplier = supplierService.getLoggedSupplier();
 		
-		result = reviewRepository.findReviewByCustomerId(supplier.getId());
+		result = reviewRepository.findReviewBySupplierId(supplier.getId());
 		
 		return result;
 	}
