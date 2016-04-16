@@ -27,7 +27,7 @@
 	<display:column titleKey="registration.moment" property="moment" format="{0,date,dd-MM-yyyy HH:mm}"/>
 	<display:column titleKey="registration.petowner.name" property="petOwner.name" />
 	<display:column>
-		<a href="petOwner/petOwner/display.do?petOwnerId=<jstl:out value="${row.id}"/>">	
+		<a href="petOwner/petOwner/display.do?petOwnerId=<jstl:out value="${row.petOwner.id}"/>">	
 			<spring:message code="registration.petowner.profile"/>
 		</a>
 	</display:column>
