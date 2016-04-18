@@ -1955,11 +1955,11 @@
 	</bean>
 	
 	<bean id="booking4" class="domain.Booking">
-	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="endMoment" value="07/02/2015"></property>
-	<property name="startMoment" value="20/02/2015"></property>
+	<property name="creationMoment" value="02/06/2016"></property>
+	<property name="endMoment" value="07/06/2016"></property>
+	<property name="startMoment" value="07/07/2016"></property>
 	<property name="code" value="bookin-booking4"></property>
-	<property name="status" value="REJECTED"></property>
+	<property name="status" value="PENDING"></property>
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="true"></property>

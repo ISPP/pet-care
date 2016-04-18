@@ -1,4 +1,4 @@
-package services;
+package test;
 
 import java.util.Collection;
 
@@ -11,11 +11,13 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import services.ActorService;
+import services.AdministratorService;
+import services.CommentService;
+import services.ComplaintService;
 import domain.Administrator;
 import domain.Complaint;
 import forms.ComplaintForm;
-
-import utilities.AbstractTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/datasource.xml",

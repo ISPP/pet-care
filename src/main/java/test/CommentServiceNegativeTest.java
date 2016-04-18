@@ -1,6 +1,5 @@
-package services;
+package test;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.Test;
@@ -10,9 +9,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
-import utilities.AbstractTest;
+import services.ActorService;
+import services.CommentService;
+import services.ComplaintService;
 import domain.Actor;
 import domain.Comment;
 import domain.Complaint;

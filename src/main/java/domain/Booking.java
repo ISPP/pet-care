@@ -118,7 +118,7 @@ public class Booking extends DomainEntity {
 	
 
 
-	public boolean isCancelled() {
+	public boolean getCancelled() {
 		return cancelled;
 	}
 

@@ -1,4 +1,4 @@
-package services;
+package test;
 
 import java.util.Collection;
 
@@ -11,7 +11,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import utilities.AbstractTest;
+import services.ActorService;
+import services.CommentService;
+import services.ComplaintService;
 import domain.Complaint;
 import forms.ComplaintForm;
 

@@ -379,8 +379,8 @@ public class BookingService {
 		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
 		Booking booking = bookingRepository.findOne(id);
-		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(),
-				"accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(), "accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getStatus().equals("PENDING"));
 		booking.setStatus("REJECTED");
 		bookingRepository.save(booking);
 

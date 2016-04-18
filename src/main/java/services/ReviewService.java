@@ -83,7 +83,7 @@ public class ReviewService {
 			reviewed = false;
 		}
 		passed = today.after(bookingDate);
-		canceled = booking.isCancelled();
+		canceled = booking.getCancelled();
 		if( canceled || !passed || reviewed==true){
 			result = false;
 		}

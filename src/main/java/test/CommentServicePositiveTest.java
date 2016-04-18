@@ -1,7 +1,6 @@
-package services;
+package test;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +10,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.util.Assert;
 
-import utilities.AbstractTest;
-import domain.Actor;
+import services.ActorService;
+import services.CommentService;
+import services.ComplaintService;
+import services.PetOwnerService;
 import domain.Comment;
 import domain.Complaint;
 
