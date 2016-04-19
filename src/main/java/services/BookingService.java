@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Booking;
+import domain.Company;
 import domain.PetOwner;
 import domain.PetSitter;
 import domain.Supplier;
@@ -269,6 +270,59 @@ public class BookingService {
 		return result;
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	private double calculateCostForCompanyBookings(Booking b) {
+		Double result;
+		Date startMoment, endMoment;
+		Company company;
+		company=(Company) b.getSupplier();
+		
+		startMoment = b.getStartMoment();
+		endMoment = b.getEndMoment();
+		DateTime end,start;
+		start=new DateTime(startMoment);
+		end=new DateTime(endMoment);
+		int days = Days.daysBetween(start,
+				end).getDays();
+		
+		
+		Assert.state(start.isAfterNow() && start.isBefore(end));
+		
+		Assert.isTrue(days>0);
+			
+		result=days*company.getPricePerDay();
+		
+		
+		
+		return result;
+
+	}
+
+	
+	public Booking registerCompanyBooking(Booking booking) {
+		Booking result;
+		booking.setCreationMoment(new Date(System.currentTimeMillis() - 1000));
+		booking.setStatus("PENDING");
+		String code = RandomStringUtils.randomAlphanumeric(10);
+		booking.setCode(code);
+		booking.setCancelled(false);
+		PetOwner petOwner;
+		petOwner = petOwnerService.findOneByPrincipal();
+		booking.setPetOwner(petOwner);
+
+		double cost = calculateCostForCompanyBookings(booking);
+		booking.setPrice(cost);
+		result = save(booking);
+		return result;
+
+	}
 
 	public Collection<Booking> findBokkingAcceptedBySupplierId() {
 		Collection<Booking> res;
@@ -325,8 +379,8 @@ public class BookingService {
 		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
 		Booking booking = bookingRepository.findOne(id);
-		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(),
-				"accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(), "accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getStatus().equals("PENDING"));
 		booking.setStatus("REJECTED");
 		bookingRepository.save(booking);
 

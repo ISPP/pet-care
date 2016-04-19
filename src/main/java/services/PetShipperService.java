@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.PetShipper;
+import domain.PetSitter;
 
 import repositories.PetShipperRepository;
+import security.LoginService;
 
 
 @Service
@@ -47,6 +49,13 @@ public class PetShipperService {
 	public PetShipper findOne(Integer id) {
 		PetShipper result;
 		result = petShipperRepository.findOne(id);
+		return result;
+	}
+	public PetShipper findOneByPrincipal() {
+		PetShipper result;
+		
+		result = petShipperRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
+		
 		return result;
 	}
 

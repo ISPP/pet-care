@@ -21,13 +21,13 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     Collection<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId);
     
     
-    @Query("select b from Booking b where b.status='ACCEPTED' and b.supplier.id=?1")
+    @Query("select b from Booking b where b.status='ACCEPTED' and b.supplier.id=?1 order by b.startMoment")
 	Collection<Booking> findBokkingAcceptedBySupplierId(Integer id);
     
     @Query("select b from Booking b where b.petOwner.id=?1 and b.status='PENDING' or b.status='ACCEPTED' and b.cancelled is false and CURRENT_TIMESTAMP<b.startMoment-b.supplier.daysBeforeCancel*3600*1000")
     Collection<Booking> findBookingCanCancelByPetOwnerId(Integer id);
     
-    @Query("select b from Booking b where b.supplier.id=?1 and b.status='PENDING'")
+    @Query("select b from Booking b where b.supplier.id=?1 and b.status='PENDING' order by b.status")
     Collection<Booking> findBookingCanAceptRejectedByCustomerId(Integer id);
 
 }

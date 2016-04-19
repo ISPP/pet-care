@@ -26,8 +26,8 @@ public class Customer extends Actor{
 	private String address, description, homePage, contactPhone;
 	private CreditCard creditCard;
 	private Collection<Complaint> complaints;
-	private Boolean activated;
-	private String invitationCode;
+	
+	
 	
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
@@ -83,19 +83,7 @@ public class Customer extends Actor{
 	public void setComplaints(Collection<Complaint> complaints) {
 		this.complaints = complaints;
 	}
-	public String getInvitationCode() {
-		return invitationCode;
-	}
-	public void setInvitationCode(String invitationCode) {
-		this.invitationCode = invitationCode;
-	}
-	public Boolean getActivated() {
-		return activated;
-	}
-	public void setActivated(Boolean activated) {
-		this.activated = activated;
-	}
-
+	
 	
 
 }

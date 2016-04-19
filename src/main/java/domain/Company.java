@@ -17,6 +17,7 @@ public class Company extends Supplier{
 	}
 	
 	private String tic;
+	private Double pricePerDay;
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
@@ -26,6 +27,14 @@ public class Company extends Supplier{
 
 	public void setTic(String tic) {
 		this.tic = tic;
+	}
+
+	public Double getPricePerDay() {
+		return pricePerDay;
+	}
+
+	public void setPricePerDay(Double pricePerDay) {
+		this.pricePerDay = pricePerDay;
 	}
 	
 

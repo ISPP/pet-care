@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.CustomerService;
 import services.EmailService;
 import services.PetSitterService;
+import services.SupplierService;
 import domain.Customer;
 import domain.PetSitter;
 import forms.InvitationForm;
@@ -27,7 +28,8 @@ public class PetSitterController extends AbstractController {
 	@Autowired
 	private PetSitterService petSitterService;
 	@Autowired
-	private CustomerService customerService;
+	private SupplierService supplierService;
+	
 	@Autowired
 	private EmailService emailService;
 
@@ -150,15 +152,15 @@ public class PetSitterController extends AbstractController {
 			BindingResult binding) {
 		ModelAndView result;
 		result = new ModelAndView();
-		Customer customer;
+		PetSitter petSitter;
 		if (binding.hasErrors()) {
 			result = createInvitationModelAndView(invitationForm);
 			
 		} else {
 			result = new ModelAndView("welcome/index");
 			try {
-				customer = customerService.getLoggedCustomer();
-				emailService.sendToAFriend(customer, invitationForm.getEmail());
+				petSitter = petSitterService.findOneByPrincipal();
+				emailService.sendToAFriend(petSitter, invitationForm.getEmail());
 
 			} catch (Exception e) {
 

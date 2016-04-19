@@ -22,4 +22,3 @@
   </a><br><br>
 </jstl:if>
 </footer>
-

@@ -14,8 +14,8 @@ import controllers.AbstractController;
 import domain.Review;
 
 @Controller
-@RequestMapping("/review/petSitter")
-public class ReviewPetSitterController extends AbstractController{
+@RequestMapping("/review/supplier")
+public class ReviewSupplierController extends AbstractController{
 	
 	@Autowired
 	private ReviewService reviewService;
@@ -26,10 +26,10 @@ public class ReviewPetSitterController extends AbstractController{
 		List<Review> reviews;
 		
 		result = new ModelAndView("review/list");
-		reviews = new ArrayList<Review>(reviewService.findReviewByCustomerId());
+		reviews = new ArrayList<Review>(reviewService.findReviewBySupplierId());
 		
 		result.addObject("reviews",reviews);
-		result.addObject("requestURI", "review/petSitter/list.do");
+		result.addObject("requestURI", "review/supplier/list.do");
 		
 		return result;
 	}

@@ -167,7 +167,7 @@ public class PetPetOwnerController extends AbstractController {
 		byte[] byteArr = null;
 		Pet pet;
 		Photo photo;
-		Photo savedPhoto;
+		//Photo savedPhoto;
 		
 		pet = petService.findOne(photoForm.getPetId());
 		
@@ -195,8 +195,9 @@ public class PetPetOwnerController extends AbstractController {
 				try {
 
 					photo = photoService.reconstruct(photoForm);
-					savedPhoto = photoService.save(photo);
-					petService.addPhoto(pet, savedPhoto);
+					//savedPhoto = photoService.save(photo);
+				//	petService.addPhoto(pet, savedPhoto);
+					petService.addPhoto(pet, photo);
 					result = new ModelAndView("redirect:/pet/see.do?petId="
 							+ photoForm.getPetId());
 

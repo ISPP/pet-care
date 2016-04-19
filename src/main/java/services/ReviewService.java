@@ -30,6 +30,7 @@ public class ReviewService {
 	@Autowired
 	private SupplierService supplierService;
 	
+	
 	public Review create(Booking booking) {
 		Review result;
 		PetOwner petOwner;
@@ -82,7 +83,7 @@ public class ReviewService {
 			reviewed = false;
 		}
 		passed = today.after(bookingDate);
-		canceled = booking.isCancelled();
+		canceled = booking.getCancelled();
 		if( canceled || !passed || reviewed==true){
 			result = false;
 		}
@@ -93,13 +94,15 @@ public class ReviewService {
 	
 	
 	//List the reviews where they are the reviewed ones(customer)
-	public Collection<Review> findReviewByCustomerId(){
+	public Collection<Review> findReviewBySupplierId(){
 		Collection<Review> result;
 		Supplier supplier;
 		supplier = supplierService.getLoggedSupplier();
 		
-		result = reviewRepository.findReviewByCustomerId(supplier.getId());
+		result = reviewRepository.findReviewBySupplierId(supplier.getId());
 		
 		return result;
 	}
+
+
 }

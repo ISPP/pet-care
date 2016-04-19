@@ -8,7 +8,7 @@
  * 
  */
 
-package utilities;
+package test;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import security.LoginService;
+import utilities.PopulateDatabase;
 
 public abstract class AbstractTest {
 

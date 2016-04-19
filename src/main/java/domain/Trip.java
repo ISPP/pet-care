@@ -1,11 +1,13 @@
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
@@ -88,7 +90,7 @@ public class Trip extends DomainEntity{
 	
 	//------------------------------------------
 	private Vehicle vehicle;
-
+	private Collection<Registration> registrations;
 	@ManyToOne(optional=false)
 	public Vehicle getVehicle() {
 		return vehicle;
@@ -96,6 +98,16 @@ public class Trip extends DomainEntity{
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
+	
+	@OneToMany(mappedBy="trip")
+	public Collection<Registration> getRegistrations() {
+		return registrations;
+	}
+
+	public void setRegistrations(Collection<Registration> registrations) {
+		this.registrations = registrations;
+	}
+
 	
 	
 }

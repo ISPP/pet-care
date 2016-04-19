@@ -646,6 +646,14 @@
 									
 		</list>
 	</property>
+	<property name="registrations">
+	
+                        <list>	
+                                <ref bean="registration1" />	
+                               
+                               
+                        </list>	
+                </property>
 	
 	</bean>
 	
@@ -660,6 +668,7 @@
 	<bean id="folderPetOwner8.1Trashbox" class="domain.MessageFolder">
 	<property name="name" value="Trashbox"></property>
 	<property name="owner" ref="petOwner8.1"></property>	
+	
 	</bean>
 	
 	
@@ -962,6 +971,7 @@
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+      <property name="invitationCode" value="petSitter92"></property>
 	<property name="user" ref="userAccount9.2"></property>
 	<property name="messageFolders">
 			<list>
@@ -1016,6 +1026,7 @@
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+      <property name="invitationCode" value="petSitter93"></property>
 	<property name="user" ref="userAccount9.3"></property>
 	<property name="messageFolders">
 			<list>
@@ -1067,6 +1078,7 @@
                   <property name="CVV" value="187" />	
             </bean>	
      </property>
+      <property name="invitationCode" value="petSitter94"></property>
 	<property name="user" ref="userAccount9.4"></property>
 	<property name="messageFolders">
 			<list>
@@ -1121,7 +1133,9 @@
                  <property name="expirationYear" value="2016" />	
                   <property name="CVV" value="187" />	
             </bean>	
+             
      </property>
+     <property name="invitationCode" value="petSitter95"></property>
 	<property name="user" ref="userAccount9.5"></property>
 	<property name="messageFolders">
 			<list>
@@ -1437,6 +1451,7 @@
 		<property name="email" value="regy@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Huelva"></property>
@@ -1485,6 +1500,7 @@
 		<property name="email" value="santca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="18520"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Huelva"></property>
@@ -1532,6 +1548,7 @@
 		<property name="email" value="lopez@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.8"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Huelva"></property>
@@ -1578,6 +1595,7 @@
 		<property name="email" value="pca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
+		<property name="pricePerDay" value="4.2"></property>
 		<property name="rating" value="1.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Sevilla"></property>
@@ -1625,6 +1643,7 @@
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
+		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Malaga"></property>
@@ -1767,14 +1786,7 @@
 	<property name="description" value="Coche particular con el cual viajo dfiariamente"></property>
 	<property name="size" value= "L"></property>
 	<property name="petShipper" ref="petShipper10.1"></property>
-	<property name="trips">
 	
-                        <list>	
-                                <ref bean="trip1" />	
-                               
-                        </list>	
-                </property>
-		
 	</bean>
 	
 	<bean id="vehicle2" class="domain.Vehicle">
@@ -1825,6 +1837,15 @@
 	<property name="moment" value="2016/04/20"></property>
 	<property name="cost" value="20"></property>
 	<property name="vehicle" ref="vehicle1"></property>	
+	<property name="registrations">
+	
+                        <list>	
+                                <ref bean="registration1" />	
+                               
+                               
+                        </list>	
+                </property>
+	
 	</bean>
 	
 	
@@ -1934,11 +1955,11 @@
 	</bean>
 	
 	<bean id="booking4" class="domain.Booking">
-	<property name="creationMoment" value="06/02/2015"></property>
-	<property name="endMoment" value="07/02/2015"></property>
-	<property name="startMoment" value="20/02/2015"></property>
+	<property name="creationMoment" value="02/06/2016"></property>
+	<property name="endMoment" value="07/06/2016"></property>
+	<property name="startMoment" value="07/07/2016"></property>
 	<property name="code" value="bookin-booking4"></property>
-	<property name="status" value="REJECTED"></property>
+	<property name="status" value="PENDING"></property>
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="true"></property>
@@ -2049,6 +2070,13 @@
 	
 	</bean>
 	
-		   
+	<!-- Registration -->
+	<bean id="registration1" class="domain.Registration">
+	
+	<property name="moment" value="07/03/2015 00:00"></property>
+	<property name="Trip" ref="trip1"></property>
+	<property name="petOwner" ref="petOwner8.1"></property>
+	
+	</bean>
 	
 </beans>
