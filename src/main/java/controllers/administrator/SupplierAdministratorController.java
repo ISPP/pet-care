@@ -21,7 +21,7 @@ public class SupplierAdministratorController extends AbstractController{
 	private SupplierService supplierService;
 	
 	@RequestMapping(value="/blockSitter", method = RequestMethod.POST)
-	public ModelAndView block(int supplierId){//TODO:Add PetShipper in 3rd sprint
+	public ModelAndView block(int supplierId){
 		ModelAndView result;
 		Supplier supplier;
 		
@@ -34,7 +34,7 @@ public class SupplierAdministratorController extends AbstractController{
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(){//TODO:Add PetShipper in 3rd sprint
+	public ModelAndView list(){
 		ModelAndView result;
 		List<Supplier> suppliers;
 				
