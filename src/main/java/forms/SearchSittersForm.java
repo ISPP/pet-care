@@ -11,8 +11,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class SearchSittersForm {
 
 	private int id;
-	private Date startDate; 
-	private Date endDate;
+	//private Date startDate; 
+	//private Date endDate;
+	private String startDate; 
+	private String endDate;
 	private String address;
 
 	@SafeHtml
@@ -24,7 +26,7 @@ public class SearchSittersForm {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+/*	
 	@NotNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getStartDate() {
@@ -42,6 +44,27 @@ public class SearchSittersForm {
 	}
 
 	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+*/	
+	
+	@SafeHtml
+	@NotBlank
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	
+	@SafeHtml
+	@NotBlank
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	

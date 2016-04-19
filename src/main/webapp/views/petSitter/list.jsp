@@ -21,7 +21,7 @@
 
 <jstl:set value="organiser/administrator/list.do" var="action" />
 
-
+<!-- 
 <display:table class="displaytag" pagesize="5"
 	name="petSitters" id="row" requestURI="${requestURI}">
 <%-- 	<display:column titleKey="petSitter.username"> --%>
@@ -42,5 +42,26 @@
 	</display:column>
 	</jstl:if>
 </display:table>
-
+ -->
+ 
+ <div class="col-md-12">
+	</div>
+	<jstl:forEach var="petSitter" items="${petSitters}">
+	 <div class="col-md-6">
+	 	<jstl:if test="${toBook==true}">
+	 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}">
+	 	</jstl:if>
+		<img class="max-h img-left" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+		<jstl:out value=" ${petSitter.priceNight}"/>
+		<jstl:if test="${toBook==true}">
+		</a>
+		</jstl:if>
+		<div class="midl-left">
+		<h3><jstl:out value="${petSitter.name} ${petSitters.surname}"/></h3>
+		<jstl:out value=" ${petSitter.address}"/>
+		<jstl:out value=" ${petSitter.priceHour}"/>
+		</div>
+		
+	</div>
+	</jstl:forEach>
 

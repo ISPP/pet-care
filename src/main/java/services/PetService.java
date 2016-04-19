@@ -144,14 +144,17 @@ public class PetService {
 		return result;
 	}
 
+	@Transactional
 	public void addPhoto(Pet pet, Photo photo) {
 		Assert.notNull(pet);
 		Assert.notNull(photo);
 		
+		photo.setAvatar(false);
 		Collection<Photo> photos;
 		
 		if(pet.getPhotos()!=null){
 			photos = pet.getPhotos();
+			
 		}
 		else{
 			photos = new ArrayList<Photo>();

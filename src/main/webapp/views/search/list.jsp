@@ -1,3 +1,5 @@
+
+
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,22 +8,138 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- LIST -->
-<display:table name="sitters" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
 
-	<display:column titleKey="sitter.fullName">
-		<jstl:out value="${row.name}" /> <jstl:out value="${row.surname}" />
-	</display:column>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="images/slide1.png" alt="viaja sin preocupaciones" width="1200" height="700">
+      </div>
+
+      <div class="item">
+        <img src="images/slide2.png" alt="Chicago" width="1200" height="700">
+      </div>
+    
+      <div class="item">
+        <img src="images/slide3.png" alt="Los Angeles" width="1200" height="700">
+      </div>
+      
+      <div class="item">
+        <img src="images/slide4.png" alt="Los Angeles" width="1200" height="700">
+      </div>
+      
+      <div class="item">
+        <img src="images/slide5.png" alt="Los Angeles" width="1200" height="700">
+      </div>
+      
+      
+      <div class="carousel-caption center-bottom">
+          	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
+			<form:hidden path="id"/>
+			<fieldset >
+			<h2><spring:message code="master.page.searchSitters"/></h2>
+			<spring:message var="startD" code="sitter.startDate"/>
+			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
+			<form:errors path="startDate" cssClass="error" />
+			
+			<spring:message var="endD" code="sitter.endDate"/>
+			<form:input class="blackL datepicker" path="endDate" placeholder="${endD}"/>
+			<form:errors path="endDate" cssClass="error" />
+			
+			<spring:message var="addrs" code="sitter.address"/>
+			<form:input class="blackL" path="address" placeholder="${addrs}"/>
+			<form:errors path="address" cssClass="error" />
+			
+			<acme:submit code="sitter.search.go" name="search" />
+			</fieldset>
+			</form:form>
+
+
+<br/>
+<br/>
+        </div>  
+    </div>
+
+</div>
+<div class="container text-center">
+	<jstl:forEach var="petSitter" items="${sitters}">
+	 <div class="col-md-4 panel panel-default">
+	 	<div class="wrap">
+	 	<jstl:if test="${toBook==true}">
+	 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}">
+	 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}"/></span>
+		</a>
+	 	</jstl:if>
+		
+		<jstl:if test="${toBook == false}">
+		<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}"/></span>
+		</jstl:if>
+		</div>
+		
+		<div>
+		<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"></p>
+		<jstl:out value=" ${petSitter.address}"/>
+		<br/>
+		<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/>
+		</div>
+		
+	</div>
+	</jstl:forEach>
+	<jstl:if test="${sitters.size()==0}">
+		<h2><spring:message code="search.noResults"/></h2>
+	</jstl:if>
+	<jstl:if test="${toBook==false}">
+	<spring:message code="search.mustRegister"/>
+	</jstl:if>
+</div>
+
+
+<div id="googleMap"></div>
+
+
+<!-- Add Google Maps -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+
+
+function initialize() {
+	var geocoder = new google.maps.Geocoder();
+	var country = "${searchSittersForm.address}";
+	var mapProp = {
+			zoom:12,
+			scrollwheel:true,
+			draggable:true,
+			mapTypeId:google.maps.MapTypeId.ROADMAP
+			};
+	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	geocoder.geocode( { 'address': country }, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	        map.setCenter(results[0].geometry.location);
+	    } else {
+	        alert("Could not find location: " + location);
+	    }
+	});
+
 	
-	<display:column property="address" titleKey="sitter.address"/> 
-	
-	<display:column property="priceNight" titleKey="sitter.priceNight"/> 
-	
-	<display:column property="priceHour" titleKey="sitter.priceHour"/> 
-	
-	<display:column titleKey="sitter.display">
-		<a href="search/display.do?petSitterId=${row.id}"> <spring:message code="sitter.display"/> </a>
-	</display:column>
-	
-</display:table>
+
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+position: map.getCenter(),
+});
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+</script>

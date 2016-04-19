@@ -28,9 +28,22 @@
 <%-- Definition --%>
 
 <div>
+	<table class="labelInput">
+	<tr>
+	<th class="tableLabel">
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>
+	</th>
+	<th class="tableInput">
 	<form:password path="${path}"/>
+	</th>
+	<th class="tableError">
 	<form:errors path="${path}" cssClass="error" />
+	</th>
+	</tr>
+</table>
+	
+	
+	
 </div>

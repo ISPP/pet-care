@@ -6,7 +6,28 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-		
+
+<div class="col-md-4">
+	<img class="register-todoAncho" alt="Your AVATAR" src="images/petOwner-index.jpg">
+	<br/>
+	${petOwner.name} ${petOwner.surname} 
+	<br/>
+	${petOwner.address}
+	<br/>
+	${petOwner.email}
+	<br/>
+	<a href="${petOwner.homePage}" target="_blank">${petOwner.homePage}</a>
+	<br/>
+	<jstl:if test="${principal}">
+	<acme:cancel code="owner.edit" url="/petOwner/petOwner/edit.do?petOwnerId=${petOwner.id}" />
+	<br />
+</jstl:if>
+</div>
+
+<div class="col-md-8">
+
+	<input class="area-autoAlto" readonly="readonly" value="${petOwner.description}"/>
+<!-- 		
 <acme:out code="owner.fullName" path="${petOwner.name}"/>
 <br />
 <acme:out code="owner.description" path="${petOwner.description}"/>
@@ -19,11 +40,8 @@
 	<acme:out code="owner.homePage" path="${petOwner.homePage}"/>
 	<br />
 </jstl:if>
+ -->
 
-<jstl:if test="${principal}">
-	<acme:cancel code="owner.edit" url="/petOwner/petOwner/edit.do?petOwnerId=${petOwner.id}" />
-	<br />
-</jstl:if>
 
 <!-- Reviews list with sortable date and rating -->
 <h4><spring:message code="owner.reviews"/></h4>
@@ -42,3 +60,4 @@
 	</display:column>
 	
 </display:table>
+</div>

@@ -1,15 +1,23 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.PetSitterService;
+import domain.Actor;
 import domain.PetSitter;
 import domain.Review;
 import forms.SearchSittersForm;
@@ -25,6 +33,9 @@ public class SearchController extends AbstractController{
 	}
 	
 	// Services -----------------------------------------------------------------
+	
+	@Autowired
+	private ActorService actorService;
 	
 	@Autowired
 	private PetSitterService petSitterService;
@@ -63,36 +74,54 @@ public class SearchController extends AbstractController{
 														
 		return result;
 	}
-//
-//	@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
-//	public ModelAndView searchSitters(@Valid SearchSittersForm searchSittersForm, BindingResult binding) {
-//		ModelAndView result;
-//		Collection<PetSitter> sitters;
-//		
-//		if (binding.hasErrors()) {
-//			result = new ModelAndView("search/searchSitters");
-//			result.addObject("requestURI", "search/searchSitters.do");
-//			result.addObject("searchSittersForm", searchSittersForm);
-//			result.addObject("message", null);
-//		}else{
-//			try{
-//				sitters = petSitterService.searchSitters(searchSittersForm.getStartDate(), 
-//						searchSittersForm.getEndDate(), searchSittersForm.getAddress());
-//				
-//				result = new ModelAndView("search/list");
-//				result.addObject("sitters", sitters);
-//				result.addObject("searchSittersForm", searchSittersForm);
-//				result.addObject("requestURI", "search/searchSitters.do");
-//			}catch(Throwable oops){
-//				result = new ModelAndView("search/searchSitters");
-//				result.addObject("requestURI", "search/searchSitters.do");
-//				result.addObject("searchSittersForm", searchSittersForm);
-//				result.addObject("message", "search.commit.error");
-//			}
-//		}
-//		
-//		return result;
-//	}
+
+	@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
+	public ModelAndView searchSitters(@Valid SearchSittersForm searchSittersForm, BindingResult binding) {
+		ModelAndView result;
+		Collection<PetSitter> sitters;
+		Date d1,d2;
+		Actor actor;
+		boolean toBook;
+		
+		try{
+			actor = actorService.findActorByUsername();
+			toBook = true;
+		}catch(Throwable t){
+			actor = null;
+			toBook = false;
+		}
+		
+		if (binding.hasErrors()) {
+			result = new ModelAndView("search/searchSitters");
+			result.addObject("requestURI", "search/searchSitters.do");
+			result.addObject("searchSittersForm", searchSittersForm);
+			result.addObject("message", null);
+		}else{
+			
+			try{
+				DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+				d1 = format.parse(searchSittersForm.getStartDate());
+				d2 = format.parse(searchSittersForm.getEndDate());
+				
+				sitters = petSitterService.searchSitters(d1, 
+						d2, searchSittersForm.getAddress());
+				
+				result = new ModelAndView("search/list");
+				result.addObject("sitters", sitters);
+				result.addObject("toBook", toBook);
+				result.addObject("index", true);
+				result.addObject("searchSittersForm", searchSittersForm);
+				result.addObject("requestURI", "search/searchSitters.do");
+			}catch(Throwable oops){
+				result = new ModelAndView("search/searchSitters");
+				result.addObject("requestURI", "search/searchSitters.do");
+				result.addObject("searchSittersForm", searchSittersForm);
+				result.addObject("message", "search.commit.error");
+			}
+		}
+		
+		return result;
+	}
 	
 	// Displaying ------------------------------------------------------------
 	

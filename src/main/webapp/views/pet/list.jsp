@@ -7,13 +7,14 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-
+<!-- 
 	<display:table name="pets" uid="pet" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
-			
+		<div class="col-md-6">
+		<img class="max-h" alt="Your PET" src="images/pet-register.jpg">
 		<acme:column codeHeaderColumn="pet.name" property="name" sortable="true"/> 
 		<acme:column codeHeaderColumn="pet.kind" property="kind" sortable="true"/> 
 		<acme:columnButton href="pet/see.do?petId=${pet.id}" codeButton="pet.see" codeHeaderColumn="pet.see"/>
-					
+		</div>			
 		<security:authorize access="hasRole('PETOWNER')"> 
 			<acme:columnButton href="pet/petOwner/edit.do?petId=${pet.id}" codeButton="pet.edit" codeHeaderColumn="pet.edit"/>
 		</security:authorize>
@@ -23,4 +24,21 @@
 		</security:authorize>
 						
 	</display:table>
-	
+	 -->
+	 <div class="col-md-12">
+	<h2><spring:message code="pet.myPets"/></h2><hr>
+	</div>
+	<jstl:forEach var="pet" items="${pets}">
+	 <div class="col-md-6 panel panel-default">
+	 	<div class="wrap">
+	 	<a  href="pet/see.do?petId=${pet.id}" codeButton="pet.see" codeHeaderColumn="pet.see">
+		<img class="max-h img-left" alt="Your PET" src="images/pet-register.jpg">
+		</a>
+		<div class="midl-left">
+		<h3><jstl:out value=" ${pet.name}"/></h3>
+		<jstl:out value=" ${pet.kind}"/>
+		</div>
+		</div>
+		
+	</div>
+	</jstl:forEach>

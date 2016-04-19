@@ -44,7 +44,12 @@ public class ReviewPetOwnerController extends AbstractController{
 		String requestUri;
 		
 		booking = bookingService.findOne(bookingId);
-		reviewService.checkValidDate(booking);
+		try{
+			reviewService.checkValidDate(booking);
+		}catch(Throwable t){
+			result = new ModelAndView("redirect:../../booking/listPetOwner.do");
+		}
+		
 		review = reviewService.create(booking);
 		requestUri = "review/petOwner/create.do";
 		
@@ -68,7 +73,7 @@ public class ReviewPetOwnerController extends AbstractController{
 		} else {
 			try {
 				reviewService.save(review);
-				result = new ModelAndView("redirect:../welcome/index.do");
+				result = new ModelAndView("redirect:../../welcome/index.do");
 			} catch (Throwable oops) {
 
 				result = createEditModelAndView(review,
