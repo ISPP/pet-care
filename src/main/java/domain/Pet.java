@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -87,7 +88,7 @@ public class Pet extends DomainEntity{
 		this.petOwner = petOwner;
 	}
 
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	public Collection<Photo> getPhotos() {
 		return photos;
 	}

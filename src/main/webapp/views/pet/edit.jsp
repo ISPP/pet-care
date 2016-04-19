@@ -18,6 +18,8 @@
 	<form:form action="pet/petOwner/edit.do" modelAttribute="pet">
 	
 		<form:hidden path="id" />
+		<form:hidden path="version" />
+		<form:hidden path="photos" />
 		<form:hidden path="petOwner" />
 			
 		<acme:textbox code="pet.name" path="name" />
