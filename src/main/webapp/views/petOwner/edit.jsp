@@ -22,11 +22,13 @@
 <jstl:set var="action" value="petOwner/create.do"/>
 <form:form action="${action}" modelAttribute="petOwnerForm">
 
+<div class="col-md-6">
+	<spring:message code="petOwner.personalData"/><hr>
 	<!-- Actor -->
 	<acme:textbox code="petOwner.name" path="name"/>
 	<acme:textbox code="petOwner.surname" path="surname"/>
 	<acme:textbox code="petOwner.email" path="email"/>
-	
+
 	<!-- User Account -->
 	<acme:textbox code="petOwner.username" path="username"/>
 	<acme:password code="petOwner.password" path="password"/>
@@ -34,9 +36,21 @@
 	
 	<!-- Customer -->
 	<acme:textbox code="petOwner.address" path="address"/>
-	<acme:textarea code="petOwner.description" path="description"/>
 	<acme:textbox code="petOwner.homePage" path="homePage"/>
 	<acme:textbox code="petOwner.contactPhone" path="contactPhone"/>
+	<br/>
+	<form:label class="register-left"  path="description">
+		<spring:message code="petOwner.description" />
+	</form:label>
+	<br/>
+	<spring:message var="writeHere" code="petOwner.description.writeHere"/>
+	<form:textarea class="register-todoAncho" path="description" placeholder="${writeHere}"/>
+</div>
+<div class="col-md-6">
+
+	<img class="register-todoAncho" alt="Your AVATAR" src="images/petOwner-index.jpg">
+
+	<spring:message code="petOwner.creditCard"/><hr>
 	
 	<!-- Credit Card -->
 	<acme:textbox code="petOwner.creditCard.holderName" path="holderName"/>
@@ -45,7 +59,7 @@
 	<acme:textbox code="petOwner.creditCard.expirationYear" path="expirationYear"/>
 	<acme:textbox code="petOwner.creditCard.cvvCode" path="cvvCode"/>
 	<acme:textbox placeholder="nnnn-nnnn-nnnn-nnnn" code="petOwner.creditCard.number" path="number"/>
-	
+</div>
 	<%-- <form:label path="acceptTermsAndConditions">
 		<spring:message code="petOwner.acceptTermsAndConditions4"/>
 		<a href="legal/termsAndConditions.do">
@@ -54,9 +68,10 @@
 		<spring:message code="petOwner.acceptTermsAndConditions3"/>
 	</form:label>
 	<form:checkbox path="acceptTermsAndConditions"/> --%>
-	
+<div class="col-md-12">
 	<acme:submit name="create" code="petOwner.button.create"/>
 	<acme:cancel url="welcome/index.do" code="petOwner.button.cancel"/>
+</div>	
 	
 	<%-- <jstl:if test="${termsNotAccepted==true}">
 		<br/>

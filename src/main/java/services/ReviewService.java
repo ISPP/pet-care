@@ -77,7 +77,7 @@ public class ReviewService {
 		today = new Date();
 		bookingDate = booking.getEndMoment();
 		try{
-			reviewed = (booking.getReview() != null);
+			reviewed = booking.getReview().getId()>0;
 		}catch(Throwable t){
 			reviewed = false;
 		}

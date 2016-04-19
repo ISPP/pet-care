@@ -34,10 +34,20 @@
 <%-- Definition --%>
 
 <div class="form-group">
+	<table class="labelInput">
+	<tr>
+	<th class="tableLabel">
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>
+	</th>
+	<th class="tableInput">
 	<form:textarea path="${path}" readonly="${readonly}" placeholder="${placeholder}"/>
+	</th>
+	<th class="tableError">
 	<form:errors path="${path}" cssClass="error" />
+	</th>
+	</tr>
+</table>
 </div>
 

@@ -2,7 +2,9 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,8 @@ public class PetSitterService {
 	@Autowired
 	private CustomerService customerService;
 
+	@Autowired
+	private BookingService bookingService;
 
 	
 	public PetSitter create() {
@@ -289,29 +293,28 @@ public class PetSitterService {
 		return result;
 	}
 
-	//Other business methods
-//	public List<PetSitter> searchSitters(Date startDate, Date endDate, String address){
-//		List<PetSitter> result;
-//		List<PetSitter> sitters;
-//		List<Booking> bookings;
-//		Date current;
-//		
-//		current = new Date();
-//		Assert.isTrue(current.before(startDate));
-//		Assert.isTrue(startDate.before(endDate));
-//		
-//		result = new ArrayList<PetSitter>();
-//		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
-//		
-//		for(PetSitter i: sitters){
-//			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
-//			if(bookings.isEmpty()){
-//				result.add(i);
-//			}
-//		}
-//		
-//		return result;
-//	}
+	public List<PetSitter> searchSitters(Date startDate, Date endDate, String address){
+		List<PetSitter> result;
+		List<PetSitter> sitters;
+		List<Booking> bookings;
+		Date current;
+		
+		current = new Date();
+		Assert.isTrue(current.before(startDate));
+		Assert.isTrue(startDate.before(endDate) || startDate.equals(endDate));
+		
+		result = new ArrayList<PetSitter>();
+		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
+		
+		for(PetSitter i: sitters){
+			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
+			if(bookings.isEmpty()){
+				result.add(i);
+			}
+		}
+		
+		return result;
+	}
 
 	public Collection<Review> findReviews(int petSitterId) {
 		Collection<Review> result;

@@ -13,15 +13,34 @@ package controllers;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import domain.Actor;
+import forms.SearchSittersForm;
+
+import security.Authority;
+import security.Credentials;
+import services.ActorService;
+import services.PetService;
 
 @Controller
 @RequestMapping("/welcome")
 public class WelcomeController extends AbstractController {
 
+	
+	@Autowired
+	private ActorService actorService;
+	
 	// Constructors -----------------------------------------------------------
 	
 	public WelcomeController() {
@@ -31,18 +50,123 @@ public class WelcomeController extends AbstractController {
 	// Index ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(required=false, defaultValue="John Doe") String name) {
-		ModelAndView result;
-		SimpleDateFormat formatter;
-		String moment;
+	public ModelAndView index(@Valid @ModelAttribute Credentials credentials,
+			BindingResult bindingResult,
+			@RequestParam(required = false) boolean showError) {
+		Assert.notNull(credentials);
+		Assert.notNull(bindingResult);
 		
-		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		moment = formatter.format(new Date());
-				
-		result = new ModelAndView("welcome/index");
-		result.addObject("name", name);
-		result.addObject("moment", moment);
-
+		Actor actor;
+		Authority a1,a2,a3;
+		ModelAndView result;
+		SearchSittersForm searchSittersForm;
+		
+		searchSittersForm = new SearchSittersForm();
+		
+		actor = null;
+		
+		a1 = new Authority();
+		a2 = new Authority();
+		a3 = new Authority();
+		a1.setAuthority(Authority.PETSITTER);
+		a2.setAuthority(Authority.PETSHIPPER);
+		a3.setAuthority(Authority.PETOWNER);
+		try{
+			actor = actorService.findActorByUserId();
+			result = null;
+			if(actor.getUser().getAuthorities().contains(a1)){
+				result = new ModelAndView("redirect:/petSitterIndex.do");
+			}else if(actor.getUser().getAuthorities().contains(a2)){
+				result = new ModelAndView("redirect:/petShipperIndex.do");
+			}else if(actor.getUser().getAuthorities().contains(a3)){
+				result = new ModelAndView("welcome/index");
+				result.addObject("credentials", credentials);
+				result.addObject("showError", showError);
+				result.addObject("index", true);
+				result.addObject("searchSittersForm", searchSittersForm);
+			}else{
+				result = new ModelAndView("welcome/index");
+				result.addObject("credentials", credentials);
+				result.addObject("showError", showError);
+				result.addObject("index", true);
+				result.addObject("searchSittersForm", searchSittersForm);
+			}
+		}catch (Throwable t){
+			result = new ModelAndView("welcome/index");
+			result.addObject("credentials", credentials);
+			result.addObject("showError", showError);
+			result.addObject("index", true);
+			result.addObject("searchSittersForm", searchSittersForm);
+		}
+		
+		if(actor==null){
+			result = new ModelAndView("welcome/index");
+			result.addObject("credentials", credentials);
+			result.addObject("showError", showError);
+			result.addObject("index", true);
+			result.addObject("searchSittersForm", searchSittersForm);
+		}
+		
 		return result;
 	}
+	
+	// Searching -----------------------------------------------------------------
+	
+		@RequestMapping(value = "/searchSitters", method = RequestMethod.GET)
+		public ModelAndView search(){
+			ModelAndView result;
+			SearchSittersForm searchSittersForm;
+			
+			searchSittersForm = new SearchSittersForm();
+			
+			result = new ModelAndView("search/searchSitters");
+			result.addObject("requestURI", "search/searchSitters.do");
+			result.addObject("searchSittersForm", searchSittersForm);
+															
+			return result;
+		}
+	//
+//		@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
+//		public ModelAndView searchSitters(@Valid SearchSittersForm searchSittersForm, BindingResult binding) {
+//			ModelAndView result;
+//			Collection<PetSitter> sitters;
+//			
+//			if (binding.hasErrors()) {
+//				result = new ModelAndView("search/searchSitters");
+//				result.addObject("requestURI", "search/searchSitters.do");
+//				result.addObject("searchSittersForm", searchSittersForm);
+//				result.addObject("message", null);
+//			}else{
+//				try{
+//					sitters = petSitterService.searchSitters(searchSittersForm.getStartDate(), 
+//							searchSittersForm.getEndDate(), searchSittersForm.getAddress());
+//					
+//					result = new ModelAndView("search/list");
+//					result.addObject("sitters", sitters);
+//					result.addObject("searchSittersForm", searchSittersForm);
+//					result.addObject("requestURI", "search/searchSitters.do");
+//				}catch(Throwable oops){
+//					result = new ModelAndView("search/searchSitters");
+//					result.addObject("requestURI", "search/searchSitters.do");
+//					result.addObject("searchSittersForm", searchSittersForm);
+//					result.addObject("message", "search.commit.error");
+//				}
+//			}
+//			
+//			return result;
+//		}
+		
+	
+	
+	// LoginFailure -----------------------------------------------------------
+
+		@RequestMapping("/loginFailure")
+		public ModelAndView failure() {
+			ModelAndView result;
+
+			result = new ModelAndView("redirect:index.do?showError=true");
+			result.addObject("showError",true);
+			return result;
+		}
+	
 }

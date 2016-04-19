@@ -34,9 +34,11 @@
 	<display:column property="endMoment" title="${endMomentColumn}" />
 	
 	<display:column>
+		<jstl:if test="${empty row.getReview()}">
 		<a href="review/petOwner/create.do?bookingId=${row.id}"> <spring:message
 				code="booking.newReview" />
 		</a>
+		</jstl:if>
 	</display:column>
 
 		
