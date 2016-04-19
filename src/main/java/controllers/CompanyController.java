@@ -42,10 +42,11 @@ public class CompanyController extends AbstractController {
 		ModelAndView result;
 		CompanyForm companyForm;
 
-		result = new ModelAndView("company/create");
+		result = new ModelAndView("company/edit");
 		companyForm = new CompanyForm();
 
 		result.addObject("companyForm", companyForm);
+		result.addObject("register", true);
 
 		return result;
 	}
@@ -57,30 +58,34 @@ public class CompanyController extends AbstractController {
 		Company company;
 
 		if (binding.hasErrors()) {
-			result = new ModelAndView("company/create");
+			result = new ModelAndView("company/edit");
 			result.addObject("companyForm", companyForm);
 			result.addObject("message", null);
+			result.addObject("register", true);
 		} else {
 			try {
 				if (companyForm.getExpirationYear() < Calendar.getInstance()
 						.get(Calendar.YEAR)) {
-					result = new ModelAndView("company/create");
+					result = new ModelAndView("company/edit");
 					result.addObject("companyForm", companyForm);
 					result.addObject("oldYear", true);
+					result.addObject("register", true);
 				} else if (!companyForm.getPassword().equals(
 						companyForm.getPasswordConfirm())) {
-					result = new ModelAndView("company/create");
+					result = new ModelAndView("company/edit");
 					result.addObject("companyForm", companyForm);
 					result.addObject("message", "company.commit.password");
+					result.addObject("register", true);
 				} else {
 					company = companyService.reconstruct(companyForm);
-					companyService.save(company);//TODO: test this method and create views
+					companyService.save(company);
 					result = new ModelAndView("redirect:../security/login.do");
 				}
 			} catch (Throwable oops) {
-				result = new ModelAndView("company/create");
+				result = new ModelAndView("company/edit");
 				result.addObject("companyForm", companyForm);
 				result.addObject("message", "company.commit.error");
+				result.addObject("register", true);
 			}
 		}
 

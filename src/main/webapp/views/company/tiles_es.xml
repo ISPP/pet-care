@@ -18,20 +18,15 @@
 
 
 		<definition name="company/list" extends="master.page">	
-		<put-attribute name="title" value="Listar compañias" />
+		<put-attribute name="title" value="Lista de compañías" />
 		<put-attribute name="body" value="/views/company/list.jsp" />
 	</definition>
 	
 	<definition name="company/edit" extends="master.page">	
-		<put-attribute name="title" value="Registrar como compañia" />
+		<put-attribute name="title" value="Register compañía" />
 		<put-attribute name="body" value="/views/company/edit.jsp" />
 	</definition>
-	
-		<definition name="company/invite" extends="master.page">	
-		<put-attribute name="title" value="Invitar para registrar como compañia" />
-		<put-attribute name="body" value="/views/company/invite.jsp" />
-	</definition>
-	
+
 	<definition name="company/display" extends="master.page">	
 		<put-attribute name="title" value="Mi perfil" />
 		<put-attribute name="body" value="/views/company/display.jsp" />
