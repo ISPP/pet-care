@@ -25,7 +25,7 @@
 			<spring:message code="sitter.sitter" />
 		</h1>
 	</legend>
-	<display:table class="displaytag" pagesize="5" name="petSitters"
+	<display:table class="displaytag" pagesize="5" name="suppliers"
 		id="row" requestURI="${requestURI}">
 
 		<display:column titleKey="sitter.fullName">
