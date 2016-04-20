@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="pet/list" extends="master.page">	
+		<put-attribute name="title" value="Pets" />
+		<put-attribute name="body" value="/views/pet/list.jsp" />
+	</definition>
+		
+	<definition name="pet/create" extends="master.page">	
+		<put-attribute name="title" value="Create pet" />
+		<put-attribute name="body" value="/views/pet/edit.jsp" />
+	</definition>
+	
+	<definition name="pet/edit" extends="master.page">	
+		<put-attribute name="title" value="Edit pet" />
+		<put-attribute name="body" value="/views/pet/edit.jsp" />
+	</definition>
+	
+	<definition name="pet/see" extends="master.page">	
+		<put-attribute name="title" value="See pet" />
+		<put-attribute name="body" value="/views/pet/see.jsp" />
+	</definition>
+	
+	<definition name="pet/addPhoto" extends="master.page">	
+		<put-attribute name="title" value="Add photo" />
+		<put-attribute name="body" value="/views/pet/addPhoto.jsp" />
+	</definition>
+
+	
+</tiles-definitions>
