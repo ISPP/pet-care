@@ -22,7 +22,7 @@
 	<!-- Access control -->
 
 	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/" access="isAnonymoys()" />
 
 		<security:intercept-url pattern="/favicon.ico"
 			access="permitAll" />
@@ -60,6 +60,24 @@
 			access="hasRole('PETOWNER')" />
 		<security:intercept-url pattern="/petOwner/petOwner/create.do"
 			access="hasRole('PETOWNER')" />
+			
+		<security:intercept-url pattern="/petShipper/petShipper/display.do"
+			access="hasAnyRole('PETSHIPPER')" />
+		<security:intercept-url pattern="/petShipper/petShipper/displayOwn.do"
+			access="hasRole('PETSHIPPER')" />
+		<security:intercept-url pattern="/petShipper/petShipper/edit.do"
+			access="hasRole('PETSHIPPER')" />
+		<security:intercept-url pattern="/petShipper/petShipper/create.do"
+			access="hasRole('PETSHIPPER')" />
+			
+		<security:intercept-url pattern="/company/company/display.do"
+			access="hasAnyRole('COMPANY')" />
+		<security:intercept-url pattern="/company/company/displayOwn.do"
+			access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/company/company/edit.do"
+			access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/company/company/create.do"
+			access="hasRole('COMPANY')" />
 
 		<!-- Booking -->
 
@@ -182,7 +200,7 @@
 			<!-- Company -->
 			<security:intercept-url pattern="/company/listToBook.do"
 			access="hasRole('PETOWNER')" />
-		
+		<security:intercept-url pattern="/company/create.do" access="permitAll"/>
 		
 		<security:form-login login-page="/security/login.do"
 			password-parameter="password" username-parameter="username"

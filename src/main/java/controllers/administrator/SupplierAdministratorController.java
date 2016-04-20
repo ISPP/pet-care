@@ -9,42 +9,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.PetSitterService;
+import services.SupplierService;
 import controllers.AbstractController;
-import domain.PetSitter;
+import domain.Supplier;
 
 @Controller
 @RequestMapping("/supplier/administrator")
 public class SupplierAdministratorController extends AbstractController{
 	
 	@Autowired
-	private PetSitterService petSitterService;
+	private SupplierService supplierService;
 	
 	@RequestMapping(value="/blockSitter", method = RequestMethod.POST)
-	public ModelAndView block(int supplierId){//TODO:Add PetShipper in 3rd sprint
+	public ModelAndView block(int supplierId){
 		ModelAndView result;
-		PetSitter petSitter;
+		Supplier supplier;
 		
 		result = new ModelAndView("redirect:list.do");
-		petSitter = petSitterService.findOne(supplierId);
+		supplier = supplierService.findOne(supplierId);
 		
-		if(petSitter!=null){
-			petSitterService.block(petSitter);
-		}
+		supplierService.blockSupplier(supplier);
 		
 		return result;
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(){//TODO:Add PetShipper in 3rd sprint
+	public ModelAndView list(){
 		ModelAndView result;
-		List<PetSitter> petSitters;
-		
+		List<Supplier> suppliers;
+				
 		result = new ModelAndView("supplier/list");
-		petSitters = new ArrayList<PetSitter>(petSitterService.findAll());
+		suppliers = new ArrayList<Supplier>(supplierService.findAll());
 		
 		result.addObject("requestURI", "supplier/administrator/list.do");
-		result.addObject("petSitters", petSitters);
+		result.addObject("suppliers", suppliers);
 		
 		return result;
 	}

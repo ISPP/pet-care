@@ -7,42 +7,42 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 		
-<acme:out code="petSitter.name" path="${sitter.name}"/>
+<acme:out code="company.name" path="${company.name}"/>
 <br />
-<acme:out code="petSitter.description" path="${sitter.description}"/>
+<acme:out code="company.description" path="${company.description}"/>
 <br />
-<acme:out code="petSitter.address" path="${sitter.address}"/>
+<acme:out code="company.address" path="${company.address}"/>
 <br />
-<acme:out code="petSitter.email" path="${sitter.email}"/>
+<acme:out code="company.email" path="${company.email}"/>
 <br />
-<acme:out code="petSitter.priceHour" path="${sitter.priceHour}"/>
+<acme:out code="company.rating" path="${company.rating}"/>
 <br />
-<acme:out code="petSitter.priceNight" path="${sitter.priceNight}"/>
+<acme:out code="company.daysBeforeCancel" path="${company.daysBeforeCancel}"/>
 <br />
-<acme:out code="petSitter.rating" path="${sitter.rating}"/>
+<acme:out code="company.priceNight" path="${company.pricePerDay}"/>
 <br />
-<acme:out code="petSitter.daysBeforeCancel" path="${sitter.daysBeforeCancel}"/>
+<acme:out code="company.tic" path="${company.tic}"/>
 <br />
-<jstl:if test="${sitter.homePage != null}">
-	<acme:out code="petSitter.homePage" path="${sitter.homePage}"/>
+<jstl:if test="${company.homePage != null}">
+	<acme:out code="company.homePage" path="${company.homePage}"/>
 	<br />
 </jstl:if>
 
 <jstl:if test="${principal}">
-	<acme:cancel code="petSitter.edit" url="/petSitter/petSitter/edit.do?petSitterId=${sitter.id}" />
+	<acme:cancel code="company.edit" url="/company/company/edit.do?companyId=${company.id}" />
 	<br />
 </jstl:if>
 
 <!-- Reviews list with sortable date and rating -->
-<h4><spring:message code="petSitter.reviews"/></h4>
+<h4><spring:message code="company.reviews"/></h4>
 <display:table name="reviews" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
 	
-	<display:column property="creationMoment" titleKey="sitter.review.creationMoment" sortable="True">
+	<display:column property="creationMoment" titleKey="company.review.creationMoment" sortable="True">
 		<fmt:formatDate value="${row.creationMoment}" pattern="dd/MM/yyyy HH:mm" />
 	</display:column>  	
 	
-	<display:column property="description" titleKey="petSitter.description" />
+	<display:column property="description" titleKey="company.description" />
 	
-	<display:column property="rating" titleKey="sitter.review.rating"  sortable="True"/> 
+	<display:column property="rating" titleKey="company.review.rating"  sortable="True"/> 
 	
 </display:table>
