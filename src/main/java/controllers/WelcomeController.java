@@ -75,7 +75,11 @@ public class WelcomeController extends AbstractController {
 			actor = actorService.findActorByUserId();
 			result = null;
 			if(actor.getUser().getAuthorities().contains(a1)){
-				result = new ModelAndView("redirect:/petSitterIndex.do");
+				result = new ModelAndView("welcome/index");
+				result.addObject("credentials", credentials);
+				result.addObject("showError", showError);
+				result.addObject("index", true);
+				result.addObject("searchSittersForm", searchSittersForm);
 			}else if(actor.getUser().getAuthorities().contains(a2)){
 				result = new ModelAndView("redirect:/petShipperIndex.do");
 			}else if(actor.getUser().getAuthorities().contains(a3)){
