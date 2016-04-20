@@ -42,6 +42,7 @@ public class CompanyForm {
 	
 	//Company
 	private String tic;
+	private int daysBeforeCancel;
 	private Double pricePerDay;
 	
 //	private boolean acceptTermsAndConditions;
@@ -242,6 +243,15 @@ public class CompanyForm {
 
 	public void setInvitationCode(String invitationCode) {
 		this.invitationCode = invitationCode;
+	}
+	
+	@Min(1)
+	public Integer getDaysBeforeCancel() {
+		return daysBeforeCancel;
+	}
+
+	public void setDaysBeforeCancel(Integer daysBeforeCancel) {
+		this.daysBeforeCancel = daysBeforeCancel;
 	}
 
 	

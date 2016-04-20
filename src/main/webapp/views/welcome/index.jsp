@@ -27,25 +27,40 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/slide1.png" alt="viaja sin preocupaciones" width="1200" height="700">
+        <img src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
       </div>
 
       <div class="item">
-        <img src="images/slide2.png" alt="Chicago" width="1200" height="700">
+        <img src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
       </div>
     
       <div class="item">
-        <img src="images/slide3.png" alt="Los Angeles" width="1200" height="700">
+        <img src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/slide4.png" alt="Los Angeles" width="1200" height="700">
+        <img src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/slide5.png" alt="Los Angeles" width="1200" height="700">
+        <img src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
       </div>
       
+      <div class="item">
+        <img src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
+      </div>
+    
+      <div class="item">
+        <img src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
+      </div>
+      
+      <div class="item">
+        <img src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
+      </div>
+      
+      <div class="item">
+        <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
+      </div>
       
       <div class="carousel-caption center-bottom">
           	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
@@ -77,7 +92,8 @@
 </div>
 
 <div id="users" class="container text-center">
-  <h3><spring:message	code="master.page.petcare" /></h3>
+  <!-- <h3><spring:message	code="master.page.petcare" /></h3> -->
+  <img width="30%" src="images/logo1lineW.png" alt="PetCare"/>
   <p><em><spring:message	code="master.page.petcareText1" /></em></p>
   <br/>
   <p><spring:message	code="master.page.petcareText2" /></p>

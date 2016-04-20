@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 
 import repositories.CompanyRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 import domain.Booking;
 import domain.Comment;
@@ -176,5 +177,115 @@ public class CompanyService {
 
 		return result;
 	}
+	
+	public void saveEdited(Company company) {
+		Assert.notNull(company);
+		
+		companyRepository.saveAndFlush(company);
+	}
+	
+	public Company reconstructEdited(CompanyForm companyForm) {
+		Assert.isTrue(companyForm.getPassword().equals(
+				companyForm.getPasswordConfirm()));
+		Assert.isTrue(companyForm.getId() > 0);
+		
+		Company result;
+		CreditCard creditCard;
+		UserAccount userAccount;
+		BCryptPasswordEncoder encoder;
+		
+		result = findOne(companyForm.getId()); 
+		
+		creditCard = result.getCreditCard();
+		userAccount = result.getUser();
+
+		// CreditCard
+		creditCard.setBrandName(companyForm.getBrandName());
+		creditCard.setCVV(companyForm.getCvvCode());
+		creditCard.setExpirationMonth(companyForm.getExpirationMonth());
+		creditCard.setExpirationYear(companyForm.getExpirationYear());
+		creditCard.setHolderName(companyForm.getHolderName());
+		creditCard.setNumber(companyForm.getNumber());
+
+		// UserAccount
+		userAccount.setUsername(companyForm.getUsername());
+		encoder = new BCryptPasswordEncoder();
+		userAccount.setPassword(
+				encoder.encode(companyForm.getPassword()));
+
+		result.setCreditCard(creditCard);
+		result.setEmail(companyForm.getEmail());
+		result.setName(companyForm.getName());
+		result.setHomePage(companyForm.getHomePage());
+		result.setContactPhone(companyForm.getContactPhone());
+		result.setSurname(companyForm.getSurname());
+		result.setAddress(companyForm.getAddress());
+		result.setDescription(companyForm.getDescription());
+		result.setDaysBeforeCancel(companyForm.getDaysBeforeCancel());
+		result.setPricePerDay(companyForm.getPricePerDay());
+		result.setTic(companyForm.getTic());
+		result.setUser(userAccount);
+
+		return result;
+	}
+	
+	public CompanyForm fragment(Company company) {
+		Assert.notNull(company);
+		
+		CompanyForm result;
+
+		result = new CompanyForm();
+		
+		// CreditCard
+		result.setBrandName(company.getCreditCard().getBrandName());
+		result.setCvvCode(company.getCreditCard().getCVV());
+		result.setExpirationMonth(company.getCreditCard().getExpirationMonth());
+		result.setExpirationYear(company.getCreditCard().getExpirationYear());
+		result.setHolderName(company.getCreditCard().getHolderName());
+		result.setNumber(company.getCreditCard().getNumber());
+
+		// UserAccount
+		result.setUsername(company.getUser().getUsername());
+		result.setPassword(company.getUser().getPassword());
+		result.setPasswordConfirm(company.getUser().getPassword());
+
+		result.setEmail(company.getEmail());
+		result.setName(company.getName());
+		result.setHomePage(company.getHomePage());
+		result.setContactPhone(company.getContactPhone());
+		result.setSurname(company.getSurname());
+		result.setAddress(company.getAddress());
+		result.setDescription(company.getDescription());
+		result.setDaysBeforeCancel(company.getDaysBeforeCancel());
+		result.setPricePerDay(company.getPricePerDay());
+		result.setId(company.getId());
+
+		return result;
+	}
+
+	public Collection<Review> findReviews(int companyId) {
+		Collection<Review> result;
+		
+		result = companyRepository.findOne(companyId).getReviews();
+		
+		return result;
+	}
+	
+	public boolean isPrincipal(int companyId) {
+		boolean result;
+		
+		result = findOne(companyId).getUser().equals(LoginService.getPrincipal());
+				
+		return result;
+	}
+
+	public Company findOneByPrincipal() {
+		Company result;
+		
+		result = companyRepository.findOneByPrincipal(LoginService.getPrincipal().getId());
+		
+		return result;
+	}
+
 
 }

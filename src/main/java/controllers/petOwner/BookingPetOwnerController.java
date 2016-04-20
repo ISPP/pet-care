@@ -1,6 +1,8 @@
 package controllers.petOwner;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -78,12 +80,22 @@ public class BookingPetOwnerController extends AbstractController {
 	}
 //----PetSitters booking 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView solve(@RequestParam("petSitterId") int petSitterId) {
+	public ModelAndView solve(@RequestParam("petSitterId") int petSitterId,@RequestParam String startMoment,@RequestParam String endMoment) {
 		ModelAndView result;
 		BookingForm bookingForm;
 		bookingForm = bookingService.create();
 		PetSitter petSitter = petSitterService.findOne(petSitterId);
 		bookingForm.setSupplier(petSitter);
+		try{
+			
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+		bookingForm.setStartMoment(formatter.parse(startMoment));
+		bookingForm.setendMoment(formatter.parse(endMoment));
+		}catch(Throwable t){
+			System.out.println("falla");
+		}
 
 		result = new ModelAndView("booking/edit");
 		result.addObject("bookingForm", bookingForm);
