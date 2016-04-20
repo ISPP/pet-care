@@ -69,6 +69,15 @@
 			access="hasRole('PETSHIPPER')" />
 		<security:intercept-url pattern="/petShipper/petShipper/create.do"
 			access="hasRole('PETSHIPPER')" />
+			
+		<security:intercept-url pattern="/company/company/display.do"
+			access="hasAnyRole('COMPANY')" />
+		<security:intercept-url pattern="/company/company/displayOwn.do"
+			access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/company/company/edit.do"
+			access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/company/company/create.do"
+			access="hasRole('COMPANY')" />
 
 		<!-- Booking -->
 
