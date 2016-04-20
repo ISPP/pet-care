@@ -22,7 +22,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="" onclick="jumpTo('./');"><spring:message	code="master.page.petcare" /></a>
+      <a class="navbar-brand" href="" onclick="jumpTo('./');">
+		<!-- <img alt="PetCare" width="200px" src="images/Logo1line.png"/> -->
+		PetCare
+		</a>
 	</div>
 	<div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -44,7 +47,10 @@
 		
 		
 		<security:authorize access="hasRole('PETOWNER')">
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.complaint" /><span class="caret"></span></a>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.complaint" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 						<li><a href="" onclick="jumpTo('complaint/customer/create.do');"><spring:message code="master.page.complaint.create" /></a></li>
 						<li><a href="" onclick="jumpTo('complaint/customer/listComplaintCustomerId.do');"><spring:message code="complaint.customer.listComplaintCustomerId.do" /></a></li>
@@ -52,7 +58,10 @@
 				</ul>
 			</li>	
 			
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.booking" /><span class="caret"></span></a>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.booking" />
+			<!--<span class="glyphicon glyphicon-book"></span>-->
+			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 						
 						<li><a href="" onclick="jumpTo('booking/petOwner/listBookingCanCancelPetOwner.do');"><spring:message code="master.page.booking.cancel" /></a></li>
@@ -65,15 +74,24 @@
 			
 			
 			
-			<li><a href="" onclick="jumpTo('petOwner/petOwner/displayOwn.do');"><spring:message code="master.page.myProfile" /></a></li>				
+			<li><a href="" onclick="jumpTo('petOwner/petOwner/displayOwn.do');">
+			<spring:message code="master.page.myProfile" />
+			<!--<span class="glyphicon glyphicon-user"></span>-->
+			</a></li>				
 
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.pets" /><span class="caret"></span></a>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.pets" />
+			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('pet/petOwner/list.do');"><spring:message code="master.page.list" /></a></li>				
 					<li><a href="" onclick="jumpTo('pet/petOwner/create.do');"><spring:message code="master.page.create" /></a></li>	
 				</ul>
 			</li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.language" /><span class="caret"></span></a>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.language" />
+			<!--<span class="glyphicon glyphicon-cog"></span>-->
+			<span class="caret"></span></a>
           	<ul class="dropdown-menu">
             	<li> <a href="" onclick="jumpTo('./?language=en');"><img width="35" height="23" src="images/United-Kingdom.png">EN</a></li>
             	<li><a href="" onclick="jumpTo('./?language=es');"><img width="35" height="23" src="images/Spain.png">ESP</a></li>
@@ -214,7 +232,10 @@
 		</security:authorize>
 	
 		<security:authorize access="isAuthenticated()">
-			<li><a href="" onclick="jumpTo('j_spring_security_logout');"><spring:message code="master.page.logout" /> </a></li>
+			<li><a href="" onclick="jumpTo('j_spring_security_logout');">
+			<spring:message code="master.page.logout" />
+			<!--<span class="glyphicon glyphicon-remove-sign"></span>-->
+			</a></li>
 		</security:authorize>
 	</ul>
 

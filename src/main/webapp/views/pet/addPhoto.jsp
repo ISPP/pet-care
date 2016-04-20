@@ -15,8 +15,14 @@
 	
 		<form:hidden path="id" />
 		<form:hidden path="petId" />
-			
-		<input type="file" name="file" />
+		
+		<label for="file-input">
+        	<a >
+        	<img src="images/pet-register.jpg"/>
+        	</a>
+    	</label>
+		
+		<input hidden="true" id="file-input" type="file" />
 				
 		<br/>
 

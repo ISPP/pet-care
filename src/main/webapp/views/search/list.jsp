@@ -16,23 +16,39 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/slide1.png" alt="viaja sin preocupaciones" width="1200" height="700">
+        <img src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
       </div>
 
       <div class="item">
-        <img src="images/slide2.png" alt="Chicago" width="1200" height="700">
+        <img src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
       </div>
     
       <div class="item">
-        <img src="images/slide3.png" alt="Los Angeles" width="1200" height="700">
+        <img src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/slide4.png" alt="Los Angeles" width="1200" height="700">
+        <img src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/slide5.png" alt="Los Angeles" width="1200" height="700">
+        <img src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
+      </div>
+      
+      <div class="item">
+        <img src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
+      </div>
+    
+      <div class="item">
+        <img src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
+      </div>
+      
+      <div class="item">
+        <img src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
+      </div>
+      
+      <div class="item">
+        <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
       
       
@@ -69,15 +85,15 @@
 	 <div class="col-md-4 panel panel-default">
 	 	<div class="wrap">
 	 	<jstl:if test="${toBook==true}">
-	 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}">
+	 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}&startMoment=${searchSittersForm.startDate}&endMoment=${searchSittersForm.endDate}">
 	 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
-		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}"/></span>
+		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
 		</a>
 	 	</jstl:if>
 		
 		<jstl:if test="${toBook == false}">
 		<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
-		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}"/></span>
+		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
 		</jstl:if>
 		</div>
 		
@@ -85,7 +101,7 @@
 		<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"></p>
 		<jstl:out value=" ${petSitter.address}"/>
 		<br/>
-		<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/>
+		<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/> &#8364;
 		</div>
 		
 	</div>
@@ -94,8 +110,9 @@
 		<h2><spring:message code="search.noResults"/></h2>
 	</jstl:if>
 	<jstl:if test="${toBook==false}">
-	<spring:message code="search.mustRegister"/>
+	<spring:message code="search.mustRegister"/><br/>
 	</jstl:if>
+	<spring:message code="search.priceShowsNight"/>
 </div>
 
 
@@ -120,6 +137,10 @@ function initialize() {
 	geocoder.geocode( { 'address': country }, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
 	        map.setCenter(results[0].geometry.location);
+	        var marker = new google.maps.Marker({
+	            map: map,
+	            position: results[0].geometry.location
+	          });
 	    } else {
 	        alert("Could not find location: " + location);
 	    }
@@ -130,11 +151,8 @@ function initialize() {
 
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-var marker = new google.maps.Marker({
-position: map.getCenter(),
-});
 
-marker.setMap(map);
+
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
