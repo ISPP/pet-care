@@ -38,7 +38,7 @@
 		<value>/views/trip/messages</value>
 		<value>/views/registration/messages</value>
 		<value>/views/company/messages</value>
-
+		<value>/views/vehicle/messages</value>
 	</util:list>
 
 </beans>

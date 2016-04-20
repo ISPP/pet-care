@@ -16,29 +16,19 @@
       
 <tiles-definitions>
 
-	<definition name="pet/list" extends="master.page">	
-		<put-attribute name="title" value="Mascotas" />
-		<put-attribute name="body" value="/views/pet/list.jsp" />
+	<definition name="vehicle/list" extends="master.page">	
+		<put-attribute name="title" value="Mis vehículos" />
+		<put-attribute name="body" value="/views/vehicle/list.jsp" />
 	</definition>
 	
-	<definition name="pet/create" extends="master.page">	
-		<put-attribute name="title" value="Crear mascota" />
-		<put-attribute name="body" value="/views/pet/edit.jsp" />
+	<definition name="vehicle/create" extends="master.page">	
+		<put-attribute name="title" value="Crear vehículo" />
+		<put-attribute name="body" value="/views/vehicle/edit.jsp" />
 	</definition>
 	
-	<definition name="pet/edit" extends="master.page">	
-		<put-attribute name="title" value="Editar mascota" />
-		<put-attribute name="body" value="/views/pet/edit.jsp" />
+	<definition name="vehicle/edit" extends="master.page">	
+		<put-attribute name="title" value="Editar vehículo" />
+		<put-attribute name="body" value="/views/vehicle/edit.jsp" />
 	</definition>
 	
-	<definition name="pet/see" extends="master.page">	
-		<put-attribute name="title" value="Mostrar mascota" />
-		<put-attribute name="body" value="/views/pet/see.jsp" />
-	</definition>
-	
-	<definition name="pet/addPhoto" extends="master.page">	
-		<put-attribute name="title" value="Añadir foto" />
-		<put-attribute name="body" value="/views/pet/addPhoto.jsp" />
-	</definition>
-		
 </tiles-definitions>

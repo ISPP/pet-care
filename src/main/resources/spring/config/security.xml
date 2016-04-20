@@ -202,6 +202,9 @@
 			access="hasRole('PETOWNER')" />
 		<security:intercept-url pattern="/company/create.do" access="permitAll"/>
 		
+		<!-- Vehicle -->
+		<security:intercept-url pattern="/vehicle/petShipper/**" access="hasRole('PETSHIPPER')"/>
+		
 		<security:form-login login-page="/security/login.do"
 			password-parameter="password" username-parameter="username"
 			authentication-failure-url="/security/loginFailure.do" />

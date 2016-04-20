@@ -1,44 +1,20 @@
 
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-<!-- 
-	<display:table name="pets" uid="pet" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
-		<div class="col-md-6">
-		<img class="max-h" alt="Your PET" src="images/pet-register.jpg">
-		<acme:column codeHeaderColumn="pet.name" property="name" sortable="true"/> 
-		<acme:column codeHeaderColumn="pet.kind" property="kind" sortable="true"/> 
-		<acme:columnButton href="pet/see.do?petId=${pet.id}" codeButton="pet.see" codeHeaderColumn="pet.see"/>
-		</div>			
-		<security:authorize access="hasRole('PETOWNER')"> 
-			<acme:columnButton href="pet/petOwner/edit.do?petId=${pet.id}" codeButton="pet.edit" codeHeaderColumn="pet.edit"/>
-		</security:authorize>
-		
-		<security:authorize access="hasRole('PETSITTER')"> 
-			<acme:columnButton href="pet/petSitter/edit.do?petId=${pet.id}" codeButton="pet.edit" codeHeaderColumn="pet.edit"/>
-		</security:authorize>
-						
-	</display:table>
-	 -->
-	 <div class="col-md-12">
-	<h2><spring:message code="pet.myPets"/></h2><hr>
-	</div>
-	<jstl:forEach var="pet" items="${pets}">
-	 <div class="col-md-6 panel panel-default">
-	 	<div class="wrap">
-	 	<a  href="pet/see.do?petId=${pet.id}" codeButton="pet.see" codeHeaderColumn="pet.see">
-		<img class="max-h img-left" alt="Your PET" src="images/pet-register.jpg">
-		</a>
-		<div class="midl-left">
-		<h3><jstl:out value=" ${pet.name}"/></h3>
-		<jstl:out value=" ${pet.kind}"/>
-		</div>
-		</div>
-		
-	</div>
-	</jstl:forEach>
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+
+<display:table name="vehicles" requestURI="${requestURI}"
+	pagesize="5" class="displaytag">
+	
+	<display:column titleKey="vehicle.title" property="title"/>
+	<display:column titleKey="vehicle.size" property="size"/>
+	<acme:columnJstlIfWithLink href="vehicle/petShipper/display.do?vehicleId=${row.id}" codeHeaderColumn="" codeLinkColumn="vehicle.display" test=""/>
+	
+</display:table>
