@@ -1,11 +1,13 @@
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -129,17 +131,17 @@ public class Booking extends DomainEntity {
 	
 
 	// Relantionships------------------------------------------
-	private PetOwner petOwner;
+	private Collection<Pet> pets;
 	private Supplier supplier;
 	private Review review;
 
-	@ManyToOne(optional = false)
-	public PetOwner getPetOwner() {
-		return petOwner;
+	@ManyToMany()
+	public Collection<Pet> getPets() {
+		return pets;
 	}
 
-	public void setPetOwner(PetOwner petOwner) {
-		this.petOwner = petOwner;
+	public void setPets(Collection<Pet> pets) {
+		this.pets = pets;
 	}
 
 	@ManyToOne(optional = false)

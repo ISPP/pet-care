@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
@@ -67,17 +68,11 @@ public class Pet extends DomainEntity{
 	
 	//--------------------------
 	private PetOwner petOwner;
-	private PetSitter petSitter;
+
 	private Collection<Photo> photos;
+	private Collection<Booking> bookings;
 
-	@ManyToOne(optional=true)
-	public PetSitter getPetSitter() {
-		return petSitter;
-	}
-
-	public void setPetSitter(PetSitter petSitter) {
-		this.petSitter = petSitter;
-	}
+	
 
 	@ManyToOne(optional=true)
 	public PetOwner getPetOwner() {
@@ -95,6 +90,16 @@ public class Pet extends DomainEntity{
 
 	public void setPhotos(Collection<Photo> photos) {
 		this.photos = photos;
+	}
+	
+	
+	@ManyToMany(mappedBy = "pets")
+	public Collection<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(Collection<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 }

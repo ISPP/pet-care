@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 @Access(AccessType.PROPERTY)
 public class PetOwner extends Customer {
 
-	private Collection<Booking> bookings;
+	
 	private Collection<Pet> pets;
 	private Collection<Review> reviews;
 	private Collection<Registration> registrations;
@@ -29,14 +29,7 @@ public class PetOwner extends Customer {
 		this.pets = pets;
 	}
 
-	@OneToMany(mappedBy = "petOwner")
-	public Collection<Booking> getBookings() {
-		return bookings;
-	}
-
-	public void setBookings(Collection<Booking> bookings) {
-		this.bookings = bookings;
-	}
+	
 
 	@OneToMany(mappedBy = "reviewer")
 	public Collection<Review> getReviews() {

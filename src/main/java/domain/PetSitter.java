@@ -46,17 +46,9 @@ public class PetSitter extends Supplier{
 	
 	//--------------------------------
 	private Collection<Place>places;
-	private Collection<Pet> pets;
+	
 	
 
-	@OneToMany(mappedBy="petSitter")
-	public Collection<Pet> getPets() {
-		return pets;
-	}
-
-	public void setPets(Collection<Pet> pets) {
-		this.pets = pets;
-	}
 
 	@OneToMany(mappedBy="petSitter")
 	public Collection<Place> getPlaces() {
