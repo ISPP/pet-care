@@ -93,6 +93,7 @@ public class PetSitterService {
 
 		Assert.notNull(customerService.findCustomerByInvitationCode(codeToRegister));
 		petSitter.setInvitationCode(invitationCode);
+		petSitter.setDaysBeforeCancel(1);
 		result=save(petSitter);
 		return result;
 	}

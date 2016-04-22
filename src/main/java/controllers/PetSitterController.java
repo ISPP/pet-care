@@ -68,6 +68,7 @@ public class PetSitterController extends AbstractController {
 		PetSitterForm petSitterForm;
 		
 		petSitterForm = new PetSitterForm();
+		petSitterForm.setDaysBeforeCancel(1);
 		petSitterForm.setInvitationCode(invitationCode);
 		
 		result = createEditModelAndView(petSitterForm);
@@ -84,6 +85,7 @@ public class PetSitterController extends AbstractController {
 		
 		if(binding.hasErrors()){
 			result = createEditModelAndView(petSitterForm);
+			System.out.println(binding.getAllErrors());
 		}else{
 			try{
 				if(petSitterForm.getExpirationYear()< Calendar.getInstance().get(Calendar.YEAR)){
