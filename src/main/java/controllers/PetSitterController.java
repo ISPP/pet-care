@@ -21,6 +21,7 @@ import domain.Customer;
 import domain.PetSitter;
 import forms.InvitationForm;
 import forms.PetSitterForm;
+import forms.SearchSittersForm;
 @Controller
 @RequestMapping("/petSitter")
 public class PetSitterController extends AbstractController {
@@ -142,7 +143,7 @@ public class PetSitterController extends AbstractController {
 		InvitationForm iForm;
 		iForm=new InvitationForm();
 		result = createInvitationModelAndView(iForm);
-		//result.addObject("singleCode", customer.getInvitationCode());
+		
 		
 		return result;
 	}
@@ -158,6 +159,11 @@ public class PetSitterController extends AbstractController {
 			
 		} else {
 			result = new ModelAndView("welcome/index");
+			SearchSittersForm searchSittersForm;
+			
+			searchSittersForm = new SearchSittersForm();
+			
+			result.addObject("searchSittersForm", searchSittersForm);
 			try {
 				petSitter = petSitterService.findOneByPrincipal();
 				emailService.sendToAFriend(petSitter, invitationForm.getEmail());

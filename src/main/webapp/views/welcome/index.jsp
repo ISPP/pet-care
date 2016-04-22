@@ -129,7 +129,7 @@
 <!-- 
 <div id="googleMap"></div>
  -->
-
+<security:authorize access="isAnonymous()">
 	 <!-- Modal -->
   <div class="modal fade" id="loginForm" role="dialog">
     <div class="modal-dialog">
@@ -204,7 +204,7 @@
     </div>
   </div>
 
-
+</security:authorize>
 <!-- Add Google Maps -->
 <!-- 
 <script src="http://maps.googleapis.com/maps/api/js"></script>

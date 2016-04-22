@@ -81,7 +81,11 @@ public class WelcomeController extends AbstractController {
 				result.addObject("index", true);
 				result.addObject("searchSittersForm", searchSittersForm);
 			}else if(actor.getUser().getAuthorities().contains(a2)){
-				result = new ModelAndView("redirect:/petShipperIndex.do");
+				result = new ModelAndView("welcome/index");
+				result.addObject("credentials", credentials);
+				result.addObject("showError", showError);
+				result.addObject("index", true);
+				result.addObject("searchSittersForm", searchSittersForm);
 			}else if(actor.getUser().getAuthorities().contains(a3)){
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
