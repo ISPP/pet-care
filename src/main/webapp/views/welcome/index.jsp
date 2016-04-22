@@ -61,7 +61,7 @@
       <div class="item">
         <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
-      
+      <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
       <div class="carousel-caption center-bottom">
           	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
 			<form:hidden path="id"/>
@@ -87,6 +87,7 @@
 <br/>
 <br/>
         </div>  
+        </security:authorize>
     </div>
 
 </div>
