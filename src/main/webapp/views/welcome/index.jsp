@@ -62,11 +62,16 @@
         <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
+<<<<<<< HEAD
       <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
           	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
+=======
+      <div class="carousel-caption center-bottom">
+          	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
+>>>>>>> branch 'functionality' of https://github.com/ISPP/pet-care.git
 			<form:hidden path="id"/>
 			<fieldset >
-			<h2><spring:message code="master.page.searchSitters"/></h2>
+			<h2><spring:message code="master.page.searchSuppliers"/></h2>
 			<spring:message var="startD" code="sitter.startDate"/>
 			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
 			<form:errors path="startDate" cssClass="error" />
@@ -78,6 +83,16 @@
 			<spring:message var="addrs" code="sitter.address"/>
 			<form:input class="blackL" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
+			
+			<form:label path="type">
+				<spring:message code="supplier.type" />
+			</form:label>	
+			<form:select path="type">
+				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
+				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
+				<form:option value="3"><spring:message code="supplier.company" /></form:option>
+			</form:select>
+			<form:errors path="type" cssClass="error" />
 			
 			<acme:submit code="sitter.search.go" name="search" />
 			</fieldset>

@@ -26,7 +26,7 @@ import forms.PetShipperForm;
 import forms.PetSitterForm;
 import forms.SearchSittersForm;
 @Controller
-@RequestMapping("/petSitter")
+@RequestMapping("/petShipper")
 public class PetShipperController extends AbstractController {
 	
 	@Autowired
@@ -167,7 +167,7 @@ public class PetShipperController extends AbstractController {
 			
 			try {
 				petShipper = petShipperService.findOneByPrincipal();
-				emailService.sendToAFriend(petShipper, invitationForm.getEmail());
+				emailService.sendToPetShipper(petShipper, invitationForm.getEmail());
 
 			} catch (Exception e) {
 

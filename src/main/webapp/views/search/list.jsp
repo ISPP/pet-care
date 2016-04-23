@@ -53,10 +53,10 @@
       
       
       <div class="carousel-caption center-bottom">
-          	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
+          	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
 			<form:hidden path="id"/>
 			<fieldset >
-			<h2><spring:message code="master.page.searchSitters"/></h2>
+			<h2><spring:message code="master.page.searchSuppliers"/></h2>
 			<spring:message var="startD" code="sitter.startDate"/>
 			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
 			<form:errors path="startDate" cssClass="error" />
@@ -68,6 +68,16 @@
 			<spring:message var="addrs" code="sitter.address"/>
 			<form:input class="blackL" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
+			
+			<form:label path="type">
+				<spring:message code="supplier.type" />
+			</form:label>	
+			<form:select path="type">
+				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
+				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
+				<form:option value="3"><spring:message code="supplier.company" /></form:option>
+			</form:select>
+			<form:errors path="type" cssClass="error" />
 			
 			<acme:submit code="sitter.search.go" name="search" />
 			</fieldset>
@@ -81,52 +91,130 @@
 
 </div>
 <div class="container text-center">
-	<jstl:forEach var="petSitter" items="${sitters}">
-	 <div class="col-md-4 panel panel-default">
-	 	<div class="wrap">
-	 	<jstl:if test="${toBook==true}">
-	 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}&startMoment=${searchSittersForm.startDate}&endMoment=${searchSittersForm.endDate}">
-	 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
-		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
-		</a>
-	 	</jstl:if>
-		
-		<jstl:if test="${toBook == false}">
-		<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
-		<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+
+	<!-- List sitters -->
+	
+	<jstl:if test="${searchSuppliersForm.type == 1}">
+		<jstl:forEach var="petSitter" items="${suppliers}">
+		 <div class="col-md-4 panel panel-default">
+		 	<div class="wrap">
+		 	<jstl:if test="${toBook==true}">
+		 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}">
+		 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+			</a>
+		 	</jstl:if>
+			
+			<jstl:if test="${toBook == false}">
+			<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+			</jstl:if>
+			</div>
+			
+			<div>
+			<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"/>
+			<jstl:out value=" ${petSitter.address}"/>
+			<br/>
+			<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/> &#8364;
+			</div>
+			
+		</div>
+		</jstl:forEach>
+		<jstl:if test="${suppliers.size()==0}">
+			<h2><spring:message code="search.noResults"/></h2>
 		</jstl:if>
-		</div>
-		
-		<div>
-		<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"></p>
-		<jstl:out value=" ${petSitter.address}"/>
-		<br/>
-		<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/> &#8364;
-		</div>
-		
-	</div>
-	</jstl:forEach>
-	<jstl:if test="${sitters.size()==0}">
-		<h2><spring:message code="search.noResults"/></h2>
+		<jstl:if test="${toBook==false}">
+		<spring:message code="search.mustRegister"/><br/>
+		</jstl:if>
+		<spring:message code="search.priceShowsNight"/>
 	</jstl:if>
-	<jstl:if test="${toBook==false}">
-	<spring:message code="search.mustRegister"/><br/>
+	
+	<!-- List shippers -->
+	<!-- 
+	<jstl:if test="${searchSuppliersForm.type == 2}">
+		<jstl:forEach var="petShipper" items="${suppliers}">
+		 <div class="col-md-4 panel panel-default">
+		 	<div class="wrap">
+		 	<jstl:if test="${toBook==true}">
+		 	<a href="booking/petOwner/createForShipper.do?petShipperId=${petShipper.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}">
+		 	<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petShipper.priceNight}*"/>&#8364;</span>
+			</a>
+		 	</jstl:if>
+			
+			<jstl:if test="${toBook == false}">
+			<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+			</jstl:if>
+			</div>
+			
+			<div>
+			<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"/>
+			<jstl:out value=" ${petSitter.address}"/>
+			<br/>
+			<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/> &#8364;
+			</div>
+			
+		</div>
+		</jstl:forEach>
+		<jstl:if test="${sitters.size()==0}">
+			<h2><spring:message code="search.noResults"/></h2>
+		</jstl:if>
+		<jstl:if test="${toBook==false}">
+		<spring:message code="search.mustRegister"/><br/>
+		</jstl:if>
+		<spring:message code="search.priceShowsNight"/>
 	</jstl:if>
-	<spring:message code="search.priceShowsNight"/>
+	-->
+	
+	<!-- List companies -->
+	
+	<jstl:if test="${searchSuppliersForm.type == 3}">
+		<jstl:forEach var="company" items="${suppliers}">
+		 <div class="col-md-4 panel panel-default">
+		 	<div class="wrap">
+		 	<jstl:if test="${toBook==true}">
+		 	<a href="booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}">
+		 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+			</a>
+		 	</jstl:if>
+			
+			<jstl:if test="${toBook == false}">
+			<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+			</jstl:if>
+			</div>
+			
+			<div>
+			<p class="list-name"><jstl:out value="${company.name}"/><hr class="linea-pegada"/>
+			<jstl:out value=" ${company.address}"/>
+			<br/>
+			</div>
+		</div>
+		</jstl:forEach>
+		<jstl:if test="${suppliers.size()==0}">
+			<h2><spring:message code="search.noResults"/></h2>
+		</jstl:if>
+		<jstl:if test="${toBook==false}">
+		<spring:message code="search.mustRegister"/><br/>
+		</jstl:if>
+		<spring:message code="search.priceShowsNight"/>
+	</jstl:if>
+	
 </div>
 
 
 <div id="googleMap"></div>
 
-
 <!-- Add Google Maps -->
+
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
 
-
 function initialize() {
 	var geocoder = new google.maps.Geocoder();
-	var country = "${searchSittersForm.address}";
+	var country = "${searchSuppliersForm.address}";
 	var mapProp = {
 			zoom:12,
 			scrollwheel:true,
@@ -145,19 +233,8 @@ function initialize() {
 	        alert("Could not find location: " + location);
 	    }
 	});
-
-	
-
-
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-
-
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
 </script>

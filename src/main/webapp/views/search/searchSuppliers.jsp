@@ -9,7 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- SEARCHER -->
-<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
+<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
 	<form:hidden path="id"/>
 	
 	<spring:message code="sitter.startDate"/>:
@@ -26,6 +26,16 @@
 	<form:input path="address"/>
 	<form:errors path="address" cssClass="error" />
 	<br/>
+	
+	<form:label path="type">
+		<spring:message code="supplier.type" />
+	</form:label>	
+	<form:select path="type">
+		<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
+		<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
+		<form:option value="3"><spring:message code="supplier.company" /></form:option>
+	</form:select>
+	<form:errors path="type" cssClass="error" />
 	
 	<acme:submit code="sitter.search.go" name="search" />	
 </form:form>

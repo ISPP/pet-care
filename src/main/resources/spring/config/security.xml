@@ -44,13 +44,6 @@
 		<security:intercept-url pattern="/welcome/index.do"
 			access="permitAll" />
 
-		<security:intercept-url pattern="/search/list.do"
-			access="permitAll" />
-		<security:intercept-url pattern="/search/searchSitters.do"
-			access="permitAll" />
-		<security:intercept-url pattern="/search/display.do"
-			access="permitAll" />
-
 			<security:intercept-url pattern="/paypal/**"
 			access="hasAnyRole('PETOWNER','ADMIN')" />
 			<security:intercept-url pattern="/booking/administrator/**"
@@ -100,7 +93,7 @@
 
 		<security:intercept-url pattern="/search/list.do"
 			access="permitAll" />
-		<security:intercept-url pattern="/search/searchSitters.do"
+		<security:intercept-url pattern="/search/searchSuppliers.do"
 			access="permitAll" />
 		<security:intercept-url pattern="/search/display.do"
 			access="permitAll" />

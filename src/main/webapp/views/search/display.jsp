@@ -7,21 +7,21 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 		
-<h4><spring:message code="sitter.sitter"/></h4>
-<acme:out code="sitter.fullName" path="${petSitter.name}"/>
+<h4><spring:message code="sitter.supplier"/></h4>
+<acme:out code="sitter.fullName" path="${supplier.name}"/>
 <br />
-<acme:out code="sitter.description" path="${petSitter.description}"/>
+<acme:out code="sitter.description" path="${supplier.description}"/>
 <br />
-<acme:out code="sitter.address" path="${petSitter.address}"/>
+<acme:out code="sitter.address" path="${supplier.address}"/>
 <br />
-<acme:out code="sitter.email" path="${petSitter.email}"/>
+<acme:out code="sitter.email" path="${supplier.email}"/>
 <br />
-<jstl:if test="${petSitter.homePage != null}">
-	<acme:out code="sitter.homePage" path="${petSitter.homePage}"/>
+<jstl:if test="${supplier.homePage != null}">
+	<acme:out code="sitter.homePage" path="${supplier.homePage}"/>
 	<br />
 </jstl:if>
 <br />
-<acme:out code="sitter.averageRating" path="${petSitter.rating}"/>
+<acme:out code="sitter.averageRating" path="${supplier.rating}"/>
 <br />
 
 <!-- Reviews list with sortable date and rating -->

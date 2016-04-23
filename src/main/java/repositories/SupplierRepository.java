@@ -27,4 +27,16 @@ public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 	// The supplier/s who doesn’t/don’t have any booking.
 	@Query("select s from Supplier s where s.bookings.size=?1")
 	Collection<Supplier> findSupplierWithBookings(int bookingsNumber);
+	
+	@Query("select ps from PetSitter ps where ps.address like %?1%")
+	Collection<PetSitter> searchSitters(String address);
+	
+	@Query("select ps from PetShipper ps where ps.address like %?1%")
+	Collection<PetShipper> searchShippers(String address);
+	
+	@Query("select ps from Company ps where ps.address like %?1%")
+	Collection<Company> searchCompanies(String address);
+	
+	@Query("select ps from Supplier ps where ps.address like %?1%")
+	Collection<Supplier> searchSuppliers(String address);
 }
