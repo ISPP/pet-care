@@ -24,6 +24,16 @@
 	<definition name="petShipper/profile" extends="master.page">	
 		<put-attribute name="title" value="Editar perfil" />
 		<put-attribute name="body" value="/views/petShipper/profile.jsp" />
+		
+	</definition>
+	<definition name="petShipper/edit" extends="master.page">	
+		<put-attribute name="title" value="Registrarse como transportista" />
+		<put-attribute name="body" value="/views/petShipper/edit.jsp" />
+	</definition>
+	
+		<definition name="petShipper/invite" extends="master.page">	
+		<put-attribute name="title" value="Invitar a registrarse como transportista" />
+		<put-attribute name="body" value="/views/petShipper/invite.jsp" />
 	</definition>
 		
 </tiles-definitions>

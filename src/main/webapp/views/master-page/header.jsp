@@ -12,7 +12,7 @@
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-
+<div id="divTop"></div>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -253,6 +253,8 @@
 </div>
 </div>
 </nav>
+
+<div id="divTop"><div>
 
 
 

@@ -192,7 +192,9 @@
 		<security:intercept-url pattern="/trip/petShipper/**" access="hasRole('PETSHIPPER')" /> 
 		<!-- Regstraton -->
 	<security:intercept-url pattern="/registration/petShipper/**" access="hasRole('PETSHIPPER')" /> 
-		
+	
+	<!-- PetShipper -->
+	<security:intercept-url pattern="/petShipper/invite.do" access="hasRole('PETSHIPPER')" /> 
 			
 
 		<!-- Supplier -->

@@ -313,6 +313,12 @@ input[type=file] {
 	opacity: 0.9;
 }
 
+
+#divTop{
+		background-color: #2d2d30;
+	height:50px;
+}
+
 .navbar li a,.navbar .navbar-brand {
 	color: #d5d5d5 !important;
 }

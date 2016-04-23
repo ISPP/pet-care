@@ -62,7 +62,7 @@
         <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
-      <div class="carousel-caption center-bottom">
+      <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
           	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
 			<form:hidden path="id"/>
 			<fieldset >
