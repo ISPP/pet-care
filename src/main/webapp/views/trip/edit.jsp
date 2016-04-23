@@ -20,37 +20,102 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="${requestUri}" modelAttribute="review">
+<form:form action="${requestURI}" modelAttribute="tripForm">
 
 	<form:hidden path="id" />
-	<form:hidden path="version" />
-	<form:hidden path="booking" />
-	<form:hidden path="reviewed" />
-	<form:hidden path="reviewer" />
-	<form:hidden path="creationMoment" />	
 	
-	<acme:textarea code="review.description" path="description" readonly="false"/>
+	<acme:textarea code="trip.descriptionText" path="descriptionText"/>
 	
-	<form:label path="rating">
-		<spring:message code="review.rating" />
-	</form:label>	
-	<form:select path="rating">
-		<form:option value="5.0" label="5" />
-		<form:option value="4.0" label="4" />
-		<form:option value="3.0" label="3" />
-		<form:option value="2.0" label="2" />
-		<form:option value="1.0" label="1" />		
-		<form:option value="0.0" label="0" />		
-		
-	</form:select>
-	<form:errors path="rating" cssClass="error" />
-
-<input type="submit" name="save" class="button"
-		value="<spring:message code="review.save" />" />
-
+	<acme:textbox code="trip.startCity" path="startCity"/>
 	
-	<input type="button" name="cancel" class="button"
-		value="<spring:message code="review.cancel" />"
-		onclick="javascript: window.location.replace('welcome/index.do');" />
+	<acme:textbox code="trip.endCity" path="endCity"/>
 	<br />
+	
+	<div>
+		<table class="labelInput">
+			<tr>
+			<th class="tableLabel">
+			<form:label path="${trip.moment}" >
+				<b><spring:message code="trip.moment" /></b>
+			</form:label>	
+			</th>
+			<th class="tableInput">
+				<spring:message var="moment" code="trip.moment"/>
+				<form:input class="blackL datepicker" path="moment"/>	
+			</th>
+			<th class="tableError">
+			
+			<form:errors path="moment" cssClass="error" />
+			</th>
+			</tr>
+		</table>
+	</div>	
+	
+	<div>
+		<table class="labelInput">
+			<tr>
+			<th class="tableLabel">
+				<form:label path="${trip.distance}">
+					<spring:message code="trip.distance" />
+				</form:label>	
+			</th>
+			<th class="tableInput">
+				<form:select path="distance">
+					<form:option value="SHORT" label="SHORT" />
+					<form:option value="MEDIUM" label="MEDIUM" />
+					<form:option value="LARGE" label="LARGE" />
+				</form:select>
+			</th>
+			<th class="tableError">
+			<form:errors path="distance" cssClass="error" />
+			</th>
+			</tr>
+		</table>
+	</div>	
+	<br />
+	<acme:textbox code="trip.cost" path="cost"/>
+	
+	<div>
+		<table class="labelInput">
+			<tr>
+			<th class="tableLabel">
+				<form:label path="${trip.vehicle}">
+					<spring:message code="trip.vehicle" />
+				</form:label>	
+			</th>
+			<th class="tableInput">
+				<form:select path="vehicleId">
+					 <form:options items="${vehicles}" itemLabel="title" itemValue="id"/>
+				</form:select>
+			</th>
+			<th class="tableError">
+			<form:errors path="vehicleId" cssClass="error" />
+			</th>
+			</tr>
+		</table>
+	</div>
+	<br />
+	<div>
+		<table class="labelInput">
+			<tr>
+			<th class="tableLabel">
+			</th>
+			<th class="tableInput">
+				<input type="submit" name="save" class="button"
+					value="<spring:message code="trip.save" />" />
+					
+				<jstl:if test="${deletable==true}">
+					<input type="submit" name="delete" class="button"
+						value="<spring:message code="trip.delete" />" />
+				</jstl:if>
+		
+				<input type="button" name="cancel" class="button"
+					value="<spring:message code="trip.cancel" />"
+					onclick="javascript: window.location.replace('welcome/index.do');" />
+			</th>
+			<th class="tableError">
+			</th>
+			</tr>
+		</table>
+	</div>
 </form:form>

@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import repositories.SupplierRepository;
 import security.LoginService;
 import security.UserAccount;
+import domain.Review;
 import domain.Supplier;
 
 @Service
@@ -76,5 +77,13 @@ public class SupplierService {
 	
 	public Collection<Supplier> findSuppliersWithMoreThan10ReviewsWithZeroRating(){
 		return supplierRepository.findSuppliersWithNumberReviewWithRating(10, 0);
+	}
+
+	public Collection<Review> findReviews(int supplierId) {
+		Collection<Review> result;
+		
+		result = supplierRepository.findOne(supplierId).getReviews();
+		
+		return result;
 	}
 }

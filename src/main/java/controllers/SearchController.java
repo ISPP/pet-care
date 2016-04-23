@@ -17,9 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.PetSitterService;
-import domain.Actor;
+import services.SupplierService;
 import domain.PetSitter;
 import domain.Review;
+import domain.Supplier;
 import forms.SearchSittersForm;
 
 @Controller
@@ -39,6 +40,9 @@ public class SearchController extends AbstractController{
 	
 	@Autowired
 	private PetSitterService petSitterService;
+	
+	@Autowired
+	private SupplierService supplierService;
 
 	// List sitters ---------------------------------------------------------------		
 
@@ -80,14 +84,12 @@ public class SearchController extends AbstractController{
 		ModelAndView result;
 		Collection<PetSitter> sitters;
 		Date d1,d2;
-		Actor actor;
 		boolean toBook;
 		
 		try{
-			actor = actorService.findActorByUsername();
+			actorService.findActorByUsername();
 			toBook = true;
 		}catch(Throwable t){
-			actor = null;
 			toBook = false;
 		}
 		
@@ -126,19 +128,19 @@ public class SearchController extends AbstractController{
 	// Displaying ------------------------------------------------------------
 	
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam int petSitterId) {
+	public ModelAndView display(@RequestParam int supplierId) {
 		ModelAndView result;
-		PetSitter petSitter;
+		Supplier supplier;
 		String cancelURI, requestURI;
 		Collection<Review> reviews;
 
-		petSitter = petSitterService.findOne(petSitterId);
-		reviews = petSitterService.findReviews(petSitterId);
+		supplier = supplierService.findOne(supplierId);
+		reviews = supplierService.findReviews(supplierId);
 		cancelURI = "search/list.do";
-		requestURI = "search/display.do?petSitterId="+petSitterId;
+		requestURI = "search/display.do?supplierIdId="+supplierId;
 
 		result = new ModelAndView("search/display");
-		result.addObject("petSitter", petSitter);
+		result.addObject("supplier", supplier);
 		result.addObject("reviews", reviews);
 		result.addObject("cancelURI", cancelURI);
 		result.addObject("requestURI", requestURI);
