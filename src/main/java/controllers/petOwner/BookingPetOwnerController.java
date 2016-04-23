@@ -37,7 +37,17 @@ public class BookingPetOwnerController extends AbstractController {
 	private PetSitterService petSitterService;
 	@Autowired
 	private CompanyService companyService;
+	@RequestMapping(value = "/listToPay", method = RequestMethod.GET)
+	public ModelAndView listToPay() {
+		ModelAndView result;
 
+		Collection<Booking> bookings = bookingService.findBookingNotPayByPetOwnerId();
+		result = new ModelAndView("paypal/list");
+		result.addObject("bookings", bookings);
+		result.addObject("requestURI", "booking/petOwner/listToPay.do");
+
+		return result;
+	}
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
@@ -120,7 +130,9 @@ public class BookingPetOwnerController extends AbstractController {
 				Booking booking;
 				booking = bookingService.reconstruct(bookingForm);
 				bookingService.registerPetSitterBooking(booking);
+				
 				result = new ModelAndView("redirect:list.do");
+
 			} catch (IllegalArgumentException oops) {
 
 				result = createEditModelAndView(bookingForm,
@@ -180,7 +192,7 @@ public class BookingPetOwnerController extends AbstractController {
 				booking = bookingService.reconstruct(bookingForm);
 				booking.setNight(true);
 				bookingService.registerCompanyBooking(booking);
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:listToPay.do");
 			} catch (IllegalArgumentException oops) {
 
 				result = createEditModelAndView(bookingForm,

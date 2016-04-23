@@ -51,6 +51,11 @@
 		<security:intercept-url pattern="/search/display.do"
 			access="permitAll" />
 
+			<security:intercept-url pattern="/paypal/**"
+			access="hasAnyRole('PETOWNER','ADMIN')" />
+			<security:intercept-url pattern="/booking/administrator/**"
+			access="hasRole('ADMIN')" />
+
 		<!-- Profiles -->
 		<security:intercept-url pattern="/petOwner/petOwner/display.do"
 			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER')" />
