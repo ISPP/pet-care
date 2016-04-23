@@ -13,6 +13,6 @@ public interface PetShipperRepository extends JpaRepository<PetShipper, Integer>
 	PetShipper findOneByPrincipal(int id);
 	
 	@Query("select a from PetShipper a where a.invitationCode=?1")
-	PetSitter findPetShipperByInvitationCode(String invitationCode);
+	PetShipper findPetShipperByInvitationCode(String invitationCode);
 
 }

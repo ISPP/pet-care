@@ -195,7 +195,7 @@ public class PetSitterController extends AbstractController {
 		result = new ModelAndView("petSitter/invite");
 		result.addObject("invitationForm", invitationForm);
 		result.addObject("message", message);
-		result.addObject("requestURI", "petCare/invite.do");
+		result.addObject("requestURI", "petSitter/invite.do");
 		return result;
 	}
 }

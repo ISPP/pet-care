@@ -108,6 +108,7 @@ public class PetShipperController extends AbstractController {
 				}
 			}catch(Throwable oops){
 				result = createEditModelAndView(petShipperForm,"petShipper.commit.error");
+				oops.printStackTrace();
 			}
 		}
 
@@ -191,10 +192,10 @@ public class PetShipperController extends AbstractController {
 	protected ModelAndView createInvitationModelAndView(InvitationForm invitationForm, String message){
 		ModelAndView result;
 		
-		result = new ModelAndView("petSitter/invite");
+		result = new ModelAndView("petShipper/invite");
 		result.addObject("invitationForm", invitationForm);
 		result.addObject("message", message);
-		result.addObject("requestURI", "petCare/invite.do");
+		result.addObject("requestURI", "petShipper/invite.do");
 		return result;
 	}
 }

@@ -19,7 +19,7 @@
 
 
 
-<jstl:set var="action" value="petSitter/invite.do"/>
+<jstl:set var="action" value="${requestURI}"/>
 <form:form action="${action}" modelAttribute="invitationForm">
 
 	
