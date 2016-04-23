@@ -44,7 +44,11 @@
 	</display:column>
 	</security:authorize>
 	
-	
+	<display:column>
+		<a href="trip/petShipper/see.do?tripId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="trip.see"/>
+		</a>
+	</display:column>
 	
 </display:table>
 

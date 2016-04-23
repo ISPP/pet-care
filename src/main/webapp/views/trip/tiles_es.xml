@@ -10,11 +10,29 @@
 
 <tiles-definitions>
 
+	<definition name="trip/list" extends="master.page">
+		<put-attribute name="title" value="Mis viajes" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/create" extends="master.page">
+		<put-attribute name="title" value="Crear nuevo viaje" />
+		<put-attribute name="body" value="/views/trip/edit.jsp" />
+	</definition>
+	
+	<definition name="trip/see" extends="master.page">
+		<put-attribute name="title" value="Ver viaje" />
+		<put-attribute name="body" value="/views/trip/see.jsp" />
+	</definition>
+	
+	<definition name="trip/edit" extends="master.page">
+		<put-attribute name="title" value="Editar viaje" />
+		<put-attribute name="body" value="/views/trip/edit.jsp" />
+	</definition>
+
 	<definition name="trip/listToRegister" extends="master.page">
 		<put-attribute name="title" value="Listar viajes a los que registrarse" />
 		<put-attribute name="body" value="/views/trip/list.jsp" />
-
-
 	</definition>
 	
 	<definition name="trip/findtToRegister" extends="master.page">	

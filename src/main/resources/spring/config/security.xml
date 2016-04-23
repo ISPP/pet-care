@@ -190,6 +190,7 @@
 			<!-- Trip -->
 		<security:intercept-url pattern="/trip/petOwner/**" access="hasRole('PETOWNER')" /> 
 		<security:intercept-url pattern="/trip/petShipper/**" access="hasRole('PETSHIPPER')" /> 
+		<security:intercept-url pattern="/trip/petShipper/see.do" access="hasRole('PETOWNER','PETSHIPPER')" /> 
 		<!-- Regstraton -->
 	<security:intercept-url pattern="/registration/petShipper/**" access="hasRole('PETSHIPPER')" /> 
 		
