@@ -308,7 +308,7 @@ public class PetSitterService {
 		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
 		
 		for(PetSitter i: sitters){
-			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
+			bookings = bookingService.findByDateSupplier(startDate, endDate, i.getId());
 			if(bookings.isEmpty()){
 				result.add(i);
 			}

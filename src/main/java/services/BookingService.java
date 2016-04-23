@@ -188,12 +188,12 @@ public class BookingService {
 
 	// Other business methods ------------------------------------------------
 
-	public List<Booking> findByDateSitter(Date startDate, Date endDate,
-			int sitterId) {
+	public List<Booking> findByDateSupplier(Date startDate, Date endDate,
+			int supplierId) {
 		List<Booking> result;
 
-		result = new ArrayList<Booking>(bookingRepository.findByDateSitter(
-				startDate, endDate, sitterId));
+		result = new ArrayList<Booking>(bookingRepository.findByDateSupplier(
+				startDate, endDate, supplierId));
 
 		return result;
 	}
