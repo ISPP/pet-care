@@ -62,13 +62,11 @@
         <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
-<<<<<<< HEAD
-      <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
-          	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
-=======
-      <div class="carousel-caption center-bottom">
+
+     
+		 <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
           	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
->>>>>>> branch 'functionality' of https://github.com/ISPP/pet-care.git
+
 			<form:hidden path="id"/>
 			<fieldset >
 			<h2><spring:message code="master.page.searchSuppliers"/></h2>
@@ -83,7 +81,7 @@
 			<spring:message var="addrs" code="sitter.address"/>
 			<form:input class="blackL" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
-			
+			<br/>
 			<form:label path="type">
 				<spring:message code="supplier.type" />
 			</form:label>	
@@ -101,10 +99,12 @@
 
 <br/>
 <br/>
-        </div>  
-        </security:authorize>
-    </div>
-
+        
+        </div> 
+       
+       </security:authorize>
+ </div> 
+ 
 </div>
 
 <div id="users" class="container text-center">
