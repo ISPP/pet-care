@@ -54,7 +54,7 @@ public class SearchSuppliersForm {
 	}
 
 	public void setType(int type) {
-		this.id = type;
+		this.type = type;
 	}	
 
 
