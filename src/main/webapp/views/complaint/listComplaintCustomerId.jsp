@@ -19,10 +19,11 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-
+<!-- 
 <display:table name="complaints" id="row" requestURI="${requestUri}"
 	class="displaytag" keepStatus="true" pagesize="5">
 	<!--Property se refiere al atributo del objeto de la fila que va a ir en la columna-->
+	<!--
 	<spring:message code="cpmlaint_*title" var="titleColumn"></spring:message>
 	<display:column property="title" title="${titleColumn}" />
 
@@ -57,3 +58,20 @@
 
 
 </display:table>
+
+ -->
+ 
+ 
+ <div class="col-md-12">
+ 	<h2><spring:message code="complaint.complaints"/></h2><hr>	
+ 	<jstl:forEach var="com" items="${complaints}">
+ 		<div class="col-md-8-2 panel panel-default">
+	 		<div class="wrap-2">
+	 		<h3 class="h3-no-bottom">${com.title}</h3><hr>
+	 		<jstl:set var="shortDes" value="${fn:substring(com.description, 0, 100)}"></jstl:set>
+			<p><jstl:out value="${shortDes}..."/></p>
+			<p class="text-rigth-small"><fmt:formatDate  value="${com.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
+			</div>
+	 	</div>
+ 	</jstl:forEach>
+ </div>

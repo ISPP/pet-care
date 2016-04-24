@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import controllers.AbstractController;
+import forms.SearchSuppliersForm;
 
 @Controller
 @RequestMapping("/security")
@@ -49,10 +50,19 @@ public class LoginController extends AbstractController {
 		Assert.notNull(bindingResult);
 		
 		ModelAndView result;
-
-		result = new ModelAndView("security/login");
+		SearchSuppliersForm searchSuppliersForm;
+		
+		searchSuppliersForm = new SearchSuppliersForm();
+		
+		//result = new ModelAndView("security/login");
+		//result.addObject("credentials", credentials);
+		//result.addObject("showError", showError);
+		
+		result = new ModelAndView("welcome/index");
 		result.addObject("credentials", credentials);
-		result.addObject("showError", showError);
+		result.addObject("showError", true);
+		result.addObject("index", true);
+		result.addObject("searchSuppliersForm", searchSuppliersForm);
 
 		return result;
 	}
@@ -63,7 +73,7 @@ public class LoginController extends AbstractController {
 	public ModelAndView failure() {
 		ModelAndView result;
 
-		result = new ModelAndView("redirect:index.do?showError=true");
+		result = new ModelAndView("redirect:../welcome/index.do?showError=true");
 
 		return result;
 	}
