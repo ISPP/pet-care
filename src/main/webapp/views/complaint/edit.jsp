@@ -28,14 +28,22 @@
 	
 	
 	
-
+	<div class="col-md-12">
 	
-		<acme:textbox code="complaint.name" path="title" readonly="false" />
-		<acme:textarea code="complaint.description" path="description"
-			readonly="false" />
-	
-	
-
+		<form:label class="register-left" path="title" >
+		<spring:message code="complaint.name" />
+		<spring:message var="titleText" code="complaint.name" />
+		</form:label>
+		<form:input  path="title" placeholder="${titleText}" size="100%"/>
+		<form:errors path="title" cssClass="error" />
+		<br/>
+		<br/>
+		<form:label class="register-left"  path="description">
+		<spring:message code="complaint.description" />
+		</form:label>
+		<br/>
+		<spring:message var="writeHere" code="complaint.description.writeHere"/>
+		<form:textarea class="register-todoAncho" rows="8" path="description" placeholder="${writeHere}"/>
 
 	<input type="submit" name="save" class="button"
 		value="<spring:message code="complaint.save" />" />
@@ -44,5 +52,6 @@
 	<input type="button" name="cancel" class="button"
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
+	</div>
 	<br />
 </form:form>

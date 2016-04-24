@@ -10,9 +10,6 @@
 
 package controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Actor;
-import forms.SearchSittersForm;
-
+import forms.SearchSuppliersForm;
 import security.Authority;
 import security.Credentials;
 import services.ActorService;
-import services.PetService;
 
 @Controller
 @RequestMapping("/welcome")
@@ -59,9 +54,9 @@ public class WelcomeController extends AbstractController {
 		Actor actor;
 		Authority a1,a2,a3;
 		ModelAndView result;
-		SearchSittersForm searchSittersForm;
+		SearchSuppliersForm searchSuppliersForm;
 		
-		searchSittersForm = new SearchSittersForm();
+		searchSuppliersForm = new SearchSuppliersForm();
 		
 		actor = null;
 		
@@ -79,28 +74,32 @@ public class WelcomeController extends AbstractController {
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
 				result.addObject("index", true);
-				result.addObject("searchSittersForm", searchSittersForm);
+				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}else if(actor.getUser().getAuthorities().contains(a2)){
-				result = new ModelAndView("redirect:/petShipperIndex.do");
+				result = new ModelAndView("welcome/index");
+				result.addObject("credentials", credentials);
+				result.addObject("showError", showError);
+				result.addObject("index", true);
+				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}else if(actor.getUser().getAuthorities().contains(a3)){
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
 				result.addObject("index", true);
-				result.addObject("searchSittersForm", searchSittersForm);
+				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}else{
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
 				result.addObject("index", true);
-				result.addObject("searchSittersForm", searchSittersForm);
+				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}
 		}catch (Throwable t){
 			result = new ModelAndView("welcome/index");
 			result.addObject("credentials", credentials);
 			result.addObject("showError", showError);
 			result.addObject("index", true);
-			result.addObject("searchSittersForm", searchSittersForm);
+			result.addObject("searchSuppliersForm", searchSuppliersForm);
 		}
 		
 		if(actor==null){
@@ -108,7 +107,7 @@ public class WelcomeController extends AbstractController {
 			result.addObject("credentials", credentials);
 			result.addObject("showError", showError);
 			result.addObject("index", true);
-			result.addObject("searchSittersForm", searchSittersForm);
+			result.addObject("searchSuppliersForm", searchSuppliersForm);
 		}
 		
 		return result;
@@ -116,16 +115,16 @@ public class WelcomeController extends AbstractController {
 	
 	// Searching -----------------------------------------------------------------
 	
-		@RequestMapping(value = "/searchSitters", method = RequestMethod.GET)
+		@RequestMapping(value = "/searchSuppliers", method = RequestMethod.GET)
 		public ModelAndView search(){
 			ModelAndView result;
-			SearchSittersForm searchSittersForm;
+			SearchSuppliersForm searchSuppliersForm;
 			
-			searchSittersForm = new SearchSittersForm();
+			searchSuppliersForm = new SearchSuppliersForm();
 			
-			result = new ModelAndView("search/searchSitters");
-			result.addObject("requestURI", "search/searchSitters.do");
-			result.addObject("searchSittersForm", searchSittersForm);
+			result = new ModelAndView("search/searchSuppliers");
+			result.addObject("requestURI", "search/searchSuppliers.do");
+			result.addObject("searchSuppliersForm", searchSuppliersForm);
 															
 			return result;
 		}

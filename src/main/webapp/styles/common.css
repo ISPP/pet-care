@@ -105,6 +105,12 @@ h3,h4 {
 	float: right;
 }
 
+.alert {
+    padding: 15px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 
 .img-left-2 {
 	margin-top: 10px;
@@ -123,6 +129,13 @@ h3,h4 {
 	margin-bottom: 10px;
 	float: right;
 	font-size:20px;
+	text-align: right;
+}
+.text-rigth-small{
+	margin-top: 3px;
+	margin-bottom: 3px;
+	float: right;
+	font-size:13px;
 	text-align: right;
 }
 
@@ -311,6 +324,12 @@ input[type=file] {
 	font-size: 11px !important;
 	letter-spacing: 4px;
 	opacity: 0.9;
+}
+
+
+#divTop{
+		background-color: #2d2d30;
+	height:50px;
 }
 
 .navbar li a,.navbar .navbar-brand {

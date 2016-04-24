@@ -18,7 +18,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     		+ "(b.startMoment >= ?1 and b.endMoment <= ?2) or "
     		+ "(b.startMoment < ?2 and b.endMoment >= ?2) or "
     		+ "(b.startMoment < ?1 and b.endMoment > ?2))")
-    Collection<Booking> findByDateSitter(Date startDate, Date endDate, int sitterId);
+    Collection<Booking> findByDateSupplier(Date startDate, Date endDate, int sitterId);
     
     
     @Query("select b from Booking b where b.status='ACCEPTED' and b.supplier.id=?1 order by b.startMoment")
@@ -29,5 +29,16 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     
     @Query("select b from Booking b where b.supplier.id=?1 and b.status='PENDING' order by b.status")
     Collection<Booking> findBookingCanAceptRejectedByCustomerId(Integer id);
+
+
+    @Query("select b from Booking b where b.petOwner.id=?1 and b.status='ACCEPTED'")
+	Collection<Booking> findBookingByPetOwnerId(int id);
+
+
+    @Query("select b from Booking b where b.petOwner.id=?1 and b.pagadoPetOwner=false and b.status='ACCEPTED' and b.cancelled=false")//and b.status='ACCEPTED' and b.cancelled=false
+	Collection<Booking> findBookingNotPayBySupplierId(int id);
+
+    @Query("select b from Booking b where b.pagadoPetOwner=true and b.pagadoAdmin=false and b.status='ACCEPTED' and b.cancelled=false and b.endMoment<CURRENT_TIMESTAMP")
+	Collection<Booking> findAllToPayByAdmin();
 
 }

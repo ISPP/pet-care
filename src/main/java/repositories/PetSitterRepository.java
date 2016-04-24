@@ -19,5 +19,8 @@ public interface PetSitterRepository extends JpaRepository<PetSitter, Integer>{
 
 	@Query("select p from PetSitter p where p.user.id = ?1")
 	PetSitter findOneByPrincipal(int id);
+	
+	@Query("select a from PetSitter a where a.invitationCode=?1")
+	PetSitter findPetSitterByInvitationCode(String invitationCod);
 
 }

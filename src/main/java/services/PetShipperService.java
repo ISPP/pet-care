@@ -1,18 +1,30 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Booking;
+import domain.Comment;
+import domain.Complaint;
 import domain.CreditCard;
+import domain.Customer;
+import domain.MessageFolder;
+import domain.Pet;
 import domain.PetShipper;
+import domain.PetSitter;
 import domain.Review;
 import forms.PetShipperForm;
+import forms.PetSitterForm;
 import repositories.PetShipperRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 
@@ -27,12 +39,10 @@ public class PetShipperService {
 	@Autowired
 	private PetShipperRepository petShipperRepository;
 	
+	@Autowired
+	private CustomerService customerService;
+	
 
-	public PetShipper create() {
-		PetShipper result;
-		result = new PetShipper();
-		return result;
-	}
 
 	public PetShipper save(PetShipper petShipper) {
 		PetShipper result;
@@ -68,6 +78,125 @@ public class PetShipperService {
 		
 		petShipperRepository.saveAndFlush(petShipper);
 	}
+	
+	public Customer findPetShipperByInvitationCode(String invitationCode) {
+		
+		return petShipperRepository.findPetShipperByInvitationCode(invitationCode);
+	}
+	
+	public PetShipper register(PetShipper petShipper,String codeToRegister) {
+		PetShipper result;
+		String invitationCode;
+		invitationCode=RandomStringUtils.randomAlphanumeric(10);
+
+		Assert.notNull(findPetShipperByInvitationCode(codeToRegister));
+		petShipper.setInvitationCode(invitationCode);
+		petShipper.setDaysBeforeCancel(1);
+		result=save(petShipper);
+		return result;
+	}
+	
+
+	public PetShipper create() {
+		PetShipper result;
+		
+		Collection<MessageFolder> messageFolders;
+	
+		Collection<Review> reviews;
+		Collection<Booking> bookings;
+		Collection<Comment> comments;
+		Collection<Complaint> complaints;
+		
+		result = new PetShipper();
+		
+		messageFolders = new ArrayList<MessageFolder>();
+	
+		bookings = new ArrayList<Booking>();
+		comments= new ArrayList<Comment>();
+		complaints = new ArrayList<Complaint>();
+		reviews = new ArrayList<Review>();
+		
+		//We set all the initial values to the petSitter
+		result.setMessageFolders(messageFolders);
+	
+		result.setComments(comments);
+		result.setComplaints(complaints);
+		result.setBookings(bookings);
+		result.setReviews(reviews);
+		
+		return result;
+	}
+	
+	
+	
+	
+	public PetShipper reconstruct(PetShipperForm petShipperForm) {
+		Assert.isTrue(petShipperForm.getPassword().equals(
+				petShipperForm.getPasswordConfirm()));
+
+		PetShipper result;
+		CreditCard creditCard;
+		UserAccount userAccount;
+		Collection<Authority> authorities;
+		Authority authority;
+		BCryptPasswordEncoder encoder;
+		
+
+		result = create();
+		creditCard = new CreditCard();
+		userAccount = new UserAccount();
+		authorities = new HashSet<Authority>();
+		authority = new Authority();
+
+		
+		// authority and authorities
+		authority.setAuthority(Authority.PETSHIPPER);
+		authorities.add(authority);
+
+		// CreditCard
+		creditCard.setBrandName(petShipperForm.getBrandName());
+		creditCard.setCVV(petShipperForm.getCvvCode());
+		creditCard.setExpirationMonth(petShipperForm.getExpirationMonth());
+		creditCard.setExpirationYear(petShipperForm.getExpirationYear());
+		creditCard.setHolderName(petShipperForm.getHolderName());
+		creditCard.setNumber(petShipperForm.getNumber());
+
+		// UserAccount
+		userAccount.setAuthorities(authorities);
+		userAccount.setUsername(petShipperForm.getUsername());
+		encoder = new BCryptPasswordEncoder();
+		userAccount.setPassword(
+				encoder.encode(petShipperForm.getPassword()));
+
+		result.setCreditCard(creditCard);
+		result.setEmail(petShipperForm.getEmail());
+		result.setName(petShipperForm.getName());
+		result.setHomePage(petShipperForm.getHomePage());
+		result.setContactPhone(petShipperForm.getContactPhone());
+		result.setSurname(petShipperForm.getSurname());
+		result.setUser(userAccount);
+		result.setAddress(petShipperForm.getAddress());
+		result.setDescription(petShipperForm.getDescription());
+
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public PetShipper reconstructEdited(PetShipperForm petShipperForm) {
 		Assert.isTrue(petShipperForm.getPassword().equals(

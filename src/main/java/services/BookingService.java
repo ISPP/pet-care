@@ -188,12 +188,12 @@ public class BookingService {
 
 	// Other business methods ------------------------------------------------
 
-	public List<Booking> findByDateSitter(Date startDate, Date endDate,
-			int sitterId) {
+	public List<Booking> findByDateSupplier(Date startDate, Date endDate,
+			int supplierId) {
 		List<Booking> result;
 
-		result = new ArrayList<Booking>(bookingRepository.findByDateSitter(
-				startDate, endDate, sitterId));
+		result = new ArrayList<Booking>(bookingRepository.findByDateSupplier(
+				startDate, endDate, supplierId));
 
 		return result;
 	}
@@ -260,6 +260,8 @@ public class BookingService {
 		String code = RandomStringUtils.randomAlphanumeric(10);
 		booking.setCode(code);
 		booking.setCancelled(false);
+		booking.setPagadoPetOwner(false);
+		booking.setPagadoAdmin(false);
 		PetOwner petOwner;
 		petOwner = petOwnerService.findOneByPrincipal();
 		booking.setPetOwner(petOwner);
@@ -313,6 +315,8 @@ public class BookingService {
 		String code = RandomStringUtils.randomAlphanumeric(10);
 		booking.setCode(code);
 		booking.setCancelled(false);
+		booking.setPagadoPetOwner(false);
+		booking.setPagadoAdmin(false);
 		PetOwner petOwner;
 		petOwner = petOwnerService.findOneByPrincipal();
 		booking.setPetOwner(petOwner);
@@ -385,5 +389,51 @@ public class BookingService {
 		bookingRepository.save(booking);
 
 	}
+
+	/*public Collection<Booking> findBookingNotPayBySupplierId() {
+		Supplier supplier = supplierService.getLoggedSupplier();
+		
+		Collection<Booking> res = bookingRepository.findBokkingAcceptedBySupplierId(supplier.getId());
+		Date now = new Date(System.currentTimeMillis()-1000);
+		for(Booking b:res){
+			if(b.getPagado()==true && b.getStartMoment().before(now)){
+				res.remove(res);
+			}
+		}
+				
+		
+		return res;
+	}*/
+
+	public Collection<Booking> findBookingNotPayByPetOwnerId() {
+		PetOwner petOwner = petOwnerService.getLogged();
+		Collection<Booking> res = bookingRepository.findBookingNotPayBySupplierId(petOwner.getId());
+		/*Date now = new Date(System.currentTimeMillis()-1000);
+		for(Booking b:res){
+			if(b.getPagadoPetOwner()==true || b.getCancelled()==true||b.getStatus()=="PENDING"||b.getStatus()=="CANCELLED"){
+				res.remove(b);
+			}
+		}*/
+				
+		
+		return res;
+	}
+	
+	public Collection<Booking> findBookingNotPayByAdmin() {
+		
+		Collection<Booking> res = bookingRepository.findAllToPayByAdmin();
+		//System.out.println("--------------"+res);
+		/*Date now = new Date(System.currentTimeMillis()-1000);
+		for(Booking b:res){
+			if(b.getPagadoPetOwner()==true && b.getPagadoAdmin()==true || b.getStartMoment().before(now)||b.getCancelled()==true||b.getStatus()=="PENDING"||b.getStatus()=="CANCELLED"){
+				//|| b.getStartMoment().before(now)||b.getCancelled()==true||b.getStatus()=="PENDING"||b.getStatus()=="CANCELLED"
+				res.remove(b);
+			}
+		}*/
+				
+		
+		return res;
+	}
+	
 
 }

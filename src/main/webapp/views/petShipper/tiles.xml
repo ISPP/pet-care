@@ -25,6 +25,13 @@
 		<put-attribute name="title" value="Edit profile" />
 		<put-attribute name="body" value="/views/petShipper/profile.jsp" />
 	</definition>
-	
+	<definition name="petShipper/edit" extends="master.page">	
+		<put-attribute name="title" value="Register as pet shipper" />
+		<put-attribute name="body" value="/views/petShipper/edit.jsp" />
+	</definition>
+	<definition name="petShipper/invite" extends="master.page">	
+		<put-attribute name="title" value="Invite to register pet shipper" />
+		<put-attribute name="body" value="/views/petShipper/invite.jsp" />
+	</definition>
 
 </tiles-definitions>

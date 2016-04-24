@@ -11,4 +11,8 @@ public interface PetShipperRepository extends JpaRepository<PetShipper, Integer>
 
 	@Query("select p from PetShipper p where p.user.id = ?1")
 	PetShipper findOneByPrincipal(int id);
+	
+	@Query("select a from PetShipper a where a.invitationCode=?1")
+	PetShipper findPetShipperByInvitationCode(String invitationCode);
+
 }

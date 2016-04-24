@@ -589,7 +589,7 @@
 	<bean id="petOwner8.1" class="domain.PetOwner">
 	<property name="name" value="Javier Ignacio"></property>
 	<property name="surname" value="Molina Cano"></property>
-	<property name="email" value="javier@gmail.com"></property>
+	<property name="email" value="suzfsr-facilitator@gmail.com"></property>
 	<property name="address" value="Sevilla"></property>
 	<property name="description" value="Mi perro es como si fuera de mi familia"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
@@ -888,7 +888,7 @@
 	<bean id="petSitter9.1" class="domain.PetSitter">
 	<property name="name" value="Lillian"></property>
 	<property name="surname" value=" Gómez"></property>
-	<property name="email" value="lil@gmail.com"></property>
+	<property name="email" value="suzfsr-buyer@gmail.com"></property>
 	<property name="priceNight" value="5"></property>
 	<property name="daysBeforeCancel" value="1"></property>
 	<property name="priceHour" value="1"></property>
@@ -1207,6 +1207,8 @@
 									
 		</list>
 	</property>	
+	<property name="invitationCode" value="petShipper101"></property>
+	
 	</bean>
 	
 	
@@ -1231,6 +1233,7 @@
 		<property name="email" value="wiklly@gmail.com"></property>
 		<property name="rating" value="3.2"></property>
 		<property name="daysBeforeCancel" value="1"></property>
+		 
 	<property name="blocked" value="false"></property>
 		<property name="address" value="Malaga"></property>
 	<property name="description" value="Viajo diariamente a sevilla"></property>
@@ -1259,6 +1262,7 @@
 									
 		</list>
 	</property>		
+	<property name="invitationCode" value="petShipper102"></property>
 	</bean>
 	
 	<bean id="folderPetShipper10.2Inbox" class="domain.MessageFolder">
@@ -1318,6 +1322,7 @@
 									
 		</list>
 	</property>	
+	<property name="invitationCode" value="petShipper103"></property>
 	</bean>
 	
 	
@@ -1376,6 +1381,7 @@
 									
 		</list>
 	</property>	
+	<property name="invitationCode" value="petShipper104"></property>
 	</bean>
 	
 	<bean id="folderPetShipper10.4Inbox" class="domain.MessageFolder">
@@ -1426,7 +1432,8 @@
 				<ref bean="vehicle5"></ref>
 									
 		</list>
-	</property>	
+	</property>
+	<property name="invitationCode" value="petShipper105"></property>	
 	</bean>
 	
 	<bean id="folderPetShipper10.5Inbox" class="domain.MessageFolder">
@@ -1923,6 +1930,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="false"></property>
+	<property name="pagadoPetOwner" value="false"></property>
+	<property name="pagadoAdmin" value="false"></property>
 	<property name="petOwner" ref="petOwner8.1"></property>
 	<property name="supplier" ref="petSitter9.1"></property>
 	<property name="review" ref="review1"></property>	
@@ -1937,6 +1946,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="false"></property>
+	<property name="pagadoPetOwner" value="true"></property>
+	<property name="pagadoAdmin" value="true"></property>
 	<property name="petOwner" ref="petOwner8.2"></property>
 	<property name="supplier" ref="petSitter9.2"></property>	
 	</bean>
@@ -1950,6 +1961,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="false"></property>
+	<property name="pagadoPetOwner" value="true"></property>
+	<property name="pagadoAdmin" value="true"></property>
 	<property name="petOwner" ref="petOwner8.3"></property>
 	<property name="supplier" ref="petShipper10.3"></property>	
 	</bean>
@@ -1963,6 +1976,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="true"></property>
+	<property name="pagadoPetOwner" value="false"></property>
+	<property name="pagadoAdmin" value="false"></property>
 	<property name="petOwner" ref="petOwner8.4"></property>
 	<property name="supplier" ref="petShipper10.4"></property>	
 	</bean>
@@ -1976,6 +1991,8 @@
 	<property name="night" value="TRUE"></property>
 	<property name="price" value="4"></property>
 	<property name="cancelled" value="false"></property>
+	<property name="pagadoPetOwner" value="false"></property>
+	<property name="pagadoAdmin" value="false"></property>
 	<property name="petOwner" ref="petOwner8.5"></property>
 	<property name="supplier" ref="company7.5"></property>	
 	</bean>

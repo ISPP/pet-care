@@ -17,10 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.PetSitterService;
-import domain.Actor;
+import services.SupplierService;
 import domain.PetSitter;
 import domain.Review;
-import forms.SearchSittersForm;
+import domain.Supplier;
+import forms.SearchSuppliersForm;
 
 @Controller
 @RequestMapping("/search")
@@ -39,6 +40,9 @@ public class SearchController extends AbstractController{
 	
 	@Autowired
 	private PetSitterService petSitterService;
+	
+	@Autowired
+	private SupplierService supplierService;
 
 	// List sitters ---------------------------------------------------------------		
 
@@ -61,61 +65,60 @@ public class SearchController extends AbstractController{
 	
 	// Searching -----------------------------------------------------------------
 	
-	@RequestMapping(value = "/searchSitters", method = RequestMethod.GET)
+	@RequestMapping(value = "/searchSuppliers", method = RequestMethod.GET)
 	public ModelAndView search(){
 		ModelAndView result;
-		SearchSittersForm searchSittersForm;
+		SearchSuppliersForm searchSuppliersForm;
 		
-		searchSittersForm = new SearchSittersForm();
+		searchSuppliersForm = new SearchSuppliersForm();
 		
-		result = new ModelAndView("search/searchSitters");
-		result.addObject("requestURI", "search/searchSitters.do");
-		result.addObject("searchSittersForm", searchSittersForm);
+		result = new ModelAndView("search/searchSuppliers");
+		result.addObject("requestURI", "search/searchSuppliers.do");
+		result.addObject("searchSuppliersForm", searchSuppliersForm);
 														
 		return result;
 	}
 
-	@RequestMapping(value = "/searchSitters", method = RequestMethod.POST, params = "search")
-	public ModelAndView searchSitters(@Valid SearchSittersForm searchSittersForm, BindingResult binding) {
+	@RequestMapping(value = "/searchSuppliers", method = RequestMethod.POST, params = "search")
+	public ModelAndView searchSuppliers(@Valid SearchSuppliersForm searchSuppliersForm, BindingResult binding) {
 		ModelAndView result;
-		Collection<PetSitter> sitters;
+		
+		Collection<Supplier> suppliers;
 		Date d1,d2;
-		Actor actor;
 		boolean toBook;
 		
 		try{
-			actor = actorService.findActorByUsername();
+			actorService.findActorByUsername();
 			toBook = true;
 		}catch(Throwable t){
-			actor = null;
 			toBook = false;
 		}
 		
 		if (binding.hasErrors()) {
-			result = new ModelAndView("search/searchSitters");
-			result.addObject("requestURI", "search/searchSitters.do");
-			result.addObject("searchSittersForm", searchSittersForm);
+			result = new ModelAndView("search/searchSuppliers");
+			result.addObject("requestURI", "search/searchSuppliers.do");
+			result.addObject("searchSuppliersForm", searchSuppliersForm);
 			result.addObject("message", null);
 		}else{
 			
 			try{
 				DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-				d1 = format.parse(searchSittersForm.getStartDate());
-				d2 = format.parse(searchSittersForm.getEndDate());
+				d1 = format.parse(searchSuppliersForm.getStartDate());
+				d2 = format.parse(searchSuppliersForm.getEndDate());
 				
-				sitters = petSitterService.searchSitters(d1, 
-						d2, searchSittersForm.getAddress());
+				suppliers = supplierService.searchSuppliers(d1, 
+						d2, searchSuppliersForm);
 				
 				result = new ModelAndView("search/list");
-				result.addObject("sitters", sitters);
+				result.addObject("suppliers", suppliers);
 				result.addObject("toBook", toBook);
 				result.addObject("index", true);
-				result.addObject("searchSittersForm", searchSittersForm);
-				result.addObject("requestURI", "search/searchSitters.do");
+				result.addObject("searchSuppliersForm", searchSuppliersForm);
+				result.addObject("requestURI", "search/searchSuppliers.do");
 			}catch(Throwable oops){
-				result = new ModelAndView("search/searchSitters");
-				result.addObject("requestURI", "search/searchSitters.do");
-				result.addObject("searchSittersForm", searchSittersForm);
+				result = new ModelAndView("search/searchSuppliers");
+				result.addObject("requestURI", "search/searchSuppliers.do");
+				result.addObject("searchSuppliersForm", searchSuppliersForm);
 				result.addObject("message", "search.commit.error");
 			}
 		}
@@ -126,19 +129,19 @@ public class SearchController extends AbstractController{
 	// Displaying ------------------------------------------------------------
 	
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam int petSitterId) {
+	public ModelAndView display(@RequestParam int supplierId) {
 		ModelAndView result;
-		PetSitter petSitter;
+		Supplier supplier;
 		String cancelURI, requestURI;
 		Collection<Review> reviews;
 
-		petSitter = petSitterService.findOne(petSitterId);
-		reviews = petSitterService.findReviews(petSitterId);
+		supplier = supplierService.findOne(supplierId);
+		reviews = supplierService.findReviews(supplierId);
 		cancelURI = "search/list.do";
-		requestURI = "search/display.do?petSitterId="+petSitterId;
+		requestURI = "search/display.do?supplierId="+supplierId;
 
 		result = new ModelAndView("search/display");
-		result.addObject("petSitter", petSitter);
+		result.addObject("supplier", supplier);
 		result.addObject("reviews", reviews);
 		result.addObject("cancelURI", cancelURI);
 		result.addObject("requestURI", requestURI);

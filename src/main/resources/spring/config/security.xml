@@ -44,12 +44,10 @@
 		<security:intercept-url pattern="/welcome/index.do"
 			access="permitAll" />
 
-		<security:intercept-url pattern="/search/list.do"
-			access="permitAll" />
-		<security:intercept-url pattern="/search/searchSitters.do"
-			access="permitAll" />
-		<security:intercept-url pattern="/search/display.do"
-			access="permitAll" />
+			<security:intercept-url pattern="/paypal/**"
+			access="hasAnyRole('PETOWNER','ADMIN')" />
+			<security:intercept-url pattern="/booking/administrator/**"
+			access="hasRole('ADMIN')" />
 
 		<!-- Profiles -->
 		<security:intercept-url pattern="/petOwner/petOwner/display.do"
@@ -95,7 +93,7 @@
 
 		<security:intercept-url pattern="/search/list.do"
 			access="permitAll" />
-		<security:intercept-url pattern="/search/searchSitters.do"
+		<security:intercept-url pattern="/search/searchSuppliers.do"
 			access="permitAll" />
 		<security:intercept-url pattern="/search/display.do"
 			access="permitAll" />
@@ -185,10 +183,13 @@
 			<!-- Trip -->
 		<security:intercept-url pattern="/trip/petOwner/**" access="hasRole('PETOWNER')" /> 
 		<security:intercept-url pattern="/trip/petShipper/**" access="hasRole('PETSHIPPER')" /> 
+		<security:intercept-url pattern="/trip/petShipper/see.do" access="hasRole('PETOWNER','PETSHIPPER')" /> 
 		<!-- Regstraton -->
 	<security:intercept-url pattern="/registration/petShipper/**" access="hasRole('PETSHIPPER')" /> 
-		
-			
+	
+	<!-- PetShipper -->
+	<security:intercept-url pattern="/petShipper/invite.do" access="hasRole('PETSHIPPER')" /> 
+	<security:intercept-url pattern="/petShipper/create.do" access="isAnonymous()" />		
 
 		<!-- Supplier -->
 		<security:intercept-url pattern="/supplier/administrator/**"

@@ -57,7 +57,7 @@
 		</a>
 		</jstl:if>
 		<div class="midl-left">
-		<h3><jstl:out value="${petSitter.name} ${petSitters.surname}"/></h3>
+		<h3><jstl:out value="${petSitter.name} ${petSitter.surname}"/></h3>
 		<jstl:out value=" ${petSitter.address}"/>
 		<jstl:out value=" ${petSitter.priceHour}"/>
 		</div>

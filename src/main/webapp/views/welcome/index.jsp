@@ -61,12 +61,15 @@
       <div class="item">
         <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
-      
-      <div class="carousel-caption center-bottom">
-          	<form:form action="search/searchSitters.do" modelAttribute="searchSittersForm" method="POST">
+      <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
+
+     
+		 <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
+          	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
+
 			<form:hidden path="id"/>
 			<fieldset >
-			<h2><spring:message code="master.page.searchSitters"/></h2>
+			<h2><spring:message code="master.page.searchSuppliers"/></h2>
 			<spring:message var="startD" code="sitter.startDate"/>
 			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
 			<form:errors path="startDate" cssClass="error" />
@@ -78,6 +81,16 @@
 			<spring:message var="addrs" code="sitter.address"/>
 			<form:input class="blackL" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
+			<br/>
+			<form:label path="type">
+				<spring:message code="supplier.type" />
+			</form:label>	
+			<form:select path="type">
+				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
+				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
+				<form:option value="3"><spring:message code="supplier.company" /></form:option>
+			</form:select>
+			<form:errors path="type" cssClass="error" />
 			
 			<acme:submit code="sitter.search.go" name="search" />
 			</fieldset>
@@ -86,9 +99,12 @@
 
 <br/>
 <br/>
-        </div>  
-    </div>
-
+        
+        </div> 
+       
+       </security:authorize>
+ </div> 
+ 
 </div>
 
 <div id="users" class="container text-center">
@@ -129,7 +145,7 @@
 <!-- 
 <div id="googleMap"></div>
  -->
-
+<security:authorize access="isAnonymous()">
 	 <!-- Modal -->
   <div class="modal fade" id="loginForm" role="dialog">
     <div class="modal-dialog">
@@ -204,7 +220,7 @@
     </div>
   </div>
 
-
+</security:authorize>
 <!-- Add Google Maps -->
 <!-- 
 <script src="http://maps.googleapis.com/maps/api/js"></script>

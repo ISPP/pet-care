@@ -113,8 +113,8 @@ $(document).ready(function(){
 	<jstl:if test="${showError==true}">
 	<div class="alert alert-danger" id="danger-alert" onload="alert('hola');">
     <button type="button" class="close" data-dismiss="alert">x</button>
-    <strong>Cuidado! </strong>
-    Usuario y/o contraseña incorrectos.
+    <strong><spring:message code="master.page.danger"/></strong>
+    <spring:message code="master.page.credentialError"/>
 	</div>
 	</jstl:if>
 	<jstl:set  var="clase" value="container text-center" />

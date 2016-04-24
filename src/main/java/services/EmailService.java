@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.Customer;
+import domain.PetShipper;
+import domain.PetSitter;
 import domain.Supplier;
 @Service
 @Transactional
@@ -56,7 +58,7 @@ public class EmailService {
 
 	}
 
-	public void sendToAFriend(Supplier sender, String recipient) {
+	public void sendToAFriend(PetSitter sender, String recipient) {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();
@@ -71,7 +73,27 @@ public class EmailService {
 				+ sender.getName()
 				+ " "
 				+ sender.getSurname()
-				+ " has invited you to join Pet Care. Please,click the link below to join if you want.";
+				+ " has invited you to join Pet Care as pet sitter. Please,click the link below to join if you want.";
+		content += "</br><a href='" + url + "'>Click here</a><br>";
+
+		send(recipient, content, subject);
+	}
+	public void sendToPetShipper(PetShipper sender, String recipient) {
+		String url;
+		// url = "http://www.acme.com/single/register.do?invitationCode="
+		// + sender.getUserCode();
+		url = "http://localhost:8080/Petcare/petShipper/create.do?invitationCode="
+				+ sender.getInvitationCode();
+
+		String content;
+		String subject;
+		subject = "Invitation to Pet Care";
+
+		content = "Hello, "
+				+ sender.getName()
+				+ " "
+				+ sender.getSurname()
+				+ " has invited you to join Pet Care as pet shipper. Please,click the link below to join if you want.";
 		content += "</br><a href='" + url + "'>Click here</a><br>";
 
 		send(recipient, content, subject);

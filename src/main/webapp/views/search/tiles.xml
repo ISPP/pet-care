@@ -16,18 +16,18 @@
        
 <tiles-definitions>
 
-	<definition name="search/searchSitters" extends="master.page">	
-		<put-attribute name="title" value="Search pet sitters" />
-		<put-attribute name="body" value="/views/search/searchSitters.jsp" />
+	<definition name="search/searchSuppliers" extends="master.page">	
+		<put-attribute name="title" value="Search suppliers" />
+		<put-attribute name="body" value="/views/search/searchSuppliers.jsp" />
 	</definition>
 	
 	<definition name="search/list" extends="master.page">	
-		<put-attribute name="title" value="Available and close pet sitters" />
+		<put-attribute name="title" value="Available and close suppliers" />
 		<put-attribute name="body" value="/views/search/list.jsp" />
 	</definition>
 
 	<definition name="search/display" extends="master.page">	
-		<put-attribute name="title" value="Sitter's profile" />
+		<put-attribute name="title" value="Supplier's profile" />
 		<put-attribute name="body" value="/views/search/display.jsp" />
 	</definition>
 	

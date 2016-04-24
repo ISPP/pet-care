@@ -36,8 +36,28 @@ public class Booking extends DomainEntity {
 	private boolean night;
 	private double price;
 	private boolean cancelled;
+	private Boolean pagadoPetOwner;
+	private Boolean pagadoAdmin;
 
 
+
+	
+
+	public Boolean getPagadoPetOwner() {
+		return pagadoPetOwner;
+	}
+
+	public void setPagadoPetOwner(Boolean pagadoPetOwner) {
+		this.pagadoPetOwner = pagadoPetOwner;
+	}
+
+	public Boolean getPagadoAdmin() {
+		return pagadoAdmin;
+	}
+
+	public void setPagadoAdmin(Boolean pagadoAdmin) {
+		this.pagadoAdmin = pagadoAdmin;
+	}
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)

@@ -1,6 +1,9 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -11,7 +14,10 @@ import org.springframework.util.Assert;
 import repositories.SupplierRepository;
 import security.LoginService;
 import security.UserAccount;
+import domain.Booking;
+import domain.Review;
 import domain.Supplier;
+import forms.SearchSuppliersForm;
 
 @Service
 @Transactional
@@ -24,6 +30,9 @@ public class SupplierService {
 	
 	@Autowired
 	private SupplierRepository supplierRepository;
+	
+	@Autowired
+	private BookingService bookingService;
 	
 	public Supplier create() {
 		Supplier result;
@@ -76,5 +85,45 @@ public class SupplierService {
 	
 	public Collection<Supplier> findSuppliersWithMoreThan10ReviewsWithZeroRating(){
 		return supplierRepository.findSuppliersWithNumberReviewWithRating(10, 0);
+	}
+
+	public Collection<Review> findReviews(int supplierId) {
+		Collection<Review> result;
+		
+		result = supplierRepository.findOne(supplierId).getReviews();
+		
+		return result;
+	}
+
+	public List<Supplier> searchSuppliers(Date startDate, Date endDate, SearchSuppliersForm searchSuppliersForm) {
+		List<Supplier> result;
+		List<Supplier> suppliers;
+		List<Booking> bookings;
+		Date current;
+		
+		current = new Date();
+		Assert.isTrue(current.before(startDate));
+		Assert.isTrue(startDate.before(endDate) || startDate.equals(endDate));
+		
+		result = new ArrayList<Supplier>();
+		
+		if(searchSuppliersForm.getType() == 1){
+			suppliers = new ArrayList<Supplier>(supplierRepository.searchSitters(searchSuppliersForm.getAddress()));
+		}else if(searchSuppliersForm.getType() == 2){
+			suppliers = new ArrayList<Supplier>(supplierRepository.searchShippers(searchSuppliersForm.getAddress()));
+		}else if(searchSuppliersForm.getType() == 3){
+			suppliers = new ArrayList<Supplier>(supplierRepository.searchCompanies(searchSuppliersForm.getAddress()));
+		}else{
+			suppliers = new ArrayList<Supplier>();
+		}
+		
+		for(Supplier i: suppliers){
+			bookings = bookingService.findByDateSupplier(startDate, endDate, i.getId());
+			if(bookings.isEmpty()){
+				result.add(i);
+			}
+		}
+		
+		return result;
 	}
 }

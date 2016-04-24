@@ -21,6 +21,7 @@ import domain.Booking;
 import domain.Comment;
 import domain.Complaint;
 import domain.CreditCard;
+import domain.Customer;
 import domain.Message;
 import domain.MessageFolder;
 import domain.Pet;
@@ -86,13 +87,19 @@ public class PetSitterService {
 		
 		return result;
 	}
+	public PetSitter findPetSitterByInvitationCode(String invitationCode) {
+		
+		return petSitterRepository.findPetSitterByInvitationCode(invitationCode);
+	}
+	
 	public PetSitter register(PetSitter petSitter,String codeToRegister) {
 		PetSitter result;
 		String invitationCode;
 		invitationCode=RandomStringUtils.randomAlphanumeric(10);
 
-		Assert.notNull(customerService.findCustomerByInvitationCode(codeToRegister));
+		Assert.notNull(findPetSitterByInvitationCode(codeToRegister));
 		petSitter.setInvitationCode(invitationCode);
+		petSitter.setDaysBeforeCancel(1);
 		result=save(petSitter);
 		return result;
 	}
@@ -307,7 +314,7 @@ public class PetSitterService {
 		sitters = new ArrayList<PetSitter>(petSitterRepository.searchSitters(address));
 		
 		for(PetSitter i: sitters){
-			bookings = bookingService.findByDateSitter(startDate, endDate, i.getId());
+			bookings = bookingService.findByDateSupplier(startDate, endDate, i.getId());
 			if(bookings.isEmpty()){
 				result.add(i);
 			}

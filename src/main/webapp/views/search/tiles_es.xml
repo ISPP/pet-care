@@ -16,18 +16,18 @@
       
 <tiles-definitions>
 
-	<definition name="search/searchSitters" extends="master.page">	
-		<put-attribute name="title" value="Buscar cuidadores de mascotas" />
-		<put-attribute name="body" value="/views/search/searchSitters.jsp" />
+	<definition name="search/searchSuppliers" extends="master.page">	
+		<put-attribute name="title" value="Buscar por tipo de servicio" />
+		<put-attribute name="body" value="/views/search/searchSuppliers.jsp" />
 	</definition>
 	
 	<definition name="search/list" extends="master.page">	
-		<put-attribute name="title" value="Cuidadores de mascotas cercanos disponibles" />
+		<put-attribute name="title" value="Proveedores cercanos disponibles" />
 		<put-attribute name="body" value="/views/search/list.jsp" />
 	</definition>
 	
 	<definition name="search/display" extends="master.page">	
-		<put-attribute name="title" value="Perfil del cuidador" />
+		<put-attribute name="title" value="Perfil del proveedor" />
 		<put-attribute name="body" value="/views/search/display.jsp" />
 	</definition>
 	

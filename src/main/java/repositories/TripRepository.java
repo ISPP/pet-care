@@ -16,5 +16,8 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	
 	@Query("select t from Trip t where (t.vehicle.petShipper.id=?1 and t.registrations.size>0)")
 	Collection<Trip> findTripsWithRegistrations(Integer id);
+
+	@Query("select t.trips from Vehicle t where t.petShipper.id = ?1")
+	Collection<Trip> findAllPrincipal(int petShipperId);
 	
 }

@@ -15,19 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.CustomerService;
 import services.EmailService;
+import services.PetShipperService;
 import services.PetSitterService;
 import services.SupplierService;
 import domain.Customer;
+import domain.PetShipper;
 import domain.PetSitter;
 import forms.InvitationForm;
+import forms.PetShipperForm;
 import forms.PetSitterForm;
 import forms.SearchSittersForm;
 @Controller
-@RequestMapping("/petSitter")
-public class PetSitterController extends AbstractController {
+@RequestMapping("/petShipper")
+public class PetShipperController extends AbstractController {
 	
 	@Autowired
-	private PetSitterService petSitterService;
+	private PetShipperService petShipperService;
 	@Autowired
 	private SupplierService supplierService;
 	
@@ -36,7 +39,7 @@ public class PetSitterController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 	
-	public PetSitterController() {
+	public PetShipperController() {
 		super();
 	}
 		
@@ -46,11 +49,11 @@ public class PetSitterController extends AbstractController {
 	public ModelAndView list(){
 		ModelAndView result;
 		
-		Collection<PetSitter> petSitters;
-		petSitters=petSitterService.findAll();
+		Collection<PetShipper> petShippers;
+		petShippers=petShipperService.findAll();
 		
-		result = new ModelAndView("petSitter/list");
-		result.addObject("petSitters",petSitters);
+		result = new ModelAndView("petShipper/list");
+		result.addObject("petShippers",petShippers);
 		result.addObject("toBook", true);
 		
 		return result;
@@ -65,13 +68,13 @@ public class PetSitterController extends AbstractController {
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public ModelAndView create(@RequestParam String invitationCode){
 		ModelAndView result;
-		PetSitterForm petSitterForm;
+		PetShipperForm petShipperForm;
 		
-		petSitterForm = new PetSitterForm();
-		petSitterForm.setDaysBeforeCancel(1);
-		petSitterForm.setInvitationCode(invitationCode);
+		petShipperForm = new PetShipperForm();
+		petShipperForm.setDaysBeforeCancel(1);
+		petShipperForm.setInvitationCode(invitationCode);
 		
-		result = createEditModelAndView(petSitterForm);
+		result = createEditModelAndView(petShipperForm);
 		
 		result.addObject("register", true);
 		
@@ -79,32 +82,33 @@ public class PetSitterController extends AbstractController {
 	}
 	
 	@RequestMapping(value="/create", method = RequestMethod.POST, params="create")
-	public ModelAndView create(@Valid PetSitterForm petSitterForm, BindingResult binding){
+	public ModelAndView create(@Valid PetShipperForm petShipperForm, BindingResult binding){
 		ModelAndView result;
-		PetSitter petSitter;
+		PetShipper petShipper;
 		
 		if(binding.hasErrors()){
-			result = createEditModelAndView(petSitterForm);
+			result = createEditModelAndView(petShipperForm);
 			System.out.println(binding.getAllErrors());
 		}else{
 			try{
-				if(petSitterForm.getExpirationYear()< Calendar.getInstance().get(Calendar.YEAR)){
-					result = createEditModelAndView(petSitterForm);
+				if(petShipperForm.getExpirationYear()< Calendar.getInstance().get(Calendar.YEAR)){
+					result = createEditModelAndView(petShipperForm);
 					result.addObject("oldYear", true);
 				}
 //				else if(!petSitterForm.getAcceptTermsAndConditions()){
 //					result = createEditModelAndView(petSitterForm);
 //					result.addObject("termsNotAccepted", true);
 //				}
-				else if(!petSitterForm.getPassword().equals(petSitterForm.getPasswordConfirm())){
-					result = createEditModelAndView(petSitterForm,"petSitter.commit.password");
+				else if(!petShipperForm.getPassword().equals(petShipperForm.getPasswordConfirm())){
+					result = createEditModelAndView(petShipperForm,"petShipper.commit.password");
 				}else{
-					petSitter = petSitterService.reconstruct(petSitterForm);
-					petSitterService.register(petSitter,petSitterForm.getInvitationCode());
-					result = new ModelAndView("redirect:../security/login.do");
+					petShipper = petShipperService.reconstruct(petShipperForm);
+					petShipperService.register(petShipper,petShipperForm.getInvitationCode());
+					result = new ModelAndView("redirect:../index.do");
 				}
 			}catch(Throwable oops){
-				result = createEditModelAndView(petSitterForm,"petSitter.commit.error");
+				result = createEditModelAndView(petShipperForm,"petShipper.commit.error");
+				oops.printStackTrace();
 			}
 		}
 
@@ -116,20 +120,20 @@ public class PetSitterController extends AbstractController {
 	
 	// Ancillary methods-------------------------------------------------------
 	
-	protected ModelAndView createEditModelAndView(PetSitterForm petSitterForm){
+	protected ModelAndView createEditModelAndView(PetShipperForm petShipperForm){
 		ModelAndView result;
 		
-		result = createEditModelAndView(petSitterForm, null);
+		result = createEditModelAndView(petShipperForm, null);
 	
 		return result;
 	}
 	
 	
-	protected ModelAndView createEditModelAndView(PetSitterForm petSitterForm, String message){
+	protected ModelAndView createEditModelAndView(PetShipperForm petShipperForm, String message){
 		ModelAndView result;
 		
-		result = new ModelAndView("petSitter/edit");
-		result.addObject("petSitterForm", petSitterForm);
+		result = new ModelAndView("petShipper/edit");
+		result.addObject("petShipperForm", petShipperForm);
 		result.addObject("message", message);
 		
 		return result;
@@ -155,20 +159,16 @@ public class PetSitterController extends AbstractController {
 			BindingResult binding) {
 		ModelAndView result;
 		result = new ModelAndView();
-		PetSitter petSitter;
+		PetShipper petShipper;
 		if (binding.hasErrors()) {
 			result = createInvitationModelAndView(invitationForm);
 			
 		} else {
 			result = new ModelAndView("welcome/index");
-			SearchSittersForm searchSittersForm;
 			
-			searchSittersForm = new SearchSittersForm();
-			
-			result.addObject("searchSittersForm", searchSittersForm);
 			try {
-				petSitter = petSitterService.findOneByPrincipal();
-				emailService.sendToAFriend(petSitter, invitationForm.getEmail());
+				petShipper = petShipperService.findOneByPrincipal();
+				emailService.sendToPetShipper(petShipper, invitationForm.getEmail());
 
 			} catch (Exception e) {
 
@@ -192,10 +192,10 @@ public class PetSitterController extends AbstractController {
 	protected ModelAndView createInvitationModelAndView(InvitationForm invitationForm, String message){
 		ModelAndView result;
 		
-		result = new ModelAndView("petSitter/invite");
+		result = new ModelAndView("petShipper/invite");
 		result.addObject("invitationForm", invitationForm);
 		result.addObject("message", message);
-		result.addObject("requestURI", "petSitter/invite.do");
+		result.addObject("requestURI", "petShipper/invite.do");
 		return result;
 	}
 }
