@@ -190,7 +190,9 @@
 	<!-- PetShipper -->
 	<security:intercept-url pattern="/petShipper/invite.do" access="hasRole('PETSHIPPER')" /> 
 	<security:intercept-url pattern="/petShipper/create.do" access="isAnonymous()" />		
-
+<!-- Company -->
+	<security:intercept-url pattern="/company/administrator/invite.do" access="hasRole('ADMIN')" /> 
+	<security:intercept-url pattern="/company/create.do" access="isAnonymous()" />		
 		<!-- Supplier -->
 		<security:intercept-url pattern="/supplier/administrator/**"
 			access="hasRole('ADMIN')" />

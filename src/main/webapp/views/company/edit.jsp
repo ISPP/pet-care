@@ -23,6 +23,9 @@
 
 	<jstl:set var="action" value="company/create.do" />
 	<form:form action="${action}" modelAttribute="companyForm">
+	<form:hidden path="invitationCode"/>
+	<form:hidden path="id"/>
+	<form:hidden path="daysBeforeCancel"/>
 		<!-- Actor -->
 		<acme:textbox code="company.name" path="name" />
 		<acme:textbox code="company.surname" path="surname" />

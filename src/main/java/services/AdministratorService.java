@@ -115,6 +115,14 @@ public class AdministratorService {
 		administrator = administratorRepository.findAdminByUsername(user.getUsername());
 		return administrator;
 	}
+	
+	public Administrator findAdministratorByUsername(String username) {
+		Administrator administrator;
+		administrator = administratorRepository.findAdminByUsername(username);
+		Assert.notNull(administrator, "El usuario no puede ser nulo");
+		
+		return administrator;
+	}
 
 	public Administrator getLoggedAdmin() {
 		Administrator result;
