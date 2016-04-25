@@ -38,7 +38,8 @@
 		<bean class="converters.PetSitterToStringConverter" />
 		<bean class="converters.PetOwnerToStringConverter" />
 		<bean class="converters.ReviewToStringConverter" />
-		<bean class="converters.SupplierToStringConverter" />		
+		<bean class="converters.SupplierToStringConverter" />	
+		<bean class="converters.VehicleToStringConverter" />
 			
 
 		<!-- StringToEntity -->
@@ -57,6 +58,7 @@
 		<bean class="converters.StringToPetOwnerConverter" />
 		<bean class="converters.StringToReviewConverter" />
 		<bean class="converters.StringToSupplierConverter" />
+		<bean class="converters.StringToVehicleConverter" />
 
 	
 

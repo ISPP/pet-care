@@ -192,6 +192,7 @@ public class BookingService {
 			int supplierId) {
 		List<Booking> result;
 
+
 		result = new ArrayList<Booking>(bookingRepository.findByDateSupplier(
 				startDate, endDate, supplierId));
 
@@ -260,8 +261,8 @@ public class BookingService {
 		String code = RandomStringUtils.randomAlphanumeric(10);
 		booking.setCode(code);
 		booking.setCancelled(false);
-		booking.setPagadoPetOwner(false);
-		booking.setPagadoAdmin(false);
+		booking.setPayByPetOwner(false);
+		booking.setPayByAdmin(false);
 		PetOwner petOwner;
 		petOwner = petOwnerService.findOneByPrincipal();
 		booking.setPetOwner(petOwner);
@@ -315,8 +316,8 @@ public class BookingService {
 		String code = RandomStringUtils.randomAlphanumeric(10);
 		booking.setCode(code);
 		booking.setCancelled(false);
-		booking.setPagadoPetOwner(false);
-		booking.setPagadoAdmin(false);
+		booking.setPayByPetOwner(false);
+		booking.setPayByAdmin(false);
 		PetOwner petOwner;
 		petOwner = petOwnerService.findOneByPrincipal();
 		booking.setPetOwner(petOwner);
@@ -390,30 +391,12 @@ public class BookingService {
 
 	}
 
-	/*public Collection<Booking> findBookingNotPayBySupplierId() {
-		Supplier supplier = supplierService.getLoggedSupplier();
-		
-		Collection<Booking> res = bookingRepository.findBokkingAcceptedBySupplierId(supplier.getId());
-		Date now = new Date(System.currentTimeMillis()-1000);
-		for(Booking b:res){
-			if(b.getPagado()==true && b.getStartMoment().before(now)){
-				res.remove(res);
-			}
-		}
-				
-		
-		return res;
-	}*/
+
 
 	public Collection<Booking> findBookingNotPayByPetOwnerId() {
 		PetOwner petOwner = petOwnerService.getLogged();
 		Collection<Booking> res = bookingRepository.findBookingNotPayBySupplierId(petOwner.getId());
-		/*Date now = new Date(System.currentTimeMillis()-1000);
-		for(Booking b:res){
-			if(b.getPagadoPetOwner()==true || b.getCancelled()==true||b.getStatus()=="PENDING"||b.getStatus()=="CANCELLED"){
-				res.remove(b);
-			}
-		}*/
+		
 				
 		
 		return res;
@@ -422,14 +405,30 @@ public class BookingService {
 	public Collection<Booking> findBookingNotPayByAdmin() {
 		
 		Collection<Booking> res = bookingRepository.findAllToPayByAdmin();
-		//System.out.println("--------------"+res);
-		/*Date now = new Date(System.currentTimeMillis()-1000);
-		for(Booking b:res){
-			if(b.getPagadoPetOwner()==true && b.getPagadoAdmin()==true || b.getStartMoment().before(now)||b.getCancelled()==true||b.getStatus()=="PENDING"||b.getStatus()=="CANCELLED"){
-				//|| b.getStartMoment().before(now)||b.getCancelled()==true||b.getStatus()=="PENDING"||b.getStatus()=="CANCELLED"
-				res.remove(b);
+		
+				
+		
+		return res;
+	}
+
+	public Booking findBookingLastUpdate() {
+		Booking booking;
+		PetOwner petOwner = petOwnerService.getLogged();
+		List<Booking> res = (List<Booking>) bookingRepository.findBookingNotPayBySupplierId(petOwner.getId());
+		booking = res.get(0);
+		for(Booking b : res){
+			
+			if(booking.getUpdateMoment().before(b.getUpdateMoment())){
+				booking = b;
 			}
-		}*/
+		}
+		return booking;
+	}
+
+	public Collection<Booking> findBookingPayByPetOwnerId() {
+		PetOwner petOwner = petOwnerService.getLogged();
+		Collection<Booking> res = bookingRepository.findBookingPayBySupplierId(petOwner.getId());
+		
 				
 		
 		return res;
