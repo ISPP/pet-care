@@ -18,7 +18,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 
 <display:table name="complaints" id="row" requestURI="${requestUri}"
 	class="displaytag" keepStatus="true" pagesize="5">
@@ -70,7 +70,18 @@
 	 		<h3 class="h3-no-bottom">${com.title}</h3><hr>
 	 		<jstl:set var="shortDes" value="${fn:substring(com.description, 0, 100)}"></jstl:set>
 			<p><jstl:out value="${shortDes}..."/></p>
+			
+			<jstl:if test="${row.comments.size()>0}">
+			<spring:message code="complaint.comments" />
+			<p><jstl:out value="${com.comments.size()}"/><jstl:out value="${coms}"/></p>
+			</jstl:if>
+			<a class="text-left-small" href="comment/actor/edit.do?id=${row.id}"> <spring:message
+						code="cpmlaint_*commentCreate" />
+			</a>
+			
+			
 			<p class="text-rigth-small"><fmt:formatDate  value="${com.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
+			
 			</div>
 	 	</div>
  	</jstl:forEach>

@@ -32,3 +32,18 @@
 			</div>
 			
 	 	</div>
+<jstl:forEach var="com" items="${complaint.comments}"> 
+<div class="col-md-8-2-noColor panel panel-default">
+	 		<div class="wrap-3">
+			<!-- <p><jstl:out value="${complaint.description}"/></p>  -->
+			<p class="register-left"><b><jstl:out value="${com.actor.name }"/><jstl:out value="${com.actor.surname}"/></b></p>
+			<br/><br/>
+			<p class="register-left"><jstl:out value="${com.text}"/></p>
+			<p class="text-rigth-small"><fmt:formatDate  value="${com.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
+			</div>
+			
+	 	</div>
+</jstl:forEach>	
+<a class="text-left-small" href="comment/actor/edit.do?id=${complaint.id}"> <spring:message
+						code="cpmlaint_*commentCreate" />
+			</a>

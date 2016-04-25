@@ -72,6 +72,15 @@
 			<jstl:if test="${fn:length(com.description)<101}">
 			<p><jstl:out value="${shortDes}"/></p>
 			</jstl:if>
+			
+			<jstl:if test="${row.comments.size()>0}">
+			<spring:message var="coms" code="complaint.comments" />
+			<p class="text-left-small"><jstl:out value="${com.comments.size()}"/> <jstl:out value="${coms}"/> - </p>
+			</jstl:if>
+			<a class="text-left-small" href="comment/actor/edit.do?id=${row.id}"> <spring:message
+						code="cpmlaint_*commentCreate" />
+			</a>
+			
 			<p class="text-rigth-small"><fmt:formatDate  value="${com.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
 			</div>
 	 	</div>

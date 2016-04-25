@@ -20,6 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<div class="col-md-6-2">
 <form:form action="${requestURI}" modelAttribute="comment">
 
 	<form:hidden path="id" />
@@ -41,3 +42,4 @@
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
 </form:form>
+</div>
