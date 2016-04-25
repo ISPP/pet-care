@@ -186,7 +186,7 @@ public class CompanyService {
 	public Company register(Company company,String codeToRegister) {
 		Company result;
 		String invitationCode;
-		invitationCode=RandomStringUtils.randomAlphanumeric(10);
+		invitationCode=RandomStringUtils.randomAlphanumeric(10)+codeToRegister;
 
 		Assert.notNull(administratorService.findAdministratorByUsername(codeToRegister));
 		company.setInvitationCode(invitationCode);

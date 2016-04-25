@@ -19,7 +19,7 @@
 
 
 <div class="col-md-6-2">
-<jstl:set var="action" value="company/invite.do"/>
+<jstl:set var="action" value="${requestURI}"/>
 <form:form action="${action}" modelAttribute="invitationForm">
 
 	

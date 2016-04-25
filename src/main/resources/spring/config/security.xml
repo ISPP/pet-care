@@ -203,7 +203,7 @@
 			<!-- Company -->
 			<security:intercept-url pattern="/company/listToBook.do"
 			access="hasRole('PETOWNER')" />
-		<security:intercept-url pattern="/company/create.do" access="permitAll"/>
+		
 		
 		<!-- Vehicle -->
 		<security:intercept-url pattern="/vehicle/petShipper/**" access="hasRole('PETSHIPPER')"/>

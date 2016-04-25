@@ -55,7 +55,7 @@
 		
 		<!-- Company -->
 		<acme:textbox code="company.tic" path="tic"/>
-		<acme:textbox code="company.pricePerDay" path="pricePerDay"/>
+<%-- 		<acme:textbox code="company.pricePerDay" path="pricePerDay"/> --%>
 		<acme:submit name="create" code="company.button.create" />
 		<acme:cancel url="welcome/index.do" code="company.button.cancel" />
 		<jstl:if test="${oldYear==true}">

@@ -17,6 +17,7 @@ import services.CompanyService;
 import domain.Company;
 import forms.CompanyForm;
 import forms.InvitationForm;
+import forms.PetShipperForm;
 
 @Controller
 @RequestMapping("/company")
@@ -47,7 +48,7 @@ public class CompanyController extends AbstractController {
 		result = new ModelAndView("company/edit");
 		companyForm = new CompanyForm();
 		companyForm.setInvitationCode(invitationCode);
-
+		companyForm.setDaysBeforeCancel(1);
 		result.addObject("companyForm", companyForm);
 		result.addObject("register", true);
 
@@ -82,13 +83,13 @@ public class CompanyController extends AbstractController {
 				} else {
 					company = companyService.reconstruct(companyForm);
 					companyService.register(company,companyForm.getInvitationCode());
-					result = new ModelAndView("redirect:../security/login.do");
+					result = new ModelAndView("redirect:../index.do");
 				}
 			} catch (Throwable oops) {
-				result = new ModelAndView("company/edit");
-				result.addObject("companyForm", companyForm);
-				result.addObject("message", "company.commit.error");
-				result.addObject("register", true);
+				
+				result=createEditModelAndView(companyForm, "company.commit.error");
+				oops.printStackTrace();
+				
 			}
 		}
 
@@ -96,6 +97,25 @@ public class CompanyController extends AbstractController {
 	}
 	
 	
-
+	protected ModelAndView createEditModelAndView(CompanyForm companyForm){
+		ModelAndView result;
+		
+		result = createEditModelAndView(companyForm, null);
+	
+		return result;
+	}
+	
+	
+	protected ModelAndView createEditModelAndView(CompanyForm companyForm, String message){
+		ModelAndView result;
+		
+		result = new ModelAndView("company/edit");
+		result.addObject("companyForm",companyForm);
+		result.addObject("message", message);
+		result.addObject("register", true);
+		
+		return result;
+	}
+	
 
 }

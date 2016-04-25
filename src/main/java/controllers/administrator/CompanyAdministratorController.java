@@ -27,8 +27,7 @@ import forms.InvitationForm;
 @Controller
 @RequestMapping("/company/administrator")
 public class CompanyAdministratorController extends AbstractController {
-	@Autowired
-	private CompanyService companyService;
+	
 	@Autowired
 	private EmailService emailService;
 	

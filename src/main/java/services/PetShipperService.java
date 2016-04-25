@@ -87,7 +87,7 @@ public class PetShipperService {
 	public PetShipper register(PetShipper petShipper,String codeToRegister) {
 		PetShipper result;
 		String invitationCode;
-		invitationCode=RandomStringUtils.randomAlphanumeric(10);
+		invitationCode=RandomStringUtils.randomAlphanumeric(20);
 
 		Assert.notNull(findPetShipperByInvitationCode(codeToRegister));
 		petShipper.setInvitationCode(invitationCode);
