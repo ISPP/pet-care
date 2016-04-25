@@ -52,9 +52,18 @@ h3,h4 {
 	border-color: #f1f1f1;
 }
 
-.carousel-inner img {
-	width: 100%; /* Set width to 100% */
-	margin: auto;
+.petPhoto{
+	max-width: 60%;
+	max-height: 200px;
+	width:auto;
+}
+
+.todoAncho{
+	width:100%;
+}
+
+.carousel-inner  {
+	margin: 0 auto;
 }
 
 .carousel-caption h3 {
@@ -68,13 +77,20 @@ h3,h4 {
 	}
 }
 
-
 .col-md-8-2 {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
 }
+
+.col-md-8-2-noColor {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 .col-md-8-2:hover {
     position: relative;
     min-height: 1px;
@@ -90,9 +106,9 @@ h3,h4 {
 }
 
 .midl-left {
-	margin-top: 30px;
 	float: left;
 	text-align: left;
+	padding-left:15px;
 }
 
 .img-left {
@@ -103,6 +119,20 @@ h3,h4 {
 .img-right {
 	margin-top: 10px;
 	float: right;
+}
+.col-md-6-2{
+	position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width:50%;
+    display: inline-block;
+}
+.centrado{
+	position:relative;
+	margin:auto;
+	text-align:center;
+	display:inline-block;
 }
 
 .alert {
@@ -150,10 +180,6 @@ h3,h4 {
 	text-align: right;
 }
 
-input[type=file] {
-     display: none;
-}
-
 .linea-pegada{
 	margin-top:2px;
 	margin-bottom:2px;
@@ -181,7 +207,13 @@ input[type=file] {
 
 .max-h {
 	max-width: 100%;
-	max-height: 200px;
+	max-height: 100px;
+	width: auto;
+}
+
+.max-h-2 {
+	max-width: 100%;
+	max-height: 400px;
 	width: auto;
 }
 
@@ -211,6 +243,13 @@ input[type=file] {
 	overflow: hidden;
 	width:100%;
 	background-color:#ffcc66;
+}
+
+.wrap-3 { /* force the div to properly contain the floated images: */
+	position: relative;
+	clear: none;
+	overflow: hidden;
+	width:100%;
 }
 
 .wrap img {

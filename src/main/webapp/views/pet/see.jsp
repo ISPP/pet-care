@@ -10,30 +10,24 @@
 
 <security:authorize access="hasRole('PETOWNER')">
 
-<jstl:if test="${avatar!=null}">
-<b><spring:message code="pet.avatar"/></b>:
-<br/>
-		<img src="pet/displayPhoto.do?photoId=${avatar.id}" width="200px" height="200px"/>
+<div class="col-md-4">
+	<jstl:if test="${avatar!=null}">
+		<img class="register-todoAncho petPhoto" alt="Your AVATAR" src="pet/displayPhoto.do?photoId=${avatar.id}"/>
 		<br/>
+	</jstl:if>
+	<jstl:if test="${avatar==null}">
+		<img class="register-todoAncho petPhoto" alt="Your AVATAR" src="images/pet-register.jpg">
+		<br/>
+	</jstl:if>
+	
+	<h3><jstl:out value="${pet.name}"/></h3>
+	<jstl:out value="${pet.kind}"/>-<jstl:out value="${pet.breed}"/>
+	<br/>
+	<jstl:out value="${pet.description}"/>
+</div>
 
-</jstl:if>
-<br/>
-
-<br/>
-<b><spring:message code="pet.name"/></b>: <jstl:out value="${pet.name}"/>
-<br/>
-<b><spring:message code="pet.description"/></b>: <jstl:out value="${pet.description}"></jstl:out>
-<br/>
-<b><spring:message code="pet.breed"/></b>: <jstl:out value="${pet.breed}"></jstl:out>
-<br/>
-<b><spring:message code="pet.kind"/></b>: <jstl:out value="${pet.kind}"></jstl:out>
-<br/>
-<br/>
-
+<div class="col-md-6-2">
 <jstl:if test="${numberOfPhotos!=0}">
-<b><spring:message code="pet.photos"/></b>:
-<br/>
-
 <div class="carousel slide" data-ride="carousel" id="carousel-example-generic">
 
 	<!-- Indicators -->
@@ -53,14 +47,14 @@
      	<jstl:set var="positionImage" value="0"/>
         	<jstl:forEach var="eachPhoto" items="${pet.photos}">
             	<jstl:if test="${positionImage == 0}">
-             		<div class="item active">
-                    	<img src = "pet/displayPhoto.do?photoId=${eachPhoto.id}"/>
+             		<div class="item active ">
+                    	<img class="center-block petPhoto" src = "pet/displayPhoto.do?photoId=${eachPhoto.id}"/>
                     	<acme:button href="pet/petOwner/selectAvatar.do?petId=${pet.id}&photoId=${eachPhoto.id}" code="pet.selectAvatar" />
                     </div>
               	</jstl:if>
               	<jstl:if test="${positionImage != 0}">
               		<div class="item">
-                    	<img src = "pet/displayPhoto.do?photoId=${eachPhoto.id}"/>
+                    	<img class="center-block petPhoto" src = "pet/displayPhoto.do?photoId=${eachPhoto.id}"/>
                     	<acme:button href="pet/petOwner/selectAvatar.do?petId=${pet.id}&photoId=${eachPhoto.id}" code="pet.selectAvatar" />
                     </div>
               	</jstl:if>
@@ -76,6 +70,7 @@
       	<span class="icon-next"></span>
        </a>
 </div>
+
 </jstl:if>
 <br/>
 	
@@ -83,6 +78,7 @@
 <br/>
 <br/>
 <input type="button" name="back" value="<spring:message code="pet.back" />"onClick="history.back(-1)" />
+</div>
 </security:authorize>
 
 <security:authorize access="hasRole('PETSITTER')">

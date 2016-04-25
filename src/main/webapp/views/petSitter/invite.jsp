@@ -18,7 +18,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-
+<div class="col-md-6-2">
 <jstl:set var="action" value="petSitter/invite.do"/>
 <form:form action="${action}" modelAttribute="invitationForm">
 
@@ -32,4 +32,4 @@
 	<acme:cancel url="welcome/index.do" code="petSitter.button.cancel"/>
 	
 </form:form>
-	
+</div>

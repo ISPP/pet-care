@@ -37,7 +37,7 @@
 		</div>
 		
 		<div class="col-md-6">
-		<img class="max-h" alt="Your PET" src="images/pet-register.jpg">
+		<img class="max-h-2" alt="Your PET" src="images/pet-register.jpg">
 		</div>
 		<br/>
 

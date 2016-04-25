@@ -62,11 +62,16 @@
  <div class="col-md-12">
  	<h2><spring:message code="complaint.complaints"/></h2><hr>	
  	<jstl:forEach var="com" items="${complaints}">
- 		<div class="col-md-8-2 panel panel-default">
+ 		<div style="cursor: pointer;" onclick="location.href='complaint/customer/display.do?complaintId=${com.id}';" class="col-md-8-2 panel panel-default">
 	 		<div class="wrap-2">
 	 		<h3 class="h3-no-bottom">${com.title}</h3><hr>
 	 		<jstl:set var="shortDes" value="${fn:substring(com.description, 0, 100)}"></jstl:set>
+			<jstl:if test="${(fn:length(com.description))>100}">
 			<p><jstl:out value="${shortDes}..."/></p>
+			</jstl:if>
+			<jstl:if test="${fn:length(com.description)<101}">
+			<p><jstl:out value="${shortDes}"/></p>
+			</jstl:if>
 			<p class="text-rigth-small"><fmt:formatDate  value="${com.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
 			</div>
 	 	</div>

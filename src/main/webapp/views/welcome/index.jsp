@@ -27,39 +27,39 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
       </div>
 
       <div class="item">
-        <img src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
       </div>
     
       <div class="item">
-        <img src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
       </div>
     
       <div class="item">
-        <img src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
 

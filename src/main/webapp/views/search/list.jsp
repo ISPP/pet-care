@@ -16,39 +16,39 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
       </div>
 
       <div class="item">
-        <img src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
       </div>
     
       <div class="item">
-        <img src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
       </div>
     
       <div class="item">
-        <img src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
       </div>
       
       <div class="item">
-        <img src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
       </div>
       
       
@@ -96,13 +96,11 @@
 	
 	<jstl:if test="${searchSuppliersForm.type == 1}">
 		<jstl:forEach var="petSitter" items="${suppliers}">
-		 <div class="col-md-4 panel panel-default">
+		 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/create.do?petSitterId=${petSitter.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 panel panel-default">
 		 	<div class="wrap">
 		 	<jstl:if test="${toBook==true}">
-		 	<a href="booking/petOwner/create.do?petSitterId=${petSitter.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}">
 		 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
 			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
-			</a>
 		 	</jstl:if>
 			
 			<jstl:if test="${toBook == false}">
@@ -171,13 +169,11 @@
 	
 	<jstl:if test="${searchSuppliersForm.type == 3}">
 		<jstl:forEach var="company" items="${suppliers}">
-		 <div class="col-md-4 panel panel-default">
+		 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 panel panel-default">
 		 	<div class="wrap">
 		 	<jstl:if test="${toBook==true}">
-		 	<a href="booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}">
 		 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
 			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
-			</a>
 		 	</jstl:if>
 			
 			<jstl:if test="${toBook == false}">
