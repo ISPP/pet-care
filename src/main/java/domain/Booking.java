@@ -30,7 +30,7 @@ public class Booking extends DomainEntity {
 	}
 
 	// Attributes----------------------------------------------
-	private Date creationMoment, startMoment, endMoment;//Arrival -> Start / Departure -> End
+	private Date creationMoment, startMoment, endMoment,updateMoment;//Arrival -> Start / Departure -> End
 	private String code, status;
 	
 	private boolean night;
@@ -57,6 +57,17 @@ public class Booking extends DomainEntity {
 
 	public void setPagadoAdmin(Boolean pagadoAdmin) {
 		this.pagadoAdmin = pagadoAdmin;
+	}
+	
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	public Date getUpdateMoment() {
+		return updateMoment;
+	}
+
+	public void setUpdateMoment(Date updateMoment) {
+		this.updateMoment = updateMoment;
 	}
 
 	@NotNull

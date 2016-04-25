@@ -10,8 +10,11 @@
 	 <form:form action="${requestURI}" modelAttribute="booking">
 <div class="widget-container boxed">
     <h3 class="widget-title"><spring:message code="payBooking" /></h3>
+    <h3 class="widget-title"><spring:message code="payBooking1" />${pago} EUR.</h3>    
+    <h3 class="widget-title"><spring:message code="payBooking2" /></h3>
+    <br>
     <div class="inner" style= "min-height: 250px;">
-   <spring:message code="payFrom" /> <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=petcaresepp-facilitator@gmail.com"
+   <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=petcaresepp-facilitator@gmail.com"
 	    data-button="buynow" 
 	    data-name='<spring:message code = "paypal.description"></spring:message>' 
 	    data-quantity="1" 
@@ -20,24 +23,7 @@
 	    data-callback="http://127.0.0.1/PetCare/" 
 	    data-env="sandbox"
 	></script>
-	
-	
-	
-	
-	
-	
-	
-	
-	<br><br>
-	<h4>
-
-	</h4>
-    </div>
+	 </div>
 </div>
 
 	</form:form>
-
-	
-	
-  
-  

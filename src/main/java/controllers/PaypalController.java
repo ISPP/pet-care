@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,7 @@ public class PaypalController {
 			//esto es lo que tiene que pagar el supplier
 			//que es el precio del booking+lo que nosotros nos llevamos de comision
 			Double pago = booking.getPrice()+comision; 
-			booking.setPagadoPetOwner(true);
+			booking.setUpdateMoment(new Date(System.currentTimeMillis() - 1000));
 			bookingService.save(booking);
 			result.addObject("booking", booking);
 			result.addObject("emailpetOwner", emailpetOwner);
@@ -73,6 +74,7 @@ public class PaypalController {
 			result.addObject("message", "commit.operation");
 			
 		}
+
 		
 		return result;
 		
@@ -127,10 +129,10 @@ public class PaypalController {
 	}
 	
 	@RequestMapping(value = "/paySuccessful", method = RequestMethod.GET)
-	public ModelAndView paypalsuccessful(@RequestParam int id) {
+	public ModelAndView paypalsuccessful() {
 		ModelAndView result;
 
-		Booking booking = bookingService.findOne(id);
+		Booking booking = bookingService.findBookingLastUpdate();
 		try{
 			
 			
