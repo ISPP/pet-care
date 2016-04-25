@@ -103,6 +103,20 @@
 		<security:authorize access="hasRole('PETSHIPPER')">
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.trips" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+					
+					
+						
+						<li><a href="" onclick="jumpTo('trip/petShipper/listWithRegistrations.do')"><spring:message code="master.page.tripRegistrations" /></a></li>
+						<li><a href="" onclick="jumpTo('trip/petShipper/list.do')"><spring:message code="master.page.myTrips" /></a></li>
+						<li><a href="" onclick="jumpTo('trip/petShipper/create.do')"><spring:message code="master.page.createTrip" /></a></li>
+			
+				</ul>
+			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.complaint" />
 			<!--<span class="glyphicon glyphicon-bell"></span>-->
 			<span class="caret"></span></a>
@@ -134,6 +148,7 @@
 		    	<li><a href="" onclick="jumpTo('booking/supplier/listPendingSupplier.do')"><spring:message code="master.page.booking.listPendingSupplier" /></a></li> 
 		    	</ul>
 		    	</li>
+		    
 			
 		
 	</security:authorize>

@@ -47,6 +47,22 @@ public class TripPetShipperController extends AbstractController {
 	
 	// List all
 	
+	@RequestMapping(value = "/listByShipper", method = RequestMethod.GET)
+	public ModelAndView listByShipper(@RequestParam int petShipperId) {
+		ModelAndView result;
+
+		Collection<Trip> trips;
+
+		result = new ModelAndView("trip/list");
+
+		trips = tripService.findAllByShipper(petShipperId);
+
+		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/petShipper/listByShipper.do");
+
+		return result;
+	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
@@ -74,7 +90,7 @@ public class TripPetShipperController extends AbstractController {
 		String requestURI;
 
 		requestURI = "trip/petShipper/see.do?tripId=" + tripId;
-		trip = tripService.findOneOwned(tripId);
+		trip = tripService.findOne(tripId);
 		deletable = tripService.isDeletable(trip);
 
 		result = new ModelAndView("trip/see");

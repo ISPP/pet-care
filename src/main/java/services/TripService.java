@@ -174,5 +174,13 @@ public class TripService {
 		
 		return result;
 	}
+
+	public Collection<Trip> findAllByShipper(int petShipperId) {
+		Collection<Trip> trips;
+		
+		trips = tripRepository.findAllPrincipal(petShipperId);
+		
+		return trips;
+	}
 	
 }
