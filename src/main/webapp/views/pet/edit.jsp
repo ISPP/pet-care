@@ -22,6 +22,7 @@
 		<form:hidden path="version" />
 		<form:hidden path="photos" />
 		<form:hidden path="petOwner" />
+		<form:hidden path="trips"/>
 			
 		<acme:textbox code="pet.name" path="name" />
 		<acme:textbox code="pet.breed" path="breed"/>

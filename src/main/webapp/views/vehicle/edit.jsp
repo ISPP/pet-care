@@ -19,10 +19,25 @@
 		<form:hidden path="petShipper"/>
 		
 		<acme:formInput code="vehicle.title" path="title" />
-		<acme:multipleSelect items="sizes" var="size_var" itemLabel="size" code="vehicle.size" path="size" />
-		<acme:textarea code="vehicle.description" path="description" />
-		<acme:cancel url="vehicle/petShipper/list.do" code="vehicle.cancel"/>
+		<form:label path="size">
+			<spring:message code="vehicle.size"/>
+		</form:label>
+		<form:select path="size">
+			<form:option value="S">S</form:option>
+			<form:option value="M">M</form:option>
+			<form:option value="L">L</form:option>
+			<form:option value="XL">XL</form:option>
+		</form:select>
+		<form:errors path="size" cssClass="error"/>
+		<br/>
+		<form:label path="description">
+			<spring:message code="vehicle.description"/>
+		</form:label>
+		<form:textarea path="description"/>
+		<form:errors path="description" cssClass="error"/>
+		<br/>
 		<acme:submit name="create" code="vehicle.create"/>
+		<acme:cancel url="vehicle/petShipper/list.do" code="vehicle.cancel"/>
 	</form:form>
 </jstl:if>
 

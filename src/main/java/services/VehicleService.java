@@ -35,9 +35,13 @@ public class VehicleService {
 		Vehicle result;
 		PetShipper petShipper;
 		List<Trip> trips;
+		Authority authority;
 		
 		//Check if the actor is a PetShipper
-		Assert.isTrue(actorService.findActorByUsername().getUser().getAuthorities().contains(Authority.PETSHIPPER));
+		authority = new Authority();
+		authority.setAuthority(Authority.PETSHIPPER);
+		Assert.isTrue(actorService.findActorByUsername().getUser().getAuthorities().contains(authority));
+
 		result = new Vehicle();
 		petShipper = (PetShipper) actorService.findActorByUserId();
 		trips = new ArrayList<Trip>();

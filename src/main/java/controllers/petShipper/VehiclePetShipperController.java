@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import security.LoginService;
+import services.PetShipperService;
 import services.VehicleService;
 import controllers.AbstractController;
 import domain.Vehicle;
@@ -24,6 +24,9 @@ public class VehiclePetShipperController extends AbstractController{
 	@Autowired
 	private VehicleService vehicleService;
 	
+	@Autowired
+	private PetShipperService petShipperService;
+	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public ModelAndView list(){
 		ModelAndView result;
@@ -31,7 +34,7 @@ public class VehiclePetShipperController extends AbstractController{
 		int petShipperId;
 		
 		result = new ModelAndView("vehicle/list");
-		petShipperId = LoginService.getPrincipal().getId();
+		petShipperId = petShipperService.findOneByPrincipal().getId();
 		vehicles = new ArrayList<Vehicle>(vehicleService.findByPetShipperId(petShipperId));
 		
 		result.addObject("vehicles", vehicles);
@@ -47,12 +50,6 @@ public class VehiclePetShipperController extends AbstractController{
 		
 		result = new ModelAndView("vehicle/create");
 		vehicle = vehicleService.create();
-		sizes = new ArrayList<String>();
-		
-		sizes.add("XL");
-		sizes.add("L");
-		sizes.add("M");
-		sizes.add("S");
 		
 		result.addObject("mode", "create");
 		result.addObject("vehicle", vehicle);
@@ -66,40 +63,23 @@ public class VehiclePetShipperController extends AbstractController{
 		ModelAndView result;
 		
 		if(binding.hasErrors()){
-			List<String> sizes;
 			
 			result = new ModelAndView("vehicle/create");
-			sizes = new ArrayList<String>();
-			
-			sizes.add("XL");
-			sizes.add("L");
-			sizes.add("M");
-			sizes.add("S");
 			
 			result.addObject("mode", "create");
 			result.addObject("vehicle", vehicle);
 			result.addObject("isOwner", true);
-			result.addObject("sizes", sizes);
 			
 		}else{
 			try{
 				vehicleService.save(vehicle);
 				result = new ModelAndView("redirect:/list.do");
 			}catch(Throwable oops){
-				List<String> sizes;
-				
 				result = new ModelAndView("vehicle/create");
-				sizes = new ArrayList<String>();
-				
-				sizes.add("XL");
-				sizes.add("L");
-				sizes.add("M");
-				sizes.add("S");
 				
 				result.addObject("mode", "create");
 				result.addObject("vehicle", vehicle);
 				result.addObject("isOwner", true);
-				result.addObject("sizes", sizes);
 				result.addObject("message", "vehicle.commit.error");
 				
 			}
