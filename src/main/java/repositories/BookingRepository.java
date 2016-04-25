@@ -35,13 +35,13 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
 	Collection<Booking> findBookingByPetOwnerId(int id);
 
 
-    @Query("select b from Booking b where b.petOwner.id=?1 and b.pagadoPetOwner=false and b.status='ACCEPTED' and b.cancelled=false")//and b.status='ACCEPTED' and b.cancelled=false
+    @Query("select b from Booking b where b.petOwner.id=?1 and b.payByPetOwner=false and b.status='ACCEPTED' and b.cancelled=false")//and b.status='ACCEPTED' and b.cancelled=false
 	Collection<Booking> findBookingNotPayBySupplierId(int id);
 
-    @Query("select b from Booking b where b.pagadoPetOwner=true and b.pagadoAdmin=false and b.status='ACCEPTED' and b.cancelled=false and b.endMoment<CURRENT_TIMESTAMP")
+    @Query("select b from Booking b where b.payByPetOwner=true and b.payByAdmin=false and b.status='ACCEPTED' and b.cancelled=false and b.endMoment<CURRENT_TIMESTAMP")
 	Collection<Booking> findAllToPayByAdmin();
 
-    @Query("select b from Booking b where b.petOwner.id=?1 and b.pagadoPetOwner=true")
+    @Query("select b from Booking b where b.petOwner.id=?1 and b.payByPetOwner=true")
 	Collection<Booking> findBookingPayBySupplierId(int id);
 
 }
