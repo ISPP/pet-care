@@ -30,33 +30,46 @@ public class Booking extends DomainEntity {
 	}
 
 	// Attributes----------------------------------------------
-	private Date creationMoment, startMoment, endMoment;//Arrival -> Start / Departure -> End
+	private Date creationMoment, startMoment, endMoment,updateMoment;//Arrival -> Start / Departure -> End
 	private String code, status;
 	
 	private boolean night;
 	private double price;
 	private boolean cancelled;
-	private Boolean pagadoPetOwner;
-	private Boolean pagadoAdmin;
+	private Boolean payByPetOwner;
+	private Boolean payByAdmin;
 
 
 
 	
 
-	public Boolean getPagadoPetOwner() {
-		return pagadoPetOwner;
+	
+	
+	public Boolean getPayByPetOwner() {
+		return payByPetOwner;
 	}
 
-	public void setPagadoPetOwner(Boolean pagadoPetOwner) {
-		this.pagadoPetOwner = pagadoPetOwner;
+	public void setPayByPetOwner(Boolean payByPetOwner) {
+		this.payByPetOwner = payByPetOwner;
 	}
 
-	public Boolean getPagadoAdmin() {
-		return pagadoAdmin;
+	public Boolean getPayByAdmin() {
+		return payByAdmin;
 	}
 
-	public void setPagadoAdmin(Boolean pagadoAdmin) {
-		this.pagadoAdmin = pagadoAdmin;
+	public void setPayByAdmin(Boolean payByAdmin) {
+		this.payByAdmin = payByAdmin;
+	}
+
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	public Date getUpdateMoment() {
+		return updateMoment;
+	}
+
+	public void setUpdateMoment(Date updateMoment) {
+		this.updateMoment = updateMoment;
 	}
 
 	@NotNull

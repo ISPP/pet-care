@@ -1930,8 +1930,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="false"></property>
-	<property name="pagadoPetOwner" value="false"></property>
-	<property name="pagadoAdmin" value="false"></property>
+	<property name="payByPetOwner" value="false"></property>
+	<property name="payByAdmin" value="false"></property>
 	<property name="petOwner" ref="petOwner8.1"></property>
 	<property name="supplier" ref="petSitter9.1"></property>
 	<property name="review" ref="review1"></property>	
@@ -1946,8 +1946,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="false"></property>
-	<property name="pagadoPetOwner" value="true"></property>
-	<property name="pagadoAdmin" value="true"></property>
+	<property name="payByPetOwner" value="true"></property>
+	<property name="payByAdmin" value="true"></property>
 	<property name="petOwner" ref="petOwner8.2"></property>
 	<property name="supplier" ref="petSitter9.2"></property>	
 	</bean>
@@ -1961,8 +1961,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="false"></property>
-	<property name="pagadoPetOwner" value="true"></property>
-	<property name="pagadoAdmin" value="true"></property>
+	<property name="payByPetOwner" value="true"></property>
+	<property name="payByAdmin" value="true"></property>
 	<property name="petOwner" ref="petOwner8.3"></property>
 	<property name="supplier" ref="petShipper10.3"></property>	
 	</bean>
@@ -1976,8 +1976,8 @@
 	<property name="night" value="false"></property>
 	<property name="price" value="8"></property>
 	<property name="cancelled" value="true"></property>
-	<property name="pagadoPetOwner" value="false"></property>
-	<property name="pagadoAdmin" value="false"></property>
+	<property name="payByPetOwner" value="false"></property>
+	<property name="payByAdmin" value="false"></property>
 	<property name="petOwner" ref="petOwner8.4"></property>
 	<property name="supplier" ref="petShipper10.4"></property>	
 	</bean>
@@ -1991,8 +1991,8 @@
 	<property name="night" value="TRUE"></property>
 	<property name="price" value="4"></property>
 	<property name="cancelled" value="false"></property>
-	<property name="pagadoPetOwner" value="false"></property>
-	<property name="pagadoAdmin" value="false"></property>
+	<property name="payByPetOwner" value="false"></property>
+	<property name="payByAdmin" value="false"></property>
 	<property name="petOwner" ref="petOwner8.5"></property>
 	<property name="supplier" ref="company7.5"></property>	
 	</bean>

@@ -54,7 +54,7 @@ public class BookingServicePositiveTest extends AbstractTest{
 		PetSitter petSitter = petSitterService.findOne(76);
 		Date startMoment = new Date(System.currentTimeMillis()+100000);
 		Date endMoment= new Date(System.currentTimeMillis()+10000000);
-		Collection<Booking> bookings = bookingService.findByDateSitter(startMoment, endMoment, petSitter.getId());
+		Collection<Booking> bookings = bookingService.findByDateSupplier(startMoment, endMoment, petSitter.getId());
 		Assert.isTrue(bookings.size()==0);
 	}
 	
