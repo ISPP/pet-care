@@ -29,15 +29,26 @@
 	<h2><spring:message code="pet.myPets"/></h2><hr>
 	</div>
 	<jstl:forEach var="pet" items="${pets}">
-	 <div class="col-md-6 panel panel-default">
+	 <div style="cursor: pointer;" onclick="location.href='pet/see.do?petId=${pet.id}';" class="col-md-4 panel panel-default">
 	 	<div class="wrap">
 	 	<a  href="pet/see.do?petId=${pet.id}" codeButton="pet.see" codeHeaderColumn="pet.see">
-		<img class="max-h img-left" alt="Your PET" src="images/pet-register.jpg">
-		</a>
-		<div class="midl-left">
-		<h3><jstl:out value=" ${pet.name}"/></h3>
-		<jstl:out value=" ${pet.kind}"/>
-		</div>
+	 	<jstl:if test="${pet.photos.size()<1}">
+	 		<img class="max-h img-left" alt="Your PET" src="images/pet-register.jpg">
+	 	</jstl:if>
+	 	<jstl:if test="${pet.photos.size()>0}">
+		 	<jstl:forEach var="ph" items="${pet.photos}">
+		 		<jstl:if test="${ph.avatar==true}">
+					<jstl:set var="phId" value="${ph.id}"/>	 		
+		 		</jstl:if>
+		 	</jstl:forEach>
+		 	<img class="max-h img-left" alt="Your PET" src="pet/displayPhoto.do?photoId=${phId}">
+		 </jstl:if>
+			</a>
+			<div class="midl-left">
+			<h3><jstl:out value=" ${pet.name}"/></h3>
+			<jstl:out value=" ${pet.kind}"/>
+			</div>
+		
 		</div>
 		
 	</div>

@@ -15,14 +15,8 @@
 	
 		<form:hidden path="id" />
 		<form:hidden path="petId" />
-		
-		<label for="file-input">
-        	<a >
-        	<img src="images/pet-register.jpg"/>
-        	</a>
-    	</label>
-		
-		<input hidden="true" id="file-input" type="file" />
+		<div class="col-md-6-2">
+		<input type="file" name="file" />
 				
 		<br/>
 
@@ -33,7 +27,7 @@
 			<input type="button" name="back"
 				value="<spring:message code="pet.back" />"
 				onClick="history.back(-1)" />
-		
+		</div>
 	</form:form>
 		
 </security:authorize>

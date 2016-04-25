@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ComplaintService;
@@ -71,6 +72,18 @@ public class ComplaintCustomerController extends AbstractController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam int complaintId) {
+		ModelAndView result;
+		
+
+		Complaint complaint = complaintService.findOne(complaintId);
+
+		result = new ModelAndView("complaint/display");
+		result.addObject("complaint", complaint);
+
+		return result;
+	}
 	
 	@RequestMapping(value = "/listComplaintCustomerId", method = RequestMethod.GET)
 	public ModelAndView listComplaintByPetSitterId() {
