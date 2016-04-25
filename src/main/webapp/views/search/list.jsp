@@ -1,5 +1,3 @@
-
-
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,6 +8,8 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<div id="toptop">
+</div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
 
@@ -52,7 +52,7 @@
       </div>
       
       
-      <div class="carousel-caption center-bottom">
+      <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
           	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
 			<form:hidden path="id"/>
 			<fieldset >
@@ -72,7 +72,7 @@
 			<form:label path="type">
 				<spring:message code="supplier.type" />
 			</form:label>	
-			<form:select path="type">
+			<form:select path="type" cssStyle="color:black">
 				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
 				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
 				<form:option value="3"><spring:message code="supplier.company" /></form:option>
@@ -128,34 +128,31 @@
 	</jstl:if>
 	
 	<!-- List shippers -->
-	<!-- 
+	
 	<jstl:if test="${searchSuppliersForm.type == 2}">
 		<jstl:forEach var="petShipper" items="${suppliers}">
-		 <div class="col-md-4 panel panel-default">
+		 <div style="cursor: pointer;" onclick="location.href='trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}';"  class="col-md-4 panel panel-default">
 		 	<div class="wrap">
 		 	<jstl:if test="${toBook==true}">
-		 	<a href="booking/petOwner/createForShipper.do?petShipperId=${petShipper.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}">
+		 	<a href="trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}">
 		 	<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petOwner-index.jpg">
-			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petShipper.priceNight}*"/>&#8364;</span>
 			</a>
 		 	</jstl:if>
 			
 			<jstl:if test="${toBook == false}">
-			<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
-			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+			<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petOwner-index.jpg">
 			</jstl:if>
 			</div>
 			
 			<div>
-			<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"/>
-			<jstl:out value=" ${petSitter.address}"/>
+			<p class="list-name"><jstl:out value="${petShipper.name}"/><hr class="linea-pegada"/>
+			<jstl:out value=" ${petShipper.address}"/>
 			<br/>
-			<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/> &#8364;
 			</div>
 			
 		</div>
 		</jstl:forEach>
-		<jstl:if test="${sitters.size()==0}">
+		<jstl:if test="${suppliers.size()==0}">
 			<h2><spring:message code="search.noResults"/></h2>
 		</jstl:if>
 		<jstl:if test="${toBook==false}">
@@ -163,7 +160,6 @@
 		</jstl:if>
 		<spring:message code="search.priceShowsNight"/>
 	</jstl:if>
-	-->
 	
 	<!-- List companies -->
 	
