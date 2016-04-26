@@ -2,9 +2,10 @@ package forms;
 
 import java.util.Date;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,8 +13,9 @@ public class RegistrationForm {
 
 	
 	private String startCity,endCity;
+	private Date moment;
+	
 	@SafeHtml
-	@NotBlank
 	public String getStartCity() {
 		return startCity;
 	}
@@ -22,7 +24,6 @@ public class RegistrationForm {
 		this.startCity = startCity;
 	}
 	@SafeHtml
-	@NotBlank
 	public String getEndCity() {
 		return endCity;
 	}
@@ -31,7 +32,16 @@ public class RegistrationForm {
 		this.endCity = endCity;
 	}
 
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	public Date getMoment() {
+		return moment;
+	}
 
+	public void setMoment(Date moment) {
+		this.moment = moment;
+	}
 
 	
 }
