@@ -157,7 +157,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+          <h4><span class="glyphicon glyphicon-lock"></span> <spring:message code="welcome.login"/></h4>
         </div>
         <div class="modal-body">
           <form:form action="j_spring_security_check" modelAttribute="credentials">
@@ -169,14 +169,14 @@
               <form:password class="form-control" path="password" placeholder="Password"/>	
 				<form:errors class="error" path="password" />
             </div>
-              <button type="submit" class="btn btn-block">Go! 
+              <button type="submit" class="btn btn-block"><spring:message code="welcome.go"/> 
                 <span class="glyphicon glyphicon-ok"></span>
               </button>
           </form:form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel
+            <span class="glyphicon glyphicon-remove"></span> <spring:message code="welcome.cancel"/>
           </button>
         </div>
       </div>
