@@ -23,8 +23,8 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="" onclick="jumpTo('./');">
-		<!-- <img alt="PetCare" width="200px" src="images/Logo1line.png"/> -->
-		PetCare
+		 <img alt="PetCare" width="50%" src="images/logo-header.png"/> 
+		<!--PetCare-->
 		</a>
 	</div>
 	<div class="collapse navbar-collapse" id="myNavbar">
