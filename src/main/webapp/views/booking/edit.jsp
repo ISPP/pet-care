@@ -21,7 +21,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
- 
+ <link rel="stylesheet" href="styles/jquery.switchButton.css">
+  <script src="scripts/jquery.switchButton.js"></script>
+<!--  <link href="styles/bootstrap-switch.css" rel="stylesheet" type="text/css"> -->
 
 <form:form action="${requestURI}" modelAttribute="bookingForm">
 
@@ -48,12 +50,14 @@
 <%-- 				<spring:message code="booking.perHour" /> --%>
 <%-- 			</form:label> --%>
 			
-			<form:label path="night">
-				<spring:message code="booking.perDay" />
-				
-			</form:label>
-		
-			<input type="checkbox" id="night" name="night" checked>
+			<spring:message code="booking.perDay" var="perDay"/>
+			<spring:message code="booking.perHour" var="perHour"/>
+			
+			
+			<br>
+			<div class="switch-wrapper">
+			 <form:checkbox path="night"/>
+			</div>
 			
 			<br>
 			
@@ -83,16 +87,22 @@
 	<br />
 </form:form>
 <script type="text/javascript">
-$("[name='night']").bootstrapSwitch('setSizeClass', 'switch-small');
 
-$('#night').change(function(){
-    if($(this).attr('checked')){
-         $(this).val('1');
-  
-    }else{
-         $(this).val('0');
-         
-    }
-});
+$("input[type=checkbox]").switchButton({
+	  on_label: '<label>${perDay}</label>',
+	  off_label: '<label>${perHour}</label>',
+	  width: 40,
+	  height: 20,
+	  button_width: 25
+	}); 
+
+//$("#night").bootstrapSwitch('setSizeClass', 'switch-large');
+
+$(function() {
+
+	});
+
+
+
 
 </script>
