@@ -98,8 +98,14 @@
 				</ul>
 			</li>
 			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.review" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('review/petOwner/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
 			
-			
+				</ul>	
 			
 			<li><a href="" onclick="jumpTo('petOwner/petOwner/displayOwn.do');">
 			<spring:message code="master.page.myProfile" />
@@ -115,6 +121,21 @@
 					<li><a href="" onclick="jumpTo('pet/petOwner/create.do');"><spring:message code="master.page.create" /></a></li>	
 				</ul>
 			</li>
+			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.trips" />
+			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+					<li><a href="" onclick="jumpTo('trip/petOwner//findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>				
+					
+				</ul>
+			</li>
+			
+			
+			
+			
+			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.language" />
 			<!--<span class="glyphicon glyphicon-cog"></span>-->
@@ -156,6 +177,22 @@
 						<li><a href="" onclick="jumpTo('complaint/customer/listComplaintCustomerIdNotSolved.do')"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
 			
 				</ul>
+				
+				
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.trips" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+					
+					
+						
+						<li><a href="" onclick="jumpTo('trip/petShipper/listWithRegistrations.do')"><spring:message code="master.page.tripsListRegistrations" /></a></li>
+						
+			
+				</ul>
+				
+				
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.petSitter.review" />
@@ -168,6 +205,8 @@
 				
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.booking" />
+			
+			
 			<!--<span class="glyphicon glyphicon-bell"></span>-->
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
@@ -194,6 +233,15 @@
 			</li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.review" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
+			
+				</ul>
+			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.booking" />
 			<!--<span class="glyphicon glyphicon-book"></span>-->
 			<span class="caret"></span></a>
@@ -216,8 +264,14 @@
 				</ul>
 			</li>
 			
-			<li><a href="" onclick="jumpTo('review/supplier/list.do');"><spring:message code="master.page.petSitter.review"/></a>
-			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.review" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
+			
+				</ul>
 			<li><a href="" onclick="jumpTo('search/searchSitters.do');"><spring:message code="master.page.searchSitters" /></a></li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -257,6 +311,8 @@
 					<li><a href="" onclick="jumpTo('booking/supplier/listPendingSupplier.do')"><spring:message code="master.page.booking.listPendingSupplier" /></a></li>
 						
 				</ul>
+				
+				
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.petSitter.review"/>
 				<span class="caret"></span></a>

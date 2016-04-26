@@ -104,20 +104,21 @@ public class BookingPetOwnerController extends AbstractController {
 	// ----PetSitters booking
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView solve(@RequestParam("petSitterId") int petSitterId,
-			@RequestParam String startMoment, @RequestParam String endMoment) {
+			@RequestParam(required=false) String startMoment, @RequestParam(required=false) String endMoment) {
 		ModelAndView result;
 		BookingForm bookingForm;
 		bookingForm = bookingService.create();
 		PetSitter petSitter = petSitterService.findOne(petSitterId);
 		bookingForm.setSupplier(petSitter);
 		try {
-
+			if (startMoment!=null && endMoment!=null){
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
 			bookingForm.setStartMoment(formatter.parse(startMoment));
 			bookingForm.setendMoment(formatter.parse(endMoment));
+			}
 		} catch (Throwable t) {
-			System.out.println("falla");
+			
 		}
 
 		result = new ModelAndView("booking/edit");

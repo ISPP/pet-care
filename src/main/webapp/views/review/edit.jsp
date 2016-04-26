@@ -31,7 +31,7 @@
 	
 	<div class="col-md-8-2-noColor panel panel-default">
 	 		<div class="wrap-3">
-	 		<h3 class="h3-no-bottom"><spring:message code="review.review"/>: <fmt:formatDate  value="${review.booking.creationMoment}" pattern="dd/MM/yyyy HH:mm" /> </h3><hr>
+	 		<h3 class="h3-no-bottom"><spring:message code="review.review1"/>: <fmt:formatDate  value="${review.booking.creationMoment}" pattern="dd/MM/yyyy HH:mm" /> </h3><hr>
 	<spring:message var="desc" code="review.description" />
 	<form:textarea class="register-todoAncho" rows="8" path="description" placeholder="${desc}..."/>
 	

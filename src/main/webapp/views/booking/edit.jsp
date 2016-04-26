@@ -21,6 +21,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+ <link rel="stylesheet" href="styles/jquery.switchButton.css">
+  <script src="scripts/jquery.switchButton.js"></script>
+<!--  <link href="styles/bootstrap-switch.css" rel="stylesheet" type="text/css"> -->
 
 <form:form action="${requestURI}" modelAttribute="bookingForm">
 
@@ -42,17 +45,24 @@
 				<spring:message code="booking.Type" />:
 			</form:label>
 			
-			<form:radiobutton path="night" value="0"/>
-			<form:label path="night">
-				<spring:message code="booking.perHour" />
-			</form:label>
-			<form:radiobutton path="night" value="1"/>
-			<form:label path="night">
-				<spring:message code="booking.perDay" />
-			</form:label>
+<%-- 			<form:radiobutton path="night" value="0"/> --%>
+<%-- 			<form:label path="night"> --%>
+<%-- 				<spring:message code="booking.perHour" /> --%>
+<%-- 			</form:label> --%>
+			
+			<spring:message code="booking.perDay" var="perDay"/>
+			<spring:message code="booking.perHour" var="perHour"/>
+			
+			
+			<br>
+			<div class="switch-wrapper">
+			 <form:checkbox path="night"/>
+			</div>
+			
+			<br>
+			
 		
-			<form:errors cssClass="error" path="night" />
-			<br/>
+			
 			
 		
     </c:when>    
@@ -76,3 +86,23 @@
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
 </form:form>
+<script type="text/javascript">
+
+$("input[type=checkbox]").switchButton({
+	  on_label: '<label>${perDay}</label>',
+	  off_label: '<label>${perHour}</label>',
+	  width: 40,
+	  height: 20,
+	  button_width: 25
+	}); 
+
+//$("#night").bootstrapSwitch('setSizeClass', 'switch-large');
+
+$(function() {
+
+	});
+
+
+
+
+</script>
