@@ -179,18 +179,7 @@
 				</ul>
 				
 				
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.trips" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
-			<span class="caret"></span></a>
-		    	<ul class="dropdown-menu">
-					
-					
-						
-						<li><a href="" onclick="jumpTo('trip/petShipper/listWithRegistrations.do')"><spring:message code="master.page.tripsListRegistrations" /></a></li>
-						
 			
-				</ul>
 				
 				
 			
