@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import domain.Complaint;
 import domain.CreditCard;
 import domain.Message;
 import domain.MessageFolder;
+import domain.PetShipper;
 import domain.Review;
 import forms.CompanyForm;
 
@@ -39,6 +41,9 @@ public class CompanyService {
 	
 	@Autowired
 	private MessageFolderService messageFolderService;
+	
+	@Autowired
+	private AdministratorService administratorService;
 	
 	
 	public Company create() {
@@ -175,6 +180,18 @@ public class CompanyService {
 		result.setPricePerDay(companyForm.getPricePerDay());
 		result.setTic(companyForm.getTic());
 
+		return result;
+	}
+	
+	public Company register(Company company,String codeToRegister) {
+		Company result;
+		String invitationCode;
+		invitationCode=RandomStringUtils.randomAlphanumeric(10)+codeToRegister;
+
+		Assert.notNull(administratorService.findAdministratorByUsername(codeToRegister));
+		company.setInvitationCode(invitationCode);
+		company.setDaysBeforeCancel(1);
+		result=save(company);
 		return result;
 	}
 	

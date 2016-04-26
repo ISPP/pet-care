@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import domain.Booking;
 import domain.PetOwner;
 import domain.PetSitter;
 import domain.Registration;
@@ -81,6 +82,26 @@ public class RegistrationService {
 		result.setPetOwner(petOwner);
 		result = save(result);
 		return result;
+	}
+
+	public Collection<Registration> findRegistrationNotPayByPetOwnerId() {
+		PetOwner petOwner = petOwnerService.getLogged();
+		Collection<Registration> res = registrationRepository.findRegistrationNotPayByPetOwnerId(petOwner.getId());
+		
+				
+		
+		return res;
+	}
+
+	public void cancelRegistration(int id) {
+		Registration registration = registrationRepository.findOne(id);
+		registration.setPayByPetOwner(false);
+		registrationRepository.save(registration);
+		
+	}
+
+	public Collection<Registration> findRegistrationNotPayByAdmin() {
+		return registrationRepository.findAllToPayByAdmin();
 	}
 
 

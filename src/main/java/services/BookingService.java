@@ -359,6 +359,18 @@ public class BookingService {
 		bookingRepository.save(booking);
 
 	}
+	
+	public void cancelBooking2(Integer id) {
+		PetOwner petOwner = petOwnerService.findOneByPrincipal();
+		Assert.notNull(petOwner, "No hay un pet owner conectado");
+		Booking booking = bookingRepository.findOne(id);
+		Assert.isTrue(booking.getPetOwner().getId() == petOwner.getId(),
+				"accediendo a un sitio sin permisos");
+		booking.setCancelled(true);
+		booking.setPayByPetOwner(false);
+		bookingRepository.save(booking);
+
+	}
 
 	public Collection<Booking> findBookingCanAceptRejectedByCustomerId() {
 		Collection<Booking> res;
@@ -411,9 +423,9 @@ public class BookingService {
 		return res;
 	}
 
-	public Booking findBookingLastUpdate() {
+	public Booking findBookingLastUpdate(PetOwner petOwner) {
 		Booking booking;
-		PetOwner petOwner = petOwnerService.getLogged();
+		
 		List<Booking> res = (List<Booking>) bookingRepository.findBookingNotPayBySupplierId(petOwner.getId());
 		booking = res.get(0);
 		for(Booking b : res){
@@ -431,6 +443,12 @@ public class BookingService {
 		
 				
 		
+		return res;
+	}
+
+	public Collection<Booking> findBookinByPetOwnerId() {
+		PetOwner petOwner = petOwnerService.getLogged();
+		Collection<Booking> res = bookingRepository.findBookingByPetOwnerId(petOwner.getId());
 		return res;
 	}
 	

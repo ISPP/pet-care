@@ -10,11 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CompanyService;
 import domain.Company;
 import forms.CompanyForm;
+import forms.InvitationForm;
+import forms.PetShipperForm;
 
 @Controller
 @RequestMapping("/company")
@@ -38,13 +41,14 @@ public class CompanyController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam String invitationCode) {
 		ModelAndView result;
 		CompanyForm companyForm;
 
 		result = new ModelAndView("company/edit");
 		companyForm = new CompanyForm();
-
+		companyForm.setInvitationCode(invitationCode);
+		companyForm.setDaysBeforeCancel(1);
 		result.addObject("companyForm", companyForm);
 		result.addObject("register", true);
 
@@ -78,17 +82,40 @@ public class CompanyController extends AbstractController {
 					result.addObject("register", true);
 				} else {
 					company = companyService.reconstruct(companyForm);
-					companyService.save(company);
-					result = new ModelAndView("redirect:../security/login.do");
+					companyService.register(company,companyForm.getInvitationCode());
+					result = new ModelAndView("redirect:../index.do");
 				}
 			} catch (Throwable oops) {
-				result = new ModelAndView("company/edit");
-				result.addObject("companyForm", companyForm);
-				result.addObject("message", "company.commit.error");
-				result.addObject("register", true);
+				
+				result=createEditModelAndView(companyForm, "company.commit.error");
+				oops.printStackTrace();
+				
 			}
 		}
 
 		return result;
 	}
+	
+	
+	protected ModelAndView createEditModelAndView(CompanyForm companyForm){
+		ModelAndView result;
+		
+		result = createEditModelAndView(companyForm, null);
+	
+		return result;
+	}
+	
+	
+	protected ModelAndView createEditModelAndView(CompanyForm companyForm, String message){
+		ModelAndView result;
+		
+		result = new ModelAndView("company/edit");
+		result.addObject("companyForm",companyForm);
+		result.addObject("message", message);
+		result.addObject("register", true);
+		
+		return result;
+	}
+	
+
 }

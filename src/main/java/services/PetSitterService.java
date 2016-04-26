@@ -95,7 +95,7 @@ public class PetSitterService {
 	public PetSitter register(PetSitter petSitter,String codeToRegister) {
 		PetSitter result;
 		String invitationCode;
-		invitationCode=RandomStringUtils.randomAlphanumeric(10);
+		invitationCode=RandomStringUtils.randomAlphanumeric(20);
 
 		Assert.notNull(findPetSitterByInvitationCode(codeToRegister));
 		petSitter.setInvitationCode(invitationCode);

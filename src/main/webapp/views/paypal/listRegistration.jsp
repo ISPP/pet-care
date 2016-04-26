@@ -22,38 +22,33 @@
  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-
  <div class="col-md-12">
- 	<h2><spring:message code="booking.bookings"/></h2><hr>	
- 	<jstl:forEach var="booking" items="${bookings}">
+ 	<h2><spring:message code="registration.registrations"/></h2><hr>	
+ 	<jstl:forEach var="registration" items="${registrations}">
  		<div class="col-md-8-2 panel panel-default">
 	 		<div class="wrap-2">
 	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/petOwner-index.jpg">
 	 		<img class="max-h-4 img-left-2-1" alt="Your PET" src="images/pet-register.jpg">
 	 		<div>
-	 		<h3 class="h3-no-bottom">${booking.supplier.name} - Kuppy</h3>
+	 		<h3 class="h3-no-bottom">${registration.trip.startCity} -> ${registration.trip.endCity}</h3>
 	 		<table class="text-rigth-2">
 	 			<tr>
+	 			
 	 			<td class="table-separate-100">
-	 				${booking.supplier.address}
+	 				<fmt:formatDate value="${registration.trip.moment}" pattern="dd/MM/yyyy HH:mm" />
 	 			</td>
 	 			<td class="table-separate-100">
-	 				<fmt:formatDate value="${booking.startMoment}" pattern="dd/MM/yyyy HH:mm" />
-	 			</td>
-	 			<td class="table-separate-100">
-	 				<h2>${booking.price} &#8364;</h2>
+	 				<h2>${registration.trip.cost} &#8364;</h2>
 	 			</td>
 	 			</tr>
 	 		</table>
 	 		<p > <br/></p>
-	 		
-	 		
-			<a href="petOwner/petOwner/display.do?petOwnerId=${booking.petOwner.id}"> <spring:message
-						code="petOwner.profile" />
-				</a>
-		
+	 		<a href="paypal/payRegistration.do?id=${registration.id}"> <spring:message
+						code="paypal.payNow" />
+	</a>
 	</div>
 	 	</div>
 	 	</div>
  	</jstl:forEach>
  </div>
+

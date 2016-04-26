@@ -18,7 +18,7 @@ import services.PetSitterService;
 import services.RegistrationService;
 import services.TripService;
 import controllers.AbstractController;
-import domain.Booking;
+import domain.*;
 import domain.Pet;
 import domain.PetOwner;
 import domain.PetSitter;
@@ -99,7 +99,7 @@ public class TripPetOwnerController extends AbstractController {
 			Trip trip;
 			trip = tripService.findOne(tripId);
 			registrationService.registerToTrip(trip);
-			result = new ModelAndView("welcome/index");
+			result = new ModelAndView("redirect:listToPay.do");
 
 		} catch (IllegalArgumentException exc) {
 
@@ -116,6 +116,19 @@ public class TripPetOwnerController extends AbstractController {
 			result.addObject("requestURI", "trip/petOwner/findToRegister.do");
 			result.addObject("message", "trip.error.operation");
 		}
+
+		return result;
+	}
+	
+	@RequestMapping(value = "/listToPay", method = RequestMethod.GET)
+	public ModelAndView listToPay() {
+		ModelAndView result;
+
+		Collection<Registration> registrations = registrationService
+				.findRegistrationNotPayByPetOwnerId();
+		result = new ModelAndView("paypal/listRegistration");
+		result.addObject("registrations", registrations);
+		result.addObject("requestURI", "trip/petOwner/listToPay.do");
 
 		return result;
 	}

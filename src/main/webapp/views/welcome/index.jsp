@@ -85,7 +85,7 @@
 			<form:label path="type">
 				<spring:message code="supplier.type" />
 			</form:label>	
-			<form:select path="type">
+			<form:select path="type" cssStyle="color:black">
 				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
 				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
 				<form:option value="3"><spring:message code="supplier.company" /></form:option>

@@ -83,6 +83,9 @@
 			access="hasAnyRole('PETSITTER','PETSHIPPER', 'COMPANY')" />
 		<security:intercept-url pattern="/booking/petOwner/**"
 			access="hasRole('PETOWNER')" />
+			<security:intercept-url pattern="/registration/petOwner/**"
+			access="hasRole('PETOWNER')" />
+			
 		<security:intercept-url pattern="/petSitter/listToBook.do"
 			access="hasRole('PETOWNER')" />
 		
@@ -181,16 +184,23 @@
 
 		
 			<!-- Trip -->
+		<security:intercept-url pattern="/trip/petShipper/listByShipper.do" access="permitAll"/>
 		<security:intercept-url pattern="/trip/petOwner/**" access="hasRole('PETOWNER')" /> 
-		<security:intercept-url pattern="/trip/petShipper/**" access="hasRole('PETSHIPPER')" /> 
-		<security:intercept-url pattern="/trip/petShipper/see.do" access="hasRole('PETOWNER','PETSHIPPER')" /> 
+		<security:intercept-url pattern="/trip/petShipper/see.do" access="permitAll" />
+		<security:intercept-url pattern="/trip/petShipper/list.do" access="hasRole('PETSHIPPER')" />
+		<security:intercept-url pattern="/trip/petShipper/listWithRegistrations.do" access="hasRole('PETSHIPPER')" />
+		<security:intercept-url pattern="/trip/petShipper/create.do" access="hasRole('PETSHIPPER')" />
+		<security:intercept-url pattern="/trip/petShipper/edit.do" access="hasRole('PETSHIPPER')" />
+		 
 		<!-- Regstraton -->
 	<security:intercept-url pattern="/registration/petShipper/**" access="hasRole('PETSHIPPER')" /> 
 	
 	<!-- PetShipper -->
 	<security:intercept-url pattern="/petShipper/invite.do" access="hasRole('PETSHIPPER')" /> 
 	<security:intercept-url pattern="/petShipper/create.do" access="isAnonymous()" />		
-
+<!-- Company -->
+	<security:intercept-url pattern="/company/administrator/invite.do" access="hasRole('ADMIN')" /> 
+	<security:intercept-url pattern="/company/create.do" access="isAnonymous()" />		
 		<!-- Supplier -->
 		<security:intercept-url pattern="/supplier/administrator/**"
 			access="hasRole('ADMIN')" />
@@ -201,7 +211,7 @@
 			<!-- Company -->
 			<security:intercept-url pattern="/company/listToBook.do"
 			access="hasRole('PETOWNER')" />
-		<security:intercept-url pattern="/company/create.do" access="permitAll"/>
+		
 		
 		<!-- Vehicle -->
 		<security:intercept-url pattern="/vehicle/petShipper/**" access="hasRole('PETSHIPPER')"/>

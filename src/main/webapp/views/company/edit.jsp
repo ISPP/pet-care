@@ -23,6 +23,9 @@
 
 	<jstl:set var="action" value="company/create.do" />
 	<form:form action="${action}" modelAttribute="companyForm">
+	<form:hidden path="invitationCode"/>
+	<form:hidden path="id"/>
+	<form:hidden path="daysBeforeCancel"/>
 		<!-- Actor -->
 		<acme:textbox code="company.name" path="name" />
 		<acme:textbox code="company.surname" path="surname" />
@@ -52,7 +55,7 @@
 		
 		<!-- Company -->
 		<acme:textbox code="company.tic" path="tic"/>
-		<acme:textbox code="company.pricePerDay" path="pricePerDay"/>
+<%-- 		<acme:textbox code="company.pricePerDay" path="pricePerDay"/> --%>
 		<acme:submit name="create" code="company.button.create" />
 		<acme:cancel url="welcome/index.do" code="company.button.cancel" />
 		<jstl:if test="${oldYear==true}">

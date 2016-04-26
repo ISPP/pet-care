@@ -14,6 +14,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Administrator;
 import domain.Customer;
 import domain.PetShipper;
 import domain.PetSitter;
@@ -94,6 +95,27 @@ public class EmailService {
 				+ " "
 				+ sender.getSurname()
 				+ " has invited you to join Pet Care as pet shipper. Please,click the link below to join if you want.";
+		content += "</br><a href='" + url + "'>Click here</a><br>";
+
+		send(recipient, content, subject);
+	}
+	
+	public void sendToCompany(Administrator sender, String recipient) {
+		String url;
+		// url = "http://www.acme.com/single/register.do?invitationCode="
+		// + sender.getUserCode();
+		url = "http://localhost:8080/Petcare/company/create.do?invitationCode="
+				+ sender.getUser().getUsername();
+
+		String content;
+		String subject;
+		subject = "Invitation to Pet Care";
+
+		content = "Hello, "
+				+ sender.getName()
+				+ " "
+				+ sender.getSurname()
+				+ " has invited you to join Pet Care as company. Please,click the link below to join if you want.";
 		content += "</br><a href='" + url + "'>Click here</a><br>";
 
 		send(recipient, content, subject);
