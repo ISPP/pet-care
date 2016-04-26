@@ -10,31 +10,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
 import services.RegistrationService;
-
 import domain.Booking;
 import domain.Registration;
 
 
-
 @Controller
-@RequestMapping("/booking/administrator")
-public class BookingAdministratorController {
-
-	@Autowired
-	private BookingService bookingService;
+@RequestMapping("/registration/administrator")
+public class RegistrationAdministratorController {
+	
 	@Autowired
 	private RegistrationService registrationService;
+	
+	
+	
 	@RequestMapping(value = "/listToPay", method = RequestMethod.GET)
 	public ModelAndView listToPay() {
 		ModelAndView result;
+
 		Collection<Registration> registrations = registrationService.findRegistrationNotPayByAdmin();
-		Collection<Booking> bookings = bookingService.findBookingNotPayByAdmin();
 		result = new ModelAndView("paypal/listAdmin");
-		result.addObject("bookings", bookings);
 		result.addObject("registrations", registrations);
-		result.addObject("requestURI", "booking/administrator/listToPay.do");
+		result.addObject("requestURI", "registration/administrator/listToPay.do");
 
 		return result;
 	}
-	
+
 }

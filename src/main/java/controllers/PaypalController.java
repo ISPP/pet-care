@@ -12,11 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
 import services.PetOwnerService;
+import services.RegistrationService;
 import services.SupplierService;
 
 import domain.Booking;
 import domain.Company;
 import domain.PetOwner;
+import domain.Registration;
 import domain.Supplier;
 
 
@@ -34,6 +36,8 @@ public class PaypalController {
 	
 	@Autowired
 	private PetOwnerService petOwnerService;
+	@Autowired
+	private RegistrationService registrationService;
 	
 	@RequestMapping(value = "/listPay", method = RequestMethod.GET)
 	public ModelAndView listToPay() {
@@ -110,6 +114,9 @@ public class PaypalController {
 	}
 	
 	
+	
+	
+	
 	@RequestMapping(value = "/payAdmin", method = RequestMethod.GET)
 	public ModelAndView paypalAdmin(@RequestParam int id) {
 		ModelAndView result;
@@ -156,7 +163,67 @@ public class PaypalController {
 
 	}
 	
-	@RequestMapping(value = "/paySuccessful", method = RequestMethod.GET)
+	@RequestMapping(value = "/payRegistration", method = RequestMethod.GET)
+	public ModelAndView payRegistration(@RequestParam int id) {
+		ModelAndView result;
+		Registration registration = registrationService.findOne(id);
+		
+		
+		try{
+			result = new ModelAndView("paypal/paypalRegistration");
+					
+			//Calculamos las comisiones que nos vamos a llevar
+			Double comision;
+			comision = registration.getTrip().getCost()*10/100;//esto es lo que nosotros nos llevamos
+			
+			//esto es lo que tiene que pagar el supplier
+			//que es el precio del booking+lo que nosotros nos llevamos de comision
+			Double pago = registration.getTrip().getCost()+comision; 
+			
+			registration.setPayByPetOwner(true);			
+			registrationService.save(registration);
+			result.addObject("registration", registration);
+			result.addObject("pago", pago);
+			result.addObject("requestURI", "paypal/payRegistration.do");
+		
+			
+		}catch (Exception oops){
+			result = new ModelAndView("welcome/index");
+			
+			result.addObject("message", "commit.operation");
+			
+		}
+
+		
+		return result;
+		
+
+	}
+	
+	@RequestMapping(value = "/payAdminRegistration", method = RequestMethod.GET)
+	public ModelAndView paypalAdminRegistration(@RequestParam int id) {
+		ModelAndView result;
+		Registration registration = registrationService.findOne(id);
+		
+		
+		try{
+			result = new ModelAndView("paypal/paypalAdminRegistration");
+			registration.setPayByAdmin(true);
+			registrationService.save(registration);
+			result.addObject("registration", registration);
+			result.addObject("requestURI", "paypal/payAdminRegistration.do");		
+			
+		}catch (Exception oops){
+			result = new ModelAndView("welcome/index");			
+			result.addObject("message", "commit.operation");			
+		}
+		
+		return result;
+		
+
+	}
+	
+	/*@RequestMapping(value = "/paySuccessful", method = RequestMethod.GET)
 	public ModelAndView paypalsuccessful() {
 		ModelAndView result;
 		PetOwner petOwner = petOwnerService.getLogged();
@@ -178,7 +245,7 @@ public class PaypalController {
 		return result;
 		
 
-	}
+	}*/
 
 
 }

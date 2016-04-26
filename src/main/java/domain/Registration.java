@@ -29,9 +29,22 @@ public class Registration extends DomainEntity{
 	
 	
 	private Date moment;
+	private Boolean payByPetOwner, payByAdmin;
 
 	
 	
+	public Boolean getPayByPetOwner() {
+		return payByPetOwner;
+	}
+	public void setPayByPetOwner(Boolean payByPetOwner) {
+		this.payByPetOwner = payByPetOwner;
+	}
+	public Boolean getPayByAdmin() {
+		return payByAdmin;
+	}
+	public void setPayByAdmin(Boolean payByAdmin) {
+		this.payByAdmin = payByAdmin;
+	}
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")	
 	public Date getMoment() {

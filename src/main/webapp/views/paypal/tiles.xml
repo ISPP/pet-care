@@ -21,6 +21,14 @@
 		<put-attribute name="body" value="/views/paypal/list.jsp" />
 	</definition>
 	
+	<definition name="paypal/listRegistration" extends="master.page">	
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/views/paypal/listRegistration.jsp" />
+	</definition>
+	<definition name="paypal/paypalRegistration" extends="master.page">	
+		<put-attribute name="title" value="Paypal" />
+		<put-attribute name="body" value="/views/paypal/paypalRegistration.jsp" />
+	</definition>
 
 	<definition name="paypal/paypal" extends="master.page">	
 		<put-attribute name="title" value="Paypal" />
@@ -37,6 +45,20 @@
 	<definition name="paypal/paypalAdmin" extends="master.page">	
 		<put-attribute name="title" value="Paypal" />
 		<put-attribute name="body" value="/views/paypal/paypalAdmin.jsp" />
+	</definition>
+	
+	
+	
+	
+		<definition name="paypal/listAdminRegistration" extends="master.page">	
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/views/paypal/listAdminRegistration.jsp" />
+	</definition>
+	
+
+	<definition name="paypal/paypalAdminRegistration" extends="master.page">	
+		<put-attribute name="title" value="Paypal" />
+		<put-attribute name="body" value="/views/paypal/paypalAdminRegistration.jsp" />
 	</definition>
 	
 	
