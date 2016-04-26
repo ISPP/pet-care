@@ -150,6 +150,14 @@
 		
 		<security:authorize access="hasRole('PETSHIPPER')">
 			
+			<li class="dropdown"><a class="dropdown-toffle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.vehicle"/>
+			<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="" onclick="jumpTo('vehicle/petShipper/list.do')"><spring:message code="master.page.vehicle.list" /></a></li>
+					<li><a href="" onclick="jumpTo('vehicle/petShipper/create.do')"><spring:message code="master.page.vehicle.create" /></a></li>
+				</ul>
+			</li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.trips" />
 			<!--<span class="glyphicon glyphicon-bell"></span>-->
@@ -157,7 +165,6 @@
 		    	<ul class="dropdown-menu">
 					
 					
-						
 						<li><a href="" onclick="jumpTo('trip/petShipper/listWithRegistrations.do')"><spring:message code="master.page.tripRegistrations" /></a></li>
 						<li><a href="" onclick="jumpTo('trip/petShipper/list.do')"><spring:message code="master.page.myTrips" /></a></li>
 						<li><a href="" onclick="jumpTo('trip/petShipper/create.do')"><spring:message code="master.page.createTrip" /></a></li>

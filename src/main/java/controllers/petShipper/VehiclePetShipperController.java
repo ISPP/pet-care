@@ -20,145 +20,174 @@ import domain.Vehicle;
 
 @Controller
 @RequestMapping("/vehicle/petShipper")
-public class VehiclePetShipperController extends AbstractController{
+public class VehiclePetShipperController extends AbstractController {
 
 	@Autowired
 	private VehicleService vehicleService;
-	
+
 	@Autowired
 	private PetShipperService petShipperService;
-	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(){
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
 		ModelAndView result;
 		List<Vehicle> vehicles;
 		int petShipperId;
-		
+
 		result = new ModelAndView("vehicle/list");
 		petShipperId = petShipperService.findOneByPrincipal().getId();
-		vehicles = new ArrayList<Vehicle>(vehicleService.findByPetShipperId(petShipperId));
-		
+		vehicles = new ArrayList<Vehicle>(
+				vehicleService.findByPetShipperId(petShipperId));
+
 		result.addObject("vehicles", vehicles);
-		
+
 		return result;
 	}
-	
-	@RequestMapping(value="/create", method = RequestMethod.GET)
-	public ModelAndView create(){
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
 		ModelAndView result;
 		Vehicle vehicle;
-		
+
 		result = new ModelAndView("vehicle/create");
 		vehicle = vehicleService.create();
-		
+
 		result.addObject("mode", "create");
 		result.addObject("vehicle", vehicle);
 		result.addObject("isOwner", true);
-		
+
 		return result;
 	}
-	
-	@RequestMapping(value="/create", method = RequestMethod.POST, params = "create")
-	public ModelAndView create(@Valid Vehicle vehicle, BindingResult binding){
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "create")
+	public ModelAndView create(@Valid Vehicle vehicle, BindingResult binding) {
 		ModelAndView result;
-		
-		if(binding.hasErrors()){
-			
+
+		if (binding.hasErrors()) {
+
 			result = new ModelAndView("vehicle/create");
-			
+
 			result.addObject("mode", "create");
 			result.addObject("vehicle", vehicle);
 			result.addObject("isOwner", true);
-			
-		}else{
-			try{
+
+		} else {
+			try {
 				vehicleService.save(vehicle);
 				result = new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
+			} catch (Throwable oops) {
 				result = new ModelAndView("vehicle/create");
-				
+
 				result.addObject("mode", "create");
 				result.addObject("vehicle", vehicle);
 				result.addObject("isOwner", true);
 				result.addObject("message", "vehicle.commit.error");
-				
+
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam int vehicleId){
+	public ModelAndView edit(@RequestParam int vehicleId) {
 		ModelAndView result;
 		Vehicle vehicle;
-		
+
 		vehicle = vehicleService.findOne(vehicleId);
 		result = new ModelAndView("vehicle/edit");
-		
-		if(vehicle!=null && vehicleService.checkOwner(vehicle)){
+
+		if (vehicle != null && vehicleService.checkOwner(vehicle)) {
 			result.addObject("isOwner", true);
 		}
-		
+
 		result.addObject("vehicle", vehicle);
 		result.addObject("mode", "edit");
-		
+
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "edit")
-	public ModelAndView edit(@Valid Vehicle vehicle, BindingResult binding){
+	public ModelAndView edit(@Valid Vehicle vehicle, BindingResult binding) {
 		ModelAndView result;
-		
-		if(binding.hasErrors()){
+
+		if (binding.hasErrors()) {
 			result = new ModelAndView("vehicle/edit");
-			
+
 			result.addObject("vehicle", vehicle);
 			result.addObject("mode", "edit");
 			result.addObject("isOwner", true);
-		}else{
-			try{
+		} else {
+			try {
 				vehicleService.save(vehicle);
 				result = new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
+			} catch (Throwable oops) {
 				result = new ModelAndView("vehicle/edit");
-				
+
 				result.addObject("vehicle", vehicle);
 				result.addObject("mode", "edit");
 				result.addObject("isOwner", true);
 				result.addObject("message", "vehicle.commit.error");
 			}
 		}
-		
+
 		return result;
 	}
-	
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(@Valid Vehicle vehicle, BindingResult binding){
+	public ModelAndView delete(@Valid Vehicle vehicle, BindingResult binding) {
 		ModelAndView result;
-		
-		if(binding.hasErrors()){
+
+		if (binding.hasErrors()) {
 			result = new ModelAndView("vehicle/edit");
-			
+
 			result.addObject("vehicle", vehicle);
 			result.addObject("mode", "edit");
 			result.addObject("isOwner", true);
-		}else{
-			try{
+		} else {
+			try {
 				vehicleService.delete(vehicle);
 				result = new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
+			} catch (IllegalArgumentException oops) {
 				result = new ModelAndView("vehicle/edit");
-				
+
+				result.addObject("vehicle", vehicle);
+				result.addObject("mode", "edit");
+				result.addObject("isOwner", true);
+
+				if (oops.getMessage().equals("vehicle.trips.error")) {
+					result.addObject("message", "vehicle.trips.error");
+				} else {
+					result.addObject("message", "vehicle.commit.error");
+				}
+			} catch (Throwable oops) {
+				result = new ModelAndView("vehicle/edit");
+
 				result.addObject("vehicle", vehicle);
 				result.addObject("mode", "edit");
 				result.addObject("isOwner", true);
 				result.addObject("message", "vehicle.commit.error");
 			}
 		}
-		
+
 		return result;
 	}
-	
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam int vehicleId) {
+		ModelAndView result;
+		Vehicle vehicle;
+
+		vehicle = vehicleService.findOne(vehicleId);
+		result = new ModelAndView("vehicle/display");
+
+		if (vehicle != null && vehicleService.checkOwner(vehicle)) {
+			result.addObject("isOwner", true);
+		}
+
+		result.addObject("vehicle", vehicle);
+
+		return result;
+	}
+
 }

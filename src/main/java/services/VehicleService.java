@@ -56,6 +56,8 @@ public class VehicleService {
 	}
 
 	public void delete(Vehicle vehicle) {
+		//We check if the vehicle has trips. If the vehicle as it we don't delete it
+		Assert.isTrue(vehicle.getTrips().isEmpty(),"vehicle.trips.error");
 		vehicleRepository.delete(vehicle);
 	}
 
