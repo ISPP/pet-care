@@ -1841,7 +1841,7 @@
 	<property name="startCity" value="Malaga"></property>
 	<property name="endCity" value="Sevilla"></property>
 	<property name="distance" value="SHORT"></property>
-	<property name="moment" value="2016/04/20"></property>
+	<property name="moment" value="2016/05/20"></property>
 	<property name="cost" value="20"></property>
 	<property name="vehicle" ref="vehicle1"></property>	
 	<property name="registrations">
@@ -2093,6 +2093,8 @@
 	<property name="moment" value="07/03/2015 00:00"></property>
 	<property name="Trip" ref="trip1"></property>
 	<property name="petOwner" ref="petOwner8.1"></property>
+	<property name="payByPetOwner" value="false"></property>
+	<property name="payByAdmin" value="false"></property>
 	
 	</bean>
 	

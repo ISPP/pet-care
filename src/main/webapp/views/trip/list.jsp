@@ -7,48 +7,60 @@
  * TDG Licence, a copy of which you may download from 
  * http://www.tdg-seville.info/License.html
  --%>
-
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
-<display:table class="displaytag" pagesize="5"
-	name="trips" id="row" requestURI="${requestURI}">
+ <div class="col-md-12">
+ 	<h2><spring:message code="trip.trips"/></h2><hr>	
+ 	<jstl:forEach var="row" items="${trips}">
+ 		<div class="col-md-8-2 panel panel-default">
+	 		
+	 		
+	 		
+	 		<h3 class="h3-no-bottom">${row.startCity} -> ${row.endCity}</h3>
+	 		<table class="text-rigth-2">
+	 			<tr>
+	 			
+	 			<td class="table-separate-100">
+	 				<fmt:formatDate value="${row.moment}" pattern="dd/MM/yyyy HH:mm" />
+	 			</td>
+	 			<td class="table-separate-100">
+	 				<h2>${row.cost} &#8364;</h2>
+	 			</td>
+	 			</tr>
+	 		</table>
+	 		<p > <br/></p>
+	 		<security:authorize access="hasRole('PETOWNER')">
 	
-	<display:column titleKey="trip.moment" property="moment" format="{0,date,dd-MM-yyyy}"/>
-	<display:column titleKey="trip.cost" property="cost"/>
-	<display:column titleKey="trip.startCity" property="startCity" />
-	<display:column titleKey="trip.endCity" property="endCity"/>
-	
-	<security:authorize access="hasRole('PETOWNER')">
-	<display:column>
 		<a href="trip/petOwner/register.do?tripId=<jstl:out value="${row.id}"/>">	
 			<spring:message code="trip.register"/>
 		</a>
-	</display:column>
-	</security:authorize>
-	<security:authorize access="hasRole('PETSHIPPER')">
-	<display:column>
-		<a href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
-			<spring:message code="trip.registrations"/>
-		</a>
-	</display:column>
-	</security:authorize>
 	
-	<display:column>
-		<a href="trip/petShipper/see.do?tripId=<jstl:out value="${row.id}"/>">	
-			<spring:message code="trip.see"/>
-		</a>
-	</display:column>
+	</security:authorize>
+	 		<security:authorize access="hasRole('PETSHIPPER')">
+	 		<a href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="trip.registrations"/></a></security:authorize>
+			<a href="trip/petShipper/see.do?tripId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="trip.see"/></a>
+			
+	<br>
 	
-</display:table>
+	
+
+	 	
+	 	</div>
+ 	</jstl:forEach>
+ </div>
 

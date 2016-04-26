@@ -13,4 +13,12 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
 	@Query("select r from Registration r where r.trip.id=?1")
 	Collection<Registration> findRegistrationsByTrip(Integer id);
 
+	
+	@Query("select r from Registration r where r.petOwner.id=?1 and r.payByPetOwner=false and r.trip.moment>CURRENT_TIMESTAMP")
+	Collection<Registration> findRegistrationNotPayByPetOwnerId(int id);
+
+
+	@Query("select r from Registration r where r.payByPetOwner=true and r.trip.moment<CURRENT_TIMESTAMP")//and r.trip.moment<CURRENT_TIMESTAMP
+	Collection<Registration> findAllToPayByAdmin();
+
 }
