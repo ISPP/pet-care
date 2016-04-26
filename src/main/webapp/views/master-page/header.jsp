@@ -121,6 +121,21 @@
 					<li><a href="" onclick="jumpTo('pet/petOwner/create.do');"><spring:message code="master.page.create" /></a></li>	
 				</ul>
 			</li>
+			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.trips" />
+			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+					<li><a href="" onclick="jumpTo('trip/petOwner//findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>				
+					
+				</ul>
+			</li>
+			
+			
+			
+			
+			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.language" />
 			<!--<span class="glyphicon glyphicon-cog"></span>-->
