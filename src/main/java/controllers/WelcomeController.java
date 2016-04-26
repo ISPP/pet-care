@@ -47,7 +47,8 @@ public class WelcomeController extends AbstractController {
 	@RequestMapping(value = "/index")
 	public ModelAndView index(@Valid @ModelAttribute Credentials credentials,
 			BindingResult bindingResult,
-			@RequestParam(required = false) boolean showError) {
+			@RequestParam(required = false) boolean showError,
+			@RequestParam(required = false) boolean autoLogin) {
 		Assert.notNull(credentials);
 		Assert.notNull(bindingResult);
 		
@@ -73,24 +74,28 @@ public class WelcomeController extends AbstractController {
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
+				result.addObject("autoLogin", autoLogin);
 				result.addObject("index", true);
 				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}else if(actor.getUser().getAuthorities().contains(a2)){
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
+				result.addObject("autoLogin", autoLogin);
 				result.addObject("index", true);
 				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}else if(actor.getUser().getAuthorities().contains(a3)){
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
+				result.addObject("autoLogin", autoLogin);
 				result.addObject("index", true);
 				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}else{
 				result = new ModelAndView("welcome/index");
 				result.addObject("credentials", credentials);
 				result.addObject("showError", showError);
+				result.addObject("autoLogin", autoLogin);
 				result.addObject("index", true);
 				result.addObject("searchSuppliersForm", searchSuppliersForm);
 			}
@@ -98,6 +103,7 @@ public class WelcomeController extends AbstractController {
 			result = new ModelAndView("welcome/index");
 			result.addObject("credentials", credentials);
 			result.addObject("showError", showError);
+			result.addObject("autoLogin", autoLogin);
 			result.addObject("index", true);
 			result.addObject("searchSuppliersForm", searchSuppliersForm);
 		}
@@ -106,6 +112,7 @@ public class WelcomeController extends AbstractController {
 			result = new ModelAndView("welcome/index");
 			result.addObject("credentials", credentials);
 			result.addObject("showError", showError);
+			result.addObject("autoLogin", autoLogin);
 			result.addObject("index", true);
 			result.addObject("searchSuppliersForm", searchSuppliersForm);
 		}

@@ -318,7 +318,12 @@
 		
 		
 		<security:authorize access="isAnonymous()">
-			<li><a href="" data-toggle="modal" data-target="#loginForm"><spring:message code="master.page.login" /></a></li>
+			<div hidden="true">
+			<a id="autoClick" href="" data-toggle="modal" data-target="#loginForm">
+			hidden
+			</a>
+			</div>
+			<li><a style="cursor: pointer;" onclick="clickLogin();"><spring:message code="master.page.login" /></a></li>
         	<li><a href="#users"><spring:message code="master.page.users" /></a></li>
         	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.language" /><span class="caret"></span></a>
           	<ul class="dropdown-menu">
@@ -349,8 +354,18 @@
 
 <script>
 
+function starting(){
+	if("${autoLogin}"=='true'){
+		document.getElementById('autoClick').click();
+	}
+}
+
 function jumpTo(url){
 	window.location.replace(url);
 }
 
+function clickLogin(){
+	jumpTo('./welcome/index.do?autoLogin=true');
+}
+window.onload = starting;
 </script>

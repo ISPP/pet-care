@@ -115,8 +115,8 @@
   <p><spring:message	code="master.page.petcareText2" /></p>
   <br>
   <div class="row">
-    <div class="col-sm-6">
-      <p class="text-center"><strong><spring:message code="master.page.petOwner" /></strong></p><br>
+    <div class="col-sm-3">
+      <p class="text-center"><strong><spring:message code="master.page.petowner" /></strong></p><br>
       <a href="#demo" data-toggle="collapse">
         <img src="images/petOwner-index.jpg" class="img-circle person" alt="Pet Owner" width="255" height="255">
       </a>
@@ -127,16 +127,37 @@
 		<a class="btn btn-default" href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a>
       </div>
     </div>
-    <div class="col-sm-6">
-      <p class="text-center"><strong><spring:message code="master.page.petSitter" /></strong></p><br>
+    <div class="col-sm-3">
+      <p class="text-center"><strong><spring:message code="master.page.petsitter" /></strong></p><br>
       <a href="#demo2" data-toggle="collapse">
-        <img src="images/petOwner-index.jpg" class="img-circle person" alt="Pet Sitter" width="255" height="255">
+        <img src="images/petSitter-index.jpg" class="img-circle person" alt="Pet Sitter" width="255" height="255">
       </a>
       <div id="demo2" class="collapse">
         <p><spring:message code="master.page.petSittertext1" /></p>
         <p><spring:message code="master.page.petSittertext2" /></p>
         <p><spring:message code="master.page.petSittertext3" /></p>
-        <a class="btn btn-default" href="petSitter/create.do"><spring:message code="master.page.register.petSitter" /></a>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <p class="text-center"><strong><spring:message code="master.page.petshipper" /></strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="images/petShipper-index.jpg" class="img-circle person" alt="Pet Shipper" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p><spring:message code="master.page.petSittertext1" /></p>
+        <p><spring:message code="master.page.petSittertext2" /></p>
+        <p><spring:message code="master.page.petSittertext3" /></p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <p class="text-center"><strong><spring:message code="master.page.company" /></strong></p><br>
+      <a href="#demo4" data-toggle="collapse">
+        <img src="images/company-index.jpg" class="img-circle person" alt="Companies" width="255" height="255">
+      </a>
+      <div id="demo4" class="collapse">
+        <p><spring:message code="master.page.petSittertext1" /></p>
+        <p><spring:message code="master.page.petSittertext2" /></p>
+        <p><spring:message code="master.page.petSittertext3" /></p>
       </div>
     </div>
   </div>
