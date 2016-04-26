@@ -30,19 +30,46 @@
 	<div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
 		<security:authorize access="hasRole('ADMIN')">
-			<li><a class="fNiv"><spring:message	code="master.page.complaint" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li>
-						<li><a href="complaint/administrator/listComplaintAdminNotSolved.do"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
-						<li><a href="complaint/administrator/listWithoutAdmin.do"><spring:message code="master.page.complaint.listComplaintWithoutAdmin" /></a></li>	
-						<li><a href="complaint/administrator/listToSolve.do"><spring:message code="master.page.complaint.listComplaintToSolve" /></a></li>				
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.complaint" />
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('complaint/administrator/listComplaintAdminNotSolved.do');"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
+			<li><a href="" onclick="jumpTo('complaint/administrator/listWithoutAdmin.do');"><spring:message code="master.page.complaint.listComplaintWithoutAdmin" /></a></li>
+			<li><a href="" onclick="jumpTo('complaint/administrator/listToSolve.do');"><spring:message code="master.page.complaint.listComplaintToSolve" /></a></li>
+										
 				</ul>
-			</li>
-			<li><a class="fNiv" href="administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard"/></a></li>
-			<li><a class="fNiv" href="supplier/administrator/list.do"><spring:message code="master.page.supplier.list"/></a>
-			<li><a class="fNiv" href="administrator/administrator/displayOwn.do"><spring:message code="master.page.myProfile" /></a></li>				
-			<li><a class="fNiv" href="search/searchSitters.do"><spring:message code="master.page.searchSitters" /></a></li>
+			
+			
+			<li><a href="" onclick="jumpTo('administrator/dashboard.do');">
+			<spring:message code="master.page.administrator.dashboard" />
+			<!--<span class="glyphicon glyphicon-user"></span>-->
+			</a></li>	
+			
+			<li><a href="" onclick="jumpTo('administrator/administrator/displayOwn.do');">
+			<spring:message code="master.page.myProfile" />
+			<!--<span class="glyphicon glyphicon-user"></span>-->
+			</a></li>	
+			
+			<li><a href="" onclick="jumpTo('supplier/administrator/list.do');">
+			<spring:message code="master.page.supplier.list" />
+			<!--<span class="glyphicon glyphicon-user"></span>-->
+			</a></li>	
+			
+			<li><a href="" onclick="jumpTo('search/searchSitters.do');">
+			<spring:message code="master.page.searchSitters" />
+			<!--<span class="glyphicon glyphicon-user"></span>-->
+			</a></li>
+			
+			<li><a href="" onclick="jumpTo('booking/administrator/listToPay.do');">
+			<spring:message code="master.page.payShipper" />
+			<!--<span class="glyphicon glyphicon-user"></span>-->
+			</a></li>	
+			
+			
+			
+			
+			
 		</security:authorize>
 		
 		
