@@ -132,4 +132,33 @@ public class VehiclePetShipperController extends AbstractController{
 		
 		return result;
 	}
+	
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@Valid Vehicle vehicle, BindingResult binding){
+		ModelAndView result;
+		
+		if(binding.hasErrors()){
+			result = new ModelAndView("vehicle/edit");
+			
+			result.addObject("vehicle", vehicle);
+			result.addObject("mode", "edit");
+			result.addObject("isOwner", true);
+		}else{
+			try{
+				vehicleService.delete(vehicle);
+				result = new ModelAndView("redirect:list.do");
+			}catch(Throwable oops){
+				result = new ModelAndView("vehicle/edit");
+				
+				result.addObject("vehicle", vehicle);
+				result.addObject("mode", "edit");
+				result.addObject("isOwner", true);
+				result.addObject("message", "vehicle.commit.error");
+			}
+		}
+		
+		return result;
+	}
+	
 }
