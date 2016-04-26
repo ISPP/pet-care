@@ -1,5 +1,8 @@
 package controllers.petOwner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +37,22 @@ public class ReviewPetOwnerController extends AbstractController{
 	@Autowired
 	private BookingService bookingService;
 	
-	// Saving ---------------------------------------------------------------
+
+	
+	@RequestMapping(value="/list",method=RequestMethod.GET)
+	public ModelAndView list(){
+		ModelAndView result;
+		List<Review> reviews;
+		
+		result = new ModelAndView("review/list");
+		reviews = new ArrayList<Review>(reviewService.findReviewByPetOwnerId());
+		
+		result.addObject("reviews",reviews);
+		result.addObject("requestURI", "review/petOwner/list.do");
+		
+		return result;
+	}
+	
 	
 	@RequestMapping(value="/create", method = RequestMethod.GET)
 	public ModelAndView create(@RequestParam int bookingId){

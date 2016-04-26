@@ -8,19 +8,23 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
+
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
+<!-- 
 <display:table class="displaytag" pagesize="5"
 	name="reviews" id="row" requestURI="${requestURI}">
 	
@@ -34,5 +38,37 @@
 		</a>
 	</display:column>
 	
-</display:table>
+</display:table> 
+ -->
+ <div class="col-md-12">
+	</div>
+	<h2><spring:message code="review.review"/></h2><hr>
+	<jstl:forEach var="reviews" items="${reviews}">
+	 <div class="col-md-6">
+	 <h3 class="midl-left">${reviews.booking.code}</h3>
+	 	<table class="text-rigth-2">
+	 			<tr>
+	 			
+	 			<td class="table-separate-100">
+	 				<fmt:formatDate value="${reviews.creationMoment}" pattern="dd/MM/yyyy" />
+	 			</td>
+	 		
+	 			<td class="table-separate-100">
+	 				<h2>${reviews.rating} &#8364;</h2>
+	 			</td>
+	 			<td class="table-separate-100">
+	 				<h2>${reviews.reviewer.user.username} </h2>
+	 			</td>
+	 			
+	 			<td class="table-separate-100">
+	 				<h2>${reviews.reviewed.user.username} </h2>
+	 			</td>
+	 			
+	 			
+	 			
+	 			</tr>
+	 		</table>
+		
+	</div>
+	</jstl:forEach>
 
