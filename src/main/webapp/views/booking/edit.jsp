@@ -34,10 +34,22 @@
 	
 	
 
-	
-		<acme:textbox code="booking.startMoment" path="startMoment"/>
-		<acme:textbox code="booking.endMoment" path="endMoment"/>
+			<form:label path="startMoment">
+				<spring:message code="booking.startMoment" />:
+			</form:label>
+		<form:input code="booking.startMoment" path="startMoment" class="blackL datepicker"/>
 		
+		 
+			<form:errors path="startMoment" cssClass="error" />
+			<br>
+	<form:label path="endMoment">
+				<spring:message code="booking.endMoment" />:
+			</form:label>
+		<form:input code="booking.endMoment" path="endMoment" class="blackL datepicker"/>
+		
+		 
+			<form:errors path="endMoment" cssClass="error" />
+		<br>
 	<c:choose>
     <c:when test="${!forBooking}">
       		
@@ -55,8 +67,8 @@
 			
 			
 			<br>
-			<div class="switch-wrapper">
-			 <form:checkbox path="night"/>
+			<div class="switch-wrapper" >
+			 <form:checkbox path="night" onclick="checkPerDay()"/>
 			</div>
 			
 			<br>
@@ -96,6 +108,13 @@ $("input[type=checkbox]").switchButton({
 	  button_width: 25
 	}); 
 
+
+function checkPerDay(){
+	
+	//console.log($("#night").val());
+	window.alert("aaaa");
+	
+}
 //$("#night").bootstrapSwitch('setSizeClass', 'switch-large');
 
 $(function() {

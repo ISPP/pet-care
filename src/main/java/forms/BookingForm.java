@@ -24,7 +24,7 @@ public class BookingForm {
 
 		@NotNull
 		@Temporal(TemporalType.TIMESTAMP)
-		@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+		@DateTimeFormat(pattern = "dd/MM/yyyy")
 		public Date getStartMoment() {
 			return startMoment;
 		}
@@ -40,7 +40,7 @@ public class BookingForm {
 		
 		@NotNull
 		@Temporal(TemporalType.TIMESTAMP)
-		@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+		@DateTimeFormat(pattern = "dd/MM/yyyy")
 		public Date getendMoment() {
 			return endMoment;
 		}
