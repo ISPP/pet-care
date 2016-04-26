@@ -21,19 +21,37 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="${requestURI}" modelAttribute="registrationF">
-
+	<div class="col-md-8">
+		<acme:textbox code="trip.startCity" path="startCity"/>
+		<acme:textbox code="trip.endCity" path="endCity"/>
+	</div>
+	<div class="col-md-8">
+		<table class="labelInput">
+			<tr>
+			<th class="tableLabel">
+			<form:label path="${trip.moment}" >
+				<b><spring:message code="trip.moment" /></b>
+			</form:label>	
+			</th>
+			<th class="tableInput">
+				<spring:message var="moment" code="trip.moment"/>
+				<form:input class="blackL datepicker" path="moment"/>	
+			</th>
+			<th class="tableError">
+			
+			<form:errors path="moment" cssClass="error" />
+			</th>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-8">
+	<input type="submit" name="save" class="button"
+			value="<spring:message code="trip.save" />" />
 	
-	<acme:textbox code="trip.startCity" path="startCity"/>
-	<acme:textbox code="trip.endCity" path="endCity"/>
-	
-	
-
-<input type="submit" name="save" class="button"
-		value="<spring:message code="trip.save" />" />
-
-	
-	<input type="button" name="cancel" class="button"
-		value="<spring:message code="trip.cancel" />"
-		onclick="javascript: window.location.replace('welcome/index.do');" />
-	<br />
+		
+		<input type="button" name="cancel" class="button"
+			value="<spring:message code="trip.cancel" />"
+			onclick="javascript: window.location.replace('welcome/index.do');" />
+		<br />
+	</div>
 </form:form>

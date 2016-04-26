@@ -83,6 +83,12 @@ public class TripService {
 		result = tripRepository.findOne(id);
 		return result;
 	}
+	
+	public Collection<Trip> findTripsStartAndEndCitiesMoment(String startCity, String endCity, Date moment) {
+		Collection<Trip> result;
+		result = tripRepository.findTripsByStartAndEndCitiesMoment(startCity,endCity, moment);
+		return result;
+	}
 
 	public Collection<Trip> findTripsStartAndEndCities(String startCity, String endCity) {
 		Collection<Trip> result;

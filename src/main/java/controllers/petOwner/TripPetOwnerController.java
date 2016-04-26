@@ -12,19 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.BookingService;
-import services.PetOwnerService;
-import services.PetSitterService;
 import services.RegistrationService;
 import services.TripService;
 import controllers.AbstractController;
 import domain.*;
-import domain.Pet;
-import domain.PetOwner;
-import domain.PetSitter;
-import domain.Review;
 import domain.Trip;
-import forms.BookingForm;
 import forms.RegistrationForm;
 
 @Controller
@@ -63,8 +55,8 @@ public class TripPetOwnerController extends AbstractController {
 
 			result = new ModelAndView("trip/listToRegister");
 
-			trips = tripService.findTripsStartAndEndCities(
-					registrationF.getStartCity(), registrationF.getEndCity());
+			trips = tripService.findTripsStartAndEndCitiesMoment(
+					registrationF.getStartCity(), registrationF.getEndCity(), registrationF.getMoment());
 
 			result.addObject("trips", trips);
 			result.addObject("requestURI", "trip/petOwner/listToRegister.do?"
