@@ -215,6 +215,15 @@
 		    	</ul>
 		    	</li>
 		    
+		    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.language" />
+			<!--<span class="glyphicon glyphicon-cog"></span>-->
+			<span class="caret"></span></a>
+          	<ul class="dropdown-menu">
+            	<li> <a href="" onclick="jumpTo('./?language=en');"><img width="35" height="23" src="images/United-Kingdom.png">EN</a></li>
+            	<li><a href="" onclick="jumpTo('./?language=es');"><img width="35" height="23" src="images/Spain.png">ESP</a></li>
+          	</ul>
+        	</li>	
 			
 		
 	</security:authorize>

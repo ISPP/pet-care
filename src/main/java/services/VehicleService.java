@@ -24,7 +24,6 @@ public class VehicleService {
 		super();
 	}
 	
-	
 	@Autowired
 	private VehicleRepository vehicleRepository;
 	
@@ -74,6 +73,14 @@ public class VehicleService {
 
 	public Collection<Vehicle> findByPetShipperId(int petShipperId) {
 		return vehicleRepository.findByPetShipperId(petShipperId);
+	}
+
+	public boolean checkOwner(Vehicle vehicle) {
+		PetShipper petShipper;
+		
+		petShipper = (PetShipper) actorService.findActorByUserId();
+		
+		return petShipper.equals(vehicle.getPetShipper());
 	}
 
 

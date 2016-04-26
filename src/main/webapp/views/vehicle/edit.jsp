@@ -35,8 +35,13 @@
 		</form:label>
 		<form:textarea class="register-todoAncho" path="description" />
 		<form:errors cssClass="error" path="description"/>
+		<jstl:if test="${mode==\"create\"}">
+			<acme:submit name="create" code="vehicle.create"/>
+		</jstl:if>
+		<jstl:if test="${mode==\"edit\"}">
+			<acme:submit name="edit" code="vehicle.edit"/>
+		</jstl:if>
 		<acme:cancel url="vehicle/petShipper/list.do" code="vehicle.cancel"/>
-		<acme:submit name="create" code="vehicle.create"/>
 	</form:form>
 </jstl:if>
 

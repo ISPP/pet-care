@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.PetShipperService;
@@ -81,6 +82,51 @@ public class VehiclePetShipperController extends AbstractController{
 				result.addObject("isOwner", true);
 				result.addObject("message", "vehicle.commit.error");
 				
+			}
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam int vehicleId){
+		ModelAndView result;
+		Vehicle vehicle;
+		
+		vehicle = vehicleService.findOne(vehicleId);
+		result = new ModelAndView("vehicle/edit");
+		
+		if(vehicle!=null && vehicleService.checkOwner(vehicle)){
+			result.addObject("isOwner", true);
+		}
+		
+		result.addObject("vehicle", vehicle);
+		result.addObject("mode", "edit");
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "edit")
+	public ModelAndView edit(@Valid Vehicle vehicle, BindingResult binding){
+		ModelAndView result;
+		
+		if(binding.hasErrors()){
+			result = new ModelAndView("vehicle/edit");
+			
+			result.addObject("vehicle", vehicle);
+			result.addObject("mode", "edit");
+			result.addObject("isOwner", true);
+		}else{
+			try{
+				vehicleService.save(vehicle);
+				result = new ModelAndView("redirect:list.do");
+			}catch(Throwable oops){
+				result = new ModelAndView("vehicle/edit");
+				
+				result.addObject("vehicle", vehicle);
+				result.addObject("mode", "edit");
+				result.addObject("isOwner", true);
+				result.addObject("message", "vehicle.commit.error");
 			}
 		}
 		

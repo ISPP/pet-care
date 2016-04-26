@@ -12,7 +12,7 @@
 <div class="col-md-12">
  	<h2><spring:message code="vehicle.myVehicles"/></h2><hr>	
  	<jstl:forEach var="row" items="${vehicles}">
-		<div class="col-md-8-2 panel panel-default">
+		<div style="cursor: pointer;" onclick="location.href='vehicle/petShipper/display.do?complaintId=${row.id}';" class="col-md-8-2 panel panel-default">
 			<div class="wrap-3">
 			<h3 class="h3-no-bottom">${row.title}</h3>
 			<p class="register-left"><jstl:out value="${row.description}"/></p>
