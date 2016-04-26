@@ -13,7 +13,7 @@ import domain.Supplier;
 public class BookingForm {
 
 	// Attributes----------------------------------------------
-		private Date  startMoment, endMoment;
+		private Date  startMoment, endMoment, startHour, endHour;
 	
 		private boolean cancelled;
 		private boolean night;
@@ -48,6 +48,31 @@ public class BookingForm {
 		public void setendMoment(Date endMoment) {
 			this.endMoment = endMoment;
 		}
+		
+		
+		
+
+		
+		@Temporal(TemporalType.TIMESTAMP)
+		@DateTimeFormat(pattern = "HH:mm")
+		public Date getStartHour() {
+			return startHour;
+		}
+
+		public void setStartHour(Date startHour) {
+			this.startHour = startHour;
+		}
+
+		@Temporal(TemporalType.TIMESTAMP)
+		@DateTimeFormat(pattern = "HH:mm")
+		public Date getEndHour() {
+			return endHour;
+		}
+
+		public void setEndHour(Date endHour) {
+			this.endHour = endHour;
+		}
+		
 		
 
 //		@Min(0)

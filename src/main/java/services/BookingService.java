@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.hibernate.exception.DataException;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Hours;
@@ -167,7 +168,6 @@ public class BookingService {
 	 * bookingRepository.save(booking); return result; }
 	 */
 
-
 	public void delete(Booking booking) {
 		bookingRepository.delete(booking);
 	}
@@ -192,7 +192,6 @@ public class BookingService {
 			int supplierId) {
 		List<Booking> result;
 
-
 		result = new ArrayList<Booking>(bookingRepository.findByDateSupplier(
 				startDate, endDate, supplierId));
 
@@ -202,6 +201,7 @@ public class BookingService {
 	public BookingForm create() {
 		BookingForm result;
 		result = new BookingForm();
+		result.setNight(false);
 		return result;
 	}
 
@@ -209,6 +209,22 @@ public class BookingService {
 		Booking result;
 		result = new Booking();
 		// result.setCancelled(bookingForm.isCancelled());
+
+		if (!bookingForm.isNight()) {
+			
+			if(bookingForm.getStartHour()==null || bookingForm.getEndHour()==null){
+				throw new DataException(null, null);
+			}
+			
+			long startMoment = bookingForm.getStartMoment().getTime()
+					+ bookingForm.getStartHour().getTime();
+			bookingForm.setStartMoment(new Date(startMoment));
+			
+			long endMoment = bookingForm.getendMoment().getTime()
+					+ bookingForm.getEndHour().getTime();
+			bookingForm.setendMoment(new Date(endMoment));
+
+		} 
 		result.setNight(bookingForm.isNight());
 		result.setStartMoment(bookingForm.getStartMoment());
 		result.setEndMoment(bookingForm.getendMoment());
@@ -227,29 +243,26 @@ public class BookingService {
 		Double result;
 		Date startMoment, endMoment;
 		PetSitter petSitter;
-		petSitter=(PetSitter) b.getSupplier();
-		//if it is taking into account nights, that is, days
+		petSitter = (PetSitter) b.getSupplier();
+		// if it is taking into account nights, that is, days
 		startMoment = b.getStartMoment();
 		endMoment = b.getEndMoment();
-		DateTime end,start;
-		start=new DateTime(startMoment);
-		end=new DateTime(endMoment);
-		int days = Days.daysBetween(start,
-				end).getDays();
-		int hours=Hours.hoursBetween(start,
-				end).getHours();
-		
+		DateTime end, start;
+		start = new DateTime(startMoment);
+		end = new DateTime(endMoment);
+		int days = Days.daysBetween(start, end).getDays();
+		int hours = Hours.hoursBetween(start, end).getHours();
+
 		Assert.state(start.isAfterNow() && start.isBefore(end));
-		if(b.isNight()){
-			Assert.isTrue(days>0);
-			
-			result=days*petSitter.getPriceNight();
-		}else{
-			Assert.isTrue(days==0);
-			result=hours*petSitter.getPriceHour();
+		if (b.isNight()) {
+			Assert.isTrue(days > 0);
+
+			result = days * petSitter.getPriceNight();
+		} else {
+			Assert.isTrue(days == 0);
+			result = hours * petSitter.getPriceHour();
 		}
-		
-		
+
 		return result;
 
 	}
@@ -273,42 +286,30 @@ public class BookingService {
 		return result;
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	private double calculateCostForCompanyBookings(Booking b) {
 		Double result;
 		Date startMoment, endMoment;
 		Company company;
-		company=(Company) b.getSupplier();
-		
+		company = (Company) b.getSupplier();
+
 		startMoment = b.getStartMoment();
 		endMoment = b.getEndMoment();
-		DateTime end,start;
-		start=new DateTime(startMoment);
-		end=new DateTime(endMoment);
-		int days = Days.daysBetween(start,
-				end).getDays();
-		
-		
+		DateTime end, start;
+		start = new DateTime(startMoment);
+		end = new DateTime(endMoment);
+		int days = Days.daysBetween(start, end).getDays();
+
 		Assert.state(start.isAfterNow() && start.isBefore(end));
-		
-		Assert.isTrue(days>0);
-			
-		result=days*company.getPricePerDay();
-		
-		
-		
+
+		Assert.isTrue(days > 0);
+
+		result = days * company.getPricePerDay();
+
 		return result;
 
 	}
 
-	
 	public Booking registerCompanyBooking(Booking booking) {
 		Booking result;
 		booking.setCreationMoment(new Date(System.currentTimeMillis() - 1000));
@@ -359,7 +360,7 @@ public class BookingService {
 		bookingRepository.save(booking);
 
 	}
-	
+
 	public void cancelBooking2(Integer id) {
 		PetOwner petOwner = petOwnerService.findOneByPrincipal();
 		Assert.notNull(petOwner, "No hay un pet owner conectado");
@@ -396,41 +397,38 @@ public class BookingService {
 		Supplier supplier = supplierService.getLoggedSupplier();
 		Assert.notNull(supplier, "no hay un supplier logueado");
 		Booking booking = bookingRepository.findOne(id);
-		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(), "accediendo a un sitio sin permisos");
+		Assert.isTrue(booking.getSupplier().getId() == supplier.getId(),
+				"accediendo a un sitio sin permisos");
 		Assert.isTrue(booking.getStatus().equals("PENDING"));
 		booking.setStatus("REJECTED");
 		bookingRepository.save(booking);
 
 	}
 
-
-
 	public Collection<Booking> findBookingNotPayByPetOwnerId() {
 		PetOwner petOwner = petOwnerService.getLogged();
-		Collection<Booking> res = bookingRepository.findBookingNotPayBySupplierId(petOwner.getId());
-		
-				
-		
+		Collection<Booking> res = bookingRepository
+				.findBookingNotPayBySupplierId(petOwner.getId());
+
 		return res;
 	}
-	
+
 	public Collection<Booking> findBookingNotPayByAdmin() {
-		
+
 		Collection<Booking> res = bookingRepository.findAllToPayByAdmin();
-		
-				
-		
+
 		return res;
 	}
 
 	public Booking findBookingLastUpdate(PetOwner petOwner) {
 		Booking booking;
-		
-		List<Booking> res = (List<Booking>) bookingRepository.findBookingNotPayBySupplierId(petOwner.getId());
+
+		List<Booking> res = (List<Booking>) bookingRepository
+				.findBookingNotPayBySupplierId(petOwner.getId());
 		booking = res.get(0);
-		for(Booking b : res){
-			
-			if(booking.getUpdateMoment().before(b.getUpdateMoment())){
+		for (Booking b : res) {
+
+			if (booking.getUpdateMoment().before(b.getUpdateMoment())) {
 				booking = b;
 			}
 		}
@@ -439,18 +437,17 @@ public class BookingService {
 
 	public Collection<Booking> findBookingPayByPetOwnerId() {
 		PetOwner petOwner = petOwnerService.getLogged();
-		Collection<Booking> res = bookingRepository.findBookingPayBySupplierId(petOwner.getId());
-		
-				
-		
+		Collection<Booking> res = bookingRepository
+				.findBookingPayBySupplierId(petOwner.getId());
+
 		return res;
 	}
 
 	public Collection<Booking> findBookinByPetOwnerId() {
 		PetOwner petOwner = petOwnerService.getLogged();
-		Collection<Booking> res = bookingRepository.findBookingByPetOwnerId(petOwner.getId());
+		Collection<Booking> res = bookingRepository
+				.findBookingByPetOwnerId(petOwner.getId());
 		return res;
 	}
-	
 
 }

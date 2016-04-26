@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -155,7 +156,12 @@ public class BookingPetOwnerController extends AbstractController {
 				result = createEditModelAndView(bookingForm,
 						"booking.dateError", "PetSitter");
 
-			} catch (Throwable oops) {
+			}catch(DataException oops){
+				result = createEditModelAndView(bookingForm,
+						"booking.error.hour", "PetSitter");
+				
+			}
+			catch (Throwable oops) {
 
 				result = createEditModelAndView(bookingForm,
 						"booking.error.operation", "PetSitter");
