@@ -21,6 +21,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+ 
 
 <form:form action="${requestURI}" modelAttribute="bookingForm">
 
@@ -42,17 +43,22 @@
 				<spring:message code="booking.Type" />:
 			</form:label>
 			
-			<form:radiobutton path="night" value="0"/>
-			<form:label path="night">
-				<spring:message code="booking.perHour" />
-			</form:label>
-			<form:radiobutton path="night" value="1"/>
+<%-- 			<form:radiobutton path="night" value="0"/> --%>
+<%-- 			<form:label path="night"> --%>
+<%-- 				<spring:message code="booking.perHour" /> --%>
+<%-- 			</form:label> --%>
+			
 			<form:label path="night">
 				<spring:message code="booking.perDay" />
+				
 			</form:label>
 		
-			<form:errors cssClass="error" path="night" />
-			<br/>
+			<input type="checkbox" id="night" name="night" checked>
+			
+			<br>
+			
+		
+			
 			
 		
     </c:when>    
@@ -76,3 +82,17 @@
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
 </form:form>
+<script type="text/javascript">
+$("[name='night']").bootstrapSwitch('setSizeClass', 'switch-small');
+
+$('#night').change(function(){
+    if($(this).attr('checked')){
+         $(this).val('1');
+  
+    }else{
+         $(this).val('0');
+         
+    }
+});
+
+</script>

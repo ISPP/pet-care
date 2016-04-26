@@ -38,6 +38,9 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
 
   <link href="styles/common.css" rel="stylesheet" type="text/css">
+    
+  <link href="styles/bootstrap-switch.css" rel="stylesheet" type="text/css">
+  <script src="scripts/bootstrap-switch.js"></script>
    <script>
   $(function() {
     $( ".datepicker" ).datepicker({
