@@ -104,5 +104,14 @@ public class ReviewService {
 		return result;
 	}
 
+	public Collection<Review> findReviewByPetOwnerId() {
+		Collection<Review> result;
+		PetOwner petOwner = petOwnerService.getLogged();
+		
+		result = reviewRepository.findReviewByPetOwnerId(petOwner.getId());
+		
+		return result;
+	}
+
 
 }

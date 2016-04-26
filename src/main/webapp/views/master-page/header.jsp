@@ -23,8 +23,8 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="" onclick="jumpTo('./');">
-		<!-- <img alt="PetCare" width="200px" src="images/Logo1line.png"/> -->
-		PetCare
+		 <img alt="PetCare" width="50%" src="images/logo-header.png"/> 
+		<!--PetCare-->
 		</a>
 	</div>
 	<div class="collapse navbar-collapse" id="myNavbar">
@@ -98,8 +98,14 @@
 				</ul>
 			</li>
 			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.review" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('review/petOwner/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
 			
-			
+				</ul>	
 			
 			<li><a href="" onclick="jumpTo('petOwner/petOwner/displayOwn.do');">
 			<spring:message code="master.page.myProfile" />
@@ -168,6 +174,8 @@
 				
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.booking" />
+			
+			
 			<!--<span class="glyphicon glyphicon-bell"></span>-->
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
@@ -194,6 +202,15 @@
 			</li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.review" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
+			
+				</ul>
+			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.booking" />
 			<!--<span class="glyphicon glyphicon-book"></span>-->
 			<span class="caret"></span></a>
@@ -216,8 +233,14 @@
 				</ul>
 			</li>
 			
-			<li><a href="" onclick="jumpTo('review/supplier/list.do');"><spring:message code="master.page.petSitter.review"/></a>
-			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.review" />
+			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<span class="caret"></span></a>
+		    	<ul class="dropdown-menu">
+			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
+			
+				</ul>
 			<li><a href="" onclick="jumpTo('search/searchSitters.do');"><spring:message code="master.page.searchSitters" /></a></li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -257,6 +280,8 @@
 					<li><a href="" onclick="jumpTo('booking/supplier/listPendingSupplier.do')"><spring:message code="master.page.booking.listPendingSupplier" /></a></li>
 						
 				</ul>
+				
+				
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.petSitter.review"/>
 				<span class="caret"></span></a>
