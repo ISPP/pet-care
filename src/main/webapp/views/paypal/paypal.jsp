@@ -25,5 +25,8 @@
 	></script>
 	 </div>
 </div>
-
 	</form:form>
+	<h3 class="widget-title"><spring:message code="payBooking3" /></h3>
+	<a  href="booking/petOwner/cancelBooking.do?id=${booking.id}"> <spring:message
+						code="payBooking4" />
+			</a>

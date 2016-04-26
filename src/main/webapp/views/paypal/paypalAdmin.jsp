@@ -11,7 +11,7 @@
 <div class="widget-container boxed">
     <h3 class="widget-title"><spring:message code="payBooking" /></h3>
     <div class="inner" style= "min-height: 250px;">
-   <spring:message code="payFrom" /> <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=${booking.supplier.email}"
+   <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=${booking.supplier.email}"
 	    data-button="buynow" 
 	    data-name='<spring:message code = "paypal.description"></spring:message>' 
 	    data-quantity="1" 

@@ -88,7 +88,16 @@ public class BookingPetOwnerController extends AbstractController {
 
 		bookingService.cancelBooking(id);
 		ModelAndView result;
-		result = new ModelAndView("welcome/index");
+		result = new ModelAndView("redirect:../../welcome/index.do");
+		return result;
+	}
+	
+	@RequestMapping(value = "/cancelBooking", method = RequestMethod.GET)
+	public ModelAndView cancel2(@RequestParam("id") int id) {
+
+		bookingService.cancelBooking2(id);
+		ModelAndView result;
+		result = new ModelAndView("redirect:../../welcome/index.do");
 		return result;
 	}
 

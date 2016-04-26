@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BookingService;
+import services.PetOwnerService;
 import services.SupplierService;
 
 import domain.Booking;
@@ -31,6 +32,9 @@ public class PaypalController {
 	@Autowired
 	private BookingService bookingService;
 	
+	@Autowired
+	private PetOwnerService petOwnerService;
+	
 	@RequestMapping(value = "/listPay", method = RequestMethod.GET)
 	public ModelAndView listToPay() {
 		ModelAndView result;
@@ -39,6 +43,19 @@ public class PaypalController {
 		result = new ModelAndView("paypal/listPay");
 		result.addObject("bookings", bookings);
 		result.addObject("requestURI", "paypal/listPay.do");
+
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+
+		Collection<Booking> bookings = bookingService.findBookinByPetOwnerId();
+		result = new ModelAndView("booking/list");
+		result.addObject("bookings", bookings);
+		result.addObject("requestURI", "paypal/list.do");
 
 		return result;
 	}
@@ -70,6 +87,7 @@ public class PaypalController {
 			//que es el precio del booking+lo que nosotros nos llevamos de comision
 			Double pago = booking.getPrice()+comision; 
 			booking.setUpdateMoment(new Date(System.currentTimeMillis() - 1000));
+			booking.setPayByPetOwner(true);			
 			bookingService.save(booking);
 			result.addObject("booking", booking);
 			result.addObject("emailpetOwner", emailpetOwner);
@@ -141,17 +159,18 @@ public class PaypalController {
 	@RequestMapping(value = "/paySuccessful", method = RequestMethod.GET)
 	public ModelAndView paypalsuccessful() {
 		ModelAndView result;
-
-		Booking booking = bookingService.findBookingLastUpdate();
+		PetOwner petOwner = petOwnerService.getLogged();
+		Booking booking = bookingService.findBookingLastUpdate(petOwner);
 		try{
 			
 			
 			booking.setPayByPetOwner(true);
 			bookingService.save(booking);
-			result = new ModelAndView("welcome/index");
+			petOwnerService.save(petOwner);
+			result = new ModelAndView("redirect:list.do");
 			
 		}catch (Exception oops){
-			result = new ModelAndView("welcome/index");
+			result = new ModelAndView("redirect:../../welcome/index.do");
 			
 			result.addObject("message", "commit.operation");
 			
