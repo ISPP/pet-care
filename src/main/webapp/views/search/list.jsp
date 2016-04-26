@@ -68,7 +68,7 @@
 			<spring:message var="addrs" code="sitter.address"/>
 			<form:input class="blackL" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
-			
+			<br/>
 			<form:label path="type">
 				<spring:message code="supplier.type" />
 			</form:label>	

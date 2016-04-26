@@ -25,7 +25,7 @@
  <div class="col-md-12">
  	<h2><spring:message code="trip.trips"/></h2><hr>	
  	<jstl:forEach var="row" items="${trips}">
- 		<div class="col-md-8-2 panel panel-default">
+ 		<div style="cursor: pointer;" onclick="location.href='trip/petShipper/see.do?tripId=${row.id}';" class="col-md-8-2 panel panel-default">
 	 		
 	 		
 	 		
@@ -50,10 +50,8 @@
 	
 	</security:authorize>
 	 		<security:authorize access="hasRole('PETSHIPPER')">
-	 		<a href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
+	 		<a class="text-left-small" href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
 			<spring:message code="trip.registrations"/></a></security:authorize>
-			<a href="trip/petShipper/see.do?tripId=<jstl:out value="${row.id}"/>">	
-			<spring:message code="trip.see"/></a>
 			
 	<br>
 	

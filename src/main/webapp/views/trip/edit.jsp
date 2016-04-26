@@ -19,39 +19,12 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-
+<div class="col-md-12">
 <form:form action="${requestURI}" modelAttribute="tripForm">
 
 	<form:hidden path="id" />
-	
-	<acme:textarea code="trip.descriptionText" path="descriptionText"/>
-	
-	<acme:textbox code="trip.startCity" path="startCity"/>
-	
-	<acme:textbox code="trip.endCity" path="endCity"/>
-	<br />
-	
-	<div>
-		<table class="labelInput">
-			<tr>
-			<th class="tableLabel">
-			<form:label path="${trip.moment}" >
-				<b><spring:message code="trip.moment" /></b>
-			</form:label>	
-			</th>
-			<th class="tableInput">
-				<spring:message var="moment" code="trip.moment"/>
-				<form:input class="blackL datepicker" path="moment"/>	
-			</th>
-			<th class="tableError">
-			
-			<form:errors path="moment" cssClass="error" />
-			</th>
-			</tr>
-		</table>
-	</div>	
-	
-	<div>
+	<div class="col-md-6">
+		<acme:textbox code="trip.startCity" path="startCity"/>
 		<table class="labelInput">
 			<tr>
 			<th class="tableLabel">
@@ -71,11 +44,27 @@
 			</th>
 			</tr>
 		</table>
-	</div>	
-	<br />
-	<acme:textbox code="trip.cost" path="cost"/>
-	
-	<div>
+		<br/>
+		<table class="labelInput">
+			<tr>
+			<th class="tableLabel">
+			<form:label path="${trip.moment}" >
+				<b><spring:message code="trip.moment" /></b>
+			</form:label>	
+			</th>
+			<th class="tableInput">
+				<spring:message var="moment" code="trip.moment"/>
+				<form:input class="blackL datepicker" path="moment"/>	
+			</th>
+			<th class="tableError">
+			
+			<form:errors path="moment" cssClass="error" />
+			</th>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-6">
+		<acme:textbox code="trip.endCity" path="endCity"/>
 		<table class="labelInput">
 			<tr>
 			<th class="tableLabel">
@@ -93,14 +82,18 @@
 			</th>
 			</tr>
 		</table>
+		<br/>
+		<acme:textbox code="trip.cost" path="cost"/>
 	</div>
+	<div class="col-md-6">
+	<form:label class="midl-left" path="descriptionText">
+		<spring:message code="trip.descriptionText" />
+	</form:label>
+	<form:textarea class="register-todoAncho"  path="descriptionText"/>
+	</div>
+	
 	<br />
-	<div>
-		<table class="labelInput">
-			<tr>
-			<th class="tableLabel">
-			</th>
-			<th class="tableInput">
+	<div class="midl-left">
 				<input type="submit" name="save" class="button"
 					value="<spring:message code="trip.save" />" />
 					
@@ -112,10 +105,6 @@
 				<input type="button" name="cancel" class="button"
 					value="<spring:message code="trip.cancel" />"
 					onclick="javascript: window.location.replace('welcome/index.do');" />
-			</th>
-			<th class="tableError">
-			</th>
-			</tr>
-		</table>
 	</div>
 </form:form>
+</div>

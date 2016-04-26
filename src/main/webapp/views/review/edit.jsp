@@ -29,8 +29,28 @@
 	<form:hidden path="reviewer" />
 	<form:hidden path="creationMoment" />	
 	
-	<acme:textarea code="review.description" path="description" readonly="false"/>
+	<div class="col-md-8-2-noColor panel panel-default">
+	 		<div class="wrap-3">
+	 		<h3 class="h3-no-bottom"><spring:message code="review.review"/>: <fmt:formatDate  value="${review.booking.creationMoment}" pattern="dd/MM/yyyy HH:mm" /> </h3><hr>
+	<spring:message var="desc" code="review.description" />
+	<form:textarea class="register-todoAncho" rows="8" path="description" placeholder="${desc}..."/>
 	
+	
+	<div class="star-rating">
+      <div class="star-rating__wrap">
+        <spring:message code="review.rating"/>
+        <form:radiobutton class="star-rating__input" id="star-rating-3" path="rating" name="rating" value="3"/>
+        <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3"></label>
+        <form:radiobutton class="star-rating__input" id="star-rating-2" path="rating" name="rating" value="2"/>
+        <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2"></label>
+        <form:radiobutton class="star-rating__input" id="star-rating-1" path="rating" name="rating" value="1"/>
+        <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1"></label>
+        <form:radiobutton id="star-rating-0" hidden="hidden" path="rating" name="rating" value="0"/>
+      </div>
+    </div>
+	
+	
+	<!--  <div>
 	<form:label path="rating">
 		<spring:message code="review.rating" />
 	</form:label>	
@@ -44,7 +64,13 @@
 		
 	</form:select>
 	<form:errors path="rating" cssClass="error" />
-
+	</div>
+	-->
+	<div>
+		<p class="text-rigth-small"><fmt:formatDate  value="${review.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
+	</div>
+	</div>
+	</div>
 <input type="submit" name="save" class="button"
 		value="<spring:message code="review.save" />" />
 

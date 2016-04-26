@@ -28,13 +28,11 @@
 	
 	
 	
-	<div class="col-md-12">
+	<div class="col-md-8-2-noColor panel panel-default">
+	 	<div class="wrap-3">
 	
-		<form:label class="register-left" path="title" >
-		<spring:message code="complaint.name" />
 		<spring:message var="titleText" code="complaint.name" />
-		</form:label>
-		<form:input  path="title" placeholder="${titleText}" size="100%"/>
+		<form:input class="h3-top" path="title" placeholder="${titleText}" size="100%"/>
 		<form:errors path="title" cssClass="error" />
 		<br/>
 		<br/>
@@ -44,7 +42,10 @@
 		<br/>
 		<spring:message var="writeHere" code="complaint.description.writeHere"/>
 		<form:textarea class="register-todoAncho" rows="8" path="description" placeholder="${writeHere}"/>
-
+		<jstl:set var="now" value="<%=new java.util.Date()%>" />
+		<p class="text-rigth-small"><fmt:formatDate  value="${now}" pattern="dd/MM/yyyy HH:mm" /></p>
+		</div>
+	</div>
 	<input type="submit" name="save" class="button"
 		value="<spring:message code="complaint.save" />" />
 

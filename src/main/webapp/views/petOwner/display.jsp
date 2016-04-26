@@ -25,9 +25,15 @@
 </div>
 
 <div class="col-md-8">
-
-	<input class="area-autoAlto" readonly="readonly" value="${petOwner.description}"/>
+	
+	<form:form  modelAttribute="petOwner">
+			<form:textarea readonly="true" class="area-autoAlto" path="description" />
+	</form:form>
+	
 <!-- 		
+<input class="area-autoAlto" readonly="readonly" value="${petOwner.description}"/>
+
+
 <acme:out code="owner.fullName" path="${petOwner.name}"/>
 <br />
 <acme:out code="owner.description" path="${petOwner.description}"/>

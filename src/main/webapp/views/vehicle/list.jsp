@@ -9,6 +9,20 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<div class="col-md-12">
+ 	<h2><spring:message code="vehicle.myVehicles"/></h2><hr>	
+ 	<jstl:forEach var="row" items="${vehicles}">
+		<div class="col-md-8-2 panel panel-default">
+			<div class="wrap-3">
+			<h3 class="h3-no-bottom">${row.title}</h3>
+			<p class="register-left"><jstl:out value="${row.description}"/></p>
+			<span class="text-rigth-2"><jstl:out value="${row.size}"/></span>
+			<br/>
+			</div>
+		</div>
+	</jstl:forEach>
+</div>
+<!-- 
 <display:table name="vehicles" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
@@ -22,3 +36,4 @@
 	</display:column>
 	
 </display:table>
+ -->
