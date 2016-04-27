@@ -107,7 +107,7 @@
 						<li><a href="" onclick="jumpTo('petSitter/listToBook.do');"><spring:message code="master.page.booking.bookpetSitter" /></a></li>
 						<li><a href="" onclick="jumpTo('company/listToBook.do');"><spring:message code="master.page.booking.bookcompany" /></a></li>
 					
-				</ul>
+				</ul> 
 			</li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
