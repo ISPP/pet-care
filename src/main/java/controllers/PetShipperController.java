@@ -104,7 +104,7 @@ public class PetShipperController extends AbstractController {
 				}else{
 					petShipper = petShipperService.reconstruct(petShipperForm);
 					petShipperService.register(petShipper,petShipperForm.getInvitationCode());
-					result = new ModelAndView("redirect:../index.do");
+					result = new ModelAndView("redirect:../security/login.do");
 				}
 			}catch(Throwable oops){
 				result = createEditModelAndView(petShipperForm,"petShipper.commit.error");

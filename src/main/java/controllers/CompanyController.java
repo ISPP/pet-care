@@ -83,7 +83,7 @@ public class CompanyController extends AbstractController {
 				} else {
 					company = companyService.reconstruct(companyForm);
 					companyService.register(company,companyForm.getInvitationCode());
-					result = new ModelAndView("redirect:../index.do");
+					result = new ModelAndView("redirect:../security/login.do");
 				}
 			} catch (Throwable oops) {
 				
