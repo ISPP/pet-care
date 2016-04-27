@@ -23,6 +23,9 @@
 <form:form action="${action}" modelAttribute="petShipperForm">
 <form:hidden path="invitationCode"/> 
 <form:hidden path="daysBeforeCancel"/> 
+<div class="col-md-6">
+			<spring:message code="petShipper.personalData" />
+			<hr>
 	<!-- Actor -->
 	<acme:textbox code="petShipper.name" path="name"/>
 	<acme:textbox code="petShipper.surname" path="surname"/>
@@ -35,10 +38,26 @@
 	
 	<!-- Customer -->
 	<acme:textbox code="petShipper.address" path="address"/>
-	<acme:textarea code="petShipper.description" path="description"/>
+	
 	<acme:textbox code="petShipper.homePage" path="homePage"/>
 	<acme:textbox code="petShipper.contactPhone" path="contactPhone"/>
 	
+	
+	<br />
+			<form:label class="register-left" path="description">
+				<spring:message code="petShipper.description" />
+			</form:label>
+			<br />
+			<spring:message var="writeHere"
+				code="petShipper.description.writeHere" />
+			<form:textarea class="register-todoAncho" path="description"
+				placeholder="${writeHere}" />
+	</div>
+	<div class="col-md-6">
+	<img class="register-todoAncho" alt="Your AVATAR"
+				src="images/petShipper-index.jpg">
+			<spring:message code="petShipper.creditCard" />
+			<hr>
 	<!-- Credit Card -->
 	<acme:textbox code="petShipper.creditCard.holderName" path="holderName"/>
 	<acme:textbox code="petShipper.creditCard.brandName" path="brandName"/>
@@ -46,7 +65,7 @@
 	<acme:textbox code="petShipper.creditCard.expirationYear" path="expirationYear"/>
 	<acme:textbox code="petShipper.creditCard.cvvCode" path="cvvCode"/>
 	<acme:textbox placeholder="nnnn-nnnn-nnnn-nnnn" code="petShipper.creditCard.number" path="number"/>
-	
+	</div>
 	<%-- <form:label path="acceptTermsAndConditions">
 		<spring:message code="petShipper.acceptTermsAndConditions4"/>
 		<a href="legal/termsAndConditions.do">
@@ -55,10 +74,10 @@
 		<spring:message code="petShipper.acceptTermsAndConditions3"/>
 	</form:label>
 	<form:checkbox path="acceptTermsAndConditions"/> --%>
-	
+	<div class="col-md-12">
 	<acme:submit name="create" code="petShipper.button.create"/>
 	<acme:cancel url="welcome/index.do" code="petShipper.button.cancel"/>
-	
+	</div>
 	<%-- <jstl:if test="${termsNotAccepted==true}">
 		<br/>
 		<spring:message code="petShipper.acceptTermsAndConditions"/>

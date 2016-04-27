@@ -26,6 +26,9 @@
 	<form:hidden path="invitationCode"/>
 	<form:hidden path="id"/>
 	<form:hidden path="daysBeforeCancel"/>
+	<div class="col-md-6">
+	<spring:message code="company.personalData" />
+			<hr>
 		<!-- Actor -->
 		<acme:textbox code="company.name" path="name" />
 		<acme:textbox code="company.surname" path="surname" />
@@ -38,10 +41,31 @@
 
 		<!-- Customer -->
 		<acme:textbox code="company.address" path="address" />
-		<acme:textarea code="company.description" path="description" />
+	
 		<acme:textbox code="company.homePage" path="homePage" />
 		<acme:textbox code="company.contactPhone" path="contactPhone" />
+		<acme:textbox code="company.tic" path="tic"/>
+		
+		
+		
+		
+		<br />
+			<form:label class="register-left" path="description">
+				<spring:message code="company.description" />
+			</form:label>
+			<br />
+			<spring:message var="writeHere"
+				code="petShipper.description.writeHere" />
+			<form:textarea class="register-todoAncho" path="description"
+				placeholder="${writeHere}" />
 
+	
+</div>
+<div class="col-md-6">
+<img class="register-todoAncho" alt="Your AVATAR"
+				src="images/company-index.jpg">
+			<spring:message code="petShipper.creditCard" />
+			<hr>
 		<!-- Credit Card -->
 		<acme:textbox code="company.creditCard.holderName" path="holderName" />
 		<acme:textbox code="company.creditCard.brandName" path="brandName" />
@@ -52,12 +76,13 @@
 		<acme:textbox code="company.creditCard.cvvCode" path="cvvCode" />
 		<acme:textbox placeholder="nnnn-nnnn-nnnn-nnnn"
 			code="company.creditCard.number" path="number" />
+			</div>
 		
 		<!-- Company -->
-		<acme:textbox code="company.tic" path="tic"/>
+		
 <%-- 		<acme:textbox code="company.pricePerDay" path="pricePerDay"/> --%>
 		<acme:submit name="create" code="company.button.create" />
-		<acme:cancel url="welcome/index.do" code="company.button.cancel" />
+		<acme:cancel  url="welcome/index.do" code="company.button.cancel" />
 		<jstl:if test="${oldYear==true}">
 			<br />
 			<spring:message code="company.oldYear" />
