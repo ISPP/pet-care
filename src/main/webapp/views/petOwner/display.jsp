@@ -51,6 +51,72 @@
 
 <!-- Reviews list with sortable date and rating -->
 <h4><spring:message code="owner.reviews"/></h4>
+
+<jstl:forEach var="rev" items="${reviews}"> 
+<div class="col-md-8-2-noColor panel panel-default">
+	 		<div class="wrap-3">
+			<!-- <p><jstl:out value="${complaint.description}"/></p>  -->
+			<p ><b class="register-left"><jstl:out value="${rev.reviewed.name}" /> <jstl:out value="${rev.reviewed.surname}" /></b>
+			
+			<span class="register-right">
+			<jstl:if test="${rev.rating<1.0}">
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+
+        	<jstl:if test="${rev.rating>=1.0 and rev.rating<2.0}">
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${rev.rating>=2.0 and rev.rating<3.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${rev.rating>=3.0 and rev.rating<4.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${rev.rating>=4.0 and rev.rating<5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${rev.rating==5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+        	</jstl:if>
+        	</span>
+        	</p>
+        	<br/><br/>
+			<p class="register-left"><jstl:out value="${rev.description}"/></p>
+			<p class="text-rigth-small"><fmt:formatDate  value="${rev.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
+			</div>
+			
+	 	</div>
+</jstl:forEach>	
+</div>
+<!-- 
 <display:table name="reviews" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag"> 
 	
 	<display:column property="creationMoment" titleKey="owner.review.creationMoment" sortable="True">
@@ -66,4 +132,5 @@
 	</display:column>
 	
 </display:table>
-</div>
+
+ -->

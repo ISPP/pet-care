@@ -215,6 +215,11 @@ h3,h4 {
 	float: left;
 }
 
+.register-right {
+	margin-top: 10px;
+	float: right;
+}
+
 .register-todoAncho {
 	width: 100%;
 }
