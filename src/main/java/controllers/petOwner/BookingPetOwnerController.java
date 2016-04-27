@@ -165,6 +165,7 @@ public class BookingPetOwnerController extends AbstractController {
 
 				result = createEditModelAndView(bookingForm,
 						"booking.error.operation", "PetSitter");
+			
 
 			}
 		}
@@ -220,6 +221,7 @@ public class BookingPetOwnerController extends AbstractController {
 
 				result = createEditModelAndView(bookingForm,
 						"booking.error.operation", "Company");
+				
 
 			}
 		}
@@ -242,16 +244,18 @@ public class BookingPetOwnerController extends AbstractController {
 		ModelAndView result;
 
 		result = new ModelAndView("booking/edit");
-		result.addObject("bookingForm", bForm);
+		
 		result.addObject("message", message);
 		if (token.equals("PetSitter")) {
 			result.addObject("requestURI", "booking/petOwner/create.do");
 			result.addObject("forCompany", false);
+			bForm.setNight(false);
 		} else {
 			result.addObject("requestURI",
 					"booking/petOwner/createForCompany.do");
 			result.addObject("forCompany", true);
 		}
+		result.addObject("bookingForm", bForm);
 		return result;
 	}
 

@@ -38,7 +38,7 @@ public class BookingForm {
 		
 		
 		
-		@NotNull
+		
 		@Temporal(TemporalType.TIMESTAMP)
 		@DateTimeFormat(pattern = "dd/MM/yyyy")
 		public Date getendMoment() {

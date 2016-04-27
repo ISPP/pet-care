@@ -139,9 +139,11 @@
 		if(!cb.checked){
 			$("#hourDiv").hide();
 			$("#endMomentDiv").show();
+		
 		}else{
 			$("#hourDiv").show();
 			$("#endMomentDiv").hide();
+			
 			
 		}
 			
