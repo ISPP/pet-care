@@ -218,10 +218,11 @@ public class BookingService {
 			
 			long startMoment = bookingForm.getStartMoment().getTime()
 					+ bookingForm.getStartHour().getTime();
-			bookingForm.setStartMoment(new Date(startMoment));
+			
 			
 			long endMoment = bookingForm.getStartMoment().getTime()
 					+ bookingForm.getEndHour().getTime();
+			bookingForm.setStartMoment(new Date(startMoment));
 			bookingForm.setendMoment(new Date(endMoment));
 
 		} 
