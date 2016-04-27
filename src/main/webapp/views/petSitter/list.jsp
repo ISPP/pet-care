@@ -43,8 +43,93 @@
 	</jstl:if>
 </display:table>
  -->
+ <div class="container text-center">
+
+	
+	
+	
+		<jstl:forEach var="petSitter" items="${petSitters}">
+		 <jstl:if test="${toBook==true}">
+		 	<jstl:set var="styla" value="cursor: pointer;" />
+		 	<jstl:set var="clicka" value="location.href='booking/petOwner/create.do?petSitterId=${petSitter.id}';" />
+		 </jstl:if>
+		 <div style="${styla}" onclick="${clicka}"  class="col-md-4 panel panel-default">
+		 	<div class="wrap">
+		 	
+		 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+			</div>
+			
+			<div>
+			<p class="list-name"><jstl:out value="${petSitter.name}"/><hr class="linea-pegada"/>
+			<jstl:out value=" ${petSitter.address}"/>
+			<br/>
+			<spring:message code="sitter.priceHour"/>: <jstl:out value=" ${petSitter.priceHour}"/> &#8364;
+			</div>
+			
+			<jstl:if test="${petSitter.rating<1.0}">
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+
+        	<jstl:if test="${petSitter.rating>=1.0 and petSitter.rating<2.0}">
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${petSitter.rating>=2.0 and petSitter.rating<3.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${petSitter.rating>=3.0 and petSitter.rating<4.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${petSitter.rating>=4.0 and petSitter.rating<5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${petSitter.rating==5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+        	</jstl:if>
+			
+		</div>
+		</jstl:forEach>
+		<jstl:if test="${suppliers.size()==0}">
+			<h2><spring:message code="search.noResults"/></h2>
+		</jstl:if>
+		<jstl:if test="${toBook==false}">
+		<spring:message code="search.mustRegister"/><br/>
+		</jstl:if>
+		<div class="col-md-12">
+		<spring:message code="search.priceShowsNight"/>
+	</div>
  
- <div class="col-md-12">
+ </div>
+ 
+ <%-- <div class="col-md-12">
 	</div>
 	<jstl:forEach var="petSitter" items="${petSitters}">
 	 <div class="col-md-6">
@@ -63,5 +148,5 @@
 		</div>
 		
 	</div>
-	</jstl:forEach>
+	</jstl:forEach> --%>
 

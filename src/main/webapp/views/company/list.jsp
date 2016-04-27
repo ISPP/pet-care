@@ -22,18 +22,51 @@
 <jstl:set value="${requestURI}" var="action" />
 
 
+<jstl:forEach var="company" items="${companies}">
+		 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}';"  class="col-md-4 panel panel-default">
+		 	<div class="wrap">
+		 	<jstl:if test="${toBook==true}">
+		 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+		 	</jstl:if>
+			
+			<jstl:if test="${toBook == false}">
+			<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+			</jstl:if>
+			</div>
+			
+			<div>
+			<p class="list-name"><jstl:out value="${company.name}"/><hr class="linea-pegada"/>
+			<jstl:out value=" ${company.address}"/>
+			<br/>
+			</div>
+		</div>
+		</jstl:forEach>
+		<jstl:if test="${suppliers.size()==0}">
+			<h2><spring:message code="search.noResults"/></h2>
+		</jstl:if>
+		<jstl:if test="${toBook==false}">
+		<spring:message code="search.mustRegister"/><br/>
+		</jstl:if>
+		<spring:message code="search.priceShowsNight"/>
+
+
+
+
+<%-- 
 <display:table class="displaytag" pagesize="5"
 	name="companies" id="row" requestURI="${requestURI}">
-<%-- 	<display:column titleKey="company.username"> --%>
-<%-- 		<jstl:out value="${row.userAccount.username}"/> --%>
-<%-- 	</display:column> --%>
+	<display:column titleKey="company.username">
+		<jstl:out value="${row.userAccount.username}"/>
+	</display:column>
 	<display:column titleKey="company.name">
 		<jstl:out value="${row.name}"/>
 	</display:column>
 	<display:column titleKey="company.surname">
 		<jstl:out value="${row.surname}"/>
 	</display:column>
-<%-- 	<display:column titleKey="" property="birthDate" format="{0,date,dd/MM/yyyy}"/> --%>
+	<display:column titleKey="" property="birthDate" format="{0,date,dd/MM/yyyy}"/>
 	<jstl:if test="${toBook==true}">
 	<display:column>
 		<a href="booking/petOwner/createForCompany.do?companyId=${row.id}"> <spring:message
@@ -43,4 +76,4 @@
 	</jstl:if>
 </display:table>
 
-
+ --%>

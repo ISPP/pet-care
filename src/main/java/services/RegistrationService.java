@@ -79,6 +79,8 @@ public class RegistrationService {
 		Assert.isTrue(current.before(trip.getMoment()));
 		result.setMoment(current);
 		result.setTrip(trip);
+		result.setPayByAdmin(false);
+		result.setPayByPetOwner(false);
 		result.setPetOwner(petOwner);
 		result = save(result);
 		return result;
