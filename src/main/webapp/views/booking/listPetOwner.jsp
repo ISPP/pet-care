@@ -72,7 +72,11 @@
 	 			</tr>
 	 		</table>
 	 		<p > <br/></p>
-	</div>
+		</div>
+		<jsp:useBean id="today" class="java.util.Date" />
+		<jstl:if test="${(today.time gt booking.startMoment.time) and (booking.review == null)}">
+		<a class="text-rigth-small" href="review/petOwner/create.do?bookingId=${booking.id}"><spring:message code="booking.createReview" /></a>
+	 	</jstl:if>
 	 	</div>
 	 	</div>
  	</jstl:forEach>

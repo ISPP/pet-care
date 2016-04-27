@@ -30,6 +30,8 @@ public class ReviewService {
 	@Autowired
 	private SupplierService supplierService;
 	
+	@Autowired
+	private BookingService bookingService;
 	
 	public Review create(Booking booking) {
 		Review result;
@@ -43,14 +45,18 @@ public class ReviewService {
 		result.setBooking(booking);
 		result.setReviewer(petOwner);
 		result.setReviewed(booking.getSupplier());
-		result.setCreationMoment(new Date());
+		result.setCreationMoment(new Date(System.currentTimeMillis()-10));
 		return result;
 	}
 
 	public Review save(Review review) {
 		Review result;
-		review.setCreationMoment(new Date());
+		review.setCreationMoment(new Date(System.currentTimeMillis()-10));
+		
+		
 		result = reviewRepository.saveAndFlush(review);
+		review.getBooking().setReview(result);
+		bookingService.save(review.getBooking());
 		return result;
 	}
 
