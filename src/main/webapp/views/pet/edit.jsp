@@ -53,6 +53,8 @@
 			<input type="button" name="back"
 				value="<spring:message code="pet.back" />"
 				onClick="history.back(-1)" />
+				
+				
 		</div>
 	</form:form>
 		

@@ -56,7 +56,7 @@
 			<!--<span class="glyphicon glyphicon-user"></span>-->
 			</a></li>	
 			
-			<li><a href="" onclick="jumpTo('search/searchSitters.do');">
+			<li><a href="" onclick="jumpTo('search/searchSuppliers.do');">
 			<spring:message code="master.page.searchSitters" />
 			<!--<span class="glyphicon glyphicon-user"></span>-->
 			</a></li>
@@ -300,7 +300,7 @@
 			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
 			
 				</ul>
-			<li><a href="" onclick="jumpTo('search/searchSitters.do');"><spring:message code="master.page.searchSitters" /></a></li>
+			<li><a href="" onclick="jumpTo('search/searchSuppliers.do');"><spring:message code="master.page.searchSitters" /></a></li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.petSitter.invite" />

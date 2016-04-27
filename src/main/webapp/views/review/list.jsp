@@ -9,6 +9,7 @@
  --%>
 
 
+
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -21,6 +22,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 
 
@@ -40,35 +42,36 @@
 	
 </display:table> 
  -->
- <div class="col-md-12">
-	</div>
-	<h2><spring:message code="review.review"/></h2><hr>
-	<jstl:forEach var="reviews" items="${reviews}">
-	 <div class="col-md-6">
-	 <h3 class="midl-left">${reviews.booking.code}</h3>
-	 	<table class="text-rigth-2">
+
+	
+	<div class="col-md-12">
+ 	<h2><spring:message code="review.review"/></h2><hr>	
+ 	<jstl:forEach var="reviews" items="${reviews}">
+ 		<div class="col-md-8-2 panel panel-default">
+	 		<div class="wrap-2">
+	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/comentario.jpg">
+	 		<div>
+	 		<h3 class="h3-no-bottom">${reviews.booking.code}</h3>
+	 		<table class="text-rigth-2">
 	 			<tr>
-	 			
 	 			<td class="table-separate-100">
+	 				${reviews.reviewer.user.username}->
+	 				${reviews.reviewed.user.username}
 	 				<fmt:formatDate value="${reviews.creationMoment}" pattern="dd/MM/yyyy" />
 	 			</td>
-	 		
+	 			<td class="table-separate-100">
+	 				<h2>${reviews.description}</h2>
+	 			</td>
 	 			<td class="table-separate-100">
 	 				<h2>${reviews.rating} &#8364;</h2>
+	 				
 	 			</td>
-	 			<td class="table-separate-100">
-	 				<h2>${reviews.reviewer.user.username} </h2>
-	 			</td>
-	 			
-	 			<td class="table-separate-100">
-	 				<h2>${reviews.reviewed.user.username} </h2>
-	 			</td>
-	 			
-	 			
-	 			
 	 			</tr>
 	 		</table>
-		
+	 		<p > <br/></p>
 	</div>
-	</jstl:forEach>
+	 	</div>
+	 	</div>
+ 	</jstl:forEach>
+ </div>
 
