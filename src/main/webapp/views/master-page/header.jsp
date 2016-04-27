@@ -68,6 +68,17 @@
 			
 			
 			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.invite" />
+			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+					<li><a href="" onclick="jumpTo('company/administrator/invite.do');"><spring:message code="master.page.company.inviteText" /></a></li>				
+				</ul>
+			</li>
+			
+			
+			
 			
 			
 		</security:authorize>
@@ -210,6 +221,18 @@
 		    	<li><a href="" onclick="jumpTo('booking/supplier/listPendingSupplier.do')"><spring:message code="master.page.booking.listPendingSupplier" /></a></li> 
 		    	</ul>
 		    	</li>
+		    	
+		    	
+		    	
+		    
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<spring:message code="master.page.petSitter.invite" />
+			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+					<li><a href="" onclick="jumpTo('petShipper/invite.do');"><spring:message code="master.page.petShipper.inviteText" /></a></li>				
+				</ul>
+			</li>	
 		    
 		    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<spring:message code="master.page.language" />
