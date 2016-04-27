@@ -38,7 +38,7 @@
 	<acme:cancel code="trip.edit" url="/trip/petShipper/edit.do?tripId=${trip.id}" />
 </jstl:if>
 <!-- 
-<input type="button" name="cancel" class="button" value="<spring:message code="trip.cancel" />" onclick="javascript: window.location.replace('welcome/index.do');" />
+<input type="button" name="cancel" class="button btn-primary" value="<spring:message code="trip.cancel" />" onclick="javascript: window.location.replace('welcome/index.do');" />
  -->
 <br />
 </div>

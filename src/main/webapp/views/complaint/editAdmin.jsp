@@ -39,7 +39,7 @@
 		value="<spring:message code="complaint.save" />" />
 
 
-	<input type="button" name="cancel" class="button"
+	<input type="button" name="cancel" class="button btn-primary"
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
