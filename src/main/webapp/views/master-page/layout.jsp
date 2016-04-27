@@ -113,13 +113,7 @@ $(document).ready(function(){
 	<div>
 		<tiles:insertAttribute name="header" />
 	</div>
-	<jstl:if test="${showError==true}">
-	<div class="alert alert-danger" id="danger-alert" onload="alert('hola');">
-    <button type="button" class="close" data-dismiss="alert">x</button>
-    <strong><spring:message code="master.page.danger"/></strong>
-    <spring:message code="master.page.credentialError"/>
-	</div>
-	</jstl:if>
+	
 	<jstl:set  var="clase" value="container text-center" />
 	<jstl:if test="${index==true}">
 	<jstl:set  var="clase" value="" />

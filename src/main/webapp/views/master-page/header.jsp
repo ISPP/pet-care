@@ -394,7 +394,7 @@
 <script>
 
 function starting(){
-	if("${autoLogin}"=='true'){
+	if("${autoLogin}"=='true' || "${showError}"=='true'){
 		document.getElementById('autoClick').click();
 	}
 }

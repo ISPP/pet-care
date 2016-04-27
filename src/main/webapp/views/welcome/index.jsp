@@ -180,6 +180,13 @@
           <button type="button" class="close" data-dismiss="modal">×</button>
           <h4><span class="glyphicon glyphicon-lock"></span> <spring:message code="welcome.login"/></h4>
         </div>
+        <jstl:if test="${showError==true}">
+				<div class="alert alert-danger" id="danger-alert" onload="alert('hola');">
+			    <button type="button" class="close" data-dismiss="alert">x</button>
+			    <strong><spring:message code="master.page.danger"/></strong>
+			    <spring:message code="master.page.credentialError"/>
+				</div>
+			</jstl:if>
         <div class="modal-body">
           <form:form action="j_spring_security_check" modelAttribute="credentials">
             <div class="form-group">
@@ -198,43 +205,6 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
             <span class="glyphicon glyphicon-remove"></span> <spring:message code="welcome.cancel"/>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-   <!-- Modal -->
-  <div class="modal fade" id="loginForm" role="dialog">
-    <div class="modal-dialog">
-    
-    
-    
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-        </div>
-        <div class="modal-body">
-          <form:form action="j_spring_security_check" modelAttribute="credentials">
-            <div class="form-group">
-              <form:input class="form-control" path="username" placeholder="Username"/>	
-				<form:errors class="error" path="username" />
-            </div>
-            <div class="form-group">
-              <form:password class="form-control" path="password" placeholder="Password"/>	
-				<form:errors class="error" path="password" />
-            </div>
-              <button type="submit" class="btn btn-block">Go! 
-                <span class="glyphicon glyphicon-ok"></span>
-              </button>
-          </form:form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel
           </button>
         </div>
       </div>
