@@ -102,7 +102,7 @@
 						value="<spring:message code="trip.delete" />" />
 				</jstl:if>
 		
-				<input type="button" name="cancel" class="button"
+				<input type="button" name="cancel" class="button btn-primary"
 					value="<spring:message code="trip.cancel" />"
 					onclick="javascript: window.location.replace('welcome/index.do');" />
 	</div>

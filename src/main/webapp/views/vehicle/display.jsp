@@ -24,7 +24,7 @@
 </jstl:if>
 <acme:cancel code="vehicle.cancel" url="/vehicle/petShipper/list.do" />
 <!-- 
-<input type="button" name="cancel" class="button" value="<spring:message code="vehicle.cancel" />" onclick="javascript: window.location.replace('welcome/index.do');" />
+<input type="button" name="cancel" class="button btn-primary" value="<spring:message code="vehicle.cancel" />" onclick="javascript: window.location.replace('welcome/index.do');" />
  -->
 <br />
 </div>
