@@ -18,18 +18,27 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-
+<div class="col-md-6-2 panel panel-default">
 <jstl:set var="action" value="${requestURI}"/>
 <form:form action="${action}" modelAttribute="invitationForm">
 
 	
-	<acme:textbox  code="petSitter.email" path="email"/>
+	
+	<form:label class="text-center h3-top" path="email">
+				<spring:message code="petShipper.email" />
+			</form:label>
+			
+			
+			<form:input class="form-control" path="email"/>	
+			<form:errors cssClass="error" path="email"/>
+	<br>
 	
 
 	
-	
-	<acme:submit name="create" code="petSitter.send"/>
+	<div class="col-md-12">
+	<acme:submit name="create" code="petShipper.send"/>
 	<acme:cancel url="welcome/index.do" code="petSitter.button.cancel"/>
-	
+	</div>
 </form:form>
+</div>
 	
