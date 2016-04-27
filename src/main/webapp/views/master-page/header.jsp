@@ -105,6 +105,7 @@
 						<li><a href="" onclick="jumpTo('booking/petOwner/listBookingCanCancelPetOwner.do');"><spring:message code="master.page.booking.cancel" /></a></li>
 						<li><a href="" onclick="jumpTo('booking/petOwner/list.do');"><spring:message code="master.page.booking.list" /></a></li>
 						<li><a href="" onclick="jumpTo('petSitter/listToBook.do');"><spring:message code="master.page.booking.bookpetSitter" /></a></li>
+						<li><a href="" onclick="jumpTo('company/listToBook.do');"><spring:message code="master.page.booking.bookcompany" /></a></li>
 					
 				</ul>
 			</li>

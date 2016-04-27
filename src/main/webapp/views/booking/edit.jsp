@@ -55,7 +55,14 @@
 	</div>
 	<br>
 
-	<div id="hourDiv">
+	
+
+
+	<c:choose>
+		<c:when test="${!forCompany}">
+		
+		
+		<div id="hourDiv">
 		<form:label path="startHour">
 			<spring:message code="booking.startHour" />:
 			</form:label>
@@ -72,10 +79,6 @@
 
 		<form:errors path="endHour" cssClass="error" />
 	</div>
-
-
-	<c:choose>
-		<c:when test="${!forBooking}">
 
 			<form:label path="night">
 				<spring:message code="booking.Type" />:
