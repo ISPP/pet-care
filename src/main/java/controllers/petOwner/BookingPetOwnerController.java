@@ -145,7 +145,7 @@ public class BookingPetOwnerController extends AbstractController {
 				booking = bookingService.reconstruct(bookingForm);
 				bookingService.registerPetSitterBooking(booking);
 
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:listToPay.do");
 
 			} catch (IllegalArgumentException oops) {
 
