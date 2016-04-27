@@ -450,5 +450,12 @@ public class BookingService {
 				.findBookingByPetOwnerId(petOwner.getId());
 		return res;
 	}
+	
+	public Collection<Booking> findBookingToRembolse() {
+		
+		Collection<Booking> res = bookingRepository
+				.findBookingToRembolse();
+		return res;
+	}
 
 }

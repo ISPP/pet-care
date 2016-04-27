@@ -43,5 +43,8 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
 
     @Query("select b from Booking b where b.petOwner.id=?1 and b.payByPetOwner=true")
 	Collection<Booking> findBookingPayBySupplierId(int id);
+    
+    @Query("select b from Booking b where b.payByPetOwner=true and b.status!='ACCEPTED' and b.startMoment>CURRENT_TIMESTAMP")
+    Collection<Booking> findBookingToRembolse();
 
 }

@@ -86,3 +86,37 @@
 	 	</div>
  	</jstl:forEach>
  </div>
+ 
+ 
+  <div class="col-md-12">
+ 	<h2><spring:message code="bookingsRembolse.bookingsRembolse"/></h2><hr>	
+ 	<jstl:forEach var="bookingsRembolse" items="${bookingsRembolse}">
+ 		<div class="col-md-8-2 panel panel-default">
+	 		<div class="wrap-2">
+	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/petOwner-index.jpg">
+	 		<img class="max-h-4 img-left-2-1" alt="Your PET" src="images/pet-register.jpg">
+	 		<div>
+	 		<h3 class="h3-no-bottom">${bookingsRembolse.supplier.name}</h3>
+	 		<table class="text-rigth-2">
+	 			<tr>
+	 			<td class="table-separate-100">
+	 				${bookingsRembolse.supplier.address}
+	 			</td>
+	 			<td class="table-separate-100">
+	 				<fmt:formatDate value="${bookingsRembolse.startMoment}"
+	pattern="dd/MM/yyyy HH:mm" />
+	 			</td>
+	 			<td class="table-separate-100">
+	 				<h2>${bookingsRembolse.price} &#8364;</h2>
+	 			</td>
+	 			</tr>
+	 		</table>
+	 		<p > <br/></p>
+	 		<a href="paypal/payAdminRembolse.do?id=${bookingsRembolse.id}"> <spring:message
+						code="paypal.payNow" />
+	</a>
+	</div>
+	 	</div>
+	 	</div>
+ 	</jstl:forEach>
+ </div>

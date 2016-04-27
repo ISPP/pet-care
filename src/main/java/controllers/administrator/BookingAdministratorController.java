@@ -29,9 +29,11 @@ public class BookingAdministratorController {
 		ModelAndView result;
 		Collection<Registration> registrations = registrationService.findRegistrationNotPayByAdmin();
 		Collection<Booking> bookings = bookingService.findBookingNotPayByAdmin();
+		Collection<Booking> bookingsRembolse = bookingService.findBookingToRembolse();
 		result = new ModelAndView("paypal/listAdmin");
 		result.addObject("bookings", bookings);
 		result.addObject("registrations", registrations);
+		result.addObject("bookingsRembolse", bookingsRembolse);
 		result.addObject("requestURI", "booking/administrator/listToPay.do");
 
 		return result;

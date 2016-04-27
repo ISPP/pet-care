@@ -223,6 +223,30 @@ public class PaypalController {
 
 	}
 	
+	@RequestMapping(value = "/payAdminRembolse", method = RequestMethod.GET)
+	public ModelAndView payAdminRembolse(@RequestParam int id) {
+		ModelAndView result;
+		Booking booking = bookingService.findOne(id);
+		Double pago = booking.getPrice()+booking.getPrice()*0.10;
+		
+		try{
+			result = new ModelAndView("paypal/payAdminRembolse");
+			booking.setPayByAdmin(true);
+			bookingService.save(booking);
+			result.addObject("booking", booking);
+			result.addObject("pago", pago);
+			result.addObject("requestURI", "paypal/payAdminRembolse.do");		
+			
+		}catch (Exception oops){
+			result = new ModelAndView("welcome/index");			
+			result.addObject("message", "commit.operation");			
+		}
+		
+		return result;
+		
+
+	}
+	
 	/*@RequestMapping(value = "/paySuccessful", method = RequestMethod.GET)
 	public ModelAndView paypalsuccessful() {
 		ModelAndView result;
