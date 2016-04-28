@@ -17,22 +17,40 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-
-<display:table class="displaytag" pagesize="5"
-	name="registrations" id="row" requestURI="${requestURI}">
-	
-	<display:column titleKey="registration.moment" property="moment" format="{0,date,dd-MM-yyyy HH:mm}"/>
-	<display:column titleKey="registration.petowner.name" property="petOwner.name" />
-	<display:column>
-		<a href="petOwner/petOwner/display.do?petOwnerId=<jstl:out value="${row.petOwner.id}"/>">	
+<div class="col-md-12">
+ 	<h2><spring:message code="registration.registrations"/></h2><hr>	
+ 	<jstl:forEach var="registration" items="${registrations}">
+ 		<div class="col-md-8-2 panel panel-default">
+	 		<div class="wrap-2">
+	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/petOwner-index.jpg">
+	 		<img class="max-h-4 img-left-2-1" alt="Your PET" src="images/pet-register.jpg">
+	 		<div>
+	 		<h3 class="h3-no-bottom">${registration.trip.startCity} -> ${registration.trip.endCity}</h3>
+	 		<table class="text-rigth-2">
+	 			<tr>
+	 			
+	 			<td class="table-separate-100">
+	 				<fmt:formatDate value="${registration.trip.moment}" pattern="dd/MM/yyyy HH:mm" />
+	 			</td>
+	 			<td class="table-separate-100">
+	 				<h2>${registration.trip.cost} &#8364;</h2>
+	 			</td>
+	 			</tr>
+	 		</table>
+	 		<p > <br/></p>
+	 		<a href="petOwner/petOwner/display.do?petOwnerId=<jstl:out value="${registration.petOwner.id}"/>">	
 			<spring:message code="registration.petowner.profile"/>
 		</a>
-	</display:column>
-	
-	
-	
-</display:table>
+
+	</div>
+	 	</div>
+	 	</div>
+ 	</jstl:forEach>
+ </div>
+
 
