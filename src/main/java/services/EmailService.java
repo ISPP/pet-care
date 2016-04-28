@@ -63,7 +63,7 @@ public class EmailService {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();
-		url = "http://localhost:8080/Petcare/petSitter/create.do?invitationCode="
+		url = "http://petcare-petcaresepp.rhcloud.com/petSitter/create.do?invitationCode="
 				+ sender.getInvitationCode();
 
 		String content;
@@ -83,7 +83,7 @@ public class EmailService {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();
-		url = "http://localhost:8080/Petcare/petShipper/create.do?invitationCode="
+		url = "http://petcare-petcaresepp.rhcloud.com/petShipper/create.do?invitationCode="
 				+ sender.getInvitationCode();
 
 		String content;
@@ -104,7 +104,7 @@ public class EmailService {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();
-		url = "http://localhost:8080/Petcare/company/create.do?invitationCode="
+		url = "http://petcare-petcaresepp.rhcloud.com/company/create.do?invitationCode="
 				+ sender.getUser().getUsername();
 
 		String content;

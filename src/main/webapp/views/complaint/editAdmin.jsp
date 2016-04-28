@@ -20,7 +20,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-6-2 panel panel-default">
 <form:form action="${requestURI}" modelAttribute="complaintForm">
 
 	<form:hidden path="id" />
@@ -31,16 +31,29 @@
 	<form:hidden path="title" />
 	<form:hidden path="description" />
 
+	
+	<form:label class="text-center h3-top" path="resolution">
+				<spring:message code="complaint.resolution" />
+			</form:label>
+			
+			
+			<form:textarea class="form-control" path="resolution"/>	
+			<form:errors cssClass="error" path="resolution"/>
+	<br>
+	
 
-	<acme:textarea code="complaint.resolution" path="resolution" />
+	
 
-
-	<input type="submit" name="save" class="button"
+<div class="col-md-12">
+	<input type="submit" name="save" class="button btn btn-primary"
 		value="<spring:message code="complaint.save" />" />
 
 
-	<input type="button" name="cancel" class="button btn-primary"
+	<input type="button" name="cancel" class="button btn btn-primary"
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
-	<br />
+		<br />
+		</div>
+	
 </form:form>
+</div>

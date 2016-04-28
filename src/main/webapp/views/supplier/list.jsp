@@ -19,34 +19,75 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<fieldset>
-	<legend>
-		<h1>
-			<spring:message code="sitter.sitter" />
-		</h1>
-	</legend>
-	<display:table class="displaytag" pagesize="5" name="suppliers"
-		id="row" requestURI="${requestURI}">
 
-		<display:column titleKey="sitter.fullName">
-			<jstl:out value="${row.name}" />
-			<jstl:out value="${row.surname}" />
-		</display:column>
 
-		<display:column titleKey="sitter.email" property="email" />
+<div class="col-md-12">
+ 	<h2><spring:message code="supplier.suppliers"/></h2><hr>	
+ 	<jstl:forEach var="row" items="${suppliers}">
+ 	<div class="col-md-8-2 panel panel-default">
+	 		
+	 		
+	 		<h3 class="h3-no-bottom">${row.surname}, ${row.name} (${row.address})</h3>
+	 		<table class="text-rigth-2">
+	 			<tr>
+	 			
+	 			<td class="table-separate-100">
+	 				<h3>${row.email}</h3>
+	 			</td>
+	 			<td class="table-separate-100">
+	 				
+	 		<jstl:if test="${row.rating<1.0}">
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
 
-		<display:column titleKey="sitter.review.rating" property="rating" />
-
-		<display:column property="address" titleKey="sitter.address" />
-
-<%-- 		<display:column property="priceNight" titleKey="sitter.priceNight" /> --%>
-
-<%-- 		<display:column property="priceHour" titleKey="sitter.priceHour" /> --%>
-		<display:column>
-			<jstl:if test="${row.blocked==true}">
-				<spring:message code="petSitter.blocked" />
-			</jstl:if>
-			<jstl:if test="${row.blocked!=true}">
+        	<jstl:if test="${row.rating>=1.0 and row.rating<2.0}">
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${row.rating>=2.0 and row.rating<3.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${row.rating>=3.0 and row.rating<4.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${row.rating>=4.0 and row.rating<5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${row.rating==5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+        	</jstl:if>
+	 			</td>
+	 			
+	 			
+	 			<td class="table-separate-100">
+	 				<jstl:if test="${row.blocked!=true}">
 				<spring:message code="supplier.confirm.block" var="confirmBlock" />
 				<form:form method="post" name="blockForm" id="blockForm"
 					action="supplier/administrator/blockSitter.do">
@@ -65,6 +106,28 @@
 					</script>
 				</form:form>
 			</jstl:if>
-		</display:column>
-	</display:table>
-</fieldset>
+	 			</td>
+	 			
+	 			</tr>
+	 		</table>
+	 		<p > <br/></p>
+	 		<security:authorize access="hasRole('PETOWNER')">
+	
+		<a href="trip/petOwner/register.do?tripId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="trip.register"/>
+		</a>
+	
+	</security:authorize>
+	 		<security:authorize access="hasRole('PETSHIPPER')">
+	 		<a class="text-left-small" href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
+			<spring:message code="trip.registrations"/></a></security:authorize>
+			
+	<br>
+	
+	
+
+	 	
+	 	</div>
+ 	</jstl:forEach>
+ </div>
+

@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<div class="col-md-6-2">
+<div class="col-md-6-2 panel panel-default">
 <form:form action="${requestURI}" modelAttribute="comment">
 
 	<form:hidden path="id" />
@@ -30,14 +30,25 @@
 	<form:hidden path="actor" />	
 	
 	
-	<acme:textarea code="comment.text" path="text" readonly="false"/>
+	
+	
+	
+	<form:label class="text-center h3-top" path="text">
+				<spring:message code="comment.text" />
+			</form:label>
+			
+			
+			<form:textarea class="form-control" path="text"/>	
+			<form:errors cssClass="error" path="text"/>
+	<br>
+	
 	
 
-<input type="submit" name="save" class="button"
+<input type="submit" name="save" class="button btn btn-primary"
 		value="<spring:message code="comment.save" />" />
 
 	
-	<input type="button" name="cancel" class="button btn-primary"
+	<input type="button" name="cancel" class="button btn btn-primary"
 		value="<spring:message code="comment.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />

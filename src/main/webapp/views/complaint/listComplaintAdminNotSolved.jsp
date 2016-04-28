@@ -18,72 +18,77 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
-
-<display:table name="complaints" id="row" requestURI="${requestUri}"
-	class="displaytag" keepStatus="true" pagesize="5">
-	<!--Property se refiere al atributo del objeto de la fila que va a ir en la columna-->
-	<spring:message code="cpmlaint_*title" var="titleColumn"></spring:message>
-	<display:column property="title" title="${titleColumn}" />
-
-	<spring:message code="cpmlaint_*description" var="descriptionColumn"></spring:message>
-	<display:column property="description" title="${descriptionColumn}" />
-
-	<spring:message code="cpmlaint_*resolution" var="resolutionColumn"></spring:message>
-	<display:column property="resolution" title="${resolutionColumn}" />
-
-	<spring:message code="cpmlaint_*creationMoment" var="creationMomentColumn"></spring:message>
-	<display:column property="creationMoment" title="${creationMomentColumn}" />
-
-<jstl:if test="${toAssign==true}">
-	<spring:message code="complaint.assign"
-		var="assignColumn"></spring:message>
-		<display:column title = "${assignColumn}">
-			
-				<a href="complaint/administrator/assign.do?id=${row.id}"> <spring:message
-						code="complaint.assign" />
-				</a>
-		
-		</display:column>
-	</jstl:if>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
-	<jstl:if test="${toSolve==true}">
-	<spring:message code="complaint.solve"
-		var="solveColumn"></spring:message>
-		<display:column title = "${assignColumn}">
-			
-				<a href="complaint/administrator/solve.do?id=${row.id}"> <spring:message
-						code="complaint.solve" />
-				</a>
-		
-		</display:column>
-	</jstl:if> 
-	
-	
+<div class="col-md-12">
+	<h2>
+		<spring:message code="complaint.complaints" />
+	</h2>
+	<hr>
+	<jstl:forEach var="com" items="${complaints}">
+		<div class="col-md-8-2 panel panel-default">
+			<div class="wrap-2">
+				<h3 class="h3-no-bottom">${com.title}</h3>
+				<hr>
+				<jstl:set var="shortDes"
+					value="${fn:substring(com.description, 0, 100)}"></jstl:set>
+				<p>
+					<jstl:out value="${shortDes}..." />
+				</p>
 
-	<spring:message code="cpmlaint_*comment"
-		var="commentColumn"></spring:message>
-		
-		<display:column title="${commentColumn}">
-		
-			<jstl:if test="${row.comments.size()==0}">
-			<jstl:if test="${not empty row.administrator}">
-				<a href="comment/actor/edit.do?id=${row.id}"> <spring:message
+
+				<jstl:if test="${toAssign==true}">
+					
+
+
+					<a class="btn btn-primary"href="complaint/administrator/assign.do?id=${com.id}"> <spring:message
+							code="complaint.assign" />
+					</a>
+
+
+				</jstl:if>
+
+
+
+				<jstl:if test="${toSolve==true}">
+				
+
+
+					<a class="btn btn-primary" href="complaint/administrator/solve.do?id=${com.id}"> <spring:message
+							code="complaint.solve" />
+					</a>
+
+
+				</jstl:if>
+				
+				
+				
+				<jstl:if test="${com.comments.size()==0}">
+			<jstl:if test="${not empty com.administrator}">
+				<a class="btn btn-primary" href="comment/actor/edit.do?id=${com.id}"> <spring:message
 						code="cpmlaint_*commentCreate" />
 				</a>
 			</jstl:if>
-			</jstl:if>
-			<jstl:if test="${row.comments.size()>0}">
-				<a href="comment/actor/list.do?id=${row.id}"> <spring:message
-						code="cpmlaint_*commentList" />
-				</a>
-			</jstl:if>
-			
-			
-			
-		</display:column>
-		
+		</jstl:if>
+		<jstl:if test="${com.comments.size()>0}">
+			<a class="btn btn-primary" href="comment/actor/list.do?id=${com.id}"> <spring:message
+					code="cpmlaint_*commentList" />
+			</a>
+		</jstl:if>
 
-</display:table>
+				
+				
+
+<br>
+				<p class="text-rigth-small">
+					<fmt:formatDate value="${com.creationMoment}"
+						pattern="dd/MM/yyyy HH:mm" />
+				</p>
+
+			</div>
+		</div>
+	</jstl:forEach>
+</div>
+
