@@ -12,26 +12,46 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+ 
 
-<display:table name="comments" id="row" requestURI="${requestUri}"
-	class="displaytag" keepStatus="true" pagesize="5" >
-	<!--Property se refiere al atributo del objeto de la fila que va a ir en la columna-->	
-	<spring:message code="comment_*text" var="textColumn" ></spring:message>
-	<display:column property="text" title="${textColumn}" />
+ 				
+
+			 <div class="col-md-12">
+ 	<h2><spring:message code="comment.comments"/></h2><hr>	
+ 	<jstl:forEach var="row" items="${comments}">
+ 		<div class="col-md-8-2 panel panel-default">
+	 		<div class="wrap-2">
+	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/comentario.jpg">
+	 		<h3 class="h3-no-bottom">${row.actor.name}</h3><hr>
+	 			<table class="text-rigth-2">
+	 			<tr>
+	 			
+	 			
+	 			<td class="table-separate-100">
+	 				<h2>${row.text}</h2>
+	 			</td>
+	 			</tr>
+	 		</table>
+			
+			
 	
-	<spring:message code="comment_*creationMoment" var="creationMomentColumn" ></spring:message>
-	<display:column property="creationMoment" title="${creationMomentColumn}" />
-	
-	<spring:message code="comment_*actor" var="actorColumn" ></spring:message>
-	<display:column property="actor.name" title="${actorColumn}" />
-</display:table>
-			<a href="comment/actor/edit.do?id=${row.complaint.id}"> <spring:message
+			
+			
+			<p class="text-rigth-small"><fmt:formatDate  value="${row.creationMoment}" pattern="dd/MM/yyyy" /></p>
+			
+			</div>
+	 	</div>
+ 	</jstl:forEach>
+ </div>
+ 
+ <a href="comment/actor/edit.do?id=${row.complaint.id}"> <spring:message
 					code="cpmlaint_*commentCreate" />
 			</a>
