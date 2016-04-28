@@ -46,13 +46,13 @@
 		<p class="text-rigth-small"><fmt:formatDate  value="${now}" pattern="dd/MM/yyyy HH:mm" /></p>
 		</div>
 	</div>
-	<input type="submit" name="save" class="button"
+	<input type="submit" name="save" class="button btn btn-primary"
 		value="<spring:message code="complaint.save" />" />
 
 
-	<input type="button" name="cancel" class="button btn-primary"
+	<input type="button" name="cancel" class="button btn btn-primary"
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
-	</div>
+	
 	<br />
 </form:form>
