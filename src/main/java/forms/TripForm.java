@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -81,7 +82,7 @@ public class TripForm {
 	public void setDistance(String distance) {
 		this.distance = distance;
 	}
-	
+	@Range(min=0,max=100)
 	public Double getCost() {
 		return cost;
 	}

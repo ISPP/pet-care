@@ -45,11 +45,13 @@ public class TripService {
 
 	public Trip save(Trip trip) {
 		Trip result;
-		Assert.isTrue(isOwner(trip));
+		if(!isOwner(trip)){
+			throw new IllegalAccessError();
+		}
 		result = null;
 		Date date = new Date();
 		date.setDate(date.getDate()+7);
-		Assert.isTrue(trip.getMoment().after(date));
+		Assert.state(trip.getMoment().after(date));
 		
 		// Viaje corto menos de 20 euros, medio menos de 30 euros
 		
@@ -67,7 +69,7 @@ public class TripService {
 	public void delete(TripForm tripForm) {
 		Date date = new Date();
 		date.setDate(date.getDate()+7);
-		Assert.isTrue(tripForm.getMoment().after(date));
+		Assert.state(tripForm.getMoment().after(date));
 		Assert.isTrue(isOwner(findOne(tripForm.getId())));
 		tripRepository.delete(findOne(tripForm.getId()));
 	}

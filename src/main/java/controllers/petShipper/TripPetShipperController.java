@@ -156,8 +156,15 @@ public class TripPetShipperController extends AbstractController {
 				tripService.save(trip);
 				result = new ModelAndView("redirect:/trip/petShipper/list.do");
 
-			} catch (Throwable oops) {
+			}catch(IllegalStateException oops){
+				result = createEditModelAndView(tripForm, "trip.date.error");
+			}catch(IllegalArgumentException oops){
+				result = createEditModelAndView(tripForm, "trip.cost.error");
+			}
+			
+			catch (Throwable oops) {
 				result = createEditModelAndView(tripForm, "trip.error.operation");
+				oops.printStackTrace();
 			}
 		}
 		return result;
@@ -196,12 +203,14 @@ public class TripPetShipperController extends AbstractController {
 		
 		if (tripForm.getId() != 0) {
 			isOwner = tripService.isOwner(tripService.findOne(tripForm.getId()));
+			deletable = tripService.isDeletable(tripService.findOne(tripForm.getId()));
 		} else {
 			isOwner = true;
+			deletable = false;
 		}
 		requestURI = "trip/petShipper/edit.do?tripId="+tripForm.getId();
 		vehicles = vehicleService.findOne(tripForm.getVehicleId()).getPetShipper().getVehicles();
-		deletable = tripService.isDeletable(tripService.findOne(tripForm.getId()));
+		
 
 		result = new ModelAndView("trip/edit");
 		result.addObject("tripForm", tripForm);

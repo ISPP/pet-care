@@ -84,6 +84,7 @@
 		</table>
 		<br/>
 		<acme:textbox code="trip.cost" path="cost"/>
+		
 	</div>
 	<div class="col-md-6">
 	<form:label class="midl-left" path="descriptionText">
@@ -94,15 +95,15 @@
 	
 	<br />
 	<div class="midl-left">
-				<input type="submit" name="save" class="button"
+				<input type="submit" name="save" class="button btn btn-primary"
 					value="<spring:message code="trip.save" />" />
 					
 				<jstl:if test="${deletable==true}">
-					<input type="submit" name="delete" class="button"
+					<input type="submit" name="delete" class="button btn btn-primary"
 						value="<spring:message code="trip.delete" />" />
 				</jstl:if>
 		
-				<input type="button" name="cancel" class="button btn-primary"
+				<input type="button" name="cancel" class="button btn btn-primary"
 					value="<spring:message code="trip.cancel" />"
 					onclick="javascript: window.location.replace('welcome/index.do');" />
 	</div>
