@@ -24,7 +24,7 @@
 
  				
 
-			 <div class="col-md-12">
+<div class="col-md-12">
  	<h2><spring:message code="comment.comments"/></h2><hr>	
  	<jstl:forEach var="row" items="${comments}">
  		<div class="col-md-8-2 panel panel-default">
