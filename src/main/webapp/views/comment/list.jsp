@@ -49,10 +49,11 @@
 			
 			</div>
 	 	</div>
-	 	 <a href="comment/actor/edit.do?id=${comment.complaint.id}"> <spring:message
+	 	 
+ 	</jstl:forEach>
+ 	<a href="comment/actor/edit.do?id=${idComplaint}"> <spring:message
 					code="cpmlaint_*commentCreate" />
 			</a>
- 	</jstl:forEach>
  	
  </div>
  

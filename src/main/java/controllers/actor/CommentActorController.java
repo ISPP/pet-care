@@ -36,6 +36,7 @@ public class CommentActorController extends AbstractController{
 		result = new ModelAndView("comment/list");	
 		result.addObject("comments", commentService.findCommentByActorId(id));
 		result.addObject("requestURI","/comment/actor/list.do");		
+		result.addObject("idComplaint",id);
 		return result;
 	}
 	
