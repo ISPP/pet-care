@@ -73,9 +73,12 @@
 			</jstl:if>
 		</jstl:if>
 		<jstl:if test="${com.comments.size()>0}">
+		<jstl:if test="${not empty com.administrator}">
 			<a class="btn btn-primary" href="comment/actor/list.do?id=${com.id}"> <spring:message
 					code="cpmlaint_*commentList" />
+					
 			</a>
+			</jstl:if>
 		</jstl:if>
 
 				
