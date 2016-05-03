@@ -57,7 +57,7 @@
 		 	<div class="wrap">
 		 	
 		 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
-			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}"/>&#8364;</span>
 			</div>
 			
 			<div>
