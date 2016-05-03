@@ -252,7 +252,7 @@
 
 function initialize() {
 	var geocoder = new google.maps.Geocoder();
-	var country = "${searchSuppliersForm.address}";
+	/* var country = "${searchSuppliersForm.address}"; */
 	var mapProp = {
 			zoom:12,
 			scrollwheel:true,
@@ -260,17 +260,23 @@ function initialize() {
 			mapTypeId:google.maps.MapTypeId.ROADMAP
 			};
 	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-	geocoder.geocode( { 'address': country }, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	        map.setCenter(results[0].geometry.location);
-	        var marker = new google.maps.Marker({
-	            map: map,
-	            position: results[0].geometry.location
-	          });
-	    } else {
-	        alert("Could not find location: " + location);
-	    }
-	});
+	
+	<jstl:forEach items="${suppliers}" var="supplier">
+		//We get all the suppliers we need and we create a marker for each of them
+		//console.log("${supplier.address}")
+		var _address = "${supplier.address}"
+		geocoder.geocode( { 'address': _address }, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		        map.setCenter(results[0].geometry.location);
+		        var marker = new google.maps.Marker({
+		            map: map,
+		            position: results[0].geometry.location
+		          });
+		    } else {
+		        alert("Could not find location: " + location);
+		    }
+		});
+	</jstl:forEach>
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 }
 
