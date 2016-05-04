@@ -370,7 +370,7 @@ h3,h4 {
 #googleMap {
 	width: 100%;
 	height: 400px;
-	-webkit-filter: grayscale(100%);
+	/* -webkit-filter: grayscale(100%); */ /*Commented to show the map with colour*/
 	filter: grayscale(100%);
 }
 
