@@ -77,6 +77,9 @@
 <acme:button href="pet/petOwner/addPhoto.do?petId=${pet.id}" code="pet.add" />
 <br/>
 <br/>
+<jstl:if test="${isOwner==true}">
+	<acme:button href="vehicle/petShipper/edit.do?vehicleId=${vehicle.id}" code="pet.edit"/>	
+</jstl:if>
 <input type="button" name="back" value="<spring:message code="pet.back" />"onClick="history.back(-1)" />
 </div>
 </security:authorize>
