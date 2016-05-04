@@ -590,7 +590,7 @@
 	<property name="name" value="Javier Ignacio"></property>
 	<property name="surname" value="Molina Cano"></property>
 	<property name="email" value="suzfsr-facilitator@gmail.com"></property>
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="Calle Cuna, 2, 41004, Sevilla, España"></property>
 	<property name="description" value="Mi perro es como si fuera de mi familia"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
 	<property name="contactPhone" value="954013645"></property>
@@ -676,7 +676,7 @@
 	<property name="name" value="Alberto"></property>
 	<property name="surname" value="Molina Cano"></property>
 	<property name="email" value="jalbert@gmail.com"></property>
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="avenida de la solea 20 sevilla españa"></property>
 	<property name="description" value="Amo a las mascotas. necesito que me las cuiden a diario"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
 	<property name="contactPhone" value="954213645"></property>
@@ -731,7 +731,7 @@
 	<property name="name" value="Emilio"></property>
 	<property name="surname" value="Duque Gutiérrez"></property>
 	<property name="email" value="emi@gmail.com"></property>
-	<property name="address" value="Malaga"></property>
+	<property name="address" value="calle nuño gomez 3 malaga españa"></property>
 	<property name="description" value="Mi perro mola"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
 	<property name="contactPhone" value="954013642"></property>
@@ -786,7 +786,7 @@
 	<property name="name" value="Sixto "></property>
 	<property name="surname" value="Naranjo Marín"></property>
 	<property name="email" value="sixt@gmail.com"></property>
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="Calle Sierpes, 5, 41004 Sevilla, España"></property>
 	<property name="description" value="Mi perro es mi hermano"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
 	<property name="contactPhone" value="954613645"></property>
@@ -841,7 +841,7 @@
 	<property name="name" value="Lillian "></property>
 	<property name="surname" value=" Gómez Álvarez"></property>
 	<property name="email" value="lili@gmail.com"></property>
-	<property name="address" value="Huelva"></property>
+	<property name="address" value="Calle Holanda, 2, 21110, Aljaraque, Huelva, España"></property>
 	<property name="description" value="Tengo un gato que es toda lo que tengo"></property>
 	<property name="contactPhone" value="958013645"></property>
 	<property name="creditCard">	
@@ -894,7 +894,7 @@
 	<property name="priceHour" value="1"></property>
 	<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>	
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="Calle Tokio, 3, 41020 Sevilla, España"></property>
 	<property name="description" value="MNe encanta los animales"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
 	<property name="contactPhone" value="954013645"></property>
@@ -958,7 +958,7 @@
 	<property name="rating" value="4"></property>
 	<property name="blocked" value="false"></property>	
 	<property name="daysBeforeCancel" value="1"></property>
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="Calle Andalucita, 2, 41020 Sevilla, España"></property>
 	<property name="description" value="cerca de jardines"></property>
 	<property name="contactPhone" value="954013675"></property>
 	<property name="creditCard">	
@@ -1012,7 +1012,7 @@
 	<property name="rating" value="4.6"></property>
 	<property name="blocked" value="false"></property>
 	<property name="daysBeforeCancel" value="1"></property>
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="Calle Diego de Lepe, 2, 41007 Sevilla, España"></property>
 	<property name="description" value="Granm casa para su mascota"></property>
 	<property name="homePage" value="http://www.facebook.com"></property>
 	<property name="contactPhone" value="954013645"></property>
@@ -1065,7 +1065,7 @@
 	<property name="blocked" value="false"></property>
 	<property name="daysBeforeCancel" value="1"></property>
 	<property name="priceHour" value="1"></property>	
-	<property name="address" value="Malaga"></property>
+	<property name="address" value="Calle la Regente, 4, 29009 Málaga, España"></property>
 	<property name="description" value="Cerca de la playa"></property>
 	<property name="contactPhone" value="954013645"></property>
 	<property name="creditCard">	
@@ -1121,7 +1121,7 @@
 	<property name="daysBeforeCancel" value="1"></property>	
 	<property name="rating" value="3"></property>
 	<property name="blocked" value="false"></property>
-	<property name="address" value="Huelva"></property>
+	<property name="address" value="calle palos de la frontera 3 21003 huelva españa"></property>
 	<property name="description" value="Piso espasioso y cerca de parques"></property>
 	<property name="contactPhone" value="954083645"></property>
 	<property name="creditCard">	
@@ -1179,7 +1179,7 @@
 		<property name="email" value="mRasdfa@gmail.com"></property>
 		<property name="rating" value="0.5"></property>
 	<property name="blocked" value="false"></property>
-	<property name="address" value="Sevilla"></property>
+	<property name="address" value="Calle vicente yáñez pinzon 2 sevilla españa"></property>
 	<property name="description" value="Viajo diariamente a malaga"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013645"></property>
@@ -1235,7 +1235,7 @@
 		<property name="daysBeforeCancel" value="1"></property>
 		 
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Malaga"></property>
+		<property name="address" value="Calle Navarro Ledesma, 3, 29010 Málaga, España"></property>
 	<property name="description" value="Viajo diariamente a sevilla"></property>
 	<property name="contactPhone" value="954013645"></property>
 	<property name="creditCard">	
@@ -1288,7 +1288,7 @@
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="1.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Sevilla"></property>
+		<property name="address" value="Calle Amador de los Ríos, 3, 41003 Sevilla, España"></property>
 	<property name="description" value="Viajo diariamente a desde sevilla hasta huelva por temas laborales"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013645"></property>
@@ -1347,7 +1347,7 @@
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="2.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Sevilla"></property>
+		<property name="address" value="Calle Arroyo, 5, 41003 Sevilla, España"></property>
 	<property name="description" value="Viajo diariamente a malaga"></property>
 	
 	<property name="contactPhone" value="954017845"></property>
@@ -1405,7 +1405,7 @@
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Huelva"></property>
+		<property name="address" value="Calle Lima, 2, 41005 Huelva"></property>
 	<property name="description" value="Viajo diariamente a malaga"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013635"></property>
@@ -1461,7 +1461,7 @@
 		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Huelva"></property>
+		<property name="address" value="Avenida Santa Marta, 10, 41005 Huelva, España"></property>
 	<property name="description" value="Viajo diariamente a malaga"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013635"></property>
@@ -1510,7 +1510,7 @@
 		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Huelva"></property>
+		<property name="address" value="Calle geranio, 2, 41005 Huelva, España"></property>
 	<property name="description" value="Hotel en el que se admiten todo tipo de mascotas"></property>
 	<property name="homePage" value="http://www.hotelx.com"></property>
 	<property name="contactPhone" value="954078635"></property>
@@ -1558,7 +1558,7 @@
 		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.8"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Huelva"></property>
+		<property name="address" value="Calle Galicia, 2, 21007 Huelva"></property>
 	<property name="description" value="Hotel 5 estrellas para perros"></property>
 	<property name="contactPhone" value="954013635"></property>
 	<property name="creditCard">	
@@ -1605,7 +1605,7 @@
 		<property name="pricePerDay" value="4.2"></property>
 		<property name="rating" value="1.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Sevilla"></property>
+		<property name="address" value="Calle Goya 2 Sevilla España"></property>
 	<property name="description" value="Residencia canina poara todo tipo de animales"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013635"></property>
@@ -1653,7 +1653,7 @@
 		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Malaga"></property>
+		<property name="address" value="Calle veracruz, 2, 29006 málaga"></property>
 	<property name="description" value="Venga con su mascota, estamos apie de playa"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013612"></property>
