@@ -16,6 +16,18 @@
 	color: red;
 	font-weight: bolder;
 }
+#alturaControlada{
+	height:20%;
+}
+#buscadorResponsivo{
+    	top:20%;
+    }
+
+@media screen and (max-width: 500px) {
+    #buscadorResponsivo{
+    	top:2%;
+    }
+}
 
 body {
 	font: 400 15px/1.8 Lato, sans-serif;

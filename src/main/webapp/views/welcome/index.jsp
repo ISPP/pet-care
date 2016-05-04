@@ -25,46 +25,46 @@
     <!-- Indicators -->
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+    <div id="alturaControlada" class="carousel-inner" role="listbox" >
       <div class="item active">
-        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" >
       </div>
 
       <div class="item">
-        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" >
       </div>
     
       <div class="item">
-        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideE.png" alt="Presentation 5" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideF.png" alt="Presentation 6" >
       </div>
     
       <div class="item">
-        <img class="todoAncho" src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideG.png" alt="Presentation 7"  >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideH.png" alt="Presentation 8" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideI.png" alt="Presentation 9" >
       </div>
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
 
      
-		 <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
+		 <div id="buscadorResponsivo" class="carousel-caption center-bottom container-fluid" style="position:absolute;">
           	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
 
 			<form:hidden path="id"/>
@@ -144,9 +144,9 @@
         <img src="images/petShipper-index.jpg" class="img-circle person" alt="Pet Shipper" width="255" height="255">
       </a>
       <div id="demo3" class="collapse">
-        <p><spring:message code="master.page.petSittertext1" /></p>
-        <p><spring:message code="master.page.petSittertext2" /></p>
-        <p><spring:message code="master.page.petSittertext3" /></p>
+        <p><spring:message code="master.page.petShippertext1" /></p>
+        <p><spring:message code="master.page.petShippertext2" /></p>
+        <p><spring:message code="master.page.petShippertext3" /></p>
       </div>
     </div>
     <div class="col-sm-3">
@@ -155,9 +155,9 @@
         <img src="images/company-index.jpg" class="img-circle person" alt="Companies" width="255" height="255">
       </a>
       <div id="demo4" class="collapse">
-        <p><spring:message code="master.page.petSittertext1" /></p>
-        <p><spring:message code="master.page.petSittertext2" /></p>
-        <p><spring:message code="master.page.petSittertext3" /></p>
+        <p><spring:message code="master.page.companytext1" /></p>
+        <p><spring:message code="master.page.companytext2" /></p>
+        <p><spring:message code="master.page.companytext3" /></p>
       </div>
     </div>
   </div>
