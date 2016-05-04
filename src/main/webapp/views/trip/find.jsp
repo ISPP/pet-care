@@ -46,7 +46,7 @@
 	</div>
 	<div class="col-md-8">
 	<input type="submit" name="save" class="button"
-			value="<spring:message code="trip.save" />" />
+			value="<spring:message code="trip.search" />" />
 	
 		
 		<input type="button" name="cancel" class="button btn-primary"
