@@ -99,8 +99,35 @@
 					value="<spring:message code="trip.save" />" />
 					
 				<jstl:if test="${deletable==true}">
-					<input type="submit" name="delete" class="button btn btn-primary"
-						value="<spring:message code="trip.delete" />" />
+				<div class="modal fade" id="confirmDelete" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">×</button>
+							<h4>
+								<span class="glyphicon glyphicon-lock"></span> <spring:message code="vehicle.delete"/>
+							</h4>
+						</div>
+						<div class="modal-body">
+							<div class="modal-body">
+								<spring:message code="vehicle.confirm.delete"/>
+							</div>
+								<button type="submit" name="delete" class="btn btn-block">
+									<spring:message code="vehicle.delete"/> <span class="glyphicon glyphicon-ok"></span>
+								</button>
+						</div>
+						<div class="modal-footer">
+							<button 
+								class="btn btn-danger btn-default pull-left"
+								data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span> <spring:message code="vehicle.cancel"/>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#confirmDelete"><spring:message code="trip.delete" /></a>
 				</jstl:if>
 		
 				<input type="button" name="cancel" class="button btn btn-primary"
