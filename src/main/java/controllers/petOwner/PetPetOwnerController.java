@@ -54,15 +54,18 @@ public class PetPetOwnerController extends AbstractController {
 	public ModelAndView see(@RequestParam int petId) {
 		ModelAndView result;
 		Pet pet;
+		Boolean isOwner;
 
 		String requestURI;
 
 		requestURI = "pet/petOwner/see.do?petId=" + petId;
 		pet = petService.findOne(petId);
+		isOwner = petService.isOwner(pet);
 
 		result = new ModelAndView("pet/see");
 		result.addObject("pet", pet);
 		result.addObject("requestURI", requestURI);
+		result.addObject("isOwner", isOwner);
 
 		return result;
 	}
@@ -90,12 +93,16 @@ public class PetPetOwnerController extends AbstractController {
 		ModelAndView result;
 		Pet pet;
 		Boolean isOwner;
+		Boolean deleteable;
 
 		pet = petService.findOne(petId);
 		isOwner = petService.isOwner(pet);
+		//We check if the pet has bookings. If it has,we can't delete it for now
+		deleteable = petService.findCurrentBookingsByPet(petId).isEmpty();
 
 		result = createEditModelAndView(pet);
 		result.addObject("isOwner", isOwner);
+		result.addObject("deleteable",deleteable);
 
 		return result;
 
@@ -107,6 +114,7 @@ public class PetPetOwnerController extends AbstractController {
 
 		if (binding.hasErrors()) {
 			result = createEditModelAndView(pet);
+			result.addObject("isOwner", true);
 		} else {
 			try {
 				petService.save(pet);
@@ -114,6 +122,7 @@ public class PetPetOwnerController extends AbstractController {
 
 			} catch (Throwable oops) {
 				result = createEditModelAndView(pet, "pet.commit.error");
+				result.addObject("isOwner", true);
 			}
 		}
 		return result;

@@ -40,6 +40,7 @@ public class PetController extends AbstractController {
 		
 		requestURI	= "pet/see.do?petId=" + petId;		
 		pet = petService.findOne(petId);
+		
 		if(pet.getPhotos()!=null){
 			numberOfPhotos = pet.getPhotos().size();
 		}
@@ -57,6 +58,14 @@ public class PetController extends AbstractController {
 		result.addObject("requestURI", requestURI);
 		result.addObject("numberOfPhotos",numberOfPhotos);
 		result.addObject("avatar",avatar);
+		
+		try{
+			//This may throw a NullPointerException
+			Boolean isOwner = petService.isOwner(pet);
+			result.addObject("isOwner", isOwner);
+		}catch(Throwable oops){
+			//If thrown we know there is no principal
+		}
 
 		return result;
 	}
