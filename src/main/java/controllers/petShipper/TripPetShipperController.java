@@ -138,6 +138,7 @@ public class TripPetShipperController extends AbstractController {
 		result = createEditModelAndView(tripForm);
 		result.addObject("isOwner", isOwner);
 		result.addObject("deletable", deletable);
+		result.addObject("showDeleteButton", deletable && tripService.findOne(tripId).getRegistrations().isEmpty());
 
 		return result;
 

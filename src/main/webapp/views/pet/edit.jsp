@@ -79,8 +79,10 @@
 						</div>
 					</div>
 					<%-- <spring:message code="pet.confirm.delete" var="varConfirmDelete"/> --%>
-					<a href="" class="btn btn-primary" data-toggle="modal"
-						data-target="#confirmDelete"><spring:message code="pet.delete" /></a>
+					<jstl:if test="${deleteable==true}">
+						<a href="" class="btn btn-primary" data-toggle="modal"
+							data-target="#confirmDelete"><spring:message code="pet.delete" /></a>
+					</jstl:if>
 				</jstl:if>
 
 				<input type="button" name="back"

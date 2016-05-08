@@ -93,12 +93,16 @@ public class PetPetOwnerController extends AbstractController {
 		ModelAndView result;
 		Pet pet;
 		Boolean isOwner;
+		Boolean deleteable;
 
 		pet = petService.findOne(petId);
 		isOwner = petService.isOwner(pet);
+		//We check if the pet has bookings. If it has,we can't delete it for now
+		deleteable = petService.findCurrentBookingsByPet(petId).isEmpty();
 
 		result = createEditModelAndView(pet);
 		result.addObject("isOwner", isOwner);
+		result.addObject("deleteable",deleteable);
 
 		return result;
 

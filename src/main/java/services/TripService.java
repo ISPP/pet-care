@@ -179,7 +179,7 @@ public class TripService {
 		date.setDate(date.getDate()+7);
 		
 		//Added trip.getRegistrations().isEmpty() so we can't delete trips with registrations
-		result = trip.getMoment().after(date) && isOwner(trip) /*&& trip.getRegistrations().isEmpty()*/;
+		result = trip.getMoment().after(date) && isOwner(trip);
 		
 		return result;
 	}

@@ -155,7 +155,8 @@
 	
 	<!-- Pet -->
 	<security:intercept-url pattern="/pet/list.do" access="permitAll" />
-	<security:intercept-url pattern="/pet/see.do" access="permitAll" />	
+	<!-- Changed to petOwner and petSitter because in the view only those can see the content -->
+	<security:intercept-url pattern="/pet/see.do" access="hasAnyRole('PETOWNER','PETSITTER')" />	
 	<security:intercept-url pattern="/pet/displayPhoto.do" access="permitAll" />
 	
 	<security:intercept-url pattern="/pet/petOwner/list.do" access="hasRole('PETOWNER')" />  
