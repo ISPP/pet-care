@@ -1461,8 +1461,8 @@
 		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Avenida Santa Marta, 10, 41005 Huelva, España"></property>
-	<property name="description" value="Viajo diariamente a malaga"></property>
+		<property name="address" value="Calle Omar, 24, 29004 Málaga1 España"></property>
+	<property name="description" value="Somos un hotel en el que aceptamos todo tipo de mascotas. ¡Visitenos!"></property>
 	<property name="homePage" value="http://www.google.com"></property>
 	<property name="contactPhone" value="954013635"></property>
 	<property name="creditCard">	
@@ -1510,7 +1510,7 @@
 		<property name="pricePerDay" value="3.2"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
-		<property name="address" value="Calle geranio, 2, 41005 Huelva, España"></property>
+		<property name="address" value="Calle Cañada del Tesoro, 29004 Málaga, España"></property>
 	<property name="description" value="Hotel en el que se admiten todo tipo de mascotas"></property>
 	<property name="homePage" value="http://www.hotelx.com"></property>
 	<property name="contactPhone" value="954078635"></property>
@@ -1805,7 +1805,8 @@
 	
                         <list>	
                                 <ref bean="trip2" />	
-                                <ref bean="trip3" />	
+                                <ref bean="trip3" />
+                                <ref bean="trip4" />	
                                
                         </list>	
                 </property>
@@ -1873,6 +1874,16 @@
 	<property name="endCity" value="Cadiz"></property>
 	<property name="distance" value="SHORT"></property>
 	<property name="moment" value="2016/04/01"></property>
+	<property name="cost" value="20"></property>
+	<property name="vehicle" ref="vehicle2"></property>	
+	</bean>
+	
+	<bean id="trip4" class="domain.Trip">
+	<property name="descriptionText" value=" Viajo diariamente a Sevilla por temas de trabajo"></property>
+	<property name="startCity" value="Malaga"></property>
+	<property name="endCity" value="Sevilla"></property>
+	<property name="distance" value="SHORT"></property>
+	<property name="moment" value="2016/05/07"></property>
 	<property name="cost" value="20"></property>
 	<property name="vehicle" ref="vehicle2"></property>	
 	</bean>
