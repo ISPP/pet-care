@@ -21,6 +21,7 @@
 
 <div id="toptop">
 </div>
+<!-- Si no es movil -->
 <div id="myCarousel" class="carousel slide zonaResponsiva" data-ride="carousel">
     <!-- Indicators -->
 
@@ -70,19 +71,18 @@
 			<form:hidden path="id"/>
 			<fieldset class="col-xs-12">
 			<h2><spring:message code="master.page.searchSuppliers"/></h2>
-
+			<div class="col-xs-12">
 			<spring:message var="startD" code="sitter.startDate"/>
 			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
 			<form:errors path="startDate" cssClass="error" />
-			
 			<spring:message var="endD" code="sitter.endDate"/>
 			<form:input class="blackL datepicker" path="endDate" placeholder="${endD}"/>
 			<form:errors path="endDate" cssClass="error" />
-
 			<spring:message var="addrs" code="sitter.address"/>
-			<form:input class="blackL" path="address" placeholder="${addrs}"/>
+			<form:input class="blackL addrss" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
-			<br/>
+			</div>
+			<div class="col-xs-12">
 			<form:label path="type">
 				<spring:message code="supplier.type" />
 			</form:label>	
@@ -92,11 +92,9 @@
 				<form:option value="3"><spring:message code="supplier.company" /></form:option>
 			</form:select>
 			<form:errors path="type" cssClass="error" />
-			
+			</div>
 				<acme:submit code="sitter.search.go" name="search" />
 			<br/>
-			
-			
 		
 			</fieldset>
 			</form:form>
@@ -111,6 +109,68 @@
  </div> 
  
 </div>
+
+
+<!-- Si es movil -->
+<div id="myCarousel2" class="zonaResponsiva">
+    <!-- Indicators -->
+
+    <!-- Wrapper for slides -->
+    <div id="alturaControlada2">
+      <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
+
+     
+		 <div class="text-center buscadorResponsivo">
+          	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
+
+			<form:hidden path="id"/>
+			<fieldset class="col-xs-12">
+			<h2 id="tituloMobile"><spring:message code="master.page.searchSuppliers"/></h2>
+			<div class="col-xs-12">
+			<spring:message var="startD" code="sitter.startDate"/>
+			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
+			<form:errors path="startDate" cssClass="error" />
+			</div>
+			<div class="col-xs-12">
+			<spring:message var="endD" code="sitter.endDate"/>
+			<form:input class="blackL datepicker" path="endDate" placeholder="${endD}"/>
+			<form:errors path="endDate" cssClass="error" />
+			</div>
+			<div class="col-xs-12">
+			<spring:message var="addrs" code="sitter.address"/>
+			<form:input class="blackL addrss" path="address" placeholder="${addrs}"/>
+			<form:errors path="address" cssClass="error" />
+			</div>
+			<div class="col-xs-12">
+			<form:label path="type">
+				<spring:message code="supplier.type" />
+			</form:label>	
+			<form:select path="type" cssStyle="color:black">
+				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
+				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
+				<form:option value="3"><spring:message code="supplier.company" /></form:option>
+			</form:select>
+			<form:errors path="type" cssClass="error" />
+			</div>
+				<acme:submit code="sitter.search.go" name="search" />
+			<br/>
+		
+			</fieldset>
+			</form:form>
+
+
+<br/>
+<br/>
+        
+        </div> 
+       
+       </security:authorize>
+ </div> 
+ 
+</div>
+
+
+
 
 <div id="users" class="container text-center noCortes">
   <!-- <h3><spring:message	code="master.page.petcare" /></h3> -->
