@@ -19,13 +19,25 @@
 #alturaControlada{
 	height:20%;
 }
-#buscadorResponsivo{
-    	top:20%;
+.buscadorResponsivo{
+    	top:40%;
     }
 
-@media screen and (max-width: 500px) {
-    #buscadorResponsivo{
+@media (max-width: 767px) {
+	#alturaControlada{
+		margin-left:-80%;
+		width:300%;
+		height:200%;
+	}
+    .buscadorResponsivo{
     	top:2%;
+    }
+    .zonaResponsiva{
+    	height:200px;
+    	clear:both;
+    }
+    .noCortes{
+    	margin-top:20%;
     }
 }
 
@@ -382,7 +394,7 @@ h3,h4 {
 #googleMap {
 	width: 100%;
 	height: 400px;
-	-webkit-filter: grayscale(100%);
+	/* -webkit-filter: grayscale(100%); */ /*Commented to show the map with colour*/
 	filter: grayscale(100%);
 }
 

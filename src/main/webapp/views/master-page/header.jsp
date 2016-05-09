@@ -139,7 +139,7 @@
 			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
-					<li><a href="" onclick="jumpTo('trip/petOwner//findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>				
+					<li><a href="" onclick="jumpTo('trip/petOwner/findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>				
 					
 				</ul>
 			</li>

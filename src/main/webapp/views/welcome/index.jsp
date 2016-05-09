@@ -21,7 +21,7 @@
 
 <div id="toptop">
 </div>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide zonaResponsiva" data-ride="carousel">
     <!-- Indicators -->
 
     <!-- Wrapper for slides -->
@@ -64,12 +64,13 @@
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
 
      
-		 <div id="buscadorResponsivo" class="carousel-caption center-bottom container-fluid" style="position:absolute;">
+		 <div class="carousel-caption center-bottom container-fluid buscadorResponsivo" style="position:absolute;">
           	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
 
 			<form:hidden path="id"/>
-			<fieldset >
+			<fieldset class="col-xs-12">
 			<h2><spring:message code="master.page.searchSuppliers"/></h2>
+
 			<spring:message var="startD" code="sitter.startDate"/>
 			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
 			<form:errors path="startDate" cssClass="error" />
@@ -77,7 +78,7 @@
 			<spring:message var="endD" code="sitter.endDate"/>
 			<form:input class="blackL datepicker" path="endDate" placeholder="${endD}"/>
 			<form:errors path="endDate" cssClass="error" />
-			
+
 			<spring:message var="addrs" code="sitter.address"/>
 			<form:input class="blackL" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
@@ -92,7 +93,11 @@
 			</form:select>
 			<form:errors path="type" cssClass="error" />
 			
-			<acme:submit code="sitter.search.go" name="search" />
+				<acme:submit code="sitter.search.go" name="search" />
+			<br/>
+			
+			
+		
 			</fieldset>
 			</form:form>
 
@@ -107,7 +112,7 @@
  
 </div>
 
-<div id="users" class="container text-center">
+<div id="users" class="container text-center noCortes">
   <!-- <h3><spring:message	code="master.page.petcare" /></h3> -->
   <img width="30%" src="images/logo1lineW.png" alt="PetCare"/>
   <p><em><spring:message	code="master.page.petcareText1" /></em></p>
