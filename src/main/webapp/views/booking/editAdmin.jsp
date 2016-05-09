@@ -36,10 +36,10 @@
 
 
 	<input type="submit" name="save" class="button"
-		value="<spring:message code="complaint.save" />" />
+		value="<spring:message code="btnAccept" />" />
 
 
-	<input type="button" name="cancel" class="button btn-primary"
+	<input type="button" name="cancel" class="btnCancel"
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
