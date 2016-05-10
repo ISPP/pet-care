@@ -175,55 +175,49 @@
 <div id="users" class="container text-center noCortes">
   <!-- <h3><spring:message	code="master.page.petcare" /></h3> -->
   <img width="30%" src="images/logo1lineW.png" alt="PetCare"/>
-  <p><em><spring:message	code="master.page.petcareText1" /></em></p>
+  <br/>
   <br/>
   <p><spring:message	code="master.page.petcareText2" /></p>
   <br>
   <div class="row">
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petowner" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.petowner" /></strong></p>
       <a href="#demo" data-toggle="collapse">
         <img src="images/petOwner-index.jpg" class="img-circle person" alt="Pet Owner" width="255" height="255">
       </a>
       <div id="demo" class="collapse">
         <p><spring:message code="master.page.petOwnertext1" /></p>
-        <p><spring:message code="master.page.petOwnertext2" /></p>
-        <p><spring:message code="master.page.petOwnertext3" /></p>
+		<security:authorize access="!hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER','COMPANY')">
 		<a class="btn btn-default" href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a>
+      	</security:authorize>
       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petsitter" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.petsitter" /></strong></p>
       <a href="#demo2" data-toggle="collapse">
         <img src="images/petSitter-index.jpg" class="img-circle person" alt="Pet Sitter" width="255" height="255">
       </a>
       <div id="demo2" class="collapse">
         <p><spring:message code="master.page.petSittertext1" /></p>
-        <p><spring:message code="master.page.petSittertext2" /></p>
-        <p><spring:message code="master.page.petSittertext3" /></p>
       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petshipper" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.petshipper" /></strong></p>
       <a href="#demo3" data-toggle="collapse">
         <img src="images/petShipper-index.jpg" class="img-circle person" alt="Pet Shipper" width="255" height="255">
       </a>
       <div id="demo3" class="collapse">
         <p><spring:message code="master.page.petShippertext1" /></p>
-        <p><spring:message code="master.page.petShippertext2" /></p>
-        <p><spring:message code="master.page.petShippertext3" /></p>
-      </div>
+       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.company" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.company" /></strong></p>
       <a href="#demo4" data-toggle="collapse">
         <img src="images/company-index.jpg" class="img-circle person" alt="Companies" width="255" height="255">
       </a>
       <div id="demo4" class="collapse">
         <p><spring:message code="master.page.companytext1" /></p>
-        <p><spring:message code="master.page.companytext2" /></p>
-        <p><spring:message code="master.page.companytext3" /></p>
-      </div>
+       </div>
     </div>
   </div>
 </div>
