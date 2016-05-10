@@ -32,28 +32,33 @@
 
 
 
-
+<div class="col-md-6-2">
+			<div class="form-group text-left">
 
 	<form:label path="startMoment">
 		<spring:message code="booking.startMoment" />:
 			</form:label>
 	<form:input code="booking.startMoment" path="startMoment"
-		class="blackL datepicker" />
+		class="form-control blackL datepicker" />
 
 
 	<form:errors path="startMoment" cssClass="error" />
-	<br>
+	</div>
+	
 	<div id="endMomentDiv">
+	<div class="form-group text-left">
+	
 		<form:label path="endMoment">
 			<spring:message code="booking.endMoment" />:
 			</form:label>
 		<form:input code="booking.endMoment" path="endMoment"
-			class="blackL datepicker" />
+			class="form-control blackL datepicker" />
 
 
 		<form:errors path="endMoment" cssClass="error" />
+		</div>
 	</div>
-	<br>
+	
 
 	
 
@@ -63,22 +68,27 @@
 		
 		
 		<div id="hourDiv">
+		<div class="form-group text-left">
 		<form:label path="startHour">
 			<spring:message code="booking.startHour" />:
 			</form:label>
-		<form:input code="booking.startHour" path="startHour" placeholder="HH:mm" />
+		<form:input class="form-control" code="booking.startHour" path="startHour" placeholder="HH:mm" />
 
 
 		<form:errors path="startHour" cssClass="error" />
-		<br>
+		</div>
+	
+		<div class="form-group text-left">
 		<form:label path="endHour">
 			<spring:message code="booking.endHour" />:
 			</form:label>
-		<form:input code="booking.endHour" path="endHour" placeholder="HH:mm"/>
+		<form:input class="form-control" code="booking.endHour" path="endHour" placeholder="HH:mm"/>
 
 
 		<form:errors path="endHour" cssClass="error" />
 	</div>
+	</div>
+	
 
 			<form:label path="night">
 				<spring:message code="booking.Type" />:
@@ -124,6 +134,7 @@
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
+	</div>
 </form:form>
 <script type="text/javascript">
 	$("input[type=checkbox]").switchButton({
