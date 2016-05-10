@@ -32,6 +32,7 @@
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">
   
+  
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -39,7 +40,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
 
   <link href="styles/common.css" rel="stylesheet" type="text/css">
-    
+      <link href="styles/buttons.css" rel="stylesheet" type="text/css">
   <link href="styles/bootstrap-switch.css" rel="stylesheet" type="text/css">
   <script src="scripts/bootstrap-switch.js"></script>
    <script>
