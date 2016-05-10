@@ -25,64 +25,97 @@
 
 		<form:hidden path="id" />
 		<div class="col-md-6">
-			<acme:textbox code="trip.startCity" path="startCity" />
-			<table class="labelInput">
-				<tr>
-					<th class="tableLabel"><form:label path="${trip.distance}">
-							<spring:message code="trip.distance" />
-						</form:label></th>
-					<th class="tableInput"><form:select path="distance">
-							<form:option value="SHORT" label="SHORT" />
-							<form:option value="MEDIUM" label="MEDIUM" />
-							<form:option value="LARGE" label="LARGE" />
-						</form:select></th>
-					<th class="tableError"><form:errors path="distance"
-							cssClass="error" /></th>
-				</tr>
-			</table>
-			<br />
-			<table class="labelInput">
-				<tr>
-					<th class="tableLabel"><form:label path="${trip.moment}">
-							<b><spring:message code="trip.moment" /></b>
-						</form:label></th>
-					<th class="tableInput"><spring:message var="moment"
-							code="trip.moment" /> <form:input class="blackL datepicker"
-							path="moment" /></th>
-					<th class="tableError"><form:errors path="moment"
-							cssClass="error" /></th>
-				</tr>
-			</table>
-		</div>
-		<div class="col-md-6">
-			<acme:textbox code="trip.endCity" path="endCity" />
-			<table class="labelInput">
-				<tr>
-					<th class="tableLabel"><form:label path="${trip.vehicle}">
-							<spring:message code="trip.vehicle" />
-						</form:label></th>
-					<th class="tableInput"><form:select path="vehicleId">
-							<form:options items="${vehicles}" itemLabel="title"
-								itemValue="id" />
-						</form:select></th>
-					<th class="tableError"><form:errors path="vehicleId"
-							cssClass="error" /></th>
-				</tr>
-			</table>
-			<br />
-			<acme:textbox code="trip.cost" path="cost" />
+			<div class="form-group text-left">
+				<form:label path="startCity">
+					<b><spring:message code="trip.startCity" /></b>
+				</form:label>
+
+
+
+				<form:input class="form-control" path="startCity" />
+
+
+
+				<form:errors path="startCity" cssClass="error" />
+			</div>
+
+
+			<div class="form-group text-left">
+				<form:label path="endCity">
+					<b><spring:message code="trip.endCity" /></b>
+				</form:label>
+
+
+
+				<form:input class="form-control" path="endCity" />
+
+
+
+				<form:errors path="endCity" cssClass="error" />
+			</div>
+
+			<div class="form-group text-left">
+				<form:label path="${trip.distance}">
+					<spring:message code="trip.distance" />
+				</form:label>
+				<form:select class="form-control" path="distance">
+					<form:option value="SHORT" label="SHORT" />
+					<form:option value="MEDIUM" label="MEDIUM" />
+					<form:option value="LARGE" label="LARGE" />
+				</form:select>
+				<form:errors path="distance" cssClass="error" />
+
+			</div>
+
+			<div class="form-group text-left">
+				<form:label path="${trip.moment}">
+					<b><spring:message code="trip.moment" /></b>
+				</form:label>
+				<spring:message var="moment" code="trip.moment" />
+				<form:input class="form-control blackL datepicker" path="moment" />
+				<form:errors path="moment" cssClass="error" />
+			</div>
 
 		</div>
+
 		<div class="col-md-6">
-			<form:label class="midl-left" path="descriptionText">
-				<spring:message code="trip.descriptionText" />
-			</form:label>
-			<form:textarea class="register-todoAncho" path="descriptionText" />
+		
+			<div class="form-group text-left">
+
+				<form:label path="vehicleId">
+					<spring:message code="trip.vehicle" />
+				</form:label>
+				<form:select class="form-control" path="vehicleId">
+					<form:options items="${vehicles}" itemLabel="title" itemValue="id" />
+				</form:select>
+				<form:errors path="vehicleId" cssClass="error" />
+			</div>
+
+
+			<div class="form-group text-left">
+				<form:label path="cost">
+					<spring:message code="trip.cost" />
+
+				</form:label>
+
+				<form:input class="form-control" path="cost" />
+				<form:errors path="cost" class="error"></form:errors>
+			</div>
+
+
+			<div class="form-group text-left">
+				<form:label path="descriptionText">
+					<spring:message code="trip.descriptionText" />
+				</form:label>
+				<form:textarea class="form-control register-todoAncho"
+					path="descriptionText" />
+				<form:errors path="descriptionText" class="error" />
+			</div>
 		</div>
 
-		<br />
-		<div class="midl-left">
-			<input type="submit" name="save" class="button btn btn-primary"
+
+		<div class="col-md-12">
+			<input type="submit" name="save" class="btnAccept"
 				value="<spring:message code="trip.save" />" />
 
 			<jstl:if test="${deletable==true}">
@@ -117,12 +150,12 @@
 					</div>
 				</div>
 				<jstl:if test="${showDeleteButton==true}">
-					<a href="" class="btn btn-primary" data-toggle="modal"
+					<a href="" class="btnCancel" data-toggle="modal"
 						data-target="#confirmDelete"><spring:message
 							code="trip.delete" /></a>
 				</jstl:if>
 			</jstl:if>
-			<input type="button" name="cancel" class="button btn btn-primary"
+			<input type="button" name="cancel" class="btnCancel"
 				value="<spring:message code="trip.cancel" />"
 				onclick="javascript: window.location.replace('welcome/index.do');" />
 		</div>
