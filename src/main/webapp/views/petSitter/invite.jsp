@@ -35,12 +35,18 @@
 			<form:input class="form-control" path="email"/>	
 			<form:errors cssClass="error" path="email"/>
 	<br>
-	<div class="col-md-12">
-	<acme:submit name="create" code="petSitter.send"/>
-	<acme:cancel url="welcome/index.do" code="petSitter.button.cancel"/>
-	</div>
-	<br>
+	
+	
+	<input type="submit" name="save" class="btnAccept"
+		value="<spring:message code="petSitter.send" />" />
+
+
+	<input type="button" name="cancel" class="btnCancel"
+		value=" <spring:message code="petSitter.button.cancel" />"
+		onclick="javascript: window.location.replace('welcome/index.do'); " />
+	
+	<br />
 	
 </form:form>
-
+<br>
 </div>
