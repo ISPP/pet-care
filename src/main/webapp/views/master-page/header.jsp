@@ -23,15 +23,27 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="" onclick="jumpTo('./');">
-		 <img alt="PetCare" width="50%" src="images/logo-header.png"/> 
+		 <img id="logoApp" alt="PetCare" width="100%" src="images/logo-header.png"/> 
 		<!--PetCare-->
 		</a>
 	</div>
 	<div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
+      	<spring:message code="master.page.myProfile" var="profile"/>
+      	<spring:message code="master.page.pets" var="pet"/>
+      	<spring:message code="master.page.logout" var="logout"/>
+      	<spring:message code="master.page.trips" var="travel"/>
+      	<spring:message code="master.page.vehicle" var="vehicle"/>
+      	<spring:message code="master.page.booking" var="booking"/>
+      	<spring:message code="master.page.complaint" var="complaint"/>
+      	<spring:message code="master.page.review" var="review"/>
+      	<spring:message code="master.page.language2" var="language"/>
+      	<spring:message code="master.page.petSitter.invite" var="invitation"/>
+      	<spring:message code="master.page.administrator.dashboard" var="dashboard"/>
+      	
 		<security:authorize access="hasRole('ADMIN')">
 		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.complaint" />
+			<img class="iconNav" src="images/icons/icon-complaint.png" title="${complaint}"/> 
 				<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 			<li><a href="" onclick="jumpTo('complaint/administrator/listComplaintAdminNotSolved.do');"><spring:message code="master.page.complaint.listComplaintAdminNotSolved" /></a></li>
@@ -42,35 +54,25 @@
 			
 			
 			<li><a href="" onclick="jumpTo('administrator/dashboard.do');">
-			<spring:message code="master.page.administrator.dashboard" />
-			<!--<span class="glyphicon glyphicon-user"></span>-->
+			<img class="iconNav" src="images/icons/icon-dashboard.png" title="${dashboard}"/> 
 			</a></li>	
 			
 			<li><a href="" onclick="jumpTo('administrator/administrator/displayOwn.do');">
-			<spring:message code="master.page.myProfile" />
-			<!--<span class="glyphicon glyphicon-user"></span>-->
+			<img class="iconNav" src="images/icons/icon-profile.png" title="${profile}"/> 
 			</a></li>	
-			
-			<li><a href="" onclick="jumpTo('supplier/administrator/list.do');">
-			<spring:message code="master.page.supplier.list" />
-			<!--<span class="glyphicon glyphicon-user"></span>-->
-			</a></li>	
-			
-			<li><a href="" onclick="jumpTo('search/searchSuppliers.do');">
-			<spring:message code="master.page.searchSitters" />
-			<!--<span class="glyphicon glyphicon-user"></span>-->
-			</a></li>
-			
-			<li><a href="" onclick="jumpTo('booking/administrator/listToPay.do');">
-			<spring:message code="master.page.payShipper" />
-			<!--<span class="glyphicon glyphicon-user"></span>-->
-			</a></li>	
-			
-			
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.invite" />
-			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<img class="iconNav" src="images/icons/icon-supplier.png"/>  
+			<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+					<li><a href="" onclick="jumpTo('supplier/administrator/list.do');"><spring:message code="master.page.supplier.list" /></a></li>
+					<li><a href="" onclick="jumpTo('search/searchSuppliers.do');"><spring:message code="master.page.searchSitters" /></a></li>
+					<li><a href="" onclick="jumpTo('booking/administrator/listToPay.do');"><spring:message code="master.page.payShipper" /></a></li>				
+				</ul>
+			</li>
+			
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<img class="iconNav" src="images/icons/icon-invitation.png" title="${invitation}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('company/administrator/invite.do');"><spring:message code="master.page.company.inviteText" /></a></li>				
@@ -85,9 +87,9 @@
 		
 		
 		<security:authorize access="hasRole('PETOWNER')">
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.complaint" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			 
+			 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<img class="iconNav" src="images/icons/icon-complaint.png" title="${complaint}"/> 
 			<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 						<li><a href="" onclick="jumpTo('complaint/customer/create.do');"><spring:message code="master.page.complaint.create" /></a></li>
@@ -97,8 +99,7 @@
 			</li>	
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.booking" />
-			<!--<span class="glyphicon glyphicon-book"></span>-->
+			<img class="iconNav" src="images/icons/icon-booking.png" title="${booking}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 						
@@ -111,8 +112,7 @@
 			</li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.review" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<img class="iconNav" src="images/icons/icon-review.png" title="${review}"/> 
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
 			<li><a href="" onclick="jumpTo('review/petOwner/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
@@ -120,13 +120,11 @@
 				</ul>	
 			
 			<li><a href="" onclick="jumpTo('petOwner/petOwner/displayOwn.do');">
-			<spring:message code="master.page.myProfile" />
-			<!--<span class="glyphicon glyphicon-user"></span>-->
+			<img class="iconNav" src="images/icons/icon-profile.png" title="${profile}"/> 
 			</a></li>				
 
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.pets" />
-			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<img class="iconNav" src="images/icons/icon-pet.png" title="${pet}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('pet/petOwner/list.do');"><spring:message code="master.page.list" /></a></li>				
@@ -135,8 +133,7 @@
 			</li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.trips" />
-			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<img class="iconNav" src="images/icons/icon-travel.png" title="${travel}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('trip/petOwner/findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>				
@@ -149,21 +146,21 @@
 			
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.language" />
-			<!--<span class="glyphicon glyphicon-cog"></span>-->
+			<img class="iconNav" src="images/icons/icon-language.png" title="${language}"/> 
 			<span class="caret"></span></a>
           	<ul class="dropdown-menu">
             	<li> <a href="" onclick="jumpTo('./?language=en');"><img width="35" height="23" src="images/United-Kingdom.png">EN</a></li>
             	<li><a href="" onclick="jumpTo('./?language=es');"><img width="35" height="23" src="images/Spain.png">ESP</a></li>
           	</ul>
-        	</li>				
-
+        	</li>	
+			 
+			 
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PETSHIPPER')">
 			
-			<li class="dropdown"><a class="dropdown-toffle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.vehicle"/>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			<img class="iconNav" src="images/icons/icon-vehicle.png" title="${vehicle}"/> 
 			<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('vehicle/petShipper/list.do')"><spring:message code="master.page.vehicle.list" /></a></li>
@@ -171,8 +168,7 @@
 				</ul>
 			</li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.trips" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<img class="iconNav" src="images/icons/icon-travel.png" title="${travel}"/> 
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
 					
@@ -184,8 +180,7 @@
 				</ul>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.complaint" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<img class="iconNav" src="images/icons/icon-complaint.png" title="${complaint}"/> 
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
 					
@@ -203,8 +198,7 @@
 				
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.review" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<img class="iconNav" src="images/icons/icon-review.png" title="${review}"/> 
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
 			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
@@ -219,8 +213,7 @@
 		    	
 		    
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.invite" />
-			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<img class="iconNav" src="images/icons/icon-invitation.png" title="${invitation}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('petShipper/invite.do');"><spring:message code="master.page.petShipper.inviteText" /></a></li>				
@@ -228,8 +221,7 @@
 			</li>	
 		    
 		    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.language" />
-			<!--<span class="glyphicon glyphicon-cog"></span>-->
+			<img class="iconNav" src="images/icons/icon-language.png" title="${language}"/> 
 			<span class="caret"></span></a>
           	<ul class="dropdown-menu">
             	<li> <a href="" onclick="jumpTo('./?language=en');"><img width="35" height="23" src="images/United-Kingdom.png">EN</a></li>
@@ -243,8 +235,7 @@
 		<security:authorize access="hasRole('PETSITTER')">
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.complaint" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<img class="iconNav" src="images/icons/icon-complaint.png" title="${complaint}"/> 
 			<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 						<li><a href="" onclick="jumpTo('complaint/customer/create.do');"><spring:message code="master.page.complaint.create" /></a></li>
@@ -255,8 +246,7 @@
 			
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.booking" />
-			<!--<span class="glyphicon glyphicon-book"></span>-->
+			<img class="iconNav" src="images/icons/icon-booking.png" title="${booking}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 						
@@ -264,12 +254,12 @@
 						<li><a href="" onclick="jumpTo('booking/supplier/listPendingSupplier.do');"><spring:message code="master.page.booking.listPendingSupplier" /></a></li>
 				</ul>
 			</li>
-
-			<li><a href="" onclick="jumpTo('petSitter/petSitter/displayOwn.do');"><spring:message code="master.page.myProfile" /></a></li>			
+			
+			
+			<li><a href="" onclick="jumpTo('petSitter/petSitter/displayOwn.do');"><img class="iconNav"  src="images/icons/icon-profile.png" title="${profile}"/> </a></li>			
 
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.pets" />
-			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<img class="iconNav" src="images/icons/icon-pet.png" title="${pet}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('pet/petSitter/list.do');"><spring:message code="master.page.list" /></a></li>				
@@ -278,8 +268,7 @@
 			</li>
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.review" />
-			<!--<span class="glyphicon glyphicon-bell"></span>-->
+			<img class="iconNav" src="images/icons/icon-review.png" title="${review}"/> 
 			<span class="caret"></span></a>
 		    	<ul class="dropdown-menu">
 			<li><a href="" onclick="jumpTo('review/supplier/list.do')"><spring:message code="master.page.petsitter.review.list"/></a></li>
@@ -288,8 +277,7 @@
 			
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.invite" />
-			<!--<span class="glyphicon glyphicon-piggy-bank"></span>-->
+			<img class="iconNav" src="images/icons/icon-invitation.png" title="${invitation}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('petSitter/invite.do');"><spring:message code="master.page.petSitter.inviteText" /></a></li>				
@@ -303,7 +291,7 @@
 		
 		
 		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.complaint" />
+			<img class="iconNav" src="images/icons/icon-complaint.png" title="${complaint}"/> 
 			<span class="caret"></span></a>
 			
 				<ul class="dropdown-menu">
@@ -315,7 +303,7 @@
 						<li><a href="" onclick="jumpTo('complaint/customer/listComplaintCustomerIdNotSolved.do')"><spring:message code="complaint.customer.listComplaintCustomerIdNotSolved.do" /></a></li>
 				</ul>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		<spring:message	code="master.page.booking" />
+		<img class="iconNav" src="images/icons/icon-booking.png" title="${booking}"/> 
 		<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					
@@ -325,9 +313,9 @@
 						
 				</ul>
 				
-			<li><a href="" onclick="jumpTo('company/company/displayOwn.do');"><spring:message code="master.page.myProfile" /></a></li>		
+			<li><a href="" onclick="jumpTo('company/company/displayOwn.do');"><img class="iconNav"  src="images/icons/icon-profile.png" title="${profile}"/></a></li>		
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<spring:message code="master.page.petSitter.review"/>
+			<img class="iconNav" src="images/icons/icon-review.png" title="${review}"/> 
 				<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					
@@ -347,9 +335,9 @@
 			hidden
 			</a>
 			</div>
-			<li><a style="cursor: pointer;" onclick="clickLogin();"><spring:message code="master.page.login" /></a></li>
-        	<li><a href="#users"><spring:message code="master.page.users" /></a></li>
-        	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.language" /><span class="caret"></span></a>
+			<li class="bigHead"><a style="cursor: pointer;" onclick="clickLogin();"><spring:message code="master.page.login" /></a></li>
+        	<li class="bigHead"><a href="#users"><spring:message code="master.page.users" /></a></li>
+        	<li class="dropdown bigHead"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="master.page.language" /><span class="caret"></span></a>
           	<ul class="dropdown-menu">
             	<li> <a href="" onclick="jumpTo('./?language=en');"><img width="35" height="23" src="images/United-Kingdom.png">EN</a></li>
             	<li><a href="" onclick="jumpTo('./?language=es');"><img width="35" height="23" src="images/Spain.png">ESP</a></li>
@@ -360,8 +348,7 @@
 	
 		<security:authorize access="isAuthenticated()">
 			<li><a href="" onclick="jumpTo('j_spring_security_logout');">
-			<spring:message code="master.page.logout" />
-			<!--<span class="glyphicon glyphicon-remove-sign"></span>-->
+			<img class="iconNav" src="images/icons/icon-logout.png" title="${logout}"/> 
 			</a></li>
 		</security:authorize>
 	

@@ -14,7 +14,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!-- Footer -->
-<footer class="text-center">
+<footer class=" footer text-center">
 <jstl:if test="${index==true}">
   <spring:message var="toTop" code="master.toTop"/>
   <a class="up-arrow" href="#toptop" title="${toTop}">
