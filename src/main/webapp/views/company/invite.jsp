@@ -34,9 +34,16 @@
 	
 
 	
-	<div class="col-md-12">
-	<acme:submit name="create" code="company.send"/>
-	<acme:cancel url="welcome/index.do" code="company.button.cancel"/>
-	</div>
+	
+	<input type="submit" name="save" class="btnAccept"
+		value="<spring:message code="company.send" />" />
+
+
+	<input type="button" name="cancel" class="btnCancel"
+		value=" <spring:message code="company.button.cancel" />"
+		onclick="javascript: window.location.replace('welcome/index.do'); " />
+	
+	<br />
 </form:form>
+<br>
 </div>
