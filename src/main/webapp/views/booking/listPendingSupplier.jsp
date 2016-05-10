@@ -20,6 +20,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
 
@@ -28,7 +30,21 @@
  	<jstl:forEach var="booking" items="${bookings}">
  		<div class="col-md-8-2 panel panel-default">
 	 		<div class="wrap-2">
-	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/ok.png">
+	 		<c:set var="status" value="${booking.status}"/>
+	 		<c:if test="${fn:contains(status, 'ACCEPTED')}">
+   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/ok.png">
+				</c:if>
+				
+				<c:if test="${fn:contains(status, 'REJECTED')}">
+   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+				</c:if>
+	 		
+	 		
+	 		<c:if test="${fn:contains(status, 'PENDING')}">
+   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+				</c:if>
+	 		
+	 		
 	 		<div>
 	 		<h3 class="h3-no-bottom">${booking.supplier.surname},${booking.supplier.name}</h3>
 	 		<table class="text-rigth-2">
