@@ -302,17 +302,35 @@ function initialize() {
 	<jstl:forEach items="${suppliers}" var="supplier">
 		//We get all the suppliers we need and we create a marker for each of them
 		//console.log("${supplier.address}")
-		var _address = "${supplier.address}"
-		var title = "${supplier.name} ${supplier.surname}"
+		var _address = "${supplier.address}";
+		var title = "${supplier.name} ${supplier.surname}";
 		
 		var marker = null;
+		
+		//Custom marker icon with 20x32 px size
+		var markerIcon = new google.maps.MarkerImage(
+				<jstl:if test="${searchSuppliersForm.type == 1}">
+			    	"images/sm_petSitter_marker.png",
+			    </jstl:if>
+		    	<jstl:if test="${searchSuppliersForm.type == 2}">
+			    	"images/sm_petShipper_marker.png",
+			    </jstl:if>
+			    	<jstl:if test="${searchSuppliersForm.type == 3}">
+			    	"images/sm_company_marker.png",
+			    </jstl:if>
+			    null,
+			    null,
+			    null,
+			    null/*new google.maps.Size(70.04,98.76)*/
+		);
 		
 		geocoder.geocode( { 'address': _address }, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		        map.setCenter(results[0].geometry.location);
 		        var marker = new google.maps.Marker({
 		            map: map,
-		            position: results[0].geometry.location
+		            position: results[0].geometry.location,
+		            icon: markerIcon
 		          });
 		        createInfoWindow(marker,map,index);
 		        index++;
