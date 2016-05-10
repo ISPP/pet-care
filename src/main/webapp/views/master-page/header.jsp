@@ -23,7 +23,7 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="" onclick="jumpTo('./');">
-		 <img id="logoApp" alt="PetCare" width="100%" src="images/logo-header.png"/> 
+		 <img id="logoApp" alt="PetCare" src="images/logo-header.png"/> 
 		<!--PetCare-->
 		</a>
 	</div>

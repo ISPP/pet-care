@@ -31,6 +31,9 @@
 	font-size:20px;
 	padding-top:30px;
 }
+.footSuelo{
+	margin-bottom:20%;
+}
 
 .buscadorResponsivo{
     	top:40%;
@@ -43,19 +46,23 @@
     }
 #logoApp{
 	opacity: 0.7; 
+	width:100%;
 }
 
 #logoApp:hover{
-	opacity: 1; 
+	opacity: 1;
+	width:100%;
 }
     
 .iconNav{
+	width:60%;
 	-webkit-filter: invert(100%);
 	filter: invert(100%);
 	opacity: 0.7; 
 }
 
 .iconNav:hover{
+	width:60%;
 	-webkit-filter: invert(100%);
 	filter: invert(100%);
 	opacity: 1; 
@@ -79,6 +86,14 @@
     }
     .noCortes{
     	margin-top:40%;
+    }
+    #logoApp{
+     width: 60%;
+     opacity: 0.7; 
+    }
+    #logoApp:hover{
+     width: 60%;
+     opacity: 1; 
     }
     #myCarousel{
      display: none;

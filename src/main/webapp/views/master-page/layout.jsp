@@ -121,7 +121,7 @@ $(document).ready(function(){
 	<jstl:set  var="clase" value="" />
 	</jstl:if>
 	
-	<div class="${clase}">
+	<div class="${clase} footSuelo">
 		
 		<tiles:insertAttribute name="body" />	
 		<jstl:if test="${message != null}">
