@@ -42,15 +42,17 @@
 			<form:errors cssClass="error" path="text"/>
 	<br>
 	
-	
+	<div class="col-md-12 text-center">
+	</div>
 
-<input type="submit" name="save" class="button btn btn-primary"
+<input type="submit" name="save" class="btnAccept"
 		value="<spring:message code="comment.save" />" />
 
 	
-	<input type="button" name="cancel" class="button btn btn-primary"
+	<input type="button" name="cancel" class="btnCancel"
 		value="<spring:message code="comment.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
+	<br />
 	<br />
 </form:form>
 </div>
