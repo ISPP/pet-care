@@ -21,67 +21,68 @@
 
 <div id="toptop">
 </div>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<!-- Si no es movil -->
+<div id="myCarousel" class="carousel slide zonaResponsiva" data-ride="carousel">
     <!-- Indicators -->
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+    <div id="alturaControlada" class="carousel-inner" role="listbox" >
       <div class="item active">
-        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" >
       </div>
 
       <div class="item">
-        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" >
       </div>
     
       <div class="item">
-        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideE.png" alt="Presentation 5" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideE.png" alt="Presentation 5" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideF.png" alt="Presentation 6" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideF.png" alt="Presentation 6" >
       </div>
     
       <div class="item">
-        <img class="todoAncho" src="images/SlideG.png" alt="Presentation 7" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideG.png" alt="Presentation 7"  >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideH.png" alt="Presentation 8" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideH.png" alt="Presentation 8" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideI.png" alt="Presentation 9" width="1200" height="600">
+        <img class="todoAncho" src="images/SlideI.png" alt="Presentation 9" >
       </div>
       <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
 
      
-		 <div class="carousel-caption center-bottom container-fluid" style="position:absolute;top:90px;">
+		 <div class="carousel-caption center-bottom container-fluid buscadorResponsivo" style="position:absolute;">
           	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
 
 			<form:hidden path="id"/>
-			<fieldset >
+			<fieldset class="col-xs-12">
 			<h2><spring:message code="master.page.searchSuppliers"/></h2>
+			<div class="col-xs-12">
 			<spring:message var="startD" code="sitter.startDate"/>
 			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
 			<form:errors path="startDate" cssClass="error" />
-			
 			<spring:message var="endD" code="sitter.endDate"/>
 			<form:input class="blackL datepicker" path="endDate" placeholder="${endD}"/>
 			<form:errors path="endDate" cssClass="error" />
-			
 			<spring:message var="addrs" code="sitter.address"/>
-			<form:input class="blackL" path="address" placeholder="${addrs}"/>
+			<form:input class="blackL addrss" path="address" placeholder="${addrs}"/>
 			<form:errors path="address" cssClass="error" />
-			<br/>
+			</div>
+			<div class="col-xs-12">
 			<form:label path="type">
 				<spring:message code="supplier.type" />
 			</form:label>	
@@ -91,8 +92,10 @@
 				<form:option value="3"><spring:message code="supplier.company" /></form:option>
 			</form:select>
 			<form:errors path="type" cssClass="error" />
-			
-			<acme:submit code="sitter.search.go" name="search" />
+			</div>
+				<acme:submit code="sitter.search.go" name="search" />
+			<br/>
+		
 			</fieldset>
 			</form:form>
 
@@ -107,58 +110,114 @@
  
 </div>
 
-<div id="users" class="container text-center">
+
+<!-- Si es movil -->
+<div id="myCarousel2" class="zonaResponsiva">
+    <!-- Indicators -->
+
+    <!-- Wrapper for slides -->
+    <div id="alturaControlada2">
+      <security:authorize access="isAnonymous() or hasRole('PETOWNER')">
+
+     
+		 <div class="text-center buscadorResponsivo">
+          	<form:form action="search/searchSuppliers.do" modelAttribute="searchSuppliersForm" method="POST">
+
+			<form:hidden path="id"/>
+			<fieldset class="col-xs-12">
+			<h2 id="tituloMobile"><spring:message code="master.page.searchSuppliers"/></h2>
+			<div class="col-xs-12">
+			<spring:message var="startD" code="sitter.startDate"/>
+			<form:input id="datepicker" class="blackL datepicker" path="startDate"  placeholder="${startD}"/>
+			<form:errors path="startDate" cssClass="error" />
+			</div>
+			<div class="col-xs-12">
+			<spring:message var="endD" code="sitter.endDate"/>
+			<form:input class="blackL datepicker" path="endDate" placeholder="${endD}"/>
+			<form:errors path="endDate" cssClass="error" />
+			</div>
+			<div class="col-xs-12">
+			<spring:message var="addrs" code="sitter.address"/>
+			<form:input class="blackL addrss" path="address" placeholder="${addrs}"/>
+			<form:errors path="address" cssClass="error" />
+			</div>
+			<div class="col-xs-12">
+			<form:label path="type">
+				<spring:message code="supplier.type" />
+			</form:label>	
+			<form:select path="type" cssStyle="color:black">
+				<form:option value="1"><spring:message code="supplier.petSitter" /></form:option>
+				<form:option value="2"><spring:message code="supplier.petShipper" /></form:option>
+				<form:option value="3"><spring:message code="supplier.company" /></form:option>
+			</form:select>
+			<form:errors path="type" cssClass="error" />
+			</div>
+				<acme:submit code="sitter.search.go" name="search" />
+			<br/>
+		
+			</fieldset>
+			</form:form>
+
+
+<br/>
+<br/>
+        
+        </div> 
+       
+       </security:authorize>
+ </div> 
+ 
+</div>
+
+
+
+
+<div id="users" class="container text-center noCortes">
   <!-- <h3><spring:message	code="master.page.petcare" /></h3> -->
   <img width="30%" src="images/logo1lineW.png" alt="PetCare"/>
-  <p><em><spring:message	code="master.page.petcareText1" /></em></p>
+  <br/>
   <br/>
   <p><spring:message	code="master.page.petcareText2" /></p>
   <br>
   <div class="row">
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petowner" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.petowner" /></strong></p>
       <a href="#demo" data-toggle="collapse">
         <img src="images/petOwner-index.jpg" class="img-circle person" alt="Pet Owner" width="255" height="255">
       </a>
       <div id="demo" class="collapse">
         <p><spring:message code="master.page.petOwnertext1" /></p>
-        <p><spring:message code="master.page.petOwnertext2" /></p>
-        <p><spring:message code="master.page.petOwnertext3" /></p>
+		<security:authorize access="!hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER','COMPANY')">
 		<a class="btn btn-default" href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a>
+      	</security:authorize>
       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petsitter" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.petsitter" /></strong></p>
       <a href="#demo2" data-toggle="collapse">
         <img src="images/petSitter-index.jpg" class="img-circle person" alt="Pet Sitter" width="255" height="255">
       </a>
       <div id="demo2" class="collapse">
         <p><spring:message code="master.page.petSittertext1" /></p>
-        <p><spring:message code="master.page.petSittertext2" /></p>
-        <p><spring:message code="master.page.petSittertext3" /></p>
       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petshipper" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.petshipper" /></strong></p>
       <a href="#demo3" data-toggle="collapse">
         <img src="images/petShipper-index.jpg" class="img-circle person" alt="Pet Shipper" width="255" height="255">
       </a>
       <div id="demo3" class="collapse">
-        <p><spring:message code="master.page.petSittertext1" /></p>
-        <p><spring:message code="master.page.petSittertext2" /></p>
-        <p><spring:message code="master.page.petSittertext3" /></p>
-      </div>
+        <p><spring:message code="master.page.petShippertext1" /></p>
+       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.company" /></strong></p><br>
+      <p class="text-center"><strong><spring:message code="master.page.company" /></strong></p>
       <a href="#demo4" data-toggle="collapse">
         <img src="images/company-index.jpg" class="img-circle person" alt="Companies" width="255" height="255">
       </a>
       <div id="demo4" class="collapse">
-        <p><spring:message code="master.page.petSittertext1" /></p>
-        <p><spring:message code="master.page.petSittertext2" /></p>
-        <p><spring:message code="master.page.petSittertext3" /></p>
-      </div>
+        <p><spring:message code="master.page.companytext1" /></p>
+       </div>
     </div>
   </div>
 </div>

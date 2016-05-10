@@ -41,7 +41,8 @@
 				path="passwordConfirm" />
 
 			<!-- Customer -->
-			<acme:textbox code="petSitter.address" path="address" />
+			<spring:message var="addressHelp" code="petSitter.addressHelp" />
+			<acme:textbox code="petSitter.address" path="address" placeholder="${addressHelp}"/>
 
 			<acme:textbox code="petSitter.homePage" path="homePage" />
 			<acme:textbox code="petSitter.contactPhone" path="contactPhone" />

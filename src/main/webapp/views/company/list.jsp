@@ -41,6 +41,55 @@
 			<jstl:out value=" ${company.address}"/>
 			<br/>
 			</div>
+			
+			<jstl:if test="${company.rating<1.0}">
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+
+        	<jstl:if test="${company.rating>=1.0 and company.rating<2.0}">
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${company.rating>=2.0 and company.rating<3.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${company.rating>=3.0 and company.rating<4.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${company.rating>=4.0 and company.rating<5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star-empty.png"/>
+        	</jstl:if>
+        	
+        	<jstl:if test="${company.rating==5.0}">
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+            <img src="images/star.png"/>
+        	</jstl:if>
+			
 		</div>
 		</jstl:forEach>
 		<jstl:if test="${suppliers.size()==0}">

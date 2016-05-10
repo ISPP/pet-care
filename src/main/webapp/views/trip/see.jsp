@@ -34,13 +34,19 @@
 <br/>
 <b><spring:message code="trip.descriptionText"/></b>: <jstl:out value="${trip.descriptionText}"></jstl:out>
 
-<jstl:if test="${deletable==true}">
-	<acme:cancel code="trip.edit" url="/trip/petShipper/edit.do?tripId=${trip.id}" />
-</jstl:if>
+
 <!-- 
 <input type="button" name="cancel" class="button btn-primary" value="<spring:message code="trip.cancel" />" onclick="javascript: window.location.replace('welcome/index.do');" />
  -->
-<br />
+<br >
+
 </div>
-			
+			<jstl:if test="${deletable==true}">
+
+	<button class="btnAccept" type="button" class="btn btn-primary" onclick="javascript: relativeRedir('/trip/petShipper/edit.do?tripId=${trip.id}')" >
+	<spring:message code="trip.edit" />
+</button>
+	<br>
+	<br>
+</jstl:if>
 	 	</div>
