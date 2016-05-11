@@ -103,7 +103,7 @@
 			 <div style="${styla}" onclick="${clicka}"  class="col-md-4 panel panel-default">
 			 	<div class="wrap">
 			 	
-			 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petOwner-index.jpg">
+			 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petSitter-index.jpg">
 				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
 				</div>
 				
@@ -182,12 +182,12 @@
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
 			 	<a href="trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}">
-			 	<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petOwner-index.jpg">
+			 	<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petShipper-index.jpg">
 				</a>
 			 	</jstl:if>
 				
 				<jstl:if test="${toBook == false}">
-				<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petOwner-index.jpg">
+				<img class="max-h-little img-center" alt="Your PETSHIPPER" src="images/petShipper-index.jpg">
 				</jstl:if>
 				</div>
 				
@@ -249,6 +249,7 @@
 			<jstl:if test="${suppliers.size()==0}">
 				<h2><spring:message code="search.noResults"/></h2>
 			</jstl:if>
+			<b><spring:message code="search.clickTrips"/></b><br/>
 			<jstl:if test="${toBook==false}">
 			<spring:message code="search.mustRegister"/><br/>
 			</jstl:if>
@@ -263,12 +264,12 @@
 			 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 panel panel-default">
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
-			 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
+			 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg">
 				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
 			 	</jstl:if>
 				
 				<jstl:if test="${toBook == false}">
-				<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
+				<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg">
 				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
 				</jstl:if>
 				</div>
@@ -278,7 +279,7 @@
 				<jstl:out value=" ${company.address}"/>
 				<br/>
 				</div>
-			</div>
+			
 			
 			<jstl:if test="${company.rating<1.0}">
             <img src="images/star-empty.png"/>
@@ -327,7 +328,7 @@
             <img src="images/star.png"/>
             <img src="images/star.png"/>
         	</jstl:if>
-			
+			</div>
 			</jstl:forEach>
 			<jstl:if test="${suppliers.size()==0}">
 				<h2><spring:message code="search.noResults"/></h2>
@@ -336,6 +337,7 @@
 			<spring:message code="search.mustRegister"/><br/>
 			</jstl:if>
 			<spring:message code="search.priceShowsNight"/>
+			
 		</div>
 	</jstl:if>
 	

@@ -63,8 +63,8 @@
 
 .iconNav:hover{
 	width:60%;
-	-webkit-filter: invert(100%);
-	filter: invert(100%);
+	-webkit-filter: invert(100%) sepia(100%);
+	filter: invert(100%) sepia(100%);
 	opacity: 1; 
 }
     
