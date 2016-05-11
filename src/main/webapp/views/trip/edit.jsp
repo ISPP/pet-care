@@ -134,13 +134,14 @@
 								<div class="modal-body">
 									<spring:message code="vehicle.confirm.delete" />
 								</div>
-								<button type="submit" name="delete" class="btn btn-block">
+								<button type="submit" name="delete" class="
+btn-block btnAcceptNoMargin">
 									<spring:message code="vehicle.delete" />
 									<span class="glyphicon glyphicon-ok"></span>
 								</button>
 							</div>
 							<div class="modal-footer">
-								<button class="btn btn-danger btn-default pull-left"
+								<button class="btnCancelNoMargin pull-left"
 									data-dismiss="modal">
 									<span class="glyphicon glyphicon-remove"></span>
 									<spring:message code="vehicle.cancel" />

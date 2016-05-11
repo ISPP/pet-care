@@ -62,7 +62,7 @@
 	 		</table>
 	 		<p > <br/></p>
 	 		
-	 		<a href="booking/petOwner/cancel.do?id=${booking.id}"><img  src="images/cancel.png" /></a>
+	 		<a href="booking/petOwner/cancel.do?id=${booking.id}"><img class="img-left-2" style="height:40px;" src="images/Cancel.png" /></a>
 			
 		
 	</div>
