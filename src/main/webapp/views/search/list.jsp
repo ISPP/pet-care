@@ -104,7 +104,7 @@
 			 	<div class="wrap">
 			 	
 			 	<img class="max-h-little img-center" alt="Your PETSITTER" src="images/petSitter-index.jpg">
-				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}*"/>&#8364;</span>
+				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${petSitter.priceNight}"/>&#8364;</span>
 				</div>
 				
 				<div>
@@ -265,12 +265,12 @@
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
 			 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg">
-				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}"/>&#8364;</span>
 			 	</jstl:if>
 				
 				<jstl:if test="${toBook == false}">
 				<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg">
-				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}"/>&#8364;</span>
 				</jstl:if>
 				</div>
 				
