@@ -36,13 +36,13 @@
 }
 
 .buscadorResponsivo{
-    	top:40%;
+    	top:20%;
     }
 #myCarousel2{
      display: none;
     }
 #myCarousel{
-     font-size: 20px;
+     font-size: 16px;
     }
 #logoApp{
 	opacity: 0.7; 
@@ -119,6 +119,7 @@
 body {
 	font: 400 15px/1.8 Lato, sans-serif;
 	color: #777;
+	overflow-x: hidden;
 }
 
 h3,h4 {
