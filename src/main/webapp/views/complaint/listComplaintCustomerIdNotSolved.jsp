@@ -77,10 +77,11 @@
 			<spring:message var="coms" code="complaint.comments" />
 			<p class="text-left-small"><jstl:out value="${com.comments.size()}"/> <jstl:out value="${coms}"/> - </p>
 			</jstl:if>
+			
+			
 			<jstl:if test="${row.comments.size()==0}">
-			<a class="text-left-small" href="comment/actor/edit.do?id=${row.id}"> <spring:message
-						code="cpmlaint_*commentCreate" />
-			</a>
+			<a href="comment/actor/edit.do?id=${row.id}"><img class="max-h-4 img-left-2"  src="images/comment.png" /></a>
+			
 			</jstl:if>
 			<p class="text-rigth-small"><fmt:formatDate  value="${com.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
 			</div>

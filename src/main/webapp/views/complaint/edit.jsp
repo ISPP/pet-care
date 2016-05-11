@@ -21,6 +21,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+
+<div class="col-md-6">
 <form:form action="${requestURI}" modelAttribute="complaintForm">
 
 	<form:hidden path="id" />
@@ -28,24 +30,41 @@
 	
 	
 	
-	<div class="col-md-8-2-noColor panel panel-default">
-	 	<div class="wrap-3">
 	
-		<spring:message var="titleText" code="complaint.name" />
-		<form:input class="h3-top" path="title" placeholder="${titleText}" size="100%"/>
-		<form:errors path="title" cssClass="error" />
-		<br/>
-		<br/>
-		<form:label class="register-left"  path="description">
-		<spring:message code="complaint.description" />
-		</form:label>
-		<br/>
-		<spring:message var="writeHere" code="complaint.description.writeHere"/>
-		<form:textarea class="register-todoAncho" rows="8" path="description" placeholder="${writeHere}"/>
+	<div class="form-group text-left">
+
+	<form:label path="title">
+		<spring:message code="complaint.name" />:
+			</form:label>
+	<form:textarea code="complaint.name" path="title"
+		class="form-control blackL datepicker" />
+
+
+	<form:errors path="title" cssClass="error" />
+	</div>
+	
+	<div class="form-group text-left">
+
+	<form:label path="description">
+		<spring:message code="complaint.description" />:
+			</form:label>
+	<form:textarea code="complaint.description" path="description"
+		class="form-control blackL datepicker" />
+
+
+	<form:errors path="description" cssClass="error" />
+	</div>
+	
+	
+	
+	
+	
+		
+	
 		<jstl:set var="now" value="<%=new java.util.Date()%>" />
 		<p class="text-rigth-small"><fmt:formatDate  value="${now}" pattern="dd/MM/yyyy HH:mm" /></p>
-		</div>
-	</div>
+		
+	
 	<input type="submit" name="save" class="btnAccept"
 		value="<spring:message code="complaint.save" />" />
 
@@ -56,3 +75,13 @@
 	
 	<br />
 </form:form>
+</div>
+
+<div class="col-md-1 ">
+</div>
+<div class="col-md-5 ">
+<div class="container-fluid text-center">
+
+<img alt="" class="img-circle" src="images/complaint.png">
+</div>
+</div>
