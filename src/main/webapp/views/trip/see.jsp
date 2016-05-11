@@ -12,35 +12,75 @@
 
 <div class="col-md-8-2-noColor panel panel-default">
 	<div class="wrap-3">
-		<h3 class="h3-no-bottom">${trip.startCity} -> ${trip.endCity}</h3>
+		<h3 class="h3-no-bottom text-uppercase"><strong>${trip.startCity} <span class="glyphicon glyphicon-arrow-right"></span>
+			${trip.endCity}</strong></h3>
 		<hr>
-		<div id="contentInfo" class="col-md-9">
+		<div id="contentInfo" class="col-md-6">
 			<div class="col-md-6">
-				<b><spring:message code="trip.startCity" /></b>:
-				<jstl:out value="${trip.startCity}"></jstl:out>
-				<br /> <b><spring:message code="trip.distance" /></b>:
-				<jstl:out value="${trip.distance}"></jstl:out>
-				<br /> <b><spring:message code="trip.cost" /></b>:
-				<jstl:out value="${trip.cost}">&#8364;</jstl:out>
+				<dl class="dl-horizontal">
+					<dt>
+						<b class="text-success"><spring:message code="trip.startCity" /></b>:
+					</dt>
+					<dd>
+						<span class="text-success"><jstl:out value="${trip.startCity}"></jstl:out></span>
+					</dd>
+					<dt>
+						<br /> <b><spring:message code="trip.distance" /></b>:
+					</dt>
+					<dd>
+						<br />
+						<jstl:out value="${trip.distance}"></jstl:out>
+					</dd>
+					<dt>
+						<br /> <b><spring:message code="trip.cost" /></b>:
+					</dt>
+					<dd>
+						<br />
+						<jstl:out value="${trip.cost}">&#8364;</jstl:out>
+					</dd>
+				</dl>
 			</div>
 			<div class="col-md-6">
-				<b><spring:message code="trip.endCity" /></b>:
-				<jstl:out value="${trip.endCity}"></jstl:out>
-				<br /> <b><spring:message code="trip.vehicle" /></b>:
-				<jstl:out value="${trip.vehicle.title}"></jstl:out>
-				<br /> <b><spring:message code="trip.moment" /></b>:
-				<fmt:formatDate value="${trip.moment}" pattern="dd/MM/yyyy HH:mm" />
-				<br />
+				<dl class="dl-horizontal">
+					<dt>
+						<b class="text-danger"><spring:message code="trip.endCity" /></b>:
+					</dt>
+					<dd>
+						<span class="text-danger"><jstl:out value="${trip.endCity}"></jstl:out></span>
+					</dd>
+					<dt>
+						<br /> <b><spring:message code="trip.vehicle" /></b>:
+					</dt>
+					<dd>
+						<br />
+						<jstl:out value="${trip.vehicle.title}"></jstl:out>
+					</dd>
+					<dt>
+						<br /> <b><spring:message code="trip.moment" /></b>:
+					</dt>
+					<dd>
+						<br />
+						<fmt:formatDate value="${trip.moment}" pattern="dd/MM/yyyy HH:mm" />
+					</dd>
+				</dl>
 			</div>
 
-			<div class="col-md-12">
-				<br /> <b><spring:message code="trip.descriptionText" /></b>:
-				<jstl:out value="${trip.descriptionText}"></jstl:out>
+			<div class="col-md-12 dl-horizontal">
+				<dl class="dl-horizontal">
+					<dt>
+						<b><spring:message code="trip.descriptionText" /></b>:
+					</dt>
+					<dd>
+						<jstl:out value="${trip.descriptionText}"></jstl:out>
+					</dd>
+				</dl>
 			</div>
 
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-1"><!-- This div creates a blank space between the map and the info --></div>
+
+		<div class="col-md-5">
 			<div id="googleMap" class="tripDisplay"></div>
 		</div>
 		<!-- 
@@ -79,26 +119,27 @@
 		//We set the map to display the render
 		var directionsService = new google.maps.DirectionsService();
 		var directionsDisplay = new google.maps.DirectionsRenderer({
-			draggable: true,
-			map: map
+			draggable : true,
+			map : map
 		});
-	
+
 		calculateAndDisplayRoute(directionsService, directionsDisplay);
 
-		//Resize the map
-		var _map = $("#googleMap");
-		_map.css('max-height',_map.width());
-		_map.css('margin-bottom',15);
-		
 		var info = $("#contentInfo");
 		
+		//Resize the map
+		var _map = $("#googleMap");
+		_map.css('max-height', info.height());
+		_map.css('margin-bottom', 15);
+
+
 		var inf_h = info.height();
 		var map_h = _map.height();
-		
-		if(inf_h<map_h){
-			var padding = Math.abs(map_h - inf_h)*1.0;
-			info.css('padding-top',padding/2);
-			info.css('padding-bottom',padding/2);
+
+		if (inf_h < map_h) {
+			var padding = Math.abs(map_h - inf_h) * 1.0;
+			info.css('padding-top', padding / 2);
+			info.css('padding-bottom', padding / 2);
 		}
 	}
 
