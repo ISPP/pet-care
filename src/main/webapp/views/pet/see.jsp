@@ -28,7 +28,7 @@
 			<jstl:out value="${pet.name}" />
 		</h3>
 		<jstl:out value="${pet.kind}" />
-		-
+		
 		<jstl:out value="${pet.breed}" />
 		<br />
 		<jstl:out value="${pet.description}" />

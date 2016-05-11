@@ -66,7 +66,7 @@
 	 		
 	 		
 	 		<c:if test="${fn:contains(status, 'PENDING')}">
-   				<img class="max-h-4 img-left-2" src="images/loading.gif">
+   				<img class="max-h-4 img-left-2" src="images/pending.png">
 				</c:if>
 	 		
 	 		

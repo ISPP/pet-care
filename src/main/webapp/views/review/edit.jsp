@@ -20,6 +20,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+
+<div class="col-md-6">
 <form:form action="${requestUri}" modelAttribute="review">
 
 	<form:hidden path="id" />
@@ -61,3 +63,12 @@
 	<br />
 	<br />
 </form:form>
+</div>
+<div class="col-md-1 ">
+</div>
+<div class="col-md-5 ">
+<div class="container-fluid text-center">
+
+<img alt="" class="register-todoAncho img-circle" src="images/review.jpg">
+</div>
+</div>

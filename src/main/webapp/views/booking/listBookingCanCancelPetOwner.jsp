@@ -33,18 +33,17 @@
 	 		<div class="wrap-2">
 	 		<c:set var="status" value="${booking.status}"/>
 	 		<c:if test="${fn:contains(status, 'ACCEPTED')}">
-   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/ok.png">
+   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/acept.png">
 				</c:if>
 				
 				<c:if test="${fn:contains(status, 'REJECTED')}">
-   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+   				<img class="max-h-4 img-left-2" src="images/rejc.png">
 				</c:if>
 	 		
 	 		
 	 		<c:if test="${fn:contains(status, 'PENDING')}">
-   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+   				<img class="max-h-4 img-left-2" src="images/pending.png">
 				</c:if>
-	 		
 	 		
 	 		<div>
 	 		<h3 class="h3-no-bottom">${booking.supplier.surname},${booking.supplier.name}</h3>
@@ -63,10 +62,8 @@
 	 		</table>
 	 		<p > <br/></p>
 	 		
-	 		
-			<a href="booking/petOwner/cancel.do?id=${booking.id}"> <spring:message
-						code="booking.cancel" />
-	</a>
+	 		<a href="booking/petOwner/cancel.do?id=${booking.id}"><img  src="images/cancel.png" /></a>
+			
 		
 	</div>
 	 	</div>

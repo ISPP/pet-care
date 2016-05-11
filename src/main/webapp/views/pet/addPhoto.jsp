@@ -21,12 +21,16 @@
 		<br/>
 
 		<!-- Buttons -->
+	<input type="submit" name="add" class="btnAccept"
+		value="<spring:message code="pet.add" />" />
+
 	
-			<acme:submit name="add" code="pet.add" />
+	<input type="button" name="c" class="btnCancel"
+		value="<spring:message code="pet.back" />"
+		onclick="history.back(-1)" />
+	<br />
+	
 		
-			<input type="button" name="back"
-				value="<spring:message code="pet.back" />"
-				onClick="history.back(-1)" />
 		</div>
 	</form:form>
 		
@@ -39,17 +43,20 @@
 		<form:hidden path="id" />
 		<form:hidden path="petId" />
 			
-		<input type="file" name="file" />
+		<input type="file" name="file"/>
 				
 		<br/>
 
 		<!-- Buttons -->
 	
-			<acme:submit name="add" code="pet.add" />
-		
-			<input type="button" name="back"
-				value="<spring:message code="pet.back" />"
-				onClick="history.back(-1)" />
+			<input type="submit" name="add" class="btnAccept"
+		value="<spring:message code="pet.add" />" />
+
+	
+	<input type="button" name="c" class="btnCancel"
+		value="<spring:message code="pet.back" />"
+		onclick="history.back(-1)" />
+	<br />
 		
 	</form:form>
 		

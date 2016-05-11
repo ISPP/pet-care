@@ -32,16 +32,16 @@
 	 		<div class="wrap-2">
 	 		<c:set var="status" value="${booking.status}"/>
 	 		<c:if test="${fn:contains(status, 'ACCEPTED')}">
-   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/ok.png">
+   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/acept.png">
 				</c:if>
 				
 				<c:if test="${fn:contains(status, 'REJECTED')}">
-   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+   				<img class="max-h-4 img-left-2" src="images/rejc.png">
 				</c:if>
 	 		
 	 		
 	 		<c:if test="${fn:contains(status, 'PENDING')}">
-   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+   				<img class="max-h-4 img-left-2" src="images/pending.png">
 				</c:if>
 	 		
 	 		
@@ -62,14 +62,9 @@
 	 		</table>
 	 		<p > <br/></p>
 	 		
-	 		
-			<a href="booking/supplier/accept.do?id=${booking.id}"> <spring:message
-						code="booking.acept" />
-	</a>
-	<br>
-	<a href="booking/supplier/rejected.do?id=${booking.id}"> <spring:message
-						code="booking.rejected" />
-	</a>
+	 		<a href="booking/supplier/accept.do?id=${booking.id}"><img  src="images/button_add.png" /></a>
+	 		<a href="booking/supplier/rejected.do?id=${booking.id}"><img  src="images/trash.gif" /></a>
+			
 	
 		
 	</div>
