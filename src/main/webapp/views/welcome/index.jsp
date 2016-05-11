@@ -28,19 +28,19 @@
     <!-- Wrapper for slides -->
     <div id="alturaControlada" class="carousel-inner" role="listbox" >
       <div class="item active">
-        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 1" >
+        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 1" >
       </div>
 
       <div class="item">
-        <img class="todoAncho" src="images/SlideB.png" alt="Presentation 2" >
+        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 2" >
       </div>
     
       <div class="item">
-        <img class="todoAncho" src="images/SlideC.png" alt="Presentation 3" >
+        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 3" >
       </div>
       
       <div class="item">
-        <img class="todoAncho" src="images/SlideD.png" alt="Presentation 4" >
+        <img class="todoAncho" src="images/SlideA.png" alt="Presentation 4" >
       </div>
       
       <div class="item">
@@ -218,7 +218,15 @@
         <img src="images/petShipper-index.jpg" class="img-circle person" alt="Pet Shipper" width="255" height="255">
       </a>
       <div id="demo3" class="collapse">
-        <p><spring:message code="master.page.petShippertext1" /></p>
+        <p>
+        	<spring:message code="master.page.petShippertext1_1" />
+        	<span class="text-uppercase petShipperRegister-text"><spring:message code="master.page.petShippertext1_2" /></span>
+        	<spring:message code="master.page.petShippertext1_3" />
+        	<span class="text-uppercase petShipperRegister-text"><spring:message code="master.page.petShippertext1_4" /></span>
+        	<spring:message code="master.page.petShippertext1_5" />
+        	<span class="text-uppercase petShipperRegister-text"><spring:message code="master.page.petShippertext1_6" /></span>
+        	<spring:message code="master.page.petShippertext1_7" />
+       	</p>
        </div>
     </div>
     <div class="col-sm-3">
@@ -227,7 +235,17 @@
         <img src="images/company-index.jpg" class="img-circle person" alt="Companies" width="255" height="255">
       </a>
       <div id="demo4" class="collapse">
-        <p><spring:message code="master.page.companytext1" /></p>
+        <p>
+        	<spring:message code="master.page.companytext1_1" />
+        	<span class="text-uppercase companyRegister-text"><spring:message code="master.page.companytext1_2" /></span>
+        	<spring:message code="master.page.companytext1_3" />
+        	<span class="text-uppercase companyRegister-text"><spring:message code="master.page.companytext1_4" /></span>
+        	<spring:message code="master.page.companytext1_5" />
+        	<spring:message code="master.page.companytext1_6" />
+        	<span class="text-uppercase companyRegister-text"><spring:message code="master.page.companytext1_7" /></span>
+        	<spring:message code="master.page.companytext1_8" />
+        	<span class="text-uppercase companyRegister-text"><spring:message code="master.page.companytext1_9" /></span>
+        </p>
        </div>
     </div>
   </div>

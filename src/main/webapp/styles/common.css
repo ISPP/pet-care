@@ -622,3 +622,12 @@ textarea {
 .petOwnerRegister-text{
 	color:#FFA500;
 }
+
+.petShipperRegister-text{
+	color:#4994bb;
+}
+
+.companyRegister-text{
+	/*color:#44753a;*/
+	color:#45c72b
+}
