@@ -22,20 +22,53 @@
 				<form:hidden path="version" />
 				<form:hidden path="photos" />
 				<form:hidden path="petOwner" />
+				
+				
+				<div class="form-group text-left">
 
-				<acme:textbox code="pet.name" path="name" />
-				<acme:textbox code="pet.breed" path="breed" />
-				<acme:textbox code="pet.kind" path="kind"
-					placeholder="DOG, CAT, BIRD, OTHER" />
-				<br />
+			<form:label path="name">
+			<spring:message code="pet.name" />:
+			</form:label>
+			<form:input code="pet.name" path="name"
+			class="form-control" />
+		
+
+			<form:errors path="name" cssClass="error" />
+			</div>
+			
+				<div class="form-group text-left">
+
+			<form:label path="breed">
+			<spring:message code="pet.breed" />:
+			</form:label>
+			<form:input code="pet.breed" path="breed"
+			class="form-control" />
+		
+
+			<form:errors path="breed" cssClass="error" />
+			</div>
+			
+				<div class="form-group text-left">
+
+			<form:label path="kind">
+			<spring:message code="pet.kind" />:
+			</form:label>
+			<form:input code="pet.kind" path="kind"
+			class="form-control" 
+			placeholder="DOG, CAT, BIRD, OTHER"/>
+		
+
+			<form:errors path="kind" cssClass="error" />
+			</div>
+			<div class="form-group text-left">
 				<form:label class="register-left" path="description">
 					<spring:message code="pet.description" />
 				</form:label>
 				<br />
 				<spring:message var="writeHere" code="pet.description.writeHere" />
-				<form:textarea class="register-todoAncho" path="description"
+				<form:textarea class="form-control" path="description"
 					placeholder="${writeHere}" />
-
+			</div>
 			</div>
 
 			<div class="col-md-6">
@@ -45,7 +78,8 @@
 
 			<!-- Buttons -->
 			<div class="col-md-12 button-bottom">
-				<acme:submit name="save" code="pet.save" />
+				<input type="submit" name="save" class="btnAccept"
+		value="<spring:message code="pet.save" />" />
 
 				<jstl:if test="${pet.id !=0}">
 					<div class="modal fade" id="confirmDelete" role="dialog">
@@ -80,12 +114,12 @@
 					</div>
 					<%-- <spring:message code="pet.confirm.delete" var="varConfirmDelete"/> --%>
 					<jstl:if test="${deleteable==true}">
-						<a href="" class="btn btn-primary" data-toggle="modal"
+						<a href="" class="btnCancel" data-toggle="modal"
 							data-target="#confirmDelete"><spring:message code="pet.delete" /></a>
 					</jstl:if>
 				</jstl:if>
 
-				<input type="button" name="back"
+				<input type="button" class="btnCancel" name="back"
 					value="<spring:message code="pet.back" />"
 					onClick="history.back(-1)" />
 
@@ -96,34 +130,83 @@
 	</security:authorize>
 
 	<security:authorize access="hasRole('PETSITTER')">
+	
 
 		<form:form action="pet/petSitter/edit.do" modelAttribute="pet">
-
+	<div class="col-md-6">
 			<form:hidden path="id" />
 			<form:hidden path="petSitter" />
 
-			<acme:textbox code="pet.name" path="name" />
-			<acme:textarea code="pet.description" path="description" />
-			<acme:textbox code="pet.breed" path="breed" />
-			<acme:textbox code="pet.kind" path="kind"
-				placeholder="DOG, CAT, BIRD, OTHER" />
+				
+				<div class="form-group text-left">
 
-			<br />
+			<form:label path="name">
+			<spring:message code="pet.name" />:
+			</form:label>
+			<form:input code="pet.name" path="name"
+			class="form-control" />
+		
+
+			<form:errors path="name" cssClass="error" />
+			</div>
+			
+				<div class="form-group text-left">
+
+			<form:label path="breed">
+			<spring:message code="pet.breed" />:
+			</form:label>
+			<form:input code="pet.breed" path="breed"
+			class="form-control" />
+		
+
+			<form:errors path="breed" cssClass="error" />
+			</div>
+			
+				<div class="form-group text-left">
+
+			<form:label path="kind">
+			<spring:message code="pet.kind" />:
+			</form:label>
+			<form:input code="pet.kind" path="kind"
+			class="form-control" 
+			placeholder="DOG, CAT, BIRD, OTHER"/>
+		
+
+			<form:errors path="kind" cssClass="error" />
+			</div>
+			<div class="form-group text-left">
+				<form:label class="register-left" path="description">
+					<spring:message code="pet.description" />
+				</form:label>
+				<br />
+				<spring:message var="writeHere" code="pet.description.writeHere" />
+				<form:textarea class="form-control" path="description"
+					placeholder="${writeHere}" />
+			</div>
+		
+</div>
+
+	<div class="col-md-6">
+				<img class="max-h-2" alt="Your PET" src="images/pet-register.jpg">
+			</div>
 
 			<!-- Buttons -->
-
-			<acme:submit name="save" code="pet.save" />
+<div class="col-md-12">
+			<input type="submit" name="save" class="btnAccept"
+		value="<spring:message code="pet.save" />" />
 
 			<jstl:if test="${pet.id !=0}">
 				<spring:message code="pet.confirm.delete" var="varConfirmDelete" />
-				<acme:submit name="delete" code="pet.delete"
-					onclick="return confirm('${varConfirmDelete}')" />
+				<input type="submit" class="btnCancel" name="delete" 
+					onclick="return confirm('${varConfirmDelete}')" 
+					value="<spring:message code="pet.delete" />"  />
 			</jstl:if>
 
-			<input type="button" name="back"
+			<input class="btnCancel" type="button" name="back"
 				value="<spring:message code="pet.back" />"
 				onClick="history.back(-1)" />
-
+		
+		</div>
 		</form:form>
 
 	</security:authorize>
