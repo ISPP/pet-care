@@ -23,7 +23,7 @@
 <form:form action="${action}" modelAttribute="petOwnerForm">
 
 <div class="col-md-6">
-	<spring:message code="petOwner.personalData"/><hr>
+	<h3 class="text-uppercase"><spring:message code="petOwner.personalData"/></h3><hr/>
 	<!-- Actor -->
 	<acme:textbox code="petOwner.name" path="name"/>
 	<acme:textbox code="petOwner.surname" path="surname"/>
@@ -50,7 +50,7 @@
 
 	<img class="register-todoAncho" alt="Your AVATAR" src="images/petOwner-index.jpg">
 
-	<spring:message code="petOwner.creditCard"/><hr>
+	<h3 class="text-uppercase"><spring:message code="petOwner.creditCard"/></h3><hr>
 	
 	<!-- Credit Card -->
 	<acme:textbox code="petOwner.creditCard.holderName" path="holderName"/>

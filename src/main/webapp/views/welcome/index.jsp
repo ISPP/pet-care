@@ -186,9 +186,20 @@
         <img src="images/petOwner-index.jpg" class="img-circle person" alt="Pet Owner" width="255" height="255">
       </a>
       <div id="demo" class="collapse">
-        <p><spring:message code="master.page.petOwnertext1" /></p>
+        <p>
+			<spring:message code="master.page.petOwnertext1_1" />
+        	<span class="text-uppercase petOwnerRegister-text"><spring:message code="master.page.petOwnertext1_2" /></span>
+        	<spring:message code="master.page.petOwnertext1_3" />
+        	<span class="text-uppercase petOwnerRegister-text"><spring:message code="master.page.petOwnertext1_4" /></span>
+        	<spring:message code="master.page.petOwnertext1_5" />
+        	<span class="text-uppercase petOwnerRegister-text"><spring:message code="master.page.petOwnertext1_6" /></span>
+        	<spring:message code="master.page.petOwnertext1_7" />
+        	<span class="text-uppercase petOwnerRegister-text"><spring:message code="master.page.petOwnertext1_8" /></span>
+        	<spring:message code="master.page.petOwnertext1_9" />
+		</p>
+        
 		<security:authorize access="!hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER','COMPANY')">
-		<a class="btn btn-default" href="petOwner/create.do"><spring:message code="master.page.register.petOwner" /></a>
+		<a class="btnAcceptNoMargin text-uppercase" href="petOwner/create.do"><spring:message code="master.page.register.petOwner2" /></a>
       	</security:authorize>
       </div>
     </div>
@@ -256,13 +267,13 @@
               <form:password class="form-control" path="password" placeholder="Password"/>	
 				<form:errors class="error" path="password" />
             </div>
-              <button type="submit" class="btn btn-block"><spring:message code="welcome.go"/> 
+              <button type="submit" class="btnAcceptNoMargin btn-block"><spring:message code="welcome.go"/> 
                 <span class="glyphicon glyphicon-ok"></span>
               </button>
           </form:form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+          <button type="submit" class="btnCancelNoMargin pull-left" data-dismiss="modal">
             <span class="glyphicon glyphicon-remove"></span> <spring:message code="welcome.cancel"/>
           </button>
         </div>

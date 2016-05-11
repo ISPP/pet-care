@@ -121,3 +121,127 @@
 	background-color: #e6e6e6;
 	border-color: #adadad;
 }
+
+.btnAcceptNoMargin {
+	
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+		rgba(0, 0, 0, 0.12);
+	margin: 0;
+	/*margin-left: 3rem;*/
+	border: none;
+	border-radius: 2px;
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	outline: 0;
+	padding: 0 3rem;
+	text-transform: uppercase;
+	vertical-align: middle;
+	-webkit-tap-highlight-color: transparent;
+	
+	
+	
+	text-decoration: none;
+	color: #fff;
+	background-color: #FFA500;
+	text-align: center;
+	letter-spacing: .5px;
+	transition: .2s ease-out;
+	cursor: pointer;
+	
+	font-weight: 850;
+/* 	font-stretch:condensed; */
+	font-family:Arial;
+ 	
+	font-size: 18px;
+
+	/* 	display: inline-block; */
+	/* 	padding: 6px 12px; */
+	/* 	margin-bottom: 0; */
+	/* 	font-size: 18px; */
+	/* 	font-weight: 590; */
+	/* 	line-height: 1.42857143; */
+	/* 	text-align: center; */
+	/* 	white-space: nowrap; */
+	/* 	vertical-align: middle; */
+	/* 	-ms-touch-action: manipulation; */
+	/* 	touch-action: manipulation; */
+	/* 	cursor: pointer; */
+	/* 	-webkit-user-select: none; */
+	/* 	-moz-user-select: none; */
+	/* 	-ms-user-select: none; */
+	/* 	user-select: none; */
+	/* 	background-image: none; */
+	/* 	border: 1px solid transparent; */
+	/* 	border-radius: 4px color:#fff; */
+	/* 	color: Black;  */
+	/* 	border-color: #adadad; */
+	/* 	background-color: #f0ad4e; */
+}
+
+.btnAcceptNoMargin:hover {
+	background-color: #FFC800;
+}
+
+
+.btnCancelNoMargin {
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+		rgba(0, 0, 0, 0.12);
+	margin: 0;
+	/*margin-left: 3rem;*/
+	border: none;
+	border-radius: 2px;
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	outline: 0;
+	padding: 0 1rem;
+	text-transform: uppercase;
+	vertical-align: middle;
+	-webkit-tap-highlight-color: transparent;
+	
+	
+	
+	text-decoration: none;
+	color: #646464;
+	background-color: #f2f2f2;
+	text-align: center;
+	letter-spacing: .5px;
+	transition: .2s ease-out;
+	cursor: pointer;
+	
+	
+	font-weight: 650;
+/* 	font-stretch:condensed; */
+	font-family:Arial;
+
+	font-size: 18px;
+	
+	/* display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 18px;
+	font-weight: 570;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px color:#fff;
+	color: #333;
+	background-color: #f2f2f2;
+	border-color: #ccc; */
+}
+.btnCancelNoMargin:hover {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
