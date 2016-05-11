@@ -78,26 +78,34 @@
 	 		
 	 		<div>
 	 		<h3 class="h3-no-bottom">${booking.supplier.surname},${booking.supplier.name}</h3>
+	 		<br>
+	 		<h3 class="h3-no-bottom">${booking.supplier.address}</h3>
+	 		
+	 		
 	 		<table class="text-rigth-2">
 	 			<tr>
 	 			<td class="table-separate-100">
-	 				${booking.supplier.address}
+	 				
 	 			</td>
 	 			<td class="table-separate-100">
 	 				<fmt:formatDate value="${booking.startMoment}"
 	pattern="dd/MM/yyyy HH:mm" />
 	 			</td>
 	 			<td class="table-separate-100">
-	 				<h2>${booking.price} &#8364;</h2>
+	 				<h1>${booking.price} &#8364;</h1>
+	 			</td>
+	 			<td class="table-separate-100">
+	 				<jsp:useBean id="today" class="java.util.Date" />
+		<jstl:if test="${(today.time gt booking.startMoment.time) and (booking.review == null ) and ( booking.status=='ACCEPTED')}">
+		
+		<a href="review/petOwner/create.do?bookingId=${booking.id}"><img class="max-h-4 img-left-2"  src="images/comment.png" /></a>
+	 	</jstl:if>
 	 			</td>
 	 			</tr>
 	 		</table>
 	 		<p > <br/></p>
 		</div>
-		<jsp:useBean id="today" class="java.util.Date" />
-		<jstl:if test="${(today.time gt booking.startMoment.time) and (booking.review == null)}">
-		<a class="text-rigth-small" href="review/petOwner/create.do?bookingId=${booking.id}"><spring:message code="booking.createReview" /></a>
-	 	</jstl:if>
+		
 	 	</div>
 	 	</div>
  	</jstl:forEach>

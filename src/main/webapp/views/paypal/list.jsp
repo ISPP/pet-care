@@ -27,10 +27,11 @@
  	<jstl:forEach var="booking" items="${bookings}">
  		<div class="col-md-8-2 panel panel-default">
 	 		<div class="wrap-2">
-	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/petOwner-index.jpg">
-	 		<img class="max-h-4 img-left-2-1" alt="Your PET" src="images/pet-register.jpg">
+	 		
 	 		<div>
-	 		<h3 class="h3-no-bottom">${booking.supplier.surname}, ${booking.supplier.name}- ${booking.supplier.address}</h3>
+	 		<h3 class="h3-no-bottom">${booking.supplier.surname}, ${booking.supplier.name}
+	 		<br>
+	 		 ${booking.supplier.address}</h3>
 	 		<table class="text-rigth-2">
 	 			<tr>
 	 			<td class="table-separate-100">
@@ -39,11 +40,11 @@
 	 			<td class="table-separate-100">
 	 				<h2>${booking.price} &#8364;</h2>
 	 			</td>
-	 			
 	 			<td class="table-separate-100">
-	 				<a href="paypal/pay.do?id=${booking.id}"> <spring:message
-						code="paypal.payNow" /></a>
+	 				<a href="paypal/pay.do?id=${booking.id}"><img class="max-h-4 img-left-2"  src="images/paypal.png" /></a>
 	 			</td>
+	 			
+	 			
 	 			</tr>
 	 		</table>
 	 
