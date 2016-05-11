@@ -27,8 +27,7 @@
  	<jstl:forEach var="registration" items="${registrations}">
  		<div class="col-md-8-2 panel panel-default">
 	 		<div class="wrap-2">
-	 		<img class="max-h-4 img-left-2" alt="Care Person" src="images/petOwner-index.jpg">
-	 		<img class="max-h-4 img-left-2-1" alt="Your PET" src="images/pet-register.jpg">
+	 		
 	 		<div>
 	 		<h3 class="h3-no-bottom">${registration.trip.startCity} -> ${registration.trip.endCity}</h3>
 	 		<table class="text-rigth-2">
@@ -40,12 +39,14 @@
 	 			<td class="table-separate-100">
 	 				<h2>${registration.trip.cost} &#8364;</h2>
 	 			</td>
+	 			
+	 			<td class="table-separate-100">
+	 				<a href="paypal/payRegistration.do?id=${registration.id}"><img class="max-h-4 img-left-2"  src="images/dinero.png" /></a>
+	 			</td>
 	 			</tr>
 	 		</table>
 	 		<p > <br/></p>
-	 		<a href="paypal/payRegistration.do?id=${registration.id}"> <spring:message
-						code="paypal.payNow" />
-	</a>
+	 		
 	</div>
 	 	</div>
 	 	</div>

@@ -51,12 +51,13 @@
 		<p class="text-rigth-small"><fmt:formatDate  value="${review.creationMoment}" pattern="dd/MM/yyyy HH:mm" /></p>
 	</div>
 	</div>
-<input type="submit" name="save" class="button"
+<input type="submit" name="save" class="btnAccept"
 		value="<spring:message code="review.save" />" />
 
 	
-	<input type="button" name="cancel" class="button btn-primary"
+	<input type="button" name="cancel" class="btnCancel"
 		value="<spring:message code="review.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
+	<br />
 	<br />
 </form:form>
