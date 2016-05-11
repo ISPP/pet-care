@@ -60,7 +60,7 @@
 							<div class="item active ">
 								<img class="center-block petPhoto"
 									src="pet/displayPhoto.do?photoId=${eachPhoto.id}" />
-								<acme:button
+								<acme:button classAux="btnCancel"
 									href="pet/petOwner/selectAvatar.do?petId=${pet.id}&photoId=${eachPhoto.id}"
 									code="pet.selectAvatar" />
 							</div>
@@ -69,7 +69,7 @@
 							<div class="item">
 								<img class="center-block petPhoto"
 									src="pet/displayPhoto.do?photoId=${eachPhoto.id}" />
-								<acme:button
+								<acme:button classAux="btnCancel"
 									href="pet/petOwner/selectAvatar.do?petId=${pet.id}&photoId=${eachPhoto.id}"
 									code="pet.selectAvatar" />
 							</div>
@@ -89,46 +89,45 @@
 		</jstl:if>
 		<br />
 
-		<acme:button href="pet/petOwner/addPhoto.do?petId=${pet.id}"
+		<acme:button classAux="btnAccept" href="pet/petOwner/addPhoto.do?petId=${pet.id}"
 			code="pet.add" />
 		<br /> <br />
 		<jstl:if test="${isOwner==true}">
-			<acme:button
+			<acme:button classAux="btnCancel"
 				href="pet/petOwner/edit.do?petId=${pet.id}"
 				code="pet.edit" />
 		</jstl:if>
-		<input type="button" name="back"
+		<input type="button" name="back" class="btnCancel"
 			value="<spring:message code="pet.back" />" onClick="history.back(-1)" />
 	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('PETSITTER')">
 
-	<jstl:if test="${avatar!=null}">
-		<b><spring:message code="pet.avatar" /></b>:
-<br />
-		<img src="pet/displayPhoto.do?photoId=${avatar.id}" width="200px"
-			height="200px" />
+
+<div class="col-md-4">
+		<jstl:if test="${avatar!=null}">
+			<img class="register-todoAncho petPhoto" alt="Your AVATAR"
+				src="pet/displayPhoto.do?photoId=${avatar.id}" />
+			<br />
+		</jstl:if>
+		<jstl:if test="${avatar==null}">
+			<img class="register-todoAncho petPhoto" alt="Your AVATAR"
+				src="images/pet-register.jpg">
+			<br />
+		</jstl:if>
+
+		<h3>
+			<jstl:out value="${pet.name}" />
+		</h3>
+		<jstl:out value="${pet.kind}" />
+		
+		<jstl:out value="${pet.breed}" />
 		<br />
+		<jstl:out value="${pet.description}" />
+	</div>
 
-	</jstl:if>
-	<br />
-
-	<br />
-	<b><spring:message code="pet.name" /></b>: <jstl:out
-		value="${pet.name}" />
-	<br />
-	<b><spring:message code="pet.description" /></b>: <jstl:out
-		value="${pet.description}"></jstl:out>
-	<br />
-	<b><spring:message code="pet.breed" /></b>: <jstl:out
-		value="${pet.breed}"></jstl:out>
-	<br />
-	<b><spring:message code="pet.kind" /></b>: <jstl:out
-		value="${pet.kind}"></jstl:out>
-	<br />
-	<br />
-
+	<div class="col-md-6-2">
 	<jstl:if test="${numberOfPhotos!=0}">
 		<b><spring:message code="pet.photos" /></b>:
 <br />
@@ -156,7 +155,7 @@
 					<jstl:if test="${positionImage == 0}">
 						<div class="item active">
 							<img src="pet/displayPhoto.do?photoId=${eachPhoto.id}" />
-							<acme:button
+							<acme:button classAux="btnCancel"
 								href="pet/petSitter/selectAvatar.do?petId=${pet.id}&photoId=${eachPhoto.id}"
 								code="pet.selectAvatar" />
 						</div>
@@ -164,7 +163,7 @@
 					<jstl:if test="${positionImage != 0}">
 						<div class="item">
 							<img src="pet/displayPhoto.do?photoId=${eachPhoto.id}" />
-							<acme:button
+							<acme:button classAux="btnCancelt"
 								href="pet/petSitter/selectAvatar.do?petId=${pet.id}&photoId=${eachPhoto.id}"
 								code="pet.selectAvatar" />
 						</div>
@@ -183,13 +182,14 @@
 	</jstl:if>
 	<br />
 
-	<acme:button href="pet/petSitter/addPhoto.do?petId=${pet.id}"
+	<acme:button classAux="btnAccept" href="pet/petSitter/addPhoto.do?petId=${pet.id}"
 		code="pet.add" />
 	<br />
 
 	<br />
-	<input type="button" name="back"
+	<input type="button" name="back" class="btnCancel"
 		value="<spring:message code="pet.back" />" onClick="history.back(-1)" />
+		</div>
 </security:authorize>
 
 

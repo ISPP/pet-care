@@ -28,7 +28,7 @@
 
 <%-- Definition --%>
 
-<button type="submit" name="${name}" onclick="${onclick}" class="btn btnAccept">
+<button type="submit" name="${name}" onclick="${onclick}" class="btnAccept">
 	<spring:message code="${code}" />
 </button>
 
