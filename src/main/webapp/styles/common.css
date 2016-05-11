@@ -32,7 +32,7 @@
 	padding-top:30px;
 }
 .footSuelo{
-	margin-bottom:20%;
+	/*margin-bottom:20%;*/ /*Commented because it displays terribly the pages*/
 }
 
 .buscadorResponsivo{
@@ -473,6 +473,9 @@ h3,h4 {
 	filter: grayscale(100%);
 }
 
+#googleMap .tripDisplay{
+		
+}
 .navbar {
 	font-family: Montserrat, sans-serif;
 	margin-bottom: 0;
