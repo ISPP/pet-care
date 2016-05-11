@@ -209,7 +209,14 @@
         <img src="images/petSitter-index.jpg" class="img-circle person" alt="Pet Sitter" width="255" height="255">
       </a>
       <div id="demo2" class="collapse">
-        <p><spring:message code="master.page.petSittertext1" /></p>
+        <p>
+        	<spring:message code="master.page.petSittertext1_1" />
+        	<span class="text-uppercase petSitterRegister-text"><spring:message code="master.page.petSittertext1_2" /></span>
+        	<spring:message code="master.page.petSittertext1_3" />
+        	<span class="text-uppercase petSitterRegister-text"><spring:message code="master.page.petSittertext1_4" /></span>
+        	<spring:message code="master.page.petSittertext1_5" />
+        	<span class="text-uppercase petSitterRegister-text"><spring:message code="master.page.petSittertext1_6" /></span>
+        </p>
       </div>
     </div>
     <div class="col-sm-3">
