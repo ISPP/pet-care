@@ -17,16 +17,36 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-
-<div class="col-md-12">
- 	<h2><spring:message code="supplier.suppliers"/></h2><hr>	
+<h2><spring:message code="supplier.suppliers"/></h2><hr>
+<!-- <div class="col-md-6-3"> -->
+ 	
+ 		<div class="col-md-12">
  	<jstl:forEach var="row" items="${suppliers}">
- 	<div class="col-md-8-2 panel panel-default">
-	 		
-	 		
+ 	<div class="col-md-12 panel panel-default">
+ 	<c:set var="authority" value="${row.user.authorities[0].authority}"/>
+
+ 	<br>
+	<div class="col-md-1">
+	
+  	<c:if test="${fn:contains(authority, 'PETSITTER')}"> 
+   				<img class="img-circle max-h-4" src="images/petSitter-index.jpg">
+ 				</c:if> 
+ 				
+ 				<c:if test="${fn:contains(authority, 'PETSHIPPER')}"> 
+   				<img class="img-circle max-h-4" src="images/petShipper-index.jpg">
+ 				</c:if> 
+ 				<c:if test="${fn:contains(authority, 'COMPANY')}"> 
+   				<img class="img-circle max-h-4" src="images/company-index.jpg">
+ 				</c:if> 
+ 	
+	 		</div>
+	 	
+	 		<div class="col-md-10">
 	 		<h3 class="h3-no-bottom">${row.surname}, ${row.name} (${row.address})</h3>
 	 		<table class="text-rigth-2">
 	 			<tr>
@@ -121,13 +141,17 @@
 	 		<security:authorize access="hasRole('PETSHIPPER')">
 	 		<a class="text-left-small" href="registration/petShipper/list.do?tripId=<jstl:out value="${row.id}"/>">	
 			<spring:message code="trip.registrations"/></a></security:authorize>
-			
+	
+		</div>		
 	<br>
 	
 	
 
-	 	
 	 	</div>
+	 	
  	</jstl:forEach>
- </div>
+ 	</div>
+<!--  	<div class="col-md-1"> -->
+<!--  		</div> -->
+<!--  </div> -->
 
