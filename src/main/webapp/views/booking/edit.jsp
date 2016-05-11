@@ -24,16 +24,16 @@
 <link rel="stylesheet" href="styles/jquery.switchButton.css">
 <script src="scripts/jquery.switchButton.js"></script>
 <!--  <link href="styles/bootstrap-switch.css" rel="stylesheet" type="text/css"> -->
-
-<form:form action="${requestURI}" modelAttribute="bookingForm">
+<div class="col-md-6">
+<form:form class="form-horizontal" action="${requestURI}" modelAttribute="bookingForm">
 
 	<form:hidden path="supplier" />
 
 
 
 
-<div class="col-md-6-2">
-			<div class="form-group text-left">
+
+	<div class="form-group text-left">
 
 	<form:label path="startMoment">
 		<spring:message code="booking.startMoment" />:
@@ -134,8 +134,29 @@
 		value="<spring:message code="complaint.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
-	</div>
+	
 </form:form>
+</div>
+<div class="col-md-1 ">
+</div>
+<div class="col-md-5 ">
+<div class="container-fluid text-center">
+
+<img alt="" class="register-todoAncho img-circle" src="images/perrocorreaboca.png">
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 	$("input[type=checkbox]").switchButton({
 		on_label : '<label>${perDay}</label>',

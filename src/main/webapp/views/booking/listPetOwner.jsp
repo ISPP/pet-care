@@ -57,16 +57,16 @@
 	 		<div class="wrap-2">
 	 		<c:set var="status" value="${booking.status}"/>
 	 		<c:if test="${fn:contains(status, 'ACCEPTED')}">
-   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/ok.png">
+   				<img class="max-h-4 img-left-2" alt="Care Person" src="images/acept.png">
 				</c:if>
 				
 				<c:if test="${fn:contains(status, 'REJECTED')}">
-   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+   				<img class="max-h-4 img-left-2" src="images/rejc.png">
 				</c:if>
 	 		
 	 		
 	 		<c:if test="${fn:contains(status, 'PENDING')}">
-   				<img class="max-h-4 img-left-2" src="images/noOK.png">
+   				<img class="max-h-4 img-left-2" src="images/loading.gif">
 				</c:if>
 	 		
 	 		

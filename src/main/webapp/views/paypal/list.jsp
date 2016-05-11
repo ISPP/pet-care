@@ -41,7 +41,7 @@
 	 				<h2>${booking.price} &#8364;</h2>
 	 			</td>
 	 			<td class="table-separate-100">
-	 				<a href="paypal/pay.do?id=${booking.id}"><img class="max-h-4 img-left-2"  src="images/paypal.png" /></a>
+	 				<a href="paypal/pay.do?id=${booking.id}"><img class="max-h-4 img-left-2"  src="images/dinero.png" /></a>
 	 			</td>
 	 			
 	 			
