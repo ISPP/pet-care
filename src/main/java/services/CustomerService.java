@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import repositories.CustomerRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Customer;
+import domain.Pet;
+import domain.Photo;
 
 
 @Service
@@ -21,6 +24,8 @@ public class CustomerService {
 	
 		@Autowired
 		private CustomerRepository customerRepository;
+		@Autowired
+		private PhotoService photoService;
 		
 		// Supporting services-----------------------------------------------------
 		
@@ -68,5 +73,41 @@ public class CustomerService {
 			return result;
 		}
 		
+		public void addPhoto(Customer customer, Photo photo) {
+			Assert.notNull(customer);
+			Assert.notNull(photo);
+			
+			photo.setAvatar(false);
+			Collection<Photo> photos;
+			
+			if(customer.getPhotos()!=null){
+				photos = customer.getPhotos();
+				
+			}
+			else{
+				photos = new ArrayList<Photo>();
+			}
+			
+			
+			photos.add(photo);
+			customer.setPhotos(photos);
+			
+			customerRepository.save(customer);
+		}
+		
+		
+		public void changeAvatar(Customer customer, Photo photo) {
+			Assert.notNull(customer);
+			Assert.notNull(photo);
+			for(Photo p : customer.getPhotos()){
+				if(p.getAvatar()==true){
+					p.setAvatar(false);
+					photoService.saveAvatar(p);
+					break;
+				}
+			}
+			photo.setAvatar(true);
+			photoService.saveAvatar(photo);
+		}
 	
 }

@@ -8,7 +8,24 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <div class="col-md-4">
+<jstl:if test="${empty petOwner.photos}">
 	<img class="register-todoAncho" alt="Your AVATAR" src="images/petOwner-index.jpg">
+	</jstl:if>
+	<jstl:if test="${not empty petOwner.photos}">
+	
+	<jstl:forEach var="ph" items="${petOwner.photos}">
+		 		<jstl:if test="${ph.avatar==true}">
+					<jstl:set var="phId" value="${ph.id}"/>	 		
+		 		</jstl:if>
+		 		</jstl:forEach>
+	<jstl:if test="${not empty phId}">
+	<img class="register-todoAncho" alt="Your AVATAR" src="customer/viewPhoto.do?photoId=${phId}">
+	</jstl:if>
+	<jstl:if test="${empty phId}">
+	<img class="register-todoAncho" alt="Your AVATAR" src="images/petOwner-index.jpg">
+	</jstl:if>
+	</jstl:if>
+	
 	<br/>
 	${petOwner.name} ${petOwner.surname} 
 	<br/>
@@ -25,11 +42,103 @@
 </div>
 
 <div class="col-md-8">
+<div class="col-md-6 ">
 	
 	<form:form  modelAttribute="petOwner">
-			<form:textarea readonly="true" class="area-autoAlto" path="description" />
+			<form:textarea readonly="true" class="area-autoAlto panel panel-default" path="description" />
 	</form:form>
-	
+</div>	
+
+<div class="col-md-6">
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  <jstl:forEach var="i" begin="0" end="${petOwner.photos.size() - 1}">
+  <jstl:if test="${i == 0}">
+    <li data-target="#myCarousel" data-slide-to="i" class="active"></li>
+    </jstl:if>
+    <jstl:if test="${i != 0}">
+    <li data-target="#myCarousel" data-slide-to="i" ></li>
+    </jstl:if>
+   </jstl:forEach>
+  </ol>
+
+  <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+ <jstl:set var="positionImage" value="0" />
+  <jstl:forEach var="eachPhoto" items="${petOwner.photos}">
+  <jstl:if test="${positionImage == 0}">
+ 
+    <div class="item active">
+      <img class="center-block petPhoto" src="customer/viewPhoto.do?photoId=${eachPhoto.id}">
+    <jstl:if test="${principal}">
+     <jstl:if test="${not eachPhoto.avatar}">
+    <acme:button classAux="btnCancel"
+									href="customer/selectAvatar.do?photoId=${eachPhoto.id}"
+									code="pet.selectAvatar" />
+									</jstl:if>
+<jstl:if test="${eachPhoto.avatar}">
+
+<acme:button classAux="btnCancel"
+									href="#"
+									code="customer.selected" />
+</jstl:if>
+    </jstl:if>
+    </div>
+   
+  
+  </jstl:if>
+  <jstl:if test="${positionImage != 0}">
+
+    <div class="item">
+      <img class="center-block petPhoto" src="customer/viewPhoto.do?photoId=${eachPhoto.id}">
+    <jstl:if test="${principal}">
+    <jstl:if test="${not eachPhoto.avatar}">
+    <acme:button classAux="btnCancel"
+									href="customer/selectAvatar.do?photoId=${eachPhoto.id}"
+									code="pet.selectAvatar" />
+									</jstl:if>
+<jstl:if test="${eachPhoto.avatar}">
+
+<acme:button classAux="btnCancel"
+									href="#"
+									code="customer.selected" />
+</jstl:if>
+   </jstl:if>
+    </div>
+    
+    
+  
+  </jstl:if>
+   <jstl:set var="positionImage" value="1" />
+   
+ </jstl:forEach>
+ </div>
+
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
 <!-- 		
 <input class="area-autoAlto" readonly="readonly" value="${petOwner.description}"/>
 
@@ -47,7 +156,7 @@
 	<br />
 </jstl:if>
  -->
-
+<div class="col-md-12">
 
 <!-- Reviews list with sortable date and rating -->
 <h4><spring:message code="owner.reviews"/></h4>
@@ -115,6 +224,7 @@
 			
 	 	</div>
 </jstl:forEach>	
+</div>
 </div>
 <!-- 
 <display:table name="reviews" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag"> 

@@ -1,9 +1,11 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -24,6 +26,7 @@ import org.hibernate.validator.constraints.URL;
 public class Customer extends Actor{
 	public Customer(){
 		super();
+		photos=new ArrayList<Photo>();
 	}
 	
 	private String address, description, homePage, contactPhone;
@@ -87,6 +90,16 @@ public class Customer extends Actor{
 		this.complaints = complaints;
 	}
 	
+	private Collection<Photo> photos;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	public Collection<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Collection<Photo> photos) {
+		this.photos = photos;
+	}
 	
 
 }

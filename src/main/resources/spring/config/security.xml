@@ -49,6 +49,16 @@
 			<security:intercept-url pattern="/booking/administrator/**"
 			access="hasRole('ADMIN')" />
 
+
+		<!-- Photo management -->
+		<security:intercept-url pattern="/customer/addPhoto.do"
+			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER','COMPANY')" />
+			<security:intercept-url pattern="/customer/selectAvatar.do"
+			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER','COMPANY')" />
+			<security:intercept-url pattern="/customer/viewPhoto.do"
+			access="permitAll" />
+
+
 		<!-- Profiles -->
 		<security:intercept-url pattern="/petOwner/petOwner/display.do"
 			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER')" />

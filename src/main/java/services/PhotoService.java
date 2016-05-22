@@ -75,5 +75,7 @@ public class PhotoService {
 			photo.setAvatar(true);
 			saveAvatar(photo);
 		}
+		
+		
 	
 }
