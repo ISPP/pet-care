@@ -38,10 +38,14 @@
 	<jstl:if test="${principal}">
 	<acme:cancel code="owner.edit" url="/petOwner/petOwner/edit.do?petOwnerId=${petOwner.id}" />
 	<br />
+	<br />
+		<acme:cancel code="customer.addPhoto"
+			url="/customer/addPhoto.do" />
 </jstl:if>
 </div>
 
 <div class="col-md-8">
+<jstl:if test="${not empty petOwner.photos }">
 <div class="col-md-6 ">
 	
 	<form:form  modelAttribute="petOwner">
@@ -139,6 +143,13 @@
 
 
 </div>
+</jstl:if>
+
+<jstl:if test="${empty petOwner.photos }">
+<form:form  modelAttribute="petOwner">
+			<form:textarea readonly="true" class="area-autoAlto panel panel-default" path="description" />
+	</form:form>
+</jstl:if>
 <!-- 		
 <input class="area-autoAlto" readonly="readonly" value="${petOwner.description}"/>
 

@@ -89,7 +89,11 @@ public class CustomerController extends AbstractController {
 					byteArr = file.getBytes();
 					photo.setContent(byteArr);
 					customerService.addPhoto(customer, photo);
-					result = new ModelAndView("redirect:../welcome/index.do");
+					List<Authority> authorities = new ArrayList<Authority>(customer.getUser()
+							.getAuthorities());
+					Authority auth = authorities.get(0);
+					String authority = auth.getAuthority();
+					result = selectProfile(authority);
 
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -183,6 +187,19 @@ public class CustomerController extends AbstractController {
 		if (authority.equals("PETOWNER")) {
 			result = new ModelAndView(
 					"redirect:../petOwner/petOwner/displayOwn.do");
+		}else{
+			if (authority.equals("PETSITTER")) {
+				result = new ModelAndView(
+						"redirect:../petSitter/petSitter/displayOwn.do");
+			}else{
+				
+				if (authority.equals("PETSHIPPER")) {
+					result = new ModelAndView(
+							"redirect:../petShipper/petShipper/displayOwn.do");
+				
+			}
+			}
+			
 		}
 		result.addObject("message", message);
 

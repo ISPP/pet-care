@@ -178,6 +178,7 @@
 						<li><a href="" onclick="jumpTo('trip/petShipper/create.do')"><spring:message code="master.page.createTrip" /></a></li>
 			
 				</ul>
+				
 			
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<img class="iconNav" src="images/icons/icon-complaint.png" title="${complaint}"/> 
@@ -209,7 +210,7 @@
 		
 		    	</li>
 		    	
-		    	
+		    	<li><a href="" onclick="jumpTo('petShipper/petShipper/displayOwn.do');"><img class="iconNav"  src="images/icons/icon-profile.png" title="${profile}"/> </a></li>			
 		    	
 		    
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
