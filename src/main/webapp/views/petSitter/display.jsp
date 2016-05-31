@@ -10,7 +10,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-
+<div class="col-md-12">
 <div class="col-md-4">
 	
 	<jstl:if test="${empty sitter.photos}">
@@ -24,31 +24,16 @@
 		 		</jstl:if>
 		 		</jstl:forEach>
 	<jstl:if test="${not empty phId}">
-	<img class="register-todoAncho" alt="Your AVATAR" src="customer/viewPhoto.do?photoId=${phId}">
+	<img class="userPhotoAvatar" alt="Your AVATAR" src="customer/viewPhoto.do?photoId=${phId}">
 	</jstl:if>
 	<jstl:if test="${empty phId}">
-	<img class="register-todoAncho" alt="Your AVATAR" src="images/petSitter-index.jpg">
+	<img class="userPhotoAvatar" alt="Your AVATAR" src="images/petSitter-index.jpg">
 	</jstl:if>
 	</jstl:if>
+	<br>
+	<br>
 	
-	
-	
-	 <br /> ${sitter.name}
-	${sitter.surname} <br /> ${sitter.address} <br />
-	<acme:out code="petSitter.priceHour" path="${sitter.priceHour}" />
-	<br />
-	<acme:out code="petSitter.priceNight" path="${sitter.priceNight}" />
-	<br /> ${sitter.email} <br /> <a href="${sitter.homePage}"
-		target="_blank">${sitter.homePage}</a> <br />
-	<jstl:if test="${principal}">
-		<acme:cancel code="owner.edit"
-			url="/petSitter/petSitter/edit.do?petSitterId=${sitter.id}" />
-		<br />
-			<br />
-		<acme:cancel code="customer.addPhoto"
-			url="/customer/addPhoto.do" />
-		<br />
-	</jstl:if>
+	 
 </div>
 <!-- 
 <acme:out code="petSitter.name" path="${sitter.name}"/>
@@ -80,16 +65,10 @@
 
 
 <div class="col-md-8">
-	<jstl:if test="${not empty sitter.photos }">
-		<div class="col-md-6 ">
+<jstl:if test="${not empty sitter.photos }">
+		
 
-			<form:form modelAttribute="sitter">
-				<form:textarea readonly="true"
-					class="area-autoAlto panel panel-default" path="description" />
-			</form:form>
-		</div>
-
-		<div class="col-md-6">
+		<div class="col-md-12">
 
 
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -112,7 +91,7 @@
 						<jstl:if test="${positionImage == 0}">
 
 							<div class="item active">
-								<img class="center-block petPhoto"
+								<img  class="center-block userPhoto"
 									src="customer/viewPhoto.do?photoId=${eachPhoto.id}">
 								<jstl:if test="${principal}">
 									<jstl:if test="${not eachPhoto.avatar}">
@@ -122,8 +101,10 @@
 									</jstl:if>
 									<jstl:if test="${eachPhoto.avatar}">
 
-										<acme:button classAux="btnCancel" href="#"
-											code="customer.selected" />
+
+											
+											<input type="button" class="btnAccept"
+									value="<spring:message code="customer.selected" />" />
 									</jstl:if>
 								</jstl:if>
 							</div>
@@ -133,7 +114,7 @@
 						<jstl:if test="${positionImage != 0}">
 
 							<div class="item">
-								<img class="center-block petPhoto"
+								<img class="center-block userPhoto"
 									src="customer/viewPhoto.do?photoId=${eachPhoto.id}">
 								<jstl:if test="${principal}">
 									<jstl:if test="${not eachPhoto.avatar}">
@@ -143,8 +124,8 @@
 									</jstl:if>
 									<jstl:if test="${eachPhoto.avatar}">
 
-										<acme:button classAux="btnCancel" href="#"
-											code="customer.selected" />
+										<input type="button" class="btnAccept"
+									value="<spring:message code="customer.selected" />" />
 									</jstl:if>
 								</jstl:if>
 							</div>
@@ -170,19 +151,73 @@
 				</a>
 			</div>
 			</div>
+	
 	</jstl:if>
+	
+	 <jstl:if test="${principal}">
+	 <div class="col-md-12 row">
+<br />
+		
+		<acme:cancel code="owner.edit"
+			url="/petSitter/petSitter/edit.do?petSitterId=${sitter.id}" />
+		
+		<acme:cancel code="customer.addPhoto"
+			url="/customer/addPhoto.do" />
+	
+		<br />
+			   </div>
+	</jstl:if>
+	 
+</div>
 
+		</div>
+	
+		   
+		   
+		   
+		   <div class="col-md-12 ">
+		   <div class="col-md-4 ">
+		   <div class="panel panel-default">
+      <div class="panel-heading"> <strong style="font-size:200%;"> ${sitter.name} ${sitter.surname}</strong></div>
+      <div class="panel-body">
+      
+      
+      
+    
+	  ${sitter.address} <br />
+	<acme:out code="petSitter.priceHour" path="${sitter.priceHour}" />
+	<br />
+	<acme:out code="petSitter.priceNight" path="${sitter.priceNight}" />
+	<br /> ${sitter.email} <br /> <a href="${sitter.homePage}"
+		target="_blank">${sitter.homePage}</a> <br />
+      
+      
+      </div>
+    </div>
+    
+   
+	 
+	 <div class="panel panel-default">
+	 <div class="panel-heading"> <strong style="font-size:150%;"><spring:message code="sitter.description" /></strong></div>
+      <div class="panel-body">
+      
+      
+      
+    
+	  ${sitter.description} <br />
+	
+      
+      </div>
+    </div>
+	 
+	 
+			</div>
+	
 
-<jstl:if test="${empty sitter.photos }">
-	<form:form modelAttribute="sitter">
-		<form:textarea readonly="true"
-			class="area-autoAlto panel panel-default" path="description" />
-	</form:form>
-</jstl:if>
-
-<div class="col-md-12">
-<!-- Reviews list with sortable date and rating -->
-<h4>
+		   
+		   
+		   <div class="col-md-8 ">
+		   <h4>
 	<spring:message code="owner.reviews" />
 </h4>
 
@@ -245,8 +280,23 @@
 
 	</div>
 </jstl:forEach>
+	
+
 </div>
 </div>
+<jstl:if test="${empty sitter.photos }">
+	<form:form modelAttribute="sitter">
+		<form:textarea readonly="true"
+			class="area-autoAlto panel panel-default" path="description" />
+	</form:form>
+</jstl:if>
+
+	<br>
+<div class="col-md-12">
+<!-- Reviews list with sortable date and rating -->
+
+</div>
+
 
 <!-- Reviews list with sortable date and rating 
 <h4><spring:message code="petSitter.reviews"/></h4>
