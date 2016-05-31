@@ -197,6 +197,11 @@ public class CustomerController extends AbstractController {
 					result = new ModelAndView(
 							"redirect:../petShipper/petShipper/displayOwn.do");
 				
+			}else {
+				if(authority.equals("COMPANY")){
+					result = new ModelAndView(
+							"redirect:../company/company/displayOwn.do");
+				}
 			}
 			}
 			
