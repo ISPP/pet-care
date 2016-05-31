@@ -115,7 +115,7 @@
 
 
 		<security:intercept-url pattern="/petSitter/petSitter/display.do"
-			access="hasRole('PETSITTER')" />
+			access="hasAnyRole('PETSITTER,PETOWNER,ADMIN')" />
 		<security:intercept-url pattern="/petSitter/petSitter/displayOwn.do"
 			access="hasRole('PETSITTER')" />
 		<security:intercept-url pattern="/petSitter/petSitter/edit.do"

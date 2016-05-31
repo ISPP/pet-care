@@ -100,7 +100,7 @@ public class PetSitterPetSitterController extends AbstractController{
 		requestURI = "petSitter/petSitter/display.do?petSitterId="+petSitterId;
 
 		result = new ModelAndView("petSitter/display");
-		result.addObject("petSitter", petSitter);
+		result.addObject("sitter", petSitter);
 		result.addObject("reviews", reviews);
 		result.addObject("requestURI", requestURI);
 		result.addObject("principal", principal);

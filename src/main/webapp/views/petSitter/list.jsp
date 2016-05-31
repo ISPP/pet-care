@@ -114,10 +114,16 @@
             <img src="images/star.png"/>
             <img src="images/star.png"/>
         	</jstl:if>
+        	<security:authorize access="hasRole('PETOWNER')">
+        	<br>
+        	<a href="petSitter/petSitter/display.do?petSitterId=${petSitter.id}"><spring:message code="petSitter.display.profile"/></a>
+        	
+        	</security:authorize>
 			
 		</div>
 		</jstl:forEach>
 		<jstl:if test="${suppliers.size()==0}">
+			
 			<h2><spring:message code="search.noResults"/></h2>
 		</jstl:if>
 		<jstl:if test="${toBook==false}">

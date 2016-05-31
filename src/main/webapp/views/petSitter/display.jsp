@@ -65,6 +65,13 @@
 
 
 <div class="col-md-8">
+
+<jstl:if test="${empty sitter.photos}">
+			<h2><spring:message code="petSitter.noPhotos"/></h2>
+			<img  class="center-block petPhoto"
+									src="images/pet-nophoto.jpg">
+			
+</jstl:if>
 <jstl:if test="${not empty sitter.photos }">
 		
 
@@ -220,7 +227,9 @@
 		   <h4>
 	<spring:message code="owner.reviews" />
 </h4>
-
+<jstl:if test="${reviews.size()==0}">
+			<h2><spring:message code="petSitter.noReviews"/></h2>
+</jstl:if>
 <jstl:forEach var="rev" items="${reviews}">
 	<div class="col-md-8-2-noColor panel panel-default">
 		<div class="wrap-3">
@@ -284,12 +293,7 @@
 
 </div>
 </div>
-<jstl:if test="${empty sitter.photos }">
-	<form:form modelAttribute="sitter">
-		<form:textarea readonly="true"
-			class="area-autoAlto panel panel-default" path="description" />
-	</form:form>
-</jstl:if>
+
 
 	<br>
 <div class="col-md-12">
