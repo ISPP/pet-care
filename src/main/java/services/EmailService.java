@@ -59,7 +59,7 @@ public class EmailService {
 
 	}
 
-	public void sendToAFriend(PetSitter sender, String recipient) {
+	public void sendToAFriend(Supplier sender, String recipient) {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();
@@ -79,7 +79,7 @@ public class EmailService {
 
 		send(recipient, content, subject);
 	}
-	public void sendToPetShipper(PetShipper sender, String recipient) {
+	public void sendToPetShipper(Supplier sender, String recipient) {
 		String url;
 		// url = "http://www.acme.com/single/register.do?invitationCode="
 		// + sender.getUserCode();

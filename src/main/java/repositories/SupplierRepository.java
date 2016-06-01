@@ -39,4 +39,6 @@ public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 	
 	@Query("select ps from Supplier ps where ps.address like %?1%")
 	Collection<Supplier> searchSuppliers(String address);
+@Query("select a from Supplier a where a.invitationCode=?1")
+	Supplier findSuppByInvitationCode(String invitationCode);
 }

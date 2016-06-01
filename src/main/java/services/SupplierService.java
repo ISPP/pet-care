@@ -15,6 +15,7 @@ import repositories.SupplierRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Booking;
+import domain.Customer;
 import domain.Review;
 import domain.Supplier;
 import forms.SearchSuppliersForm;
@@ -126,4 +127,11 @@ public class SupplierService {
 		
 		return result;
 	}
+
+
+
+public Supplier findSupplierByInvitationCode(String invitationCode) {
+	
+	return supplierRepository.findSuppByInvitationCode(invitationCode);
+}
 }

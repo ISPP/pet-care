@@ -21,6 +21,7 @@ import services.SupplierService;
 import domain.Customer;
 import domain.PetShipper;
 import domain.PetSitter;
+import domain.Supplier;
 import forms.InvitationForm;
 import forms.PetShipperForm;
 import forms.PetSitterForm;
@@ -159,7 +160,7 @@ public class PetShipperController extends AbstractController {
 			BindingResult binding) {
 		ModelAndView result;
 		result = new ModelAndView();
-		PetShipper petShipper;
+		Supplier petShipper;
 		if (binding.hasErrors()) {
 			result = createInvitationModelAndView(invitationForm);
 			
@@ -167,7 +168,7 @@ public class PetShipperController extends AbstractController {
 			result = new ModelAndView("welcome/index");
 			
 			try {
-				petShipper = petShipperService.findOneByPrincipal();
+				petShipper = supplierService.getLoggedSupplier();
 				emailService.sendToPetShipper(petShipper, invitationForm.getEmail());
 
 			} catch (Exception e) {

@@ -57,6 +57,8 @@ public class PetSitterService {
 	@Autowired
 	private BookingService bookingService;
 
+	@Autowired
+	private SupplierService supplierService;
 	
 	public PetSitter create() {
 		PetSitter result;
@@ -97,7 +99,7 @@ public class PetSitterService {
 		String invitationCode;
 		invitationCode=RandomStringUtils.randomAlphanumeric(20);
 
-		Assert.notNull(findPetSitterByInvitationCode(codeToRegister));
+		Assert.notNull(supplierService.findSupplierByInvitationCode(codeToRegister));
 		petSitter.setInvitationCode(invitationCode);
 		petSitter.setDaysBeforeCancel(1);
 		result=save(petSitter);

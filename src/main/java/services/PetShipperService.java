@@ -42,6 +42,9 @@ public class PetShipperService {
 	@Autowired
 	private CustomerService customerService;
 	
+	@Autowired
+	private SupplierService supplierService;
+	
 
 
 	public PetShipper save(PetShipper petShipper) {
@@ -89,7 +92,7 @@ public class PetShipperService {
 		String invitationCode;
 		invitationCode=RandomStringUtils.randomAlphanumeric(20);
 
-		Assert.notNull(findPetShipperByInvitationCode(codeToRegister));
+		Assert.notNull(supplierService.findSupplierByInvitationCode(codeToRegister));
 		petShipper.setInvitationCode(invitationCode);
 		petShipper.setDaysBeforeCancel(1);
 		result=save(petShipper);

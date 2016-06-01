@@ -19,6 +19,7 @@ import services.PetSitterService;
 import services.SupplierService;
 import domain.Customer;
 import domain.PetSitter;
+import domain.Supplier;
 import forms.InvitationForm;
 import forms.PetSitterForm;
 import forms.SearchSittersForm;
@@ -155,11 +156,12 @@ public class PetSitterController extends AbstractController {
 			BindingResult binding) {
 		ModelAndView result;
 		result = new ModelAndView();
-		PetSitter petSitter;
+		Supplier petSitter;
 		if (binding.hasErrors()) {
 			result = createInvitationModelAndView(invitationForm);
 			
 		} else {
+			
 			result = new ModelAndView("welcome/index");
 			SearchSittersForm searchSittersForm;
 			
@@ -167,7 +169,7 @@ public class PetSitterController extends AbstractController {
 			
 			result.addObject("searchSittersForm", searchSittersForm);
 			try {
-				petSitter = petSitterService.findOneByPrincipal();
+				petSitter = supplierService.getLoggedSupplier();
 				emailService.sendToAFriend(petSitter, invitationForm.getEmail());
 
 			} catch (Exception e) {

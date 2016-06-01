@@ -217,6 +217,7 @@
 			<img class="iconNav" src="images/icons/icon-invitation.png" title="${invitation}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
+          		<li><a href="" onclick="jumpTo('petSitter/invite.do');"><spring:message code="master.page.petSitter.inviteText" /></a></li>				
 					<li><a href="" onclick="jumpTo('petShipper/invite.do');"><spring:message code="master.page.petShipper.inviteText" /></a></li>				
 				</ul>
 			</li>	
@@ -282,6 +283,7 @@
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
 					<li><a href="" onclick="jumpTo('petSitter/invite.do');"><spring:message code="master.page.petSitter.inviteText" /></a></li>				
+				<li><a href="" onclick="jumpTo('petShipper/invite.do');"><spring:message code="master.page.petShipper.inviteText" /></a></li>				
 				</ul>
 			</li>
 			
