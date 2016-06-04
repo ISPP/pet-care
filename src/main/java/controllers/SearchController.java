@@ -90,6 +90,7 @@ public class SearchController extends AbstractController{
 		try{
 			actorService.findActorByUsername();
 			toBook = true;
+			System.out.println(toBook);
 		}catch(Throwable t){
 			toBook = false;
 		}

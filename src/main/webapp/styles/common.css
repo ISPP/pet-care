@@ -184,6 +184,15 @@ h3,h4 {
 }
 
 
+.userLittle{
+	height:15ex;
+	min-height:15ex;
+	max-height:15ex;
+	width:23ex;
+	
+	
+}
+
 
 
 .todoAncho{
