@@ -10,12 +10,12 @@
 <div class="col-md-12">
 <div class="col-md-4">
 	
-	<jstl:if test="${empty shipper.photos}">
+	<jstl:if test="${empty petShipper.photos}">
 	<img class="register-todoAncho" alt="Your AVATAR" src="images/petShipper-index.jpg">
 	</jstl:if>
-	<jstl:if test="${not empty shipper.photos}">
+	<jstl:if test="${not empty petShipper.photos}">
 	
-	<jstl:forEach var="ph" items="${shipper.photos}">
+	<jstl:forEach var="ph" items="${petShipper.photos}">
 		 		<jstl:if test="${ph.avatar==true}">
 					<jstl:set var="phId" value="${ph.id}"/>	 		
 		 		</jstl:if>
@@ -37,13 +37,13 @@
 
 <div class="col-md-8">
 
-<jstl:if test="${empty shipper.photos}">
+<jstl:if test="${empty petShipper.photos}">
 			<h2><spring:message code="petSitter.noPhotos"/></h2>
 			<img  class="center-block petPhoto"
 									src="images/pet-nophoto.jpg">
 			
 </jstl:if>
-<jstl:if test="${not empty shipper.photos }">
+<jstl:if test="${not empty petShipper.photos }">
 		
 
 		<div class="col-md-12">
@@ -52,7 +52,7 @@
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
-					<jstl:forEach var="i" begin="0" end="${shipper.photos.size() - 1}">
+					<jstl:forEach var="i" begin="0" end="${petShipper.photos.size() - 1}">
 						<jstl:if test="${i == 0}">
 							<li data-target="#myCarousel" data-slide-to="i" class="active"></li>
 						</jstl:if>
@@ -65,7 +65,7 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<jstl:set var="positionImage" value="0" />
-					<jstl:forEach var="eachPhoto" items="${shipper.photos}">
+					<jstl:forEach var="eachPhoto" items="${petShipper.photos}">
 						<jstl:if test="${positionImage == 0}">
 
 							<div class="item active">
@@ -156,16 +156,16 @@
 		   <div class="col-md-12 ">
 		   <div class="col-md-4 ">
 		   <div class="panel panel-default">
-      <div class="panel-heading"> <strong style="font-size:200%;"> ${shipper.name} ${shipper.surname}</strong></div>
+      <div class="panel-heading"> <strong style="font-size:200%;"> ${petShipper.name} ${petShipper.surname}</strong></div>
       <div class="panel-body">
       
       
       
     
-	  ${shipper.address} <br />
+	  ${petShipper.address} <br />
 	
-	<br /> ${shipper.email} <br /> <a href="${shipper.homePage}"
-		target="_blank">${sitter.homePage}</a> <br />
+	<br /> ${petShipper.email} <br /> <a href="${petShipper.homePage}"
+		target="_blank">${petShipper.homePage}</a> <br />
       
       
       </div>
@@ -188,7 +188,7 @@
       
       
     
-	  ${shipper.description} <br />
+	  ${petShipper.description} <br />
 	
       
       </div>

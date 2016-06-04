@@ -61,7 +61,7 @@
 
 		<!-- Profiles -->
 		<security:intercept-url pattern="/petOwner/petOwner/display.do"
-			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER')" />
+			access="hasAnyRole('PETOWNER','PETSITTER','PETSHIPPER','COMPANY','ADMIN')" />
 		<security:intercept-url pattern="/petOwner/petOwner/displayOwn.do"
 			access="hasRole('PETOWNER')" />
 		<security:intercept-url pattern="/petOwner/petOwner/edit.do"
@@ -70,7 +70,7 @@
 			access="hasRole('PETOWNER')" />
 			
 		<security:intercept-url pattern="/petShipper/petShipper/display.do"
-			access="hasAnyRole('PETSHIPPER')" />
+			access="hasAnyRole('PETOWNER','ADMIN','PETSHIPPER')" />
 		<security:intercept-url pattern="/petShipper/petShipper/displayOwn.do"
 			access="hasRole('PETSHIPPER')" />
 		<security:intercept-url pattern="/petShipper/petShipper/edit.do"
@@ -79,7 +79,7 @@
 			access="hasRole('PETSHIPPER')" />
 			
 		<security:intercept-url pattern="/company/company/display.do"
-			access="hasAnyRole('COMPANY')" />
+			access="hasAnyRole('COMPANY','PETOWNER','ADMIN')" />
 		<security:intercept-url pattern="/company/company/displayOwn.do"
 			access="hasRole('COMPANY')" />
 		<security:intercept-url pattern="/company/company/edit.do"
@@ -90,7 +90,7 @@
 		<!-- Booking -->
 
 		<security:intercept-url pattern="/booking/supplier/**"
-			access="hasAnyRole('PETSITTER','PETSHIPPER', 'COMPANY')" />
+			access="hasAnyRole('PETSITTER','PETOWNER','ADMIN')" />
 		<security:intercept-url pattern="/booking/petOwner/**"
 			access="hasRole('PETOWNER')" />
 			<security:intercept-url pattern="/registration/petOwner/**"
@@ -115,7 +115,7 @@
 
 
 		<security:intercept-url pattern="/petSitter/petSitter/display.do"
-			access="hasAnyRole('PETSITTER,PETOWNER,ADMIN')" />
+			access="hasAnyRole('PETSITTER','PETOWNER','ADMIN')" />
 		<security:intercept-url pattern="/petSitter/petSitter/displayOwn.do"
 			access="hasRole('PETSITTER')" />
 		<security:intercept-url pattern="/petSitter/petSitter/edit.do"

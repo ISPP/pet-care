@@ -218,8 +218,10 @@
 	<!-- List shippers -->
 		<jstl:if test="${searchSuppliersForm.type == 2}">
 		<div id="petShippersDisplay"><!-- Added to create a custom onfo windows in google maps for each marker -->
+			<div class="container text-center">
+			
 			<jstl:forEach var="petShipper" items="${suppliers}">
-			 <div style="cursor: pointer;" onclick="location.href='trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}';"  class="col-md-4 panel panel-default">
+			 <div style="cursor: pointer;" onclick="location.href='trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}';"  class="col-md-4 container-fluid panel panel-default">
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
 			 	<a href="trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}">
@@ -327,8 +329,17 @@
             <img src="images/star.png"/>
             <img src="images/star.png"/>
         	</jstl:if>
+			
+			<security:authorize access="hasRole('PETOWNER')">
+        	<div class="col-md-12">
+        	<a href="petShipper/petShipper/display.do?petShipperId=${petShipper.id}"><spring:message code="petSitter.display.profile"/></a>
+        	</div>
+        	</security:authorize>
+			
 			</div>
 			</jstl:forEach>
+			
+			<div class="col-md-12">
 			<jstl:if test="${suppliers.size()==0}">
 				<h2><spring:message code="search.noResults"/></h2>
 			</jstl:if>
@@ -336,15 +347,18 @@
 			<jstl:if test="${toBook==false}">
 			<spring:message code="search.mustRegister"/><br/>
 			</jstl:if>
-			<spring:message code="search.priceShowsNight"/>
+			</div>
+		</div>
 		</div>
 	</jstl:if>
 	
 	<!-- List companies -->
 	<jstl:if test="${searchSuppliersForm.type == 3}">
 		<div id="companiesDisplay"><!-- Added to create a custom onfo windows in google maps for each marker -->
+			
+			<div class="container text-center">
 			<jstl:forEach var="company" items="${suppliers}">
-			 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 panel panel-default">
+			 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 container-fluid panel panel-default">
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
 			 	
@@ -456,8 +470,15 @@
             <img src="images/star.png"/>
             <img src="images/star.png"/>
         	</jstl:if>
+        	<security:authorize access="hasRole('PETOWNER')">
+        	<div class="col-md-12">
+        	<a href="company/company/display.do?companyId=${company.id}"><spring:message code="petSitter.display.profile"/></a>
+        	</div>
+        	</security:authorize>
+			
 			</div>
 			</jstl:forEach>
+			<div class="col-md-12">
 			<jstl:if test="${suppliers.size()==0}">
 				<h2><spring:message code="search.noResults"/></h2>
 			</jstl:if>
@@ -465,7 +486,8 @@
 			<spring:message code="search.mustRegister"/><br/>
 			</jstl:if>
 			<spring:message code="search.priceShowsNight"/>
-			
+			</div>
+			</div>
 		</div>
 	</jstl:if>
 	
@@ -493,7 +515,7 @@ function createInfoWindow(marker,map, index){
 	 * 5. As a list is returned we have to get the 1st element (the inmediate parent) -> $($($("#petSittersDisplay")[0]).find(".wrap")[index]).parent()[0]
 	 * 6. Finally we get the htmk inside the div -> $($($("#petSittersDisplay")[0]).find(".wrap")[index]).parent().html()
 	*/
-	var contentString ="<div class='divPopup'>"+ $($($($("#petSittersDisplay")[0]).find(".wrap")[index]).parent()[0]).html()+"</div>";
+	var contentString = $($($($("#petSittersDisplay")[0]).find(".wrap")[index]).parent()[0]).html();
 	if(contentString == undefined){
 		
 		contentString = $($($($("#petShippersDisplay")[0]).find(".wrap")[index]).parent()[0]).html();
