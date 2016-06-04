@@ -181,7 +181,7 @@
   <br>
   <div class="row">
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petowner" /></strong></p>
+      <span class="text-uppercase petOwnerRegister-text"><strong><spring:message code="master.page.petowner" /></strong></span>
       <a href="#demo" data-toggle="collapse">
         <img src="images/petOwner-index.jpg" class="img-circle person" alt="Pet Owner" width="255" height="255">
       </a>
@@ -204,7 +204,7 @@
       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petsitter" /></strong></p>
+      <span class="text-uppercase petSitterRegister-text"><strong><spring:message code="master.page.petsitter" /></strong></span>
       <a href="#demo2" data-toggle="collapse">
         <img src="images/petSitter-index.jpg" class="img-circle person" alt="Pet Sitter" width="255" height="255">
       </a>
@@ -220,7 +220,7 @@
       </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.petshipper" /></strong></p>
+      <span class="text-uppercase petShipperRegister-text"><strong><spring:message code="master.page.petshipper" /></strong></span>
       <a href="#demo3" data-toggle="collapse">
         <img src="images/petShipper-index.jpg" class="img-circle person" alt="Pet Shipper" width="255" height="255">
       </a>
@@ -237,7 +237,7 @@
        </div>
     </div>
     <div class="col-sm-3">
-      <p class="text-center"><strong><spring:message code="master.page.company" /></strong></p>
+      <span class="text-uppercase companyRegister-text"><strong><spring:message code="master.page.company" /></strong></span>
       <a href="#demo4" data-toggle="collapse">
         <img src="images/company-index.jpg" class="img-circle person" alt="Companies" width="255" height="255">
       </a>
