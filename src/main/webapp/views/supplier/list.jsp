@@ -33,16 +33,59 @@
  	<br>
 	<div class="col-md-1">
 	
-  	<c:if test="${fn:contains(authority, 'PETSITTER')}"> 
-   				<img class="img-circle max-h-4" src="images/petSitter-index.jpg">
+		
+			 		<jstl:if test="${not empty row.photos}">
+		 	<jstl:forEach var="ph" items="${row.photos}">
+		 		<jstl:if test="${ph.avatar==true}">
+					<jstl:set var="phId" value="${ph.id}"/>	 		
+		 		</jstl:if>
+		 		</jstl:forEach>
+	<jstl:if test="${not empty phId}">
+	<img class="userLittle img-circle img-center" alt="Your AVATAR" src="customer/viewPhoto.do?photoId=${phId}">
+	</jstl:if>
+	<jstl:if test="${empty phId}">
+	
+	
+		 	<c:if test="${fn:contains(authority, 'PETSITTER')}"> 
+   				<img class="img-circle userLittle img-center" src="images/petSitter-index.jpg">
  				</c:if> 
  				
  				<c:if test="${fn:contains(authority, 'PETSHIPPER')}"> 
-   				<img class="img-circle max-h-4" src="images/petShipper-index.jpg">
+   				<img class="img-circle userLittle img-center" src="images/petShipper-index.jpg">
  				</c:if> 
  				<c:if test="${fn:contains(authority, 'COMPANY')}"> 
-   				<img class="img-circle max-h-4" src="images/company-index.jpg">
+   				<img class="img-circle userLittle img-center" src="images/company-index.jpg">
  				</c:if> 
+	
+	
+	</jstl:if>
+		</jstl:if>
+			<jstl:if test="${empty row.photos}">
+<!-- 						 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg"> -->
+						 	
+						 	
+						 	<c:if test="${fn:contains(authority, 'PETSITTER')}"> 
+   				<img class="img-circle userLittle img-center" src="images/petSitter-index.jpg">
+ 				</c:if> 
+ 				
+ 				<c:if test="${fn:contains(authority, 'PETSHIPPER')}"> 
+   				<img class="img-circle userLittle img-center" src="images/petShipper-index.jpg">
+ 				</c:if> 
+ 				<c:if test="${fn:contains(authority, 'COMPANY')}"> 
+   				<img class="img-circle userLittle img-center" src="images/company-index.jpg">
+ 				</c:if> 
+			</jstl:if>
+			 	
+			 	
+			 	
+			 	
+				
+				
+				
+				
+				
+	
+  	
  	
 	 		</div>
 	 	

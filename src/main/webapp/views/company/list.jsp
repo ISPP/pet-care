@@ -21,26 +21,72 @@
 
 <jstl:set value="${requestURI}" var="action" />
 
-
-<jstl:forEach var="company" items="${companies}">
-		 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}';"  class="col-md-4 panel panel-default">
-		 	<div class="wrap">
-		 	<jstl:if test="${toBook==true}">
-		 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
-			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
-		 	</jstl:if>
-			
-			<jstl:if test="${toBook == false}">
-			<img class="max-h-little img-center" alt="Your COMPANY" src="images/petOwner-index.jpg">
-			<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}*"/>&#8364;</span>
+	<div class="container text-center">
+			<jstl:forEach var="company" items="${companies}">
+			 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 container-fluid panel panel-default">
+			 	<div class="wrap">
+			 	<jstl:if test="${toBook==true}">
+			 	
+			 		<jstl:if test="${not empty company.photos}">
+		 	<jstl:forEach var="ph" items="${company.photos}">
+		 		<jstl:if test="${ph.avatar==true}">
+					<jstl:set var="phId" value="${ph.id}"/>	 		
+		 		</jstl:if>
+		 		</jstl:forEach>
+	<jstl:if test="${not empty phId}">
+	<img class="userLittle img-center" alt="Your AVATAR" src="customer/viewPhoto.do?photoId=${phId}">
+	</jstl:if>
+	<jstl:if test="${empty phId}">
+	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg"/>
+	</jstl:if>
+		</jstl:if>
+			<jstl:if test="${empty company.photos}">
+						 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg">
 			</jstl:if>
-			</div>
+			 	
+			 	
+			 	
+			 	
+				
+				
+				
+				
+				
+				
+				
+				
+				<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}"/>&#8364;</span>
+			 	</jstl:if>
+				
+				<jstl:if test="${toBook == false}">
+					<jstl:if test="${not empty company.photos}">
+		 	<jstl:forEach var="ph" items="${company.photos}">
+		 		<jstl:if test="${ph.avatar==true}">
+					<jstl:set var="phId" value="${ph.id}"/>	 		
+		 		</jstl:if>
+		 		</jstl:forEach>
+	<jstl:if test="${not empty phId}">
+	<img class="userLittle img-center" alt="Your AVATAR" src="customer/viewPhoto.do?photoId=${phId}">
+	</jstl:if>
+	<jstl:if test="${empty phId}">
+	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg"/>
+	</jstl:if>
+		</jstl:if>
+			<jstl:if test="${empty company.photos}">
+						 	<img class="max-h-little img-center" alt="Your COMPANY" src="images/company-index.jpg">
+			</jstl:if>
+				
+				
+					<span  class="hM3 carousel-caption desc"><jstl:out value=" ${company.pricePerDay}"/>&#8364;</span>
+				</jstl:if>
+				</div>
+				
+				<div>
+				<strong><jstl:out value="${company.name}"/></strong><hr class="linea-pegada"/>
+				<jstl:out value=" ${company.address}"/>
+				<br/>
+				</div>
 			
-			<div>
-			<p class="list-name"><jstl:out value="${company.name}"/><hr class="linea-pegada"/>
-			<jstl:out value=" ${company.address}"/>
-			<br/>
-			</div>
 			
 			<jstl:if test="${company.rating<1.0}">
             <img src="images/star-empty.png"/>
@@ -89,40 +135,21 @@
             <img src="images/star.png"/>
             <img src="images/star.png"/>
         	</jstl:if>
+        	<security:authorize access="hasRole('PETOWNER')">
+        	<div class="col-md-12">
+        	<a href="company/company/display.do?companyId=${company.id}"><spring:message code="petSitter.display.profile"/></a>
+        	</div>
+        	</security:authorize>
 			
-		</div>
-		</jstl:forEach>
-		<jstl:if test="${suppliers.size()==0}">
-			<h2><spring:message code="search.noResults"/></h2>
-		</jstl:if>
-		<jstl:if test="${toBook==false}">
-		<spring:message code="search.mustRegister"/><br/>
-		</jstl:if>
-		<spring:message code="search.priceShowsNight"/>
-
-
-
-
-<%-- 
-<display:table class="displaytag" pagesize="5"
-	name="companies" id="row" requestURI="${requestURI}">
-	<display:column titleKey="company.username">
-		<jstl:out value="${row.userAccount.username}"/>
-	</display:column>
-	<display:column titleKey="company.name">
-		<jstl:out value="${row.name}"/>
-	</display:column>
-	<display:column titleKey="company.surname">
-		<jstl:out value="${row.surname}"/>
-	</display:column>
-	<display:column titleKey="" property="birthDate" format="{0,date,dd/MM/yyyy}"/>
-	<jstl:if test="${toBook==true}">
-	<display:column>
-		<a href="booking/petOwner/createForCompany.do?companyId=${row.id}"> <spring:message
-				code="company.book" />
-		</a>
-	</display:column>
-	</jstl:if>
-</display:table>
-
- --%>
+			</div>
+			</jstl:forEach>
+			<div class="col-md-12">
+			<jstl:if test="${companies.size()==0}">
+				<h2><spring:message code="search.noResults"/></h2>
+			</jstl:if>
+			<jstl:if test="${toBook==false}">
+			<spring:message code="search.mustRegister"/><br/>
+			</jstl:if>
+			<spring:message code="search.priceShowsNight"/>
+			</div>
+			</div>
