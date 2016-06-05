@@ -105,6 +105,8 @@ public class RegistrationService {
 	public Collection<Registration> findRegistrationNotPayByAdmin() {
 		return registrationRepository.findAllToPayByAdmin();
 	}
+	
+	
 
 
 }

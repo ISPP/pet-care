@@ -136,7 +136,8 @@
 			<img class="iconNav" src="images/icons/icon-travel.png" title="${travel}"/> 
 			<span class="caret"></span></a>
           		<ul class="dropdown-menu">
-					<li><a href="" onclick="jumpTo('trip/petOwner/findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>				
+					<li><a href="" onclick="jumpTo('trip/petOwner/findTrips.do');"><spring:message code="master.page.tripsToRegister" /></a></li>
+					<li><a href="" onclick="jumpTo('trip/petOwner/listRegistered.do');"><spring:message code="master.page.tripsPetOwner" /></a></li>				
 					
 				</ul>
 			</li>

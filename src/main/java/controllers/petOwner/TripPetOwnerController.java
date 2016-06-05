@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.PetOwnerService;
 import services.RegistrationService;
 import services.TripService;
 import controllers.AbstractController;
 import domain.*;
-import domain.Trip;
 import forms.RegistrationForm;
 
 @Controller
@@ -25,6 +25,8 @@ public class TripPetOwnerController extends AbstractController {
 
 	@Autowired
 	private TripService tripService;
+	@Autowired
+	private PetOwnerService petOwnerService;
 	@Autowired
 	private RegistrationService registrationService;
 
@@ -124,5 +126,20 @@ public class TripPetOwnerController extends AbstractController {
 
 		return result;
 	}
+	
+	@RequestMapping(value = "/listRegistered", method = RequestMethod.GET)
+	public ModelAndView listRegistered() {
+		ModelAndView result;
+		PetOwner petOwner;
+		petOwner=petOwnerService.findOneByPrincipal();
+		
+		Collection<Registration> registrations = petOwner.getRegistrations();
+		result = new ModelAndView("trip/listRegistered");
+		result.addObject("registrations", registrations);
+		result.addObject("requestURI", "trip/petOwner/listRegistered.do");
+
+		return result;
+	}
+	
 
 }
