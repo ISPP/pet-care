@@ -24,7 +24,7 @@ public class PetSitter extends Supplier{
 
 	
 	@Min(0)
-	@Max(10)
+	@Max(20)
 	public Double getPriceNight() {
 		return priceNight;
 	}
@@ -35,7 +35,7 @@ public class PetSitter extends Supplier{
 
 	
 	@Min(0)
-	@Max(5)
+	@Max(10)
 	public Double getPriceHour() {
 		return priceHour;
 	}

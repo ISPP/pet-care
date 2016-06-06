@@ -1179,9 +1179,9 @@
 	<property name="name" value="Lillian"></property>
 	<property name="surname" value=" Gómez"></property>
 	<property name="email" value="suzfsr-buyer@gmail.com"></property>
-	<property name="priceNight" value="5"></property>
+	<property name="priceNight" value="20"></property>
 	<property name="daysBeforeCancel" value="1"></property>
-	<property name="priceHour" value="4"></property>
+	<property name="priceHour" value="8"></property>
 	<property name="rating" value="3.2"></property>
 	<property name="blocked" value="false"></property>	
 	<property name="address" value="Calle Tokio, 3, 41020 Sevilla, España"></property>
@@ -1243,8 +1243,8 @@
 	<property name="name" value="Arturo"></property>
 	<property name="surname" value=" Tabares Mora"></property>
 	<property name="email" value="art@gmail.com"></property>
-	<property name="priceNight" value="5.5"></property>
-	<property name="priceHour" value="3"></property>
+	<property name="priceNight" value="15.5"></property>
+	<property name="priceHour" value="8.5"></property>
 	<property name="rating" value="4"></property>
 	<property name="blocked" value="false"></property>	
 	<property name="daysBeforeCancel" value="1"></property>
@@ -1297,9 +1297,9 @@
 	<property name="name" value="Manuel Antonio"></property>
 		<property name="surname" value="Fernández Ortubey"></property>
 		<property name="email" value="manuelAntonio@gmail.com"></property>
-		<property name="priceNight" value="8"></property>
+		<property name="priceNight" value="18"></property>
 	<property name="priceHour" value="5"></property>	
-	<property name="rating" value="4.6"></property>
+	<property name="rating" value="4.4"></property>
 	<property name="blocked" value="false"></property>
 	<property name="daysBeforeCancel" value="1"></property>
 	<property name="address" value="Calle Diego de Lepe, 2, 41007 Sevilla, España"></property>
@@ -1350,11 +1350,11 @@
 	<property name="name" value="Eloísa Beatriz"></property>
 		<property name="surname" value="Giménez Gómez"></property>
 		<property name="email" value="eloisaBeatriz@gmail.com"></property>
-		<property name="priceNight" value="5"></property>
-		<property name="rating" value="4.2"></property>
+		<property name="priceNight" value="13.5"></property>
+		<property name="rating" value="3"></property>
 	<property name="blocked" value="false"></property>
 	<property name="daysBeforeCancel" value="1"></property>
-	<property name="priceHour" value="3.5"></property>	
+	<property name="priceHour" value="7.5"></property>	
 	<property name="address" value="Calle Profesor García González, 3, 41012 Sevilla"></property>
 	<property name="description" value="Cerca de la playa"></property>
 	<property name="contactPhone" value="954013645"></property>
@@ -1406,8 +1406,8 @@
 		<property name="name" value="María Rosa"></property>
 		<property name="surname" value="Pi Frías"></property>
 		<property name="email" value="mRosa@gmail.com"></property>
-		<property name="priceNight" value="7.5"></property>
-	<property name="priceHour" value="2.5"></property>
+		<property name="priceNight" value="12.5"></property>
+	<property name="priceHour" value="9.0"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
 	<property name="rating" value="5"></property>
 	<property name="blocked" value="false"></property>
@@ -1474,8 +1474,8 @@
 		<property name="name" value="María Rosa"></property>
 		<property name="surname" value="Pi Frías"></property>
 		<property name="email" value="mRosa@gmail.com"></property>
-		<property name="priceNight" value="6"></property>
-	<property name="priceHour" value="2.5"></property>
+		<property name="priceNight" value="16"></property>
+	<property name="priceHour" value="5.0"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
 	<property name="rating" value="5"></property>
 	<property name="blocked" value="false"></property>
@@ -1523,8 +1523,8 @@
 		<property name="name" value="María Rosa"></property>
 		<property name="surname" value="Pi Frías"></property>
 		<property name="email" value="mRosa@gmail.com"></property>
-		<property name="priceNight" value="8.5"></property>
-	<property name="priceHour" value="5"></property>
+		<property name="priceNight" value="18.5"></property>
+	<property name="priceHour" value="8.0"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
 	<property name="rating" value="4"></property>
 	<property name="blocked" value="false"></property>
@@ -1573,8 +1573,8 @@
 		<property name="name" value="María Rosa"></property>
 		<property name="surname" value="Pi Frías"></property>
 		<property name="email" value="mRosa@gmail.com"></property>
-		<property name="priceNight" value="9"></property>
-	<property name="priceHour" value="4"></property>
+		<property name="priceNight" value="11"></property>
+	<property name="priceHour" value="9"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
 	<property name="rating" value="4"></property>
 	<property name="blocked" value="false"></property>
