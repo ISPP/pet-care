@@ -22,7 +22,14 @@
 <jstl:set value="${requestURI}" var="action" />
 
 	<div class="container text-center">
+	
 			<jstl:forEach var="company" items="${companies}">
+			
+			<jstl:if test="${i%3==0 and i>2}">
+	<div class="row"></div>
+	
+	</jstl:if>
+	<jstl:set var="i" value="${i+1}" />
 			 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 container-fluid panel panel-default">
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">

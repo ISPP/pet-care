@@ -43,18 +43,28 @@
 	</jstl:if>
 </display:table>
  -->
- <div class="container text-center">
+ <div class="text-center">
 
 	
-	
+	<jstl:set var="i" value="0" />
 	
 		<jstl:forEach var="petSitter" items="${petSitters}">
-		 
+		
+		
+		
+		
+		
+	<jstl:if test="${i%3==0 and i>2}">
+	<div class="row"></div>
+	
+	</jstl:if>
+	<jstl:set var="i" value="${i+1}" />
+	
 		 <jstl:if test="${toBook==true}">
 		 	<jstl:set var="styla" value="cursor: pointer;" />
 		 	<jstl:set var="clicka" value="location.href='booking/petOwner/create.do?petSitterId=${petSitter.id}';" />
 		 </jstl:if>
-		 <div style="${styla}" onclick="${clicka}"  class="col-md-4 panel panel-default">
+		 <div style="${styla}" onclick="${clicka}"  class="col-md-4 container-fluid panel panel-default">
 		 	<div class="wrap">
 		 	
 		 	<jstl:if test="${not empty petSitter.photos}">
