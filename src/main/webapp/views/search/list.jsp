@@ -98,9 +98,16 @@
 					<div class="container text-center">
 
 	
-	
+	<jstl:set var="i" value="0" />
 	
 		<jstl:forEach var="petSitter" items="${suppliers}">
+	
+	
+		<jstl:if test="${i%3==0 and i>2}">
+	<div class="row"></div>
+	
+	</jstl:if>
+	<jstl:set var="i" value="${i+1}" />
 		 
 		 <jstl:if test="${toBook==true}">
 		 	<jstl:set var="styla" value="cursor: pointer;" />
@@ -219,8 +226,18 @@
 		<jstl:if test="${searchSuppliersForm.type == 2}">
 		<div id="petShippersDisplay"><!-- Added to create a custom onfo windows in google maps for each marker -->
 			<div class="container text-center">
+			<jstl:set var="i" value="0" />
+	
+		
 			
 			<jstl:forEach var="petShipper" items="${suppliers}">
+			 <jstl:if test="${i%3==0 and i>2}">
+	<div class="row"></div>
+	
+	</jstl:if>
+	<jstl:set var="i" value="${i+1}" />
+			 
+			 
 			 <div style="cursor: pointer;" onclick="location.href='trip/petShipper/listByShipper.do?petShipperId=${petShipper.id}';"  class="col-md-4 container-fluid panel panel-default">
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
@@ -357,7 +374,15 @@
 		<div id="companiesDisplay"><!-- Added to create a custom onfo windows in google maps for each marker -->
 			
 			<div class="container text-center">
+			
+	
 			<jstl:forEach var="company" items="${suppliers}">
+			
+					<jstl:if test="${i%3==0 and i>2}">
+	<div class="row"></div>
+	
+	</jstl:if>
+	<jstl:set var="i" value="${i+1}" />
 			 <div style="cursor: pointer;" onclick="location.href='booking/petOwner/createForCompany.do?companyId=${company.id}&startMoment=${searchSuppliersForm.startDate}&endMoment=${searchSuppliersForm.endDate}';"  class="col-md-4 container-fluid panel panel-default">
 			 	<div class="wrap">
 			 	<jstl:if test="${toBook==true}">
