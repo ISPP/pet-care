@@ -613,12 +613,12 @@ function createInfoWindow(marker,map, index){
 		
 		contentString = $("#petShippersDisplay").html();
 		if(contentString == undefined){
-			contentString = $($($($("#companiesDisplay")[0]).find(".wrap")[0]).parent()[0]).find("div");
+			contentString = $($($($("#companiesDisplay")[0]).find(".wrap")[index]).parent()[0]).find("div");
 		}else{
-			contentString = $($($($("#petShippersDisplay")[0]).find(".wrap")[0]).parent()[0]).find("div");
+			contentString = $($($($("#petShippersDisplay")[0]).find(".wrap")[index]).parent()[0]).find("div");
 		};
 	}else{
-		contentString = $($($($("#petSittersDisplay")[0]).find(".wrap")[0]).parent()[0]).find("div");
+		contentString = $($($($("#petSittersDisplay")[0]).find(".wrap")[index]).parent()[0]).find("div");
 	}
 	
 /* 	var parsedStars = arrayToString(contentString[2]); */
