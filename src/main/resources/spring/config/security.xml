@@ -90,7 +90,7 @@
 		<!-- Booking -->
 
 		<security:intercept-url pattern="/booking/supplier/**"
-			access="hasAnyRole('PETSITTER','PETOWNER','ADMIN')" />
+			access="hasAnyRole('PETSITTER','PETOWNER','COMPANY')" />
 		<security:intercept-url pattern="/booking/petOwner/**"
 			access="hasRole('PETOWNER')" />
 			<security:intercept-url pattern="/registration/petOwner/**"
