@@ -1090,9 +1090,9 @@
 	</bean>
 	
 	<bean id="petOwner8.6" class="domain.PetOwner">
-	<property name="name" value="Lillian "></property>
-	<property name="surname" value=" Gómez Álvarez"></property>
-	<property name="email" value="lili@gmail.com"></property>
+	<property name="name" value="José Luis "></property>
+	<property name="surname" value="Cuevas Nolasco"></property>
+	<property name="email" value="cuevas@gmail.com"></property>
 	<property name="address" value="Calle Tarfia, 71, 41012 Sevilla"></property>
 	<property name="description" value="Tengo un gato que es toda lo que tengo"></property>
 	<property name="contactPhone" value="958013645"></property>
@@ -1133,9 +1133,9 @@
 	
 	
 	<bean id="petOwner8.7" class="domain.PetOwner">
-	<property name="name" value="Lillian2 "></property>
-	<property name="surname" value=" Gómez Álvarez"></property>
-	<property name="email" value="lili@gmail.com"></property>
+	<property name="name" value="Claudia"></property>
+	<property name="surname" value="Dávila Montero"></property>
+	<property name="email" value="damon@gmail.com"></property>
 	<property name="address" value="Av de la Reina Mercedes, 10, 41012 Sevilla"></property>
 	<property name="description" value="Tengo un gato que es toda lo que tengo"></property>
 	<property name="contactPhone" value="958013645"></property>
@@ -1176,8 +1176,8 @@
 	
 	
 	<bean id="petSitter9.1" class="domain.PetSitter">
-	<property name="name" value="Lillian"></property>
-	<property name="surname" value=" Gómez"></property>
+	<property name="name" value="Juan"></property>
+	<property name="surname" value="León Sánchez"></property>
 	<property name="email" value="suzfsr-buyer@gmail.com"></property>
 	<property name="priceNight" value="20"></property>
 	<property name="daysBeforeCancel" value="1"></property>
@@ -1471,9 +1471,9 @@
 	
 	
 	<bean id="petSitter9.6" class="domain.PetSitter">
-		<property name="name" value="María Rosa"></property>
-		<property name="surname" value="Pi Frías"></property>
-		<property name="email" value="mRosa@gmail.com"></property>
+		<property name="name" value="Juan Manuel"></property>
+		<property name="surname" value="Díaz Núñez"></property>
+		<property name="email" value="diaz@gmail.com"></property>
 		<property name="priceNight" value="16"></property>
 	<property name="priceHour" value="5.0"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
@@ -1520,9 +1520,9 @@
 	
 	
 	<bean id="petSitter9.7" class="domain.PetSitter">
-		<property name="name" value="María Rosa"></property>
-		<property name="surname" value="Pi Frías"></property>
-		<property name="email" value="mRosa@gmail.com"></property>
+		<property name="name" value="Julio Eduardo"></property>
+		<property name="surname" value="Domínguez Romo"></property>
+		<property name="email" value="dominro@gmail.com"></property>
 		<property name="priceNight" value="18.5"></property>
 	<property name="priceHour" value="8.0"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
@@ -1570,9 +1570,9 @@
 	
 	
 	<bean id="petSitter9.8" class="domain.PetSitter">
-		<property name="name" value="María Rosa"></property>
-		<property name="surname" value="Pi Frías"></property>
-		<property name="email" value="mRosa@gmail.com"></property>
+		<property name="name" value="Jesús"></property>
+		<property name="surname" value="Duarte Briz"></property>
+		<property name="email" value="dubriz@gmail.com"></property>
 		<property name="priceNight" value="11"></property>
 	<property name="priceHour" value="9"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
@@ -1619,9 +1619,9 @@
 	
 	
 	<bean id="petSitter9.9" class="domain.PetSitter">
-		<property name="name" value="María Rosa"></property>
-		<property name="surname" value="Pi Frías"></property>
-		<property name="email" value="mRosa@gmail.com"></property>
+		<property name="name" value="Pedro"></property>
+		<property name="surname" value="Durán Suárez"></property>
+		<property name="email" value="duran@gmail.com"></property>
 		<property name="priceNight" value="10"></property>
 	<property name="priceHour" value="3.5"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
@@ -1668,9 +1668,9 @@
 	
 	
 	<bean id="petSitter9.10" class="domain.PetSitter">
-		<property name="name" value="María Rosa"></property>
-		<property name="surname" value="Pi Frías"></property>
-		<property name="email" value="mRosa@gmail.com"></property>
+		<property name="name" value="Alejandro"></property>
+		<property name="surname" value="Enríquez Flores "></property>
+		<property name="email" value="ale@gmail.com"></property>
 		<property name="priceNight" value="7.5"></property>
 	<property name="priceHour" value="4.51"></property>
 	<property name="daysBeforeCancel" value="1"></property>	
@@ -1727,8 +1727,8 @@
 	
 	
 	<bean id="petShipper10.1" class="domain.PetShipper">
-		<property name="name" value="María"></property>
-		<property name="surname" value="Pi Frías"></property>
+		<property name="name" value="Carlos"></property>
+		<property name="surname" value="Esquivel Estrada"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="email" value="mRasdfa@gmail.com"></property>
 		<property name="rating" value="5"></property>
@@ -1954,7 +1954,7 @@
 	
 	<bean id="petShipper10.5" class="domain.PetShipper">
 		<property name="name" value="Andrea"></property>
-		<property name="surname" value="Pi "></property>
+		<property name="surname" value="PiCa Ferreira"></property>
 		<property name="email" value="pica@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="4.2"></property>
@@ -2006,9 +2006,9 @@
 	
 	
 	<bean id="petShipper10.6" class="domain.PetShipper">
-		<property name="name" value="Andrea"></property>
-		<property name="surname" value="Pi "></property>
-		<property name="email" value="pica@gmail.com"></property>
+		<property name="name" value="Lorenzo"></property>
+		<property name="surname" value="Flores Salinas "></property>
+		<property name="email" value="fosa@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
@@ -2056,8 +2056,8 @@
 	
 	
 	<bean id="petShipper10.7" class="domain.PetShipper">
-		<property name="name" value="Andrea"></property>
-		<property name="surname" value="Pi "></property>
+		<property name="name" value="María Antonieta"></property>
+		<property name="surname" value="Forment Hernández"></property>
 		<property name="email" value="pica@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="4.2"></property>
@@ -2105,8 +2105,8 @@
 	
 	
 	<bean id="petShipper10.8" class="domain.PetShipper">
-		<property name="name" value="Andrea"></property>
-		<property name="surname" value="Pi "></property>
+		<property name="name" value="Martín Ángel"></property>
+		<property name="surname" value="Gamboa Banda"></property>
 		<property name="email" value="pica@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="4.2"></property>
@@ -2154,9 +2154,9 @@
 	
 	
 	<bean id="petShipper10.9" class="domain.PetShipper">
-		<property name="name" value="Andrea"></property>
-		<property name="surname" value="Pi "></property>
-		<property name="email" value="pica@gmail.com"></property>
+		<property name="name" value="Mario Francisco"></property>
+		<property name="surname" value="García Cancino"></property>
+		<property name="email" value="gaca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="4.2"></property>
 	<property name="blocked" value="false"></property>
@@ -2201,8 +2201,8 @@
 	
 	
 	<bean id="petShipper10.10" class="domain.PetShipper">
-		<property name="name" value="Andrea"></property>
-		<property name="surname" value="Pi "></property>
+		<property name="name" value="Ricardo"></property>
+		<property name="surname" value="García Chávez"></property>
 		<property name="email" value="pica@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="rating" value="3.2"></property>
@@ -2261,8 +2261,8 @@
 	
 	
 	<bean id="company7.1" class="domain.Company">
-		<property name="name" value="Regiona"></property>
-		<property name="surname" value="Jurado"></property>
+		<property name="name" value="Hotel Alabardero"></property>
+		<property name="surname" value="Al-Andalus Palace"></property>
 		<property name="email" value="regy@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
@@ -2310,8 +2310,8 @@
 	
 	
 	<bean id="company7.2" class="domain.Company">
-		<property name="name" value="Carmenm"></property>
-		<property name="surname" value="Santos"></property>
+		<property name="name" value="Hotel la motilla"></property>
+		<property name="surname" value="hotel sevilla"></property>
 		<property name="email" value="santca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="18520"></property>
@@ -2358,8 +2358,8 @@
 	
 	
 	<bean id="company7.3" class="domain.Company">
-		<property name="name" value="Francisco"></property>
-		<property name="surname" value="Lopez"></property>
+		<property name="name" value="Hotel Gran Hotel"></property>
+		<property name="surname" value="Renacimiento"></property>
 		<property name="email" value="lopez@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
 		<property name="tic" value="123456aSD"></property>
@@ -2405,7 +2405,7 @@
 	
 	
 	<bean id="company7.4" class="domain.Company">
-		<property name="name" value="Pedro"></property>
+		<property name="name" value="Hotel Paraíso"></property>
 		<property name="surname" value="Carillo"></property>
 		<property name="email" value="pca@gmail.com"></property>
 		<property name="daysBeforeCancel" value="1"></property>
@@ -2454,7 +2454,7 @@
 	
 	
 	<bean id="company7.5" class="domain.Company">
-		<property name="name" value="Anotnio"></property>
+		<property name="name" value="Hostal Cubasol"></property>
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
@@ -2509,7 +2509,7 @@
 	
 	
 	<bean id="company7.6" class="domain.Company">
-		<property name="name" value="Anotnio"></property>
+		<property name="name" value="Hotel Simón"></property>
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
@@ -2557,7 +2557,7 @@
 	
 	
 	<bean id="company7.7" class="domain.Company">
-		<property name="name" value="Anotnio"></property>
+		<property name="name" value="Hotel Zaida"></property>
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
@@ -2605,7 +2605,7 @@
 	
 	
 	<bean id="company7.8" class="domain.Company">
-		<property name="name" value="Anotnio"></property>
+		<property name="name" value="Hostal París"></property>
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
@@ -2652,7 +2652,7 @@
 	
 	
 	<bean id="company7.9" class="domain.Company">
-		<property name="name" value="Anotnio"></property>
+		<property name="name" value="Hostal Zahira"></property>
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
@@ -2699,7 +2699,7 @@
 	
 	
 	<bean id="company7.10" class="domain.Company">
-		<property name="name" value="Anotnio"></property>
+		<property name="name" value="Hotel Alfonso XIII"></property>
 		<property name="surname" value="Fernandez"></property>
 		<property name="email" value="ant@gmail.com"></property>
 		<property name="tic" value="1234fads"></property>
